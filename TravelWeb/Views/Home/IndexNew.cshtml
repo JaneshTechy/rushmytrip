@@ -4,7 +4,7 @@
     ViewData["Title"] = "RushMyTrip | Amazing Flights, Unbelievable Price";
 }
 <!-- ================= HERO (heading, paragraph, form) ================= -->
-    <section id="top" class="relative isolate bg-ink-900 pb-10 pt-8 sm:pt-12 lg:pb-14">
+    <section id="top" class="relative isolate bg-ink-900 pb-10 pt-8 sm:pt-12 lg:pb-14 z-50">
       <div class="absolute inset-0 -z-10 overflow-hidden">
         <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=75" alt="" fetchpriority="high" onerror="this.remove()" class="h-full w-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-b from-ink-900/80 via-ink-900/60 to-ink-900/90"></div>
@@ -34,18 +34,18 @@
 
             <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-[1.2fr_1.2fr_1fr_1fr_1.1fr_auto]">
               <label class="relative block">
-  <span class="field-label">From City</span>
-  <span class="field-box"><i class="fa-solid fa-plane-departure text-brand-500"></i>
-    <input id="from" name="from" autocomplete="off" placeholder="City or airport code" class="field-input"></span>
-  <input type="hidden" id="fromCode" name="fromCode">
-  <button id="swapBtn" type="button" aria-label="Swap origin and destination" class="absolute -bottom-[22px] right-5 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-brand-600 shadow transition hover:bg-brand-500 hover:text-white md:bottom-auto md:right-[-22px] md:top-1/2 md:-translate-y-1/2 lg:right-[-24px]"><i class="fa-solid fa-right-left"></i></button>
-</label>
+              <span class="field-label">From City</span>
+              <span class="field-box"><i class="fa-solid fa-plane-departure text-brand-500"></i>
+                <input id="from" name="from" autocomplete="off" placeholder="City or airport code" class="field-input"></span>
+              <input type="hidden" id="fromCode" name="fromCode">
+              <button id="swapBtn" type="button" aria-label="Swap origin and destination" class="absolute -bottom-[22px] right-5 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-brand-600 shadow transition hover:bg-brand-500 hover:text-white md:bottom-auto md:right-[-22px] md:top-1/2 md:-translate-y-1/2 lg:right-[-24px]"><i class="fa-solid fa-right-left"></i></button>
+            </label>
               <label class="relative block">
-  <span class="field-label">To City</span>
-  <span class="field-box"><i class="fa-solid fa-plane-arrival text-brand-500"></i>
-    <input id="to" name="to" autocomplete="off" placeholder="City or airport code" class="field-input"></span>
-  <input type="hidden" id="toCode" name="toCode">
-</label>
+                <span class="field-label">To City</span>
+                <span class="field-box"><i class="fa-solid fa-plane-arrival text-brand-500"></i>
+                <input id="to" name="to" autocomplete="off" placeholder="City or airport code" class="field-input"></span>
+                <input type="hidden" id="toCode" name="toCode">
+              </label>
               <label class="block">
                 <span class="field-label">Departure</span>
                 <span class="field-box"><i class="fa-regular fa-calendar text-brand-500"></i>
@@ -73,32 +73,32 @@
 
             <p id="formError" role="alert" aria-live="assertive" class="mt-3 hidden rounded-xl bg-red-50 px-4 py-2.5 text-sm font-medium text-red-700"></p>
             <datalist id="airports">
-  <option value="New York (NYC)" />
-  <option value="Los Angeles (LAX)" />
-  <option value="Chicago (ORD)" />
-  <option value="Miami (MIA)" />
-  <option value="Atlanta (ATL)" />
-  <option value="Philadelphia (PHL)" />
-  <option value="Honolulu (HNL)" />
-  <option value="Buenos Aires (EZE)" />
-  <option value="Guadalajara (GDL)" />
-  <option value="Lagos (LOS)" />
-  <option value="San Francisco (SFO)" />
-  <option value="Las Vegas (LAS)" />
-  <option value="Seattle (SEA)" />
-  <option value="Orlando (MCO)" />
-  <option value="Denver (DEN)" />
-  <option value="London (LHR)" />
-  <option value="Paris (CDG)" />
-  <option value="Mexico City (MEX)" />
-</datalist>
+              <option value="New York (NYC)" />
+              <option value="Los Angeles (LAX)" />
+              <option value="Chicago (ORD)" />
+              <option value="Miami (MIA)" />
+              <option value="Atlanta (ATL)" />
+              <option value="Philadelphia (PHL)" />
+              <option value="Honolulu (HNL)" />
+              <option value="Buenos Aires (EZE)" />
+              <option value="Guadalajara (GDL)" />
+              <option value="Lagos (LOS)" />
+              <option value="San Francisco (SFO)" />
+              <option value="Las Vegas (LAS)" />
+              <option value="Seattle (SEA)" />
+              <option value="Orlando (MCO)" />
+              <option value="Denver (DEN)" />
+              <option value="London (LHR)" />
+              <option value="Paris (CDG)" />
+              <option value="Mexico City (MEX)" />
+            </datalist>
           </form>
         </div>
       </div>
     </section>
 
     <!-- ================= CERTIFIED & TRUSTED ================= -->
-    <section id="about" class="scroll-mt-20 py-10 lg:py-14">
+    @* <section id="about" class="scroll-mt-20 py-10 lg:py-14">
       <div class="mx-auto max-w-7xl px-5">
         <div class="reveal grid items-center gap-8 rounded-[2rem] bg-slate-50 p-6 ring-1 ring-slate-200 sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:p-10">
           <div>
@@ -122,7 +122,7 @@
           </ul>
         </div>
       </div>
-    </section>
+    </section> *@
 
     <!-- ================= HAPPY CUSTOMERS ================= -->
     <section class="bg-brand-50/60 py-10 lg:py-14">
