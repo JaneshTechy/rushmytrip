@@ -1,52 +1,60 @@
 ﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RushMyTrip | Amazing Flights, Unbelievable Price</title>
-  <meta name="description" content="Hop on-board and travel the world. Cheap flight tickets, great deals and 24/7 human support from RushMyFlight.">
-  <meta name="theme-color" content="#ff5f13">
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-          <meta name="robots" content="noindex, nofollow" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RushMyTrip | Amazing Flights, Unbelievable Price</title>
+    <meta name="description" content="Hop on-board and travel the world. Cheap flight tickets, great deals and 24/7 human support from RushMyFlight.">
+    <meta name="theme-color" content="#ff5f13">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Tailwind via CDN (no build step) -->
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
-          colors: {
-            brand: { 50: '#fff4ed', 100: '#ffe6d4', 200: '#ffc9a8', 300: '#ffa571', 400: '#ff7a38', 500: '#ff5f13', 600: '#f04709', 700: '#c7340a', 800: '#9d2c10', 900: '#7f2810' },
-            leaf: { 500: '#2f6b4f', 600: '#25583f' },
-            ink: { 900: '#0a0f1c', 800: '#0f1729', 700: '#18213a', 600: '#24304d' }
-          },
-          boxShadow: {
-            glow: '0 18px 50px -14px rgba(255,95,19,.55)',
-            card: '0 24px 60px -26px rgba(10,15,28,.35)'
+    <!-- Tailwind via CDN (no build step) -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+            colors: {
+              brand: { 50: '#eef4ff', 100: '#dce8ff', 200: '#bcd0fc', 300: '#8fb1f5', 400: '#4f7fe0', 500: '#1c3f94', 600: '#16327a', 700: '#112861', 800: '#0d1f4b', 900: '#0a1838' },
+              leaf: { 500: '#2f6b4f', 600: '#25583f' },
+              ink: { 900: '#07122b', 800: '#0c1d42', 700: '#13285a', 600: '#1e386f' }
+            },
+            boxShadow: {
+              glow: '0 18px 50px -14px rgba(28,63,148,.55)',
+              card: '0 24px 60px -26px rgba(7,18,43,.35)'
+            }
           }
         }
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @@layer components {
+        .field-label { @@apply mb-1 block px-1 text-[11px] font-bold uppercase tracking-wider text-slate-500; }
+        .field-box { @@apply flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 transition hover:border-slate-300 focus-within:border-brand-500 focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-500/15; }
+        .field-input { @@apply w-full min-w-0 bg-transparent text-sm font-semibold text-ink-900 placeholder:font-medium placeholder:text-slate-400 focus:outline-none; }
+        .eyebrow { @@apply text-sm font-bold uppercase tracking-[0.2em] text-brand-600; }
+        .h2 { @@apply mt-2 text-3xl font-black tracking-tight text-ink-900 sm:text-4xl; }
       }
-    };
-  </script>
-  <style type="text/tailwindcss">
-    @@layer components {
-      .field-label { @@apply mb-1 block px-1 text-[11px] font-bold uppercase tracking-wider text-slate-500; }
-      .field-box { @@apply flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 transition hover:border-slate-300 focus-within:border-brand-500 focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-500/15; }
-      .field-input { @@apply w-full min-w-0 bg-transparent text-sm font-semibold text-ink-900 placeholder:font-medium placeholder:text-slate-400 focus:outline-none; }
-      .eyebrow { @@apply text-sm font-bold uppercase tracking-[0.2em] text-brand-600; }
-      .h2 { @@apply mt-2 text-3xl font-black tracking-tight text-ink-900 sm:text-4xl; }
-    }
-  </style>
-  <style>
-    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .js .reveal.is-in { opacity: 1; transform: none; }
-    @@media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
-  </style>
+    </style>
+    <style>
+      .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+      .js .reveal.is-in { opacity: 1; transform: none; }
+      @@media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
+    </style>
+
+    <style>
+      [class*="60%_50%_at_80%_0%"] { background-image: radial-gradient(60% 50% at 80% 0%, rgba(79,127,224,.40), transparent) !important; }
+      [class*="60%_60%_at_15%_0%"] { background-image: radial-gradient(60% 60% at 15% 0%, rgba(79,127,224,.30), transparent) !important; }
+      svg[aria-label="RushMyTrip"] [fill="#FF5F13" i]   { fill: #3f74e0; }
+      svg[aria-label="RushMyTrip"] [stroke="#FF5F13" i] { stroke: #3f74e0; }
+      svg[aria-label="RushMyTrip"] [fill="#C7340A" i]   { fill: #1c3f94; }
+    </style>
 </head>
 <body class="bg-white font-sans text-slate-700 antialiased">
   <a href="#main" class="sr-only z-[100] rounded-lg bg-brand-500 px-4 py-2 font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
@@ -55,7 +63,7 @@
   <header id="header" class="sticky top-0 z-50 bg-white/95 backdrop-blur transition [&.is-scrolled]:shadow-[0_8px_30px_-14px_rgba(10,15,28,.3)]">
     <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-0" aria-label="Main">
       <a href="@Url.Action("Index", "Home")" class="flex items-center gap-2.5 text-white transition group-[.is-scrolled]:text-ink-900" aria-label="RushMyTrip home">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 263.2 56" width="200" height="64" role="img" aria-label="RushMyTrip"><g transform="scale(0.8750)"><path d="M5 55C3 38 25 34 28 45C31 57 11 56 17 39C23 22 38 23 49 17" fill="none" stroke="#18213A" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="7 6"/><g transform="translate(52 14) scale(.62) translate(-32 -31.5)"><path d="M14 30 L50 14 L36 50 L29 36 Z" fill="#FF5F13" stroke="#FF5F13" stroke-width="2" stroke-linejoin="round"/><path d="M29 36 L50 14 L34 43 Z" fill="#C7340A"/></g></g><path d="M72.45 41.3H77.38V31.11L84.36 41.3H90.45L83.25 31.47C88.04 30.29 90.2 27.37 90.2 23.23C90.2 20.53 89.22 18.23 87.39 16.68C85.66 15.2 83.75 14.7 80.12 14.7H72.45ZM77.38 27.41V19.41H79.58C84.26 19.41 85.23 21 85.23 23.37C85.23 26.18 83.61 27.41 79.79 27.41ZM92.82 32.05C92.82 39.07 95.78 41.77 100.42 41.77C102.83 41.77 104.34 41.16 106.14 39.39V41.3H110.57V21.36H105.78V30.75C105.78 33.42 105.57 34.64 105.03 35.54C104.31 36.69 103.01 37.38 101.39 37.38C99.09 37.38 97.61 36.41 97.61 31.11V21.36H92.82ZM113.16 34.97C113.67 39.61 116.51 41.77 120.47 41.77C124.47 41.77 127.6 38.78 127.6 34.97C127.6 32.01 126.23 30.43 122.06 29.13C118.78 28.09 118.67 28.02 118.67 26.97C118.67 26 119.46 25.28 120.51 25.28C121.52 25.28 122.16 25.82 122.38 26.87H127.06C126.88 23.12 123.89 20.89 120.51 20.89C116.8 20.89 113.88 23.55 113.88 26.97C113.88 29.89 115.47 31.55 119.43 32.88C122.63 33.96 122.81 34.28 122.81 35.43C122.81 36.55 121.88 37.38 120.65 37.38C119.25 37.38 118.46 36.66 117.99 34.97ZM130.26 41.3H135.05V31.19C135.05 26.79 136.53 25.28 139.26 25.28C142.07 25.28 143.15 26.94 143.15 31.11V41.3H147.94V30.03C147.94 23.48 144.92 20.85 140.13 20.85C138.08 20.85 136.49 21.43 135.05 22.73V14.7H130.26Z" fill="#18213A"/><path d="M152.37 41.3H157.3V21.36L164.25 41.3H168.28L175.23 21.36V41.3H180.16V14.7H173.39L166.3 34.86L159.14 14.7H152.37ZM182.54 21.36 189.84 39.43 186.1 47.96H191.25L202.77 21.36H197.26L192.44 34.28L188.01 21.36Z" fill="#FF5F13"/><path d="M203.45 19.41H208.38V41.3H213.32V19.41H218.25V14.7H203.45ZM220.26 41.3H225.05V30.21C225.05 27.12 226.46 25.57 229.34 25.5V20.89H228.98C226.92 20.89 225.92 21.47 224.66 23.3V21.36H220.26ZM231.78 41.3H236.57V21.36H231.78ZM231.82 18.48H236.61V13.69H231.82ZM240.42 47.96H245.21V39.43C247.01 41.05 248.88 41.77 251.33 41.77C257.09 41.77 261.3 37.31 261.3 31.26C261.3 25.25 257.13 20.89 251.37 20.89C248.67 20.89 246.36 21.9 244.82 23.7V21.36H240.42ZM244.92 31.29C244.92 27.87 247.44 25.28 250.76 25.28C254 25.28 256.48 27.91 256.48 31.37C256.48 34.75 254 37.38 250.83 37.38C247.44 37.38 244.92 34.79 244.92 31.29Z" fill="#18213A"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 263.2 56" width="200" height="64" role="img" aria-label="RushMyTrip"><g transform="scale(0.8750)"><path d="M5 55C3 38 25 34 28 45C31 57 11 56 17 39C23 22 38 23 49 17" fill="none" stroke="#18213A" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="7 6"/><g transform="translate(52 14) scale(.62) translate(-32 -31.5)"><path d="M14 30 L50 14 L36 50 L29 36 Z" fill="#18213A" stroke="#18213A" stroke-width="2" stroke-linejoin="round"/><path d="M29 36 L50 14 L34 43 Z" fill="#18213A"/></g></g><path d="M72.45 41.3H77.38V31.11L84.36 41.3H90.45L83.25 31.47C88.04 30.29 90.2 27.37 90.2 23.23C90.2 20.53 89.22 18.23 87.39 16.68C85.66 15.2 83.75 14.7 80.12 14.7H72.45ZM77.38 27.41V19.41H79.58C84.26 19.41 85.23 21 85.23 23.37C85.23 26.18 83.61 27.41 79.79 27.41ZM92.82 32.05C92.82 39.07 95.78 41.77 100.42 41.77C102.83 41.77 104.34 41.16 106.14 39.39V41.3H110.57V21.36H105.78V30.75C105.78 33.42 105.57 34.64 105.03 35.54C104.31 36.69 103.01 37.38 101.39 37.38C99.09 37.38 97.61 36.41 97.61 31.11V21.36H92.82ZM113.16 34.97C113.67 39.61 116.51 41.77 120.47 41.77C124.47 41.77 127.6 38.78 127.6 34.97C127.6 32.01 126.23 30.43 122.06 29.13C118.78 28.09 118.67 28.02 118.67 26.97C118.67 26 119.46 25.28 120.51 25.28C121.52 25.28 122.16 25.82 122.38 26.87H127.06C126.88 23.12 123.89 20.89 120.51 20.89C116.8 20.89 113.88 23.55 113.88 26.97C113.88 29.89 115.47 31.55 119.43 32.88C122.63 33.96 122.81 34.28 122.81 35.43C122.81 36.55 121.88 37.38 120.65 37.38C119.25 37.38 118.46 36.66 117.99 34.97ZM130.26 41.3H135.05V31.19C135.05 26.79 136.53 25.28 139.26 25.28C142.07 25.28 143.15 26.94 143.15 31.11V41.3H147.94V30.03C147.94 23.48 144.92 20.85 140.13 20.85C138.08 20.85 136.49 21.43 135.05 22.73V14.7H130.26Z" fill="#18213A"/><path d="M152.37 41.3H157.3V21.36L164.25 41.3H168.28L175.23 21.36V41.3H180.16V14.7H173.39L166.3 34.86L159.14 14.7H152.37ZM182.54 21.36 189.84 39.43 186.1 47.96H191.25L202.77 21.36H197.26L192.44 34.28L188.01 21.36Z" fill="#1c3f94"/><path d="M203.45 19.41H208.38V41.3H213.32V19.41H218.25V14.7H203.45ZM220.26 41.3H225.05V30.21C225.05 27.12 226.46 25.57 229.34 25.5V20.89H228.98C226.92 20.89 225.92 21.47 224.66 23.3V21.36H220.26ZM231.78 41.3H236.57V21.36H231.78ZM231.82 18.48H236.61V13.69H231.82ZM240.42 47.96H245.21V39.43C247.01 41.05 248.88 41.77 251.33 41.77C257.09 41.77 261.3 37.31 261.3 31.26C261.3 25.25 257.13 20.89 251.37 20.89C248.67 20.89 246.36 21.9 244.82 23.7V21.36H240.42ZM244.92 31.29C244.92 27.87 247.44 25.28 250.76 25.28C254 25.28 256.48 27.91 256.48 31.37C256.48 34.75 254 37.38 250.83 37.38C247.44 37.38 244.92 34.79 244.92 31.29Z" fill="#18213A"/></svg>
       </a>
 
       <ul class="hidden items-center gap-1 text-sm font-semibold text-slate-700 lg:flex">
