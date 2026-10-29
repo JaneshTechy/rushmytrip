@@ -1,0 +1,35 @@
+﻿@model PageModel
+
+@{
+    var seo = ViewBag.Seo as SeoEntities;
+     ViewData["Title"] = Html.Raw(seo?.MetaTitle ?? "").ToString();
+    ViewData["Description"] = Html.Raw(seo?.MetaDescription ?? "").ToString();
+}
+
+@section Metatags {
+    <title>@Html.Raw(seo?.MetaTitle ?? "RushMyFlight")</title>
+    <meta name="description" content="@Html.Raw(seo?.MetaDescription ?? "")" />
+    <meta name="keywords" content="@Html.Raw(seo?.MetaKeywords ?? "")" />
+    @* <meta name="robots" content="@Html.Raw(seo?.Robots ?? "index, follow")" /> *@
+}
+
+<div class="about-bg">
+
+    <div class="container">
+
+        <div class="page-title">
+            <h1>@Model.Title</h1>
+            <p></p>
+        </div>
+
+        <div class="about-card">
+
+            <div class="about-content">
+                @Html.Raw(Model.Content)
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

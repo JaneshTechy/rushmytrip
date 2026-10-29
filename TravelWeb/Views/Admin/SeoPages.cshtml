@@ -1,0 +1,191 @@
+﻿@model SeoPagesVM
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-8">
+
+    <div>
+        <h1 class="text-2xl font-black text-slate-800 uppercase">
+            SEO Management
+        </h1>
+        <p class="text-sm text-slate-500">
+            Select website and manage SEO settings for pages.
+        </p>
+    </div>
+
+    @* WEBSITE DROPDOWN *@
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+
+        <label class="text-xs font-bold text-slate-500 uppercase">
+            Select Website
+        </label>
+
+        <select id="websiteDropdown"
+                class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-200 text-sm">
+
+            <option value="">-- Select Website --</option>
+
+            @foreach (var site in Model.Websites)
+            {
+                <option value="@site.Id"
+                        selected="@(Model.SelectedWebsiteId == site.Id)">
+                    @site.Name
+                </option>
+            }
+        </select>
+
+    </section>
+
+    @* PAGES TABLE *@
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+
+        <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+
+            <h3 class="font-bold text-slate-700 text-sm uppercase">
+                Pages
+            </h3>
+
+            <a asp-action="PageSeoEditor"
+               class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700
+              text-white text-xs font-bold shadow-md">
+
+                <i class="fas fa-plus mr-1"></i>
+                Add New Page
+            </a>
+
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100 text-xs text-slate-400 uppercase">
+                        <th class="px-6 py-4">ID</th>
+                        <th class="px-6 py-4">Page Key</th>
+                        <th class="px-6 py-4">Title</th>
+                        <th class="px-6 py-4">View Name</th>
+                        <th class="px-6 py-4">Status</th>
+                        <th class="px-6 py-4 text-right">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-slate-50">
+
+                    @if (Model.Pages != null && Model.Pages.Any())
+                    {
+                        foreach (var p in Model.Pages)
+                        {
+                            <tr class="hover:bg-slate-50/50">
+
+                                <td class="px-6 py-3">@p.Id</td>
+                                <td class="px-6 py-3">@p.PageKey</td>
+                                <td class="px-6 py-3">@p.Title</td>
+                                <td class="px-6 py-3">@p.ViewName</td>
+
+                                <td class="px-6 py-3">
+                                    <span class="px-2 py-1 rounded-full text-xs font-bold
+                                        @(p.IsActive ? "bg-green-100 text-green-700" : "bg-slate-100 text-slate-500")">
+                                        @(p.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+
+                               <td class="px-6 py-3 text-right flex justify-end gap-2">
+
+    <!-- VIEW (Eye Icon) -->
+    <a href="/@p.Slug"
+       target="_blank"
+       class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600"
+       title="View Page">
+
+        <i class="fas fa-eye"></i>
+    </a>
+
+    <!-- EDIT SEO -->
+    <a asp-action="PageSeoEditor"
+       asp-route-pageKey="@p.PageKey"
+       asp-route-id="@p.Id"
+       class="p-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white"
+       title="Edit SEO">
+
+        <i class="fas fa-edit"></i>
+    </a>
+
+    <!-- DELETE -->
+    <button onclick="deletePage(@p.Id)"
+            class="p-2 rounded-lg bg-red-500 hover:bg-red-600 text-white"
+            title="Delete">
+
+        <i class="fas fa-trash"></i>
+    </button>
+
+</td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-10 text-slate-400">
+                                Select a website to view pages.
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("websiteDropdown").addEventListener("change", function () {
+
+            var websiteId = this.value;
+
+            if (websiteId)
+                window.location.href = '/Admin/SeoPages?websiteId=' + websiteId;
+            else
+                window.location.href = '/Admin/SeoPages';
+        });
+
+        function deletePage(id) {
+
+            swal({
+                title: "Are you sure?",
+                text: "This page will be deleted.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+
+                    if (willDelete) {
+
+                        fetch('/Admin/DeleteSeoPage/' + id, {
+                            method: 'POST'
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    swal("Deleted successfully!", {
+                                        icon: "success",
+                                    }).then(() => {
+                                        location.reload();
+                                    });
+                                }
+                                else {
+                                    swal("Something went wrong!", {
+                                        icon: "error",
+                                    });
+                                }
+                            });
+
+                    }
+                });
+        }
+    </script>
+}

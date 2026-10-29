@@ -1,0 +1,106 @@
+﻿@model List<TravelWeb.Datamodel.FlightSearchCache>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-6">
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-center">
+        <div>
+            <h1 class="text-2xl font-black text-slate-800 uppercase">
+                Search Meta Responses
+            </h1>
+            <p class="text-sm text-slate-500">
+                Stored flight search metadata
+            </p>
+        </div>
+
+        <span class="px-4 py-2 bg-white border rounded-xl text-xs font-bold">
+            Total Records: @ViewBag.TotalRecords
+        </span>
+    </div>
+
+    <!-- TABLE -->
+    <section class="bg-white rounded-3xl border shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full min-w-[1400px]">
+                <thead>
+                    <tr class="bg-slate-50 border-b">
+                        <th class="px-4 py-3 text-xs uppercase">SearchId</th>
+                        <th class="px-4 py-3 text-xs uppercase">Route</th>
+                        <th class="px-4 py-3 text-xs uppercase">Travel Dates</th>
+                        <th class="px-4 py-3 text-xs uppercase text-center">Pax</th>
+                        <th class="px-4 py-3 text-xs uppercase">Trip</th>
+                        <th class="px-4 py-3 text-xs uppercase">Created</th>
+                        <th class="px-4 py-3 text-xs uppercase text-right">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y">
+                    @foreach (var x in Model)
+                    {
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-4 py-3 text-xs font-mono">
+                                @x.SearchId
+                            </td>
+
+                            <td class="px-4 py-3 font-bold">
+                                @x.Origin → @x.Destination
+                            </td>
+
+                            <td class="px-4 py-3 text-sm">
+                                @x.FromDate.Value.ToString("yyyy-MM-dd")
+                                @if (x.ToDate.HasValue)
+                                {
+                                    <span> → @x.ToDate.Value.ToString("yyyy-MM-dd")</span>
+                                }
+                            </td>
+
+                            <td class="px-4 py-3 text-center text-xs font-bold">
+                                @(x.Adult + x.Child + x.Infant)
+                            </td>
+
+                            <td class="px-4 py-3 text-xs">
+                                @(x.TripType == 1 ? "One Way" : "Round Trip")
+                            </td>
+
+                            <td class="px-4 py-3 text-xs">
+                                @x.CreatedAt
+                            </td>
+
+                            <td class="px-4 py-3 text-right">
+                                <a href="@Url.Action("ViewSearchMetaJson", new { searchId = x.SearchId })"
+                                   class="px-3 py-1 text-xs font-bold bg-slate-900 text-white rounded-lg">
+                                    View JSON
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- PAGINATION -->
+    @if (ViewBag.TotalPages > 1)
+    {
+        <div class="flex justify-center gap-4 mt-6">
+            @if (ViewBag.PageNumber > 1)
+            {
+                <a href="?pageNumber=@(ViewBag.PageNumber - 1)"
+                   class="px-4 py-2 border rounded-lg">← Prev</a>
+            }
+
+            <span class="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold">
+                Page @ViewBag.PageNumber of @ViewBag.TotalPages
+            </span>
+
+            @if (ViewBag.PageNumber < ViewBag.TotalPages)
+            {
+                <a href="?pageNumber=@(ViewBag.PageNumber + 1)"
+                   class="px-4 py-2 border rounded-lg">Next →</a>
+            }
+        </div>
+    }
+</div>

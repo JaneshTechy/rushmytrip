@@ -1,0 +1,444 @@
+@using System.Xml
+@using TravelWeb.Models
+@using TravelWeb.Utilities
+@model MulticityCombinedResult
+@{
+    Layout = null;
+    var symbol = ViewBag.CurrencySymbol as string ?? "$";
+    int cardIndex = 0;
+    var req = Model?.Request;
+    var adultCount = req?.Adult ?? 1;
+    var childCount = req?.Child ?? 0;
+    var infantCount = req?.Infant ?? 0;
+
+    string CabinLabel(string code)
+    {
+        switch ((code ?? "Y").ToUpperInvariant())
+        {
+            case "F":
+            case "1": return "First";
+            case "B":
+            case "2": return "Business";
+            case "P":
+            case "3": return "Premium";
+            default: return "Economy";
+        }
+    }
+}
+
+<input type="hidden" id="mcMinPrice" value="@(Model?.MinPrice ?? 0)" />
+<input type="hidden" id="mcResultCount" value="@(Model?.Itineraries?.Count ?? 0)" />
+<input type="hidden" id="mcSearchId" value="@(Model?.SearchId ?? "")" />
+<input type="hidden" id="searchId" value="@(Model?.SearchId ?? "")" />
+
+@if (Model?.Itineraries == null || !Model.Itineraries.Any())
+{
+    <div class="card-result" style="padding:28px;text-align:center;">
+        <h3 data-i18n="result.noResults">Sorry! No Result Found</h3>
+        <p>@(string.IsNullOrEmpty(Model?.Error) ? "No combined multicity itineraries found." : Model.Error)</p>
+    </div>
+}
+else
+{
+    foreach (var item in Model.Itineraries)
+    {
+        cardIndex++;
+        var firstLeg = item.Legs?.FirstOrDefault();
+        <div class="card-result">
+            <div class="card-body">
+                <div class="info-flight">
+                    @{
+                        int legNo = 0;
+                    }
+                    @foreach (var leg in item.Legs)
+                    {
+                        legNo++;
+                        var segments = leg.Outbound ?? new List<FlightsSegment>();
+                        var obFirst = segments.FirstOrDefault();
+                        var obLast = segments.LastOrDefault();
+                        if (obFirst == null || obLast == null) { continue; }
+
+                        TimeSpan outTotal = TimeSpan.Zero;
+                        foreach (var seg in segments)
+                        {
+                            if (!string.IsNullOrEmpty(seg.ElapsedTime))
+                            {
+                                try { outTotal += XmlConvert.ToTimeSpan(seg.ElapsedTime); } catch { }
+                            }
+                        }
+                        string outtotalTime = $"{(int)outTotal.TotalHours}h {outTotal.Minutes}m";
+                        string obdepTime = DateTime.TryParse(obFirst.DepDate, out var dt) ? dt.ToString("HH:mm") : "";
+                        string obArrTime = DateTime.TryParse(obLast.ArrDate, out var dat) ? dat.ToString("HH:mm") : "";
+                        int outBoundStop = Math.Max(0, segments.Count - 1);
+                        var stopCodes = segments.Skip(1).Select(x => x.FromAirport?.Code).Where(x => !string.IsNullOrEmpty(x)).ToList();
+                        string cabinFullName = CabinLabel(obFirst.CabinClass);
+                        var shortNameStyle = legNo > 1 ? "background-color: #AF663E;" : "";
+
+                        <div class="row-flight d-flex space-between">
+                            <div class="title-flight d-flex">
+                                <div class="short-name d-flex" style="@shortNameStyle">@(obFirst.Airline?.Code ?? leg.Airline?.Code)</div>
+                                <div>
+                                    <h5>@(obFirst.Airline?.Name ?? leg.Airline?.Name)</h5>
+                                    <h6>@cabinFullName</h6>
+                                </div>
+                            </div>
+                            <div class="detailed-flight d-flex space-between">
+                                <div class="flight">
+                                    <div class="time">@obdepTime</div>
+                                    <div class="country-block">@obFirst.FromAirport?.Code</div>
+                                    <div class="date">@(DateTime.TryParse(obFirst.DepDate, out var ddep) ? ddep.ToString("ddd, MMM dd") : "")</div>
+                                </div>
+                                <div class="range">
+                                    <div class="time-total">@outtotalTime</div>
+                                    <div class="bar-flight">
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.66665 12.8332H5.83331L8.74998 7.87484H11.9583C12.4425 7.87484 12.8333 7.484 12.8333 6.99984C12.8333 6.51567 12.4425 6.12484 11.9583 6.12484H8.74998L5.83331 1.1665H4.66665L6.12498 6.12484H2.91665L2.04165 4.6665H1.16665L1.74998 6.99984L1.16665 9.33317H2.04165L2.91665 7.87484H6.12498L4.66665 12.8332Z" fill="#D05E2B" />
+                                        </svg>
+                                    </div>
+                                    <div class="badge-stops">
+                                        @if (outBoundStop == 0)
+                                        {
+                                            <span data-i18n="result.nonStop">Non-stop</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@outBoundStop stop@(outBoundStop > 1 ? "s" : "") : @string.Join("·", stopCodes)</span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="flight">
+                                    <div class="time">@obArrTime</div>
+                                    <div class="country-block">@obLast.ToAirport?.Code</div>
+                                    <div class="date">@(DateTime.TryParse(obLast.ArrDate, out var darr) ? darr.ToString("ddd MMM dd") : "")</div>
+                                </div>
+                            </div>
+                            <div class="total-timing d-flex gap-5">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 10.8C8.64 10.8 10.8 8.64 10.8 6C10.8 3.36 8.64 1.2 6 1.2C3.36 1.2 1.2 3.36 1.2 6C1.2 8.64 3.36 10.8 6 10.8ZM6 0C9.3 0 12 2.7 12 6C12 9.3 9.3 12 6 12C2.7 12 0 9.3 0 6C0 2.7 2.7 0 6 0ZM9 7.14L8.58 7.92L5.4 6.18V3H6.3V5.64L9 7.14Z" fill="#4B4E52" />
+                                </svg>
+                                <span>@outtotalTime</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="price-panel">
+                    <h6>Confirm Booking Fare</h6>
+                    <div class="price-wrap">
+                        <div class="card-price"><sup>@symbol</sup>@item.TotalCost.ToString("0.00")</div>
+                    </div>
+                    <a class="btn-primary-results mob-select-btn btn-primary-inverse btn-block theme-search-results-item-price-btn"
+                       style="width: auto"
+                       href="javascript:void(0);"
+                       data-id="@item.CombinedId"
+                       data-combined-id="@item.CombinedId">Select</a>
+                </div>
+            </div>
+            <div class="card-footer d-flex space-between">
+                <div class="card-tags">
+                    <span class="tag">Multi-city</span>
+                    <span class="tag">@item.Legs.Count flights</span>
+                    @if (!string.IsNullOrWhiteSpace(firstLeg?.FareRules))
+                    {
+                        foreach (var rule in firstLeg.FareRules.Split(';', StringSplitOptions.RemoveEmptyEntries).Take(2))
+                        {
+                            var cleanRule = rule.Trim();
+                            if (!string.IsNullOrEmpty(cleanRule))
+                            {
+                                var cssClass = cleanRule.ToLower().Replace(" ", "-").Replace(":", "");
+                                <span class="tag @cssClass">@cleanRule</span>
+                            }
+                        }
+                    }
+                </div>
+                <a class="btn-details" href="javascript:void(0);" onclick="toggleDetails('details-@cardIndex', this)">
+                    Show Details
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9" stroke-width="2.5"></polyline></svg>
+                </a>
+            </div>
+
+            <div class="details-panel" id="details-@cardIndex">
+                <div class="details-tabs">
+                    <div class="tab-link active" onclick="switchTab(this,'itinerary-@cardIndex')">Itinerary</div>
+                    <div class="tab-link" onclick="switchTab(this,'fare-@cardIndex')">Fare Details</div>
+                    <div class="tab-link" onclick="switchTab(this,'price-@cardIndex')">Price Breakdown</div>
+                </div>
+
+                <div class="tab-content active" id="itinerary-@cardIndex">
+                    @{
+                        int journeyNo = 0;
+                    }
+                    @foreach (var leg in item.Legs)
+                    {
+                        journeyNo++;
+                        var outSegments = leg.Outbound ?? new List<FlightsSegment>();
+                        var legFirst = outSegments.FirstOrDefault();
+                        var legLast = outSegments.LastOrDefault();
+                        if (legFirst == null || legLast == null) { continue; }
+
+                        var fromCity = legFirst.FromAirport?.CityName ?? legFirst.FromAirport?.Code ?? "";
+                        var toCity = legLast.ToAirport?.CityName ?? legLast.ToAirport?.Code ?? "";
+                        var depLabel = DateTime.TryParse(legFirst.DepDate, out var depDt) ? depDt.ToString("ddd, MMM dd") : "";
+
+                        <div class="journey-wrap">
+                            <h3><span>Flight @journeyNo · @depLabel — @fromCity → @toCity</span></h3>
+                            @for (int i = 0; i < outSegments.Count; i++)
+                            {
+                                var outitems = outSegments[i];
+                                TimeSpan time = TimeSpan.Zero;
+                                if (!string.IsNullOrEmpty(outitems.ElapsedTime))
+                                {
+                                    try { time = XmlConvert.ToTimeSpan(outitems.ElapsedTime); } catch { }
+                                }
+                                string injourneyTime = $"{(int)time.TotalHours}h {time.Minutes}m";
+                                var circleStyle = journeyNo > 1 ? "background-color: #AF663E;" : "";
+
+                                <div class="flight-journey">
+                                    <div class="name-flignt d-flex gap-10">
+                                        <div class="d-flex gap-5">
+                                            <div class="name-circle d-flex" style="@circleStyle">@(outitems.Airline?.Code ?? "")</div>
+                                            <h4>@(outitems.Airline?.Name) · Flight @outitems.FlightNo</h4>
+                                        </div>
+                                        <div class="tags">
+                                            <span>@CabinLabel(outitems.CabinClass)</span>
+                                            <span data-i18n="details.onTime">On time</span>
+                                        </div>
+                                    </div>
+                                    <div class="journey-details d-flex space-between">
+                                        <div class="flight">
+                                            <h3>@(DateTime.TryParse(outitems.DepDate, out var segDep) ? segDep.ToString("HH:mm") : "")</h3>
+                                            <div class="country-block">
+                                                @(Common.GetAirport(outitems.FromAirport?.Code)?.Name ?? outitems.FromAirport?.Code) (@(outitems.FromAirport?.Code))
+                                            </div>
+                                            <div class="date">
+                                                @(DateTime.TryParse(outitems.DepDate, out var segDepDate) ? segDepDate.ToString("ddd, MMM dd, yyyy") : "")
+                                            </div>
+                                        </div>
+                                        <div class="total-timing">@injourneyTime</div>
+                                        <div class="flight text-end">
+                                            <h3>@(DateTime.TryParse(outitems.ArrDate, out var segArr) ? segArr.ToString("HH:mm") : "")</h3>
+                                            <div class="country-block">
+                                                @(Common.GetAirport(outitems.ToAirport?.Code)?.Name ?? outitems.ToAirport?.Code) (@(outitems.ToAirport?.Code))
+                                            </div>
+                                            <div class="date">@(DateTime.TryParse(outitems.ArrDate, out var segArrDate) ? segArrDate.ToString("ddd, MMM dd, yyyy") : "")</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (i < outSegments.Count - 1)
+                                {
+                                    var nextSeg = outSegments[i + 1];
+                                    if (DateTime.TryParse(outitems.ArrDate, out var arrT) && DateTime.TryParse(nextSeg.DepDate, out var depT))
+                                    {
+                                        var layoverTime = depT - arrT;
+                                        string layoverFormatted = $"{(int)layoverTime.TotalHours}h {layoverTime.Minutes}m";
+                                        <div class="layover">
+                                            Layover: @layoverFormatted in @(Common.GetAirport(outitems.ToAirport?.Code)?.Name ?? outitems.ToAirport?.Code) (@outitems.ToAirport?.Code)
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="tab-content" id="fare-@cardIndex">
+                    <table class="fare-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int fareLeg = 0;
+                            }
+                            @foreach (var leg in item.Legs)
+                            {
+                                fareLeg++;
+                                var seg = leg.Outbound?.FirstOrDefault();
+                                <tr>
+                                    <td class="bold">Flight @fareLeg Cabin</td>
+                                    <td>@CabinLabel(seg?.CabinClass ?? leg.FlightClass.ToString())</td>
+                                </tr>
+                                @if (leg.FlightFare != null)
+                                {
+                                    <tr>
+                                        <td class="bold">Flight @fareLeg Adult Fare</td>
+                                        <td>@symbol@leg.FlightFare.AdultFare.ToString("0.00")</td>
+                                    </tr>
+                                    @if (childCount > 0)
+                                    {
+                                        <tr>
+                                            <td class="bold">Flight @fareLeg Child Fare</td>
+                                            <td>@symbol@leg.FlightFare.ChildFare.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (infantCount > 0)
+                                    {
+                                        <tr>
+                                            <td class="bold">Flight @fareLeg Infant Fare</td>
+                                            <td>@symbol@leg.FlightFare.InfantFare.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-content" id="price-@cardIndex">
+                    @{
+                        double totalAdult = 0, totalChild = 0, totalInfant = 0;
+                        foreach (var leg in item.Legs)
+                        {
+                            if (leg.FlightFare == null) continue;
+                            totalAdult += leg.FlightFare.AdultFare * adultCount;
+                            totalChild += leg.FlightFare.ChildFare * childCount;
+                            totalInfant += leg.FlightFare.InfantFare * infantCount;
+                        }
+                        var grandTotal = totalAdult + totalChild + totalInfant;
+                        if (grandTotal <= 0) { grandTotal = item.TotalCost; }
+                        var totalPax = adultCount + childCount + infantCount;
+                    }
+                    <div class="price-breakdown">
+                        <div class="pb-row">
+                            <span>Base Fare (@adultCount Adult@(adultCount > 1 ? "s" : ""))</span>
+                            <span class="pb-val">@symbol @totalAdult.ToString("0.00")</span>
+                        </div>
+                        @if (childCount > 0)
+                        {
+                            <div class="pb-row">
+                                <span>Base Fare (@childCount Child@(childCount > 1 ? "ren" : ""))</span>
+                                <span class="pb-val">@symbol @totalChild.ToString("0.00")</span>
+                            </div>
+                        }
+                        @if (infantCount > 0)
+                        {
+                            <div class="pb-row">
+                                <span>Base Fare (@infantCount Infant@(infantCount > 1 ? "s" : ""))</span>
+                                <span class="pb-val">@symbol @totalInfant.ToString("0.00")</span>
+                            </div>
+                        }
+                        <div class="pb-row">
+                            <span>Carrier Surcharge</span>
+                            <span class="pb-val">@symbol 0.00</span>
+                        </div>
+                        <div class="pb-row">
+                            <span>Booking Fee</span>
+                            <span class="pb-val">@symbol 0.00</span>
+                        </div>
+                        <div class="pb-row total">
+                            <span>Total (@totalPax Passenger@(totalPax > 1 ? "s" : ""))</span>
+                            <span class="pb-val">@symbol @grandTotal.ToString("0.00")</span>
+                        </div>
+                    </div>
+                    <div style="margin-top:10px;font-size:.72rem;color:var(--text-muted);">Prices in @(item.Currency ?? "USD"), inclusive of all taxes. No hidden charges.</div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<script>
+    (function () {
+        function getQueryParam(name) {
+            return new URLSearchParams(window.location.search).get(name);
+        }
+
+        function goToDetails(combinedId) {
+            var searchId = document.getElementById('mcSearchId')?.value
+                || document.getElementById('searchId')?.value
+                || getQueryParam('searchID')
+                || '';
+            if (!searchId || !combinedId) {
+                alert('Session expired. Please search again.');
+                return;
+            }
+            var basePath = '@(TravelWeb.Utilities.Common.WebSitePath)';
+            window.location = basePath + 'MulticityAsync/Select?searchId=' + encodeURIComponent(searchId)
+                + '&combinedId=' + encodeURIComponent(combinedId);
+        }
+
+        $(document).off('click.mcSelect', '#dvResult .btn-primary-inverse').on('click.mcSelect', '#dvResult .btn-primary-inverse', function (e) {
+            e.preventDefault();
+            var combinedId = $(this).data('id') || $(this).attr('data-combined-id');
+            goToDetails(combinedId);
+        });
+    })();
+
+    if (typeof window.toggleDetails !== 'function') {
+        window.toggleDetails = function (id, btn) {
+            try {
+                const card = btn.closest('.card-result');
+                if (!card) return;
+
+                const panel = card.querySelector('.details-panel');
+                if (!panel) return;
+
+                const isOpen = panel.classList.contains('open');
+
+                document.querySelectorAll('.details-panel').forEach(p => {
+                    p.classList.remove('open');
+                    p.style.display = 'none';
+                });
+
+                document.querySelectorAll('.btn-details').forEach(b => {
+                    b.classList.remove('open');
+                    const textNode = b.childNodes[0];
+                    if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+                        textNode.textContent = 'Show Details ';
+                    }
+                });
+
+                if (!isOpen) {
+                    panel.classList.add('open');
+                    panel.style.display = 'block';
+                    btn.classList.add('open');
+
+                    const textNode = btn.childNodes[0];
+                    if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+                        textNode.textContent = 'Hide Details ';
+                    }
+
+                    setTimeout(() => {
+                        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                }
+            } catch (e) {
+                console.error('toggleDetails error:', e);
+            }
+        };
+    }
+
+    if (typeof window.switchTab !== 'function') {
+        window.switchTab = function (tabEl, contentId) {
+            try {
+                const detailsPanel = tabEl.closest('.details-panel');
+                if (!detailsPanel) return;
+
+                const tabs = detailsPanel.querySelectorAll('.tab-link');
+                const contents = detailsPanel.querySelectorAll('.tab-content');
+
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                tabEl.classList.add('active');
+
+                const tabArray = Array.from(tabs);
+                const index = tabArray.indexOf(tabEl);
+
+                if (contents[index]) {
+                    contents[index].classList.add('active');
+                }
+            } catch (e) {
+                console.error('switchTab error:', e);
+            }
+        };
+    }
+
+    document.querySelectorAll('#dvResult .details-panel').forEach(p => {
+        p.style.display = 'none';
+        p.classList.remove('open');
+    });
+</script>

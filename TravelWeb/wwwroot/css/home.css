@@ -1,0 +1,1891 @@
+﻿
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: url("img/heronew1.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content-visibility: auto;
+    contain-intrinsic-size: 400px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(12,17,25,0.92), rgba(12,17,25,0.25));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    max-width: 900px;
+}
+
+    .hero-content h3 {
+        letter-spacing: 1px;
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .hero-content h1 {
+        letter-spacing: 2px;
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+.divider-hero {
+    width: 52%;
+    height: 3px;
+    background: white;
+    margin: 20px auto 130px;
+}
+
+@@media (max-width: 780px) {
+    .class-select select {
+        padding: 13px 16px !important;
+    }
+
+    .hero-content h3 {
+        font-size: 17px;
+    }
+
+    .hero-content h1 {
+        font-size: 17px;
+    }
+}
+
+/* ---------- SEARCH BOX POSITION ---------- */
+.flight-search-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -140px;
+    position: relative;
+    z-index: 5;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+/* ---------- SEARCH BOX ---------- */
+.flight-search-box {
+    background: #fff;
+    padding: 20px 22px;
+    border-radius: 18px;
+    max-width: 1200px;
+    width: 100%;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+}
+
+/* TOP ROW */
+.search-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap; /* Safety for smaller screens */
+    gap: 15px;
+}
+
+.trip-type label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #f2f5f7;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+    .trip-type label input {
+        accent-color: #0078ff;
+    }
+
+.class-select select {
+    padding: 17px 16px;
+    background: #f5f7f9;
+    border-radius: 10px;
+    border: 1px solid #e5e8ea;
+}
+
+/* ---------- GRID SYSTEM (FIXED) ---------- */
+.search-grid {
+    display: grid;
+    /* Old: 6 columns (Mismatch)
+                   New: 4 columns to match your 4 HTML blocks
+                   Logic: From/To gets most space (2.5fr), then Dates (1.5fr), then Passenger (1fr), then button (auto)
+                */
+    grid-template-columns: 2.5fr 1.5fr 1fr auto;
+    gap: 8px;
+    align-items: center;
+}
+
+/* ---------- 1. FROM - TO WRAPPER ---------- */
+.from-to-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 5px;
+}
+
+/* COMMON BOX STYLE */
+.city-box {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    border: 1.5px solid #dcdcdc;
+    min-width: 0;
+    transition: border-color 0.2s;
+}
+
+    /* Focus state for better UX */
+    .city-box:focus-within {
+        border-color: #ED4214;
+    }
+
+/* SWAP BUTTON */
+.swap-center-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: #ffffff;
+    border: 1.5px solid #dcdcdc;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    color: #ED4214;
+    transition: transform 0.3s ease, background 0.2s;
+}
+
+    .swap-center-btn:hover {
+        background-color: #f0f8ff;
+    }
+
+/* CONTENTS */
+.city-inner {
+    display: grid;
+    grid-template-columns: 30px auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.city-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.city-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.city-sub {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+    font-size: 13px;
+    color: #6b6b6b;
+}
+
+.iata-badge {
+    background: #e9f2ff;
+    color: #0071e3;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: 600;
+    /* Hide badge if empty */
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+    .iata-badge:empty {
+        display: none;
+    }
+
+/* INPUT STYLING */
+/* This makes the input look exactly like the previous text */
+.city-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    font-family: inherit;
+}
+
+    .city-input::placeholder {
+        font-weight: 400;
+        color: #a8a8a8;
+    }
+
+/* ---------- 2. DATE RANGE ---------- */
+.date-range-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 1px solid #dfe3e6;
+    border-radius: 12px;
+    padding: 14px 14px;
+    height: 74px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.date-left, .date-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.date-divider {
+    margin-right: 12px;
+    width: 1px;
+    height: 30px;
+    background: #dfe3e6;
+}
+
+.date-info, .return-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensures input takes available space */
+}
+
+.return-label {
+    font-size: 13px;
+    color: #8b8f95;
+    margin-bottom: 2px; /* Slight spacing between label and input */
+    cursor: pointer; /* Clicking label focuses input */
+}
+
+.date-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* --- NEW CSS TO STYLE THE INPUTS --- */
+
+/* This targets the input using your existing class name */
+input.return-add {
+    height: auto;
+    font-family: inherit; /* Inherit font from parent */
+    font-size: 13px;
+    font-weight: 700;
+    color: #000;
+    /* RESET DEFAULT BROWSER INPUT STYLES */
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+    /* Optional: Change placeholder color if needed */
+    input.return-add::placeholder {
+        color: #000; /* Makes "Add Date" look like regular text */
+        opacity: 1;
+    }
+
+    /* Optional: Visual cue when clicking the date */
+    input.return-add:focus {
+        border-bottom: 1px dashed #ccc; /* Subtle indicator that it is active */
+    }
+
+/* ---------- 3. PASSENGERS ---------- */
+/* --- YOUR EXISTING STYLES --- */
+.passenger-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid #dfe3e6;
+    border-radius: 12px;
+    padding: 14px 16px;
+    width: 100%;
+    height: 74px;
+    box-sizing: border-box;
+    cursor: pointer; /* Added pointer so user knows it clicks */
+}
+
+.passenger-icon {
+    width: 26px;
+    height: 26px;
+}
+
+.passenger-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure text takes available space */
+}
+
+.passenger-label {
+    font-size: 13px;
+    color: #6c7682;
+}
+
+/* --- UPDATED: INPUT RESET STYLE --- */
+/* This makes the input look exactly like your previous .passenger-value div */
+input.passenger-value {
+    height: auto;
+    font-family: inherit; /* Matches your font */
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    /* Reset Input Styles */
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+    text-overflow: ellipsis; /* Adds ... if text is too long */
+}
+
+/* --- SEARCH BUTTON (Unchanged) --- */
+.search-col {
+    display: flex;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 0 32px;
+    height: 74px;
+    background: #ED4214;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@@media (max-width: 1100px) {
+    .search-grid {
+        /* Switch to 2x2 grid */
+        grid-template-columns: 1fr 1fr;
+    }
+    /* Make From/To Wrapper span the full top row */
+    .from-to-wrapper {
+        grid-column: 1 / -1;
+    }
+}
+
+@@media (max-width: 780px) {
+    .flight-search-wrapper {
+        margin-top: -120px;
+    }
+
+    .search-grid {
+        /* Stack vertically */
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .from-to-wrapper {
+        flex-direction: column; /* Stack From/To vertically on mobile */
+        gap: 0;
+    }
+
+    .city-box {
+        width: 100%;
+        border-radius: 12px;
+    }
+    /* Adjust border radius for stacked look */
+    .from-box {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: none;
+    }
+
+    .to-box {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .swap-center-btn {
+        /* On mobile, simple rotate icon, maybe adjust pos */
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .search-btn {
+        width: 100%;
+        height: 60px;
+    }
+}
+
+/* Awesome Features */
+
+@@media (min-width: 1300px) {
+    .container {
+        max-width: 1500px !important;
+        width: 1500px !important;
+    }
+
+    .why-content p {
+        max-width: 320px !important;
+    }
+
+    .why-us {
+        padding: 0px 90px 55px !important;
+    }
+
+    .flight-search-box {
+        max-width: 1500px;
+    }
+
+    .testimonials-container {
+        max-width: 1500px !important;
+    }
+}
+
+.features-section {
+    padding: 60px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #051320;
+    margin-bottom: 30px;
+}
+
+/* GRID */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.icon-wrapper {
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+
+/* Icon Box */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background: #f9e6fc;
+    border: 2px solid #9c27b0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* icon stays above */
+}
+
+    .icon-box img {
+        width: 40px;
+        height: 40px;
+    }
+
+/* Divider Line */
+.divider {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 2px;
+    background: #051320;
+    border-radius: 50px;
+    z-index: 3; /* divider appears in front of icon box */
+}
+
+/* Title & Text */
+.feature-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    margin: 20px 0px 5px;
+}
+
+.feature-text {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* COLORS (from Figma) */
+.bg-purple {
+    background: #F3DDF1;
+}
+
+.border-purple {
+    border: 1px solid #570F56;
+}
+
+.bg-green {
+    background: #E7F3EB;
+}
+
+.border-green {
+    border: 1px solid #17432A;
+}
+
+.bg-indigo {
+    background: #E9E5F4;
+}
+
+.border-indigo {
+    border: 1px solid #0F0829;
+}
+
+.bg-red {
+    background: #F7E2E9;
+}
+
+.border-red {
+    border: 1px solid #5D1428;
+}
+
+/* RESPONSIVE */
+@@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+    }
+
+    .feature-item {
+        text-align: center;
+    }
+
+    .icon-box {
+        margin: auto;
+    }
+}
+
+@@media (max-width: 576px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-item {
+        text-align: center;
+    }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+
+        .icon-box img {
+            width: 40px;
+            height: 40px;
+        }
+
+    .section-title {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .divider {
+        top: 0%;
+        left: 0px;
+        position: relative;
+        width: 80px;
+        height: 2px;
+        background: #051320;
+        margin: 10px auto 20px;
+        border-radius: 50px;
+    }
+}
+
+/* Happy Travelers Section */
+
+/* Grid layout */
+.testimonials-container {
+    position: relative;
+    /* Placeholder background image similar to the mountains */
+    background: url("img/happy-travelers.webp") center/cover no-repeat;
+    max-width: 1200px;
+    width: 100%;
+    height: 380px; /* Fixed height for the layout */
+    margin: auto;
+    border-radius: 12px;
+    overflow: hidden; /* Keeps everything inside rounded corners */
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* OVERLAY - Dark gradient on left to make text readable */
+.overlay {
+    opacity: 0.3;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 100%);
+    z-index: 1;
+}
+
+.overlay2 {
+    opacity: 0.7;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 100%);
+    z-index: 1;
+}
+
+/* --- LEFT SIDE CONTENT --- */
+.testimonial-left {
+    position: relative;
+    z-index: 2;
+    flex: 1; /* Takes up left half */
+    padding: 80px 60px 0px 130px;
+    color: white;
+}
+
+    .testimonial-left h2 {
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        font-size: 28px;
+        line-height: 1.2;
+        font-weight: 700;
+    }
+
+/* Divider Line */
+.divider-travelers {
+    width: 100%;
+    height: 0.5px;
+    background: white;
+}
+
+.stats-row {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.stat-box {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+}
+
+    .stat-box h3 {
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .stat-box p {
+        margin: 0px;
+        font-size: 11px;
+        opacity: 0.9;
+        max-width: 150px;
+        line-height: 1.4;
+    }
+
+/* Trustpilot Mockup */
+.trustpilot-box {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tp-star-box {
+    background: #00b67a;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 2px;
+}
+
+.tp-star {
+    color: white;
+    font-size: 18px;
+}
+
+.tp-text {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* --- RIGHT SIDE CONTENT (SCROLLING CARDS) --- */
+.testimonial-right {
+    position: relative;
+    z-index: 2;
+    flex: 1.2; /* Slightly wider than left */
+    display: flex;
+    gap: 20px;
+    padding: 0px 90px 0px 0;
+    overflow: hidden;
+    /* Gradient Mask to fade cards at top/bottom */
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+/* Columns for the grid */
+.scroll-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    will-change: transform;
+}
+
+/* CARD STYLING */
+.floating-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #eee;
+}
+
+.user-info h4 {
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+}
+
+.user-info span {
+    font-size: 12px;
+    color: #777;
+}
+
+.floating-card p {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* RESPONSIVE */
+@@media (max-width: 900px) {
+    .testimonials-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .testimonial-left {
+        padding: 40px;
+    }
+
+    .testimonial-right {
+        height: 400px; /* Fixed height for scroll area on mobile */
+        padding: 0 20px 20px 20px;
+    }
+
+    .overlay {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+    }
+}
+
+@@media (max-width: 600px) {
+    .feature-text {
+        margin: 0 auto;
+        max-width: 250px;
+    }
+
+    .stats-row {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .testimonial-left h2 {
+        font-size: 28px;
+    }
+}
+
+/* Top Flight Deals */
+
+.flight-deals {
+    width: 100%;
+    background: url("img/worldmap.png") center/cover no-repeat;
+    background-position: left center;
+    background-size: 65% 100%;
+}
+
+.happy-text {
+    position: absolute;
+    z-index: 2;
+}
+
+.deals-header {
+    margin-bottom: 40px;
+}
+
+    .deals-header h2 {
+        margin-top: 50px;
+        font-size: 29px;
+        font-weight: 600;
+        color: #051320;
+    }
+
+    .deals-header p {
+        font-size: 16px;
+        color: #444;
+        margin-top: 6px;
+    }
+
+/* FIX #1 — override container behavior */
+.container {
+    overflow: visible !important;
+    touch-action: auto !important;
+    position: static !important;
+}
+
+/* FIX #2 — the actual horizontal scrolling container */
+.deals-scroll {
+    justify-content: center;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 10px;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x !important;
+    /* Enable finger swipe */
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* FIX #3 — responsive swipe (cards should not block gestures) */
+.deal-card,
+.deal-card * {
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    touch-action: manipulation !important;
+}
+
+    .deal-card img {
+        pointer-events: none; /* allows swipe even on image tap */
+    }
+
+/* FIX #4 — prevent shrinking */
+.deal-card,
+.call-card {
+    flex: 0 0 280px;
+}
+
+/* Ensure cards stay same width and NEVER shrink */
+.deal-card,
+.call-card {
+    flex: 0 0 280px; /* fixed card width */
+}
+
+/* On desktop, make a bit wider */
+@@media (min-width: 1300px) {
+    .deals-scroll {
+        padding-left: 0px;
+        gap: 15px;
+    }
+
+    .deal-card, .call-card {
+        flex: 0 0 365px;
+    }
+}
+
+/* Deal Card */
+.deal-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    overflow: visible;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.deal-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px 12px 0px 0px;
+}
+
+.airline-logo {
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    margin: -35px auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+    .airline-logo img {
+        width: 40px;
+    }
+
+.deal-card h3 {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 10px 0 3px;
+}
+
+.route1 {
+    font-size: 14px;
+}
+
+.route {
+    font-size: 13px;
+    color: #555;
+}
+
+.divider-deal {
+    width: 80%;
+    height: 1px;
+    background: #ccc;
+    margin: 12px auto;
+}
+
+.note {
+    margin-right: 20px;
+    text-align: end;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Call-to-book card */
+.call-card {
+    background: #fff;
+    border-radius: 12px;
+    text-align: center;
+    padding: 20px;
+    border: 1.5px solid #3A9E59;
+}
+
+.agent-photo img {
+    width: 90px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+.call-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.subtitle {
+    font-size: 10px;
+    opacity: 0.7;
+    margin-bottom: 12px;
+}
+
+.call-title {
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.call-box {
+    display: inline-flex; /* Changed to inline-flex to fit content width */
+    align-items: center;
+    justify-content: flex-start; /* Aligns items to the left */
+    background: #fff;
+    border: 1px solid #3A9E59; /* Made border slightly thinner to match image */
+    border-radius: 12px; /* Increased radius slightly */
+    padding: 5px; /* This creates the white gap between outer border and inner green box */
+    text-decoration: none;
+    font-family: sans-serif; /* Ensures clean font match */
+}
+
+/* New class for the green square behind the icon */
+.icon-box-help {
+    background-color: #3A9E59;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px; /* Rounded corners for the green box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Prevents box from shrinking */
+}
+
+    .icon-box-help img {
+        width: 20px;
+        height: auto;
+        filter: brightness(0) invert(1); /* This turns your icon White via CSS */
+    }
+
+.phone-text {
+    color: #3A9E59;
+    font-weight: bold;
+    font-size: 18px; /* Increased size to match image */
+    padding: 0 20px; /* Adds space to the right and left of text */
+}
+
+/* RESPONSIVE RULES */
+@@media (max-width: 1100px) {
+    .deals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .deals-scroll {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+    }
+}
+
+@@media (max-width: 650px) {
+
+    .testimonial-left {
+        text-align: center;
+    }
+
+
+
+    .testimonial-right {
+        display: block;
+        flex: none;
+    }
+
+    .overlay2 {
+        position: relative;
+    }
+
+    .happy-text {
+        position: relative;
+    }
+
+    .flight-deals {
+        background-size: 100% 100%;
+    }
+
+    .deals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flight-deals {
+        padding: 20px !important;
+    }
+}
+
+/* Top Airlines Section */
+
+/* CONTAINER & SECTION */
+.airlines-section {
+    margin-top: 60px;
+    padding: 35px 4%; /* Adjusted padding to match spacing in image */
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* PARENT FLEX CONTAINER */
+.airlines-flex {
+    display: flex;
+    align-items: center; /* Vertically center logos with text */
+    justify-content: space-between; /* Push text left, logos right */
+    gap: 40px; /* Space between text block and logo block */
+    margin: 0 auto;
+}
+
+/* LEFT SIDE: TEXT */
+.airlines-info {
+    text-align: left;
+    min-width: 265px; /* Ensures text doesn't wrap awkwardly */
+}
+
+.airlines-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #000; /* Pure black as per image */
+    margin: 0;
+    line-height: 1.2;
+}
+
+.airlines-subtitle {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.airlines-slide-track {
+    display: flex;
+    gap: 80px;
+    white-space: nowrap;
+    width: max-content;
+    animation: airlinesScroll 20s linear infinite;
+    will-change: transform;
+}
+
+    .airlines-slide-track img {
+        height: 50px; /* Set a fixed height for consistency */
+        width: auto;
+        object-fit: contain;
+    }
+
+@@keyframes airlinesScroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(var(--scroll-distance1));
+    }
+}
+
+/* RIGHT SIDE: LOGOS */
+.airlines-logos {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    padding: 20px 0;
+}
+
+    .airlines-logos img {
+        height: 35px; /* Adjusted height to match screenshot scale */
+        width: auto;
+        object-fit: contain;
+        /* transition: 0.3s ease; Optional */
+    }
+
+        /* OPTIONAL: HOVER EFFECT */
+        .airlines-logos img:hover {
+            transform: scale(1.1);
+        }
+
+/* ---------- RESPONSIVE ---------- */
+
+/* Tablet & Mobile: Switch back to vertical stack */
+@@media (max-width: 1024px) {
+
+    .airlines-logos {
+        width: 100%;
+        justify-content: flex-start; /* Logos start from left on mobile */
+        margin-top: 30px;
+        gap: 30px;
+    }
+}
+
+@@media (max-width: 600px) {
+    .airlines-flex {
+        flex-direction: column;
+        align-items: flex-start; /* Aligns items to start */
+        gap: 0px;
+    }
+
+    .airlines-title {
+        font-size: 28px;
+    }
+
+    .airlines-logos {
+        gap: 20px;
+        justify-content: center; /* Center logos on very small screens */
+    }
+
+    .airlines-info {
+        width: 100%;
+        text-align: center; /* Center text on very small screens */
+    }
+}
+
+/* Multi-Flight Deals */
+.multi-flight-section {
+    position: relative;
+    width: 100%;
+    /* Use your specific background image here */
+    background: url("img/Multi-Flight.jpg") center/cover no-repeat;
+    /* Fallback color if image missing */
+    background-color: #0a1223;
+    display: flex;
+    justify-content: center;
+    /* This padding controls the height of the blue section */
+    padding: 80px 20px 140px 20px;
+}
+
+.multi-flight-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    /* The blue tint from the screenshot */
+    background: rgba(8, 26, 54, 0.85);
+}
+
+.multi-flight-inner {
+    height: 150px;
+    width: 100%;
+    max-width: 1500px; /* Limits width to match screenshot layout */
+    position: relative;
+    z-index: 2;
+}
+
+@@media (min-width: 1200px) {
+    .multi-flight-inner {
+        height: 250px;
+    }
+
+    .header-row {
+        margin-top: 100px;
+    }
+
+    .flight-row {
+        transform: translateY(55px);
+    }
+}
+
+/* HEADER LAYOUT */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Aligns buttons with bottom of text */
+}
+
+.multi-flight-content {
+    color: #fff;
+}
+
+    .multi-flight-content h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin: 0 0 10px 0;
+    }
+
+    .multi-flight-content p {
+        font-size: 16px;
+        opacity: 0.9;
+        margin: 0;
+        font-weight: 300;
+    }
+
+/* ARROW BUTTONS */
+.arrow-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.arrow-btn {
+    width: 55px; /* Increased slightly to match image proportions */
+    height: 50px;
+    border: none;
+    border-radius: 8px; /* Increased radius for the softer look */
+    cursor: pointer;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s ease, background 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle depth */
+}
+
+    .arrow-btn:hover {
+        background: #f0f0f0;
+    }
+
+    .arrow-btn:active {
+        transform: scale(0.95); /* Little click effect */
+    }
+
+/* Styling the SVG icons to look like the image */
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+    fill: #0b1116; /* Dark color matching the image arrows */
+    stroke: #0b1116;
+    stroke-width: 1; /* Adjusts thickness */
+}
+
+/* CARD ROW */
+.flight-row {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    /* This pushes the cards down to overlap the section boundary */
+    transform: translateY(50px);
+    scroll-behavior: smooth;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+    .flight-row::-webkit-scrollbar {
+        display: none;
+    }
+
+/* CARD DESIGN */
+.flight-card {
+    min-width: 260px; /* Width matching the image */
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px; /* Creates the white border effect around image */
+    flex-shrink: 0;
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.flight-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.flight-card:hover img {
+    transform: scale(1.05);
+}
+
+/* CARD INFO */
+.flight-info {
+    padding: 15px 5px 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.route {
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+.check-btn {
+    background: #0b1a3a; /* Dark navy color */
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s;
+}
+
+    .check-btn:hover {
+        background: #162d5c;
+    }
+
+@@media (max-width: 600px) {
+    .multi-flight-content h2 {
+        font-size: 25px;
+        font-weight: 600;
+        margin: 0 0 10px 0;
+    }
+
+    .popular-section {
+        padding: 140px 20px 60px 20px !important;
+    }
+
+    .multi-flight-content p {
+        font-size: 14px;
+        opacity: 0.9;
+        margin: 0;
+        font-weight: 300;
+    }
+
+    .arrow-btn {
+        width: 35px;
+        height: 40px;
+    }
+
+    .deals-scroll {
+        padding-left: 0px;
+        justify-content: flex-start;
+    }
+}
+
+/* Popular Origins/Destinations */
+
+/* Background Section */
+.popular-section {
+    background: url("img/popular-map.png") center/contain no-repeat;
+    padding: 150px 0px 60px;
+    width: 100%;
+}
+
+/* Inner content fixed to container width */
+.popular-container {
+    width: 1200px;
+    max-width: 95%;
+}
+
+.scroll-container {
+    margin-top: 35px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Heading */
+.popular-container h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0c1019;
+}
+
+.popular-container p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #444;
+}
+
+.popular-scroll-auto {
+    overflow: hidden;
+    width: 100%;
+}
+
+.popular-scroll {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    white-space: nowrap;
+    width: max-content;
+    animation: scrollInfinite 20s linear infinite;
+}
+
+@@keyframes scrollInfinite {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(var(--scroll-distance));
+    }
+}
+
+.popular-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.popular-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.popular-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Card */
+.popular-card {
+    flex: 0 0 310px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+}
+
+/* Top Row */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 24px 0px;
+}
+
+.date {
+    background: #f4f4f4;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 9px;
+    color: #555;
+}
+
+.airline-icon {
+    width: 44px;
+}
+
+.route-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+}
+
+.city h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.city p {
+    font-size: 14px;
+    color: #777;
+}
+
+.route-box h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.route-box p {
+    font-size: 11px;
+    color: #777;
+}
+
+.route-line {
+    height: 2px;
+    background: #000;
+    margin-top: 12px;
+    opacity: 0.8;
+}
+
+/* Dot → Line → Dot */
+.route-line-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+}
+
+.line {
+    width: 70px;
+    height: 2px;
+    background: #000;
+    opacity: 0.7;
+}
+
+/* Price */
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: lightgrey;
+    border-radius: 0px 0px 20px 20px;
+}
+
+    .price-row p {
+        font-size: 13px;
+        color: #000;
+    }
+
+    .price-row .price {
+        font-size: 16px;
+        font-weight: 700;
+        color: #000;
+    }
+
+/* Responsive */
+@@media (max-width: 768px) {
+
+    .deals-scroll {
+        padding-left: 25px;
+    }
+
+    .popular-container h2 {
+        font-size: 30px;
+    }
+
+    .popular-card {
+        flex: 0 0 260px;
+    }
+}
+
+@@media (max-width: 480px) {
+    .popular-container h2 {
+        font-size: 22px;
+    }
+
+    .popular-container p {
+        font-size: 14.8px;
+    }
+
+    .popular-card {
+        flex: 0 0 230px;
+    }
+}
+
+/* Why Choose Us */
+
+/* SECTION BACKGROUND + RIGHT IMAGE */
+.travel-banner {
+    padding-top: 35px;
+    background-color: #F4F7FA; /* The light blue-grey background */
+    border-radius: 4px; /* Optional: slight rounded corners */
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('img/v165_654.png');
+    background-repeat: no-repeat;
+    background-position: right bottom; /* Aligns image to Right & Bottom */
+    background-size: contain; /* Ensures the image fits within the height */
+}
+
+.why-us {
+    background-color: #F4F7FA; /* The light blue-grey background */
+    padding: 0px 40px 55px;
+}
+
+/* Center whole content */
+.why-container {
+    margin: auto;
+}
+
+/* Headings */
+.why-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0c1019;
+}
+
+.why-subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* Feature Grid */
+.why-grid {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Main Layout */
+.why-item {
+    display: flex;
+    align-items: center;
+}
+
+/* Icon */
+.why-icon {
+    width: 85px;
+    height: 85px;
+    background: #E8EEF7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .why-icon img {
+        width: 38px;
+        height: 38px;
+    }
+
+.inputvalue {
+    border: 0;
+}
+
+/* Text Block */
+.why-content {
+    display: flex;
+    flex-direction: column;
+}
+
+    .why-content h3 {
+        font-size: 17px;
+        font-weight: 700;
+        margin: 0 12px 6px;
+        color: #0c1019;
+    }
+
+    .why-content p {
+        padding-left: 12px;
+        font-size: 13px;
+        color: #555;
+        max-width: 260px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+/* Divider (if you want vertical line between items) */
+.why-item:not(:last-child)::after {
+    content: "";
+    width: 2px;
+    height: 60px;
+    background: #d7dce3;
+}
+
+@@media (max-width: 1440px) {
+    .why-us {
+        background-color: #F4F7FC;
+    }
+}
+
+@@media (max-width: 1280px) {
+    .why-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+        .why-icon img {
+            width: 28px;
+            height: 28px;
+        }
+
+    .why-item:not(:last-child)::after {
+        margin-right: 10px;
+    }
+}
+
+/* Mobile Responsive */
+@@media (max-width: 1024px) {
+    .why-grid {
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+    }
+
+    .why-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+@@media (max-width: 600px) {
+    .why-us {
+        background: #F4F7FC url("img/v165_654.png") right center no-repeat;
+        background-size: contain;
+    }
+
+    .travel-banner {
+        background-image: url("");
+    }
+
+    .why-title {
+        font-size: 22px;
+    }
+
+    .why-icon {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+.options {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 13px;
+    background-color: #F4F5F5;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 4px 16px;
+    display: flex;
+    align-items: center;
+}
+
+    .options label {
+        color: #000000;
+        font-size: 12px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+
+        .options label input {
+            margin-right: 8px;
+        }
+
+            .options label input[type="radio"]:checked {
+                background: #000000;
+                border: 2px solid #000000;
+            }
+
+            .options label input[type="radio"] {
+                appearance: none;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #ddd;
+                border-radius: 50%;
+                position: relative;
+                cursor: pointer;
+            }
+
+                .options label input[type="radio"]:checked::after {
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: white;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+    .options label {
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+        .options label.active {
+            font-weight: 600;
+            color: #000000;
+            background-color: #fff;
+            padding: 11px 14px;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+        }

@@ -1,0 +1,1021 @@
+﻿@using TravelWeb.Utilities;
+@model TravelWeb.Areas.Admin.Models.EmailbookingModel
+@{
+    Layout = null;
+}
+
+
+@{
+    var bookingPaxCount = @Model.BookingPaxDetail.Count;
+    var adultFlightBooking = @Model.FlightBooking.Adult;
+    var childFlightBooking = @Model.FlightBooking.Child;
+    var infantFlightBooking = @Model.FlightBooking.Infant;
+    var sumOfAll = adultFlightBooking + childFlightBooking + infantFlightBooking;
+
+    if (bookingPaxCount != sumOfAll)
+    {
+        Model.FlightBooking.Adult = @Model.BookingPaxDetail.Where(x => x.PaxType == "Adult").Count();
+        Model.FlightBooking.Child = @Model.BookingPaxDetail.Where(x => x.PaxType == "Child").Count();
+        Model.FlightBooking.Infant = @Model.BookingPaxDetail.Where(x => x.PaxType == "Infant").Count();
+    }
+}
+
+<html>
+
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+    <meta name=Generator content="Microsoft Word 15 (filtered)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    </style>
+
+</head>
+
+<body lang=EN-IN style='word-wrap:break-word'>
+
+    <div class=WordSection1>
+
+        <div align=center>
+
+            <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=800
+                   style='width:600.0pt;background:#DDDDDD'>
+                <tr>
+                    <td valign=top style='padding:7.5pt 7.5pt 7.5pt 7.5pt'>
+                        <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 align=left
+                               width=794 style='width:595.55pt;background:white;border-collapse:collapse;
+                                border:none;margin-left:6.75pt;margin-right:6.75pt'>
+                            <tr>
+                                <td style='border:solid #CCCCCC 1.0pt;border-bottom:none;background:#ffff;
+                                        padding:9.75pt 0in 0in 0in'>
+                                    <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+                                                line-height:normal'>
+                                        <span style='font-size:12.0pt;font-family:"Helvetica",sans-serif'>
+
+                                            <img width=190 height=55 id="Picture 5" src="https://rushmyflight.com/img/RMFLogo.png"
+                                                 alt="Logo&#10;&#10;RushMyFlight">
+
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                    none;border-right:solid #CCCCCC 1.0pt;padding:7.5pt 7.5pt 7.5pt 7.5pt'>
+                                    <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                        <b>
+                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                Dear
+                                                @Model.BookingPaxDetail[0].FirstName @Model.FlightBooking.PaxFullName
+                                            </span>
+                                        </b>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                    none;border-right:solid #CCCCCC 1.0pt;padding:7.5pt 7.5pt 7.5pt 7.5pt'>
+                                    <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                            Thank you for choosing RushMyFlight and for trusting your travel plans with us.
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                    none;border-right:solid #CCCCCC 1.0pt;padding:7.5pt 7.5pt 7.5pt 7.5pt'>
+                                    <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                            This is a confirmation of your booking request and your booking is in progress.
+                                            If any query please contact our customer support at or send us an email at and
+                                            one of our travel expert will be pleased to assist you.In Such unlikely event,
+                                            if your tickets cannot be processed for any reason you will be notified via email
+                                            or by telephone and your payment will not be processed.
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                        none;border-right:solid #CCCCCC 1.0pt;padding:0in 0in 0in 0in'>
+                                    <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=792
+                                           style='width:8.25in;border:solid #CCCCCC 1.0pt'>
+                                        <tr>
+                                            <td colspan=5 style='border:none;background:white;padding:11.25pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:12.5pt;font-family:"Arial",sans-serif;color:black'>
+                                                        Your
+                                                        booking is in progress
+                                                    </span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan=5 style='border:none;background:white;padding:7.5pt 7.5pt 7.5pt 7.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:10.5pt;font-family:"Arial",sans-serif;color:black'>
+                                                        Your Booking Reference Number is&nbsp;<b>@Model.FlightBooking.BookingNumber&nbsp;</b>@* All detail send
+                                                        to&nbsp;@Model.FlightBooking.ContactEmail *@
+                                                    </span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan=5 style='border:none;background:white;padding:7.5pt 7.5pt 7.5pt 7.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:10.5pt;font-family:"Arial",sans-serif;color:#0376CF'>DEPARTURE : @Model.FromLocation.CityCode - @Model.ToLocation.CityCode</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        @{
+                                            int depstops = 0; string dephrscalcs = "";
+                                        }
+                                        @{
+                                            int inbcnts = 0;
+                                            string itothrs = "";
+                                        }
+                                        @{
+                                            int Arrstops = 0; string arrhrscalcs = "";
+                                        }
+                                        @foreach (var onb in Model.OutBoundFlights)
+                                        {
+                                            //TimeSpan t = TimeSpan.FromMinutes(Convert.ToInt32(onb.TotalTime));
+                                            //string hours = t.TotalHours.ToString().Split(".")[0];
+                                            //dephrscalcs = string.Format("{0}h {1:D2}m", hours, t.Minutes);
+                                            depstops++;
+                                        }
+                                        @{
+                                            int otbcnts = 0;
+                                            string tothrs = "";
+                                        }
+                                        @foreach (var item in Model.OutBoundFlights)
+                                        {
+                                            <tr>
+
+                                                <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                            @{
+                                                                var airline = item.Airline.Code + ".png";
+
+
+                                                            }
+                                                            <img width=40
+                                                                 @*height=25 id="Picture 4" src="~/wwwroot/img/airline/icon/@airline">*@
+                                                                 height=25 id="Picture 4" src="https://www.rushmyflight.com/img/airline/icon/@airline">
+
+                                                            <!--<img width=40-->
+                                                            @*height=25 id="Picture 4" src="~/wwwroot/img/airline/icon/@airline">*@
+                                                            <!--height=25 id="Picture 4" src="~/img/airline/icon/@airline">-->
+
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                                <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                            @item.Airline.Name<br>
+                                                            @item.Airline.Code-@item.FlightNo
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                                <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                        <b>
+                                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>@item.DepartureDate.ToString("hh:mm tt")</span>
+                                                        </b><span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                            &nbsp;@item.DepartureDate.ToString("ddd,MMM dd")<br>
+                                                            <b>@item.ArrivalDate.ToString("hh:mm tt")</b>&nbsp;@item.ArrivalDate.ToString("ddd,MMM dd")
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                                <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                            @item.FromAirport.CityName (@item.FromAirport.CityCode)<br>
+                                                            @item.ToAirport.CityName (@item.ToAirport.CityCode)
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                                <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                            @*Adding class type <br>*@
+                                                            Non-stop
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            @if (depstops > 1 && otbcnts < (depstops - 1))
+                                            {
+
+                                                {
+                                                    TimeSpan calinbt = Convert.ToDateTime(Model.OutBoundFlights[otbcnts + 1].DepartureDate) - Convert.ToDateTime(Model.OutBoundFlights[otbcnts].ArrivalDate);
+                                                    TimeSpan finalcal = TimeSpan.FromMinutes(calinbt.TotalMinutes);
+                                                    tothrs = string.Format("{0:D2}hr {1:D2}min", finalcal.Hours, finalcal.Minutes);
+                                                }
+                                                <tr>
+                                                    <td colspan=5 style='border:none;padding:.75pt .75pt .75pt .75pt'>
+                                                        @* @{
+                                                            Airport airpot = Common.GetAirport(Model.OutBoundFlights[otbcnts].ToAirport.Code);
+                                                        } *@
+                                                        @{
+                                                            TravelWeb.Models.Airport airpot =
+                                                            TravelWeb.Utilities.Common.GetAirport(
+                                                            Model.OutBoundFlights[otbcnts].ToAirport.Code
+                                                            );
+                                                        }
+                                                        <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;line-height:normal'>
+                                                            <span style='font-size:8.5pt;font-family:"Helvetica",sans-serif;
+                                                                        color:#333333;background:#FFFF66'>Layover Time: @tothrs at @(airpot.CityName)(@(Model.OutBoundFlights[otbcnts].ToAirport.Code)) </span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+
+                                            }
+                                            otbcnts++;
+                                        }
+
+
+
+                                        @if (Model.InBoundFlights != null)
+                                        {
+                                            <tr>
+                                                <td colspan=5 style='border:none;background:white;padding:7.5pt 7.5pt 7.5pt 7.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <b>
+                                                            <span style='font-size:10.5pt;font-family:"Arial",sans-serif;color:#0376CF'>RETURN   :@Model.ToLocation.CityCode - @Model.FromLocation.CityCode</span>
+                                                        </b>
+                                                    </p>
+                                                </td>
+                                            </tr>
+
+                                            foreach (var onb in Model.InBoundFlights)
+                                            {
+                                                //TimeSpan t = TimeSpan.FromMinutes(Convert.ToInt32(onb.TotalTime));
+                                                //string hours = t.TotalHours.ToString().Split(".")[0];
+                                                //dephrscalcs = string.Format("{0}h {1:D2}m", hours, t.Minutes);
+                                                depstops++;
+                                            }
+                                            @foreach (var item in Model.InBoundFlights)
+                                            {
+                                                <tr>
+
+                                                    <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                        <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                                @{
+                                                                    var airline = item.Airline.Code + ".png";
+
+                                                                }
+                                                                @*<img width=40
+                                                            height=25 id="Picture 4" src="https://www.rushmyflight.com/img/airline/icon/@airline">*@
+
+                                                                <img width=40
+                                                                     height=25 id="Picture 4" src="https://www.rushmyflight.com/img/airline/icon/@airline">
+                                                            </span>
+                                                        </p>
+                                                    </td>
+                                                    <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                        <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+
+                                                                @System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(item.Airline.Name)<br>
+                                                                @item.Airline.Code-@item.FlightNo
+                                                            </span>
+                                                        </p>
+                                                    </td>
+                                                    <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                        <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                            <b>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>@item.DepartureDate.ToString("hh:mm tt")</span>
+                                                            </b><span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                                &nbsp;@item.DepartureDate.ToString("ddd,MMM dd")<br>
+                                                                <b>@item.ArrivalDate.ToString("hh:mm tt ")</b>&nbsp;@item.ArrivalDate.ToString("ddd,MMM dd")
+                                                            </span>
+                                                        </p>
+                                                    </td>
+                                                    <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                        <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                                @item.FromAirport.CityName (@item.FromAirport.CityCode)<br>
+                                                                @item.ToAirport.CityName (@item.ToAirport.CityCode)
+                                                            </span>
+                                                        </p>
+                                                    </td>
+                                                    <td style='border:none;padding:3.75pt 3.75pt 11.25pt 7.5pt'>
+                                                        <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif'>
+                                                                @*Adding class type <br>*@
+                                                                Non-stop
+                                                            </span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                @if (Arrstops > 1 && inbcnts < (Arrstops - 1))
+                                                {
+
+                                                    {
+                                                        TimeSpan calinbt = Convert.ToDateTime(Model.InBoundFlights[inbcnts + 1].DepartureDate) - Convert.ToDateTime(Model.InBoundFlights[inbcnts].ArrivalDate);
+                                                        TimeSpan finalcal = TimeSpan.FromMinutes(calinbt.TotalMinutes);
+                                                        itothrs = string.Format("{0:D2}hr {1:D2}min", finalcal.Hours, finalcal.Minutes);
+                                                    }
+                                                    <tr>
+                                                        <td colspan=5 style='border:none;padding:.75pt .75pt .75pt .75pt'>
+                                                            @* @{
+                                                                Airport airpot = Common.GetAirport(Model.InBoundFlights[inbcnts].ToAirport.Code);
+                                                            } *@
+
+                                                            @{
+                                                                TravelWeb.Models.Airport airpot =
+                                                                TravelWeb.Utilities.Common.GetAirport(
+                                                                Model.InBoundFlights[inbcnts].ToAirport.Code
+                                                                );
+                                                            }
+                                                            <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;line-height:normal'>
+                                                                <span style='font-size:8.5pt;font-family:"Helvetica",sans-serif;
+                                                                                color:#333333;background:#FFFF66'>Layover Time: @itothrs at @(airpot.CityName)(@(Model.InBoundFlights[inbcnts].ToAirport.Code)) </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+
+                                                }
+                                                inbcnts++;
+                                            }
+                                        }
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                            none;border-right:solid #CCCCCC 1.0pt;padding:0in 0in 0in 0in'>
+                                    <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=792
+                                           style='width:8.25in;background:white;border-collapse:collapse;border:none'>
+                                        <tr>
+                                            <td colspan=8 style='border:solid #CCCCCC 1.0pt;border-bottom:none;
+                                                 background:#06121e;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:12.0pt;font-family:"Helvetica",sans-serif;color:white'>
+                                                        Passenger
+                                                        Name(s)
+                                                    </span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Sr.No.</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>First Name/Middle Name</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            @*<td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <b>
+                                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Middle Name</span>
+                                                        </b>
+                                                    </p>
+                                                </td>*@
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Last Name</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Pax Type</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Gender</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                            Date
+                                                            Of Birth
+                                                        </span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Contact</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Ticket</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        @{
+                                            int count = 1;
+                                        }
+                                        @foreach (var item in Model.BookingPaxDetail)
+                                        {
+                                            <tr>
+
+
+
+                                                <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>@count</span>
+                                                    </p>
+                                                </td>
+                                                <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt; border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                            @item.FirstName @item.MiddleName
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                                @*<td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt; border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                            @item.MiddleName
+                                                        </span>
+                                                    </p>
+                                                </td>*@
+                                                <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt; border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                            @item.LastName
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                                <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                                border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>@item.PaxType</span>
+                                                    </p>
+                                                </td>
+                                                <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                                border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>@item.Gender</span>
+                                                    </p>
+                                                </td>
+                                                <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                                border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                            @item.Dob
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                                <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                                border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>@Model.FlightBooking.ContactPerson</span>
+                                                    </p>
+                                                </td>
+                                                <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                                border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Pending</span>
+                                                    </p>
+                                                </td>
+
+                                            </tr>
+                                            { count = count + 1; }
+                                        }
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                            none;border-right:solid #CCCCCC 1.0pt;padding:15.0pt 4.5pt 15.0pt 4.5pt'>
+                                    <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=780
+                                           style='width:585.0pt;background:white;border-collapse:collapse;border: none'>
+                                        <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                        PAYMENT
+                                                        DETAILS
+                                                    </span>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                        CARD
+                                                        HOLDER NAME
+                                                    </span>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                        CARD
+                                                        NUMBER
+                                                    </span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                        Card
+                                                    </span>
+                                                    @* <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                        @if (Model.FlightBooking.CardType.ToString() == "Visa Card")
+                                                        {
+                                                        <img width=68 height=42 id="Picture 1" src="https://www.rushmyflight.com/img/payment-icons/visa-straight-128px.png">
+                                                        }
+                                                        @if (Model.FlightBooking.CardType.ToString() == "American Express")
+                                                        {
+                                                        <img width=68 height=42 id="Picture 1" src="https://www.rushmyflight.com/img/payment-icons/american-express-curved-128px.png">
+                                                        }
+                                                        @if (Model.FlightBooking.CardType.ToString() == "Discover Card")
+                                                        {
+                                                        <img width=68 height=42 id="Picture 1" src="https://www.rushmyflight.com/img/payment-icons/discover-curved-128px.png">
+                                                        }
+                                                        @if (Model.FlightBooking.CardType.ToString() == "Master Card")
+                                                        {
+                                                        <img width=68 height=42 id="Picture 1" src="https://www.rushmyflight.com/img/payment-icons/mastercard-straight-128px.png">
+                                                        }
+                                                        @if (Model.FlightBooking.CardType.ToString() == "0")
+                                                        {
+                                                        <img width=68 height=42 id="Picture 1" src="https://www.rushmyflight.com/img/payment-icons/UnknownCard.png">
+                                                        }
+                                                    </span> *@
+                                                </p>
+                                            </td>
+                                            <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                        border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                        @Model.FlightBooking.CardName
+                                                    </span>
+                                                </p>
+                                            </td>
+                                            <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                        border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                        @{
+                                                            String result = Model.FlightBooking.CardNumber.Substring(Model.FlightBooking.CardNumber.Length - 4);
+                                                        }
+                                                        XXXX
+                                                        XXXX XXXX @result
+                                                    </span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:0in 0in 0in 0in'>
+                                    <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=792
+                                           style='width:8.25in;background:white;border-collapse:collapse;border:none'>
+                                        <tr>
+                                            <td colspan=2 style='border:solid #CCCCCC 1.0pt;border-bottom:none;
+                                        background:#06121e;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:12.0pt;font-family:"Helvetica",sans-serif;color:white'>
+                                                        Travellers
+                                                        Charges Details
+                                                    </span>
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+
+                                                            @Model.FlightBooking.Adult Traveller(s):Adult
+
+                                                        </span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>$@(Model.FlightBooking.AdultFare* Model.FlightBooking.Adult)</span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        @if (Model.FlightBooking.Child > 0)
+                                        {
+                                            <tr>
+                                                <td style='border:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <b>
+                                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+
+                                                                @Model.FlightBooking.Child Traveller(s):Child
+                                                            </span>
+                                                        </b>
+                                                    </p>
+                                                </td>
+                                                <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>$@(Model.FlightBooking.ChildFare* Model.FlightBooking.Child)</span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        }
+                                        @if (Model.FlightBooking.Infant > 0)
+                                        {
+                                            <tr>
+                                                <td style='border:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <b>
+                                                            <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+
+                                                                @Model.FlightBooking.Infant Traveller(s):Infant
+                                                            </span>
+                                                        </b>
+                                                    </p>
+                                                </td>
+                                                <td style='border:solid #CCCCCC 1.0pt;border-left:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                    <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>$@(Model.FlightBooking.InfantFare* Model.FlightBooking.Infant)</span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    @{
+                                                        decimal? TotalTaxes = ((Model.FlightBooking.AdutlTax * Model.FlightBooking.Adult) + (Model.FlightBooking.ChildTax * Model.FlightBooking.Child) + (Model.FlightBooking.InfantTax * Model.FlightBooking.Infant));
+                                                    }
+
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>
+                                                            Taxes
+                                                            &amp; Fee
+                                                        </span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>$@TotalTaxes</span>
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        @* <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+
+                                                    <b>
+                                                        @*<span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Seat Preference Amount</span> //
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Main Cabin</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>$@Model.FlightBooking.SeatPrefAmount</span>
+                                                </p>
+                                            </td>
+                                        </tr> *@
+
+                                        <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Total</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                            <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                        border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'><strong>$@Model.FlightBooking.Nett</strong></span>
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan=2 style='border:solid #CCCCCC 1.0pt;border-bottom:none;
+                                                    background:#06121e;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:12.0pt;font-family:"Helvetica",sans-serif;color:white'>
+                                                        Contact Info
+                                                    </span>
+                                                </p>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <b>
+                                                        <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Agency Name</span>
+                                                    </b>
+                                                </p>
+                                            </td>
+
+                                            <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                        border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'><strong>Customer Care</strong></span>
+                                                </p>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>RushMyFlight</span>
+                                                </p>
+                                            </td>
+
+                                            <td style='border-top:none;border-left:none;border-bottom:solid #CCCCCC 1.0pt;
+                                                        border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Phone: +1 800 231 7119</span>
+                                                </p>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:black'>Email: care@rushmyflight.com</span>
+                                                </p>
+                                            </td>
+
+                                        </tr>
+
+
+
+                                        <tr>
+                                            <td colspan=2 style='border-top:none;border-left:solid #CCCCCC 1.0pt;
+                                                    border-bottom:none;border-right:solid #CCCCCC 1.0pt;padding:15.0pt 4.5pt 4.5pt 4.5pt'>
+                                                <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                    <span style='font-size:12.0pt;font-family:"Helvetica",sans-serif;color:black'>&nbsp;</span>
+                                                </p>
+                                            </td>
+                                        </tr>
+
+
+
+
+                                        <tr>
+                                            <td colspan=2 style='border:solid #CCCCCC 1.0pt;border-top:none;
+                                               padding:6.0pt 4.5pt 4.5pt 4.5pt'>
+                                                <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+                                                       width=778 style='width:583.5pt;border-collapse:collapse;border:none'>
+                                                    <tr>
+                                                        <td style='border:solid #CCCCCC 1.0pt;border-bottom:none;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                                <b>
+                                                                    <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#0376CF'>
+                                                                        AIR
+                                                                        NOTES
+                                                                    </span>
+                                                                </b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                        none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                                <b>
+                                                                    <span style='font-size:10.5pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                        Terms & Conditions
+                                                                    </span>
+                                                                </b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                            none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    1. This is non-refundable unless otherwise stated
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    2. All fares are not guaranteed until ticketed
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                    none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                                <b>
+                                                                    <span style='font-size:10.5pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                        Payment Policy
+                                                                    </span>
+                                                                </b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    1. We accept credit cards and debit cards issued in US, Canada and several other
+                                                                    countries as listed in the billings section. We also accept AE/AP billing addresses.
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    Please note: Your credit/debit card may be billed in multiple charges totaling the final total price.
+                                                                    If your credit/debit card or other form of payment is not processed or accepted for any reason,
+                                                                    we will notify you within 24 hours (it may take longer than 24 hours for non credit/debit card
+                                                                    payment methods). Prior to your form of payment being processed and accepted successfully,
+                                                                    if there is a change in the price of air fare or any other change, you may be notified of
+                                                                    this change and only upon such notification you have the right to either accept or decline this transaction.
+                                                                    If you elect to decline this transaction, you will not be charged.
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    2. Our Post Payment Price Guarantee: Upon successful acceptance and processing of your payment
+                                                                    (credit/debit card), we guarantee that we will honor the total final quoted price of the airline
+                                                                    tickets regardless of any changes or fluctuation in the price of air fare. Please note: all hotel,
+                                                                    car rental and tour/activity bookings are only confirmed upon delivery of complete confirmation details
+                                                                    to the email you provided with your reservation. In some cases, pre-payment may be required to receive confirmation.
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    In order to provide you with further protection, when certain transactions are determined to be
+                                                                    high-risk by our systems, we will not process such transactions unless our credit card verification
+                                                                    team has determined that it's safe to process them. In order to establish validity of such transactions,
+                                                                    we may contact you or your bank.
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                        none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:normal'>
+                                                                <b>
+                                                                    <span style='font-size:10.5pt;font-family:"Helvetica",sans-serif;color:#333333'>
+                                                                        Change/Cancellation Policy
+                                                                    </span>
+                                                                </b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    All travelers must confirm that their travel documents required are current and valid
+                                                                    for their preferred destinations. The ticket(s) are refundable within 4 hours from the
+                                                                    time of purchase ONLY for ticketed Airlines, at no extra cost. Once ticket is purchased,
+                                                                    name changes are not allowed according to Airlines Policies, but some Specific Airlines
+                                                                    allow minor corrections, usually involving 1-2 characters attracting a fees for this service.
+                                                                    Prices do not include Baggage and Carry-On or other fees charged directly by the airline.
+                                                                    Fares are not guaranteed until ticketed. Fare changes are subject to seat or class availability.
+                                                                    All tickets are considered non-transferable & non-endorsable.
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    @* <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    Cancel
+                                                                    / Refund: Subject to Airline's rules. Tickets might be non-refundable
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                    none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    No-Show
+                                                                    - Tickets are Non-Refundable
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                    none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:15.0pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    Canada
+                                                                    departures - 24 hours cancellation not applicable.Tickets are subject
+                                                                    to airline's policy after issuance
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                                none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    All
+                                                                    International flights must be confirmed 72 hours prior to departure.
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border-top:none;border-left:solid #CCCCCC 1.0pt;border-bottom:
+                                                            none;border-right:solid #CCCCCC 1.0pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    RushMyFlight will not be responsible for any expense incurred as a result of
+                                                                    refusal to purchase travel insurance.
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style='border:solid #CCCCCC 1.0pt;border-top:none;padding:4.5pt 4.5pt 15.0pt 4.5pt'>
+                                                            <p class=MsoNormal style='margin-bottom:0in;line-height:11.25pt'>
+                                                                <span style='font-size:9.0pt;font-family:"Arial",sans-serif;color:#333333'>
+                                                                    Please
+                                                                    make a note of this number or print this email for your records. This
+                                                                    is a confirmation of your booking request. We will send you the eTicket
+                                                                    Receipt shortly.
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr> *@
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+
+
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <p class=MsoNormal>&nbsp;</p>
+
+    </div>
+
+</body>
+
+</html>

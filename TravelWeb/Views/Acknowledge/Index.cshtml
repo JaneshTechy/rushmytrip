@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@*Done by Aayushi*@
+@*<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#bkgOverlay").fadeIn();
+            $("#delayedPopup").fadeIn();
+        }, 20000);
+    });
+</script>*@
+
+<style>
+    main_li_summry {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .main_li_summry li {
+        list-style: none;
+        float: left;
+    }
+
+    .top_smy_des {
+        float: left;
+        margin-right: 5px;
+    }
+
+    .navbar-theme-transparent {
+        background: #333;
+    }
+</style>
+
+<style>
+
+
+    .position_absolute {
+        position: absolute
+    }
+</style>
+<script src="~/js/jquery-3.2.1.min.js" defer></script>
+<script src="~/js/bootstrap.js" defer></script>
+<link href="~/css/site.css" rel="stylesheet" />
+
+
+
+<div class="theme-page-section theme-page-section-lg thankYou-page">
+    <div class="container">
+        <div class="row row-col-static row-col-mob-gap" id="sticky-parent" data-gutter="60">
+            <br />
+            <br />
+            <br />
+            <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 text-center">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <h1>Thank you !!</h1>
+                <p class="theme-payment-page-signin-title">
+                    This is a confirmation that your booking has been successfully received and is currently under process.
+                    Below includes details of your booking. Someone from our Team will be in touch with you soon.
+                    In the meanwhile if you have any question related to your Booking feel free to Call Us !! <br />
+                </p>
+                <div class="theme-payment-success-box text-left">
+                    <ul class="theme-payment-success-summary">
+                        <li>Reference <span>@(ViewBag.Reference)</span></li>
+                        <li>Travel  Date <span>@(ViewBag.TravelDate)</span></li>
+                        <li>Customer <span>@(ViewBag.PassengerName)</span></li>
+                        <li>Company Name  <span>@(ViewBag.PaidTo)</span></li>
+                        @*<li>Payment method <span>@(ViewBag.PaymentMethod)</span></li>*@
+@*                         <li>Payment method <span>Card</span></li>
+ *@                        @* <li>Subject <span>@(ViewBag.Subject)</span></li> *@
+                        <li>Amount<span>$@(ViewBag.AmountPaid)</span></li>
+
+                    </ul>
+                </div>
+                <a href="/" class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back To Home</a>
+            </div>
+            <div class="col-md-4 "></div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // This targets the footer tag and changes its position
+        $('footer').css({
+            'position': 'relative',
+        });
+    });
+</script>

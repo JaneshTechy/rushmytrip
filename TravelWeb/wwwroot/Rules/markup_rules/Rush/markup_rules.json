@@ -1,0 +1,92 @@
+[
+  {
+    "RuleId": 21474,
+    "RuleName": "RUSHMYFLIGHT WEBSITE",
+    "Origins": [],
+    "Destinations": [],
+    "Airlines": [],
+    "CabinClasses": [],
+    "CabinClass": "",
+    "JourneyType": null,
+    "MarkType": "P",
+    "MarkUp": 5.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 50.0,
+      "Item2": 20000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-01-01T00:00:00",
+    "TravelDateTo": "2027-07-31T00:00:00",
+    "SaleDateFrom": "2026-01-01T00:00:00",
+    "SaleDateTo": "2027-07-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": null,
+    "ClassIb": null,
+    "Company": "RMF",
+    "CampId": "Rush",
+    "ReplaceAirline": null,
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 22477,
+    "RuleName": "Sitetest",
+    "Origins": [
+      "DXB"
+    ],
+    "Destinations": [
+      "STI"
+    ],
+    "Airlines": [
+      "A6"
+    ],
+    "CabinClasses": [],
+    "CabinClass": "",
+    "JourneyType": null,
+    "MarkType": "F",
+    "MarkUp": 80.00,
+    "Status": true,
+    "MinDays": null,
+    "MaxDays": null,
+    "AdvanceDays": null,
+    "MarkApplicable2": null,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": null,
+      "Item2": null
+    },
+    "PaxCount": null,
+    "PaxType": "Any",
+    "TravelDateFrom": null,
+    "TravelDateTo": null,
+    "SaleDateFrom": null,
+    "SaleDateTo": null,
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": null,
+    "ClassOb": null,
+    "ClassIb": null,
+    "Company": "Rush",
+    "CampId": "Rush",
+    "ReplaceAirline": null,
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  }
+]

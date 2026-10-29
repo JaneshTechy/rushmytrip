@@ -1,0 +1,1743 @@
+@{
+    var canonicalUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+}
+
+@{
+    var scheme = Context.Request.Scheme;
+    var host = Context.Request.Host.Value;
+    var path = Context.Request.Path.Value;
+    var query = Context.Request.QueryString.Value;
+
+    var fullUrl = $"{scheme}://{host}{path}{query}";
+
+    // Use <title> if defined, otherwise fallback
+    var ogTitle = !string.IsNullOrWhiteSpace(ViewData["Title"]?.ToString())
+        ? ViewData["Title"]!.ToString()
+        : "RushMyFlight - Fast, Secure, and guaranteed lowest prices!";
+
+    var ogDescription = !string.IsNullOrWhiteSpace(ViewData["Description"]?.ToString())
+        ? ViewData["Description"]!.ToString()
+        : "RushMyFlight - Fast, Secure, and guaranteed lowest prices!";
+
+    var ogImage = !string.IsNullOrWhiteSpace(ViewData["OgImageAlt"]?.ToString())
+    ? ViewData["OgImageAlt"].ToString()
+    : "";
+
+    var ogImageAlt = !string.IsNullOrWhiteSpace(ViewData["OgImageAlt"]?.ToString())
+        ? ViewData["OgImageAlt"].ToString()
+        : ogTitle;
+
+    // Detect page type automatically
+    var ogType = path == "/" ? "website" : "article";
+}
+
+@using TravelWeb.Utilities;
+@{
+    var selectedLanguage = LocaleCurrencyHelper.GetSelectedLanguage(Context);
+    var selectedCurrency = LocaleCurrencyHelper.GetSelectedCurrency(Context);
+}
+<!DOCTYPE html>
+<html lang="@selectedLanguage">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+    
+    @RenderSection("MetaTags", required: false)
+    @if (!IsSectionDefined("MetaTags"))
+    {
+        <title>@(TravelWeb.Utilities.Common.WebSiteDomain) - Fast, Secure, and guaranteed lowest prices!</title>
+        <meta name="description" content="Enjoy a hassle-free booking experience with @(TravelWeb.Utilities.Common.WebSiteDomain), featuring fast, safe, and reliable payment options. Book Today!">
+        <meta name="keywords" content="Cheap Flights, Cheap Flights Tickets, cheap flight booking, Cheap Airline Tickets, cheap air tickets, cheap international air tickets, very cheap air tickets, airline ticket booking, flight booking offers, international flights, international airlines, international flight tickets, international flight booking, find cheap flights, flight ticket booking,air canada london to toronto, cheap airline tickets to mexico, cheap flights to cancun, cheap flights to mexico city, flights to cancun from london, flights from mexico city to cancun,air canada flight booking, air india business class, airline contact number, american airlines reservations, business class flights, first class flights, flights from jfk, flights from new york to cancun, south america packages, united airlines booking ">
+        <meta property="og:image" content="@Html.Raw(ogImage)" />
+        <meta property="og:image:url" content="@Html.Raw(ogImage)" />
+        <meta property="og:image:alt" content="@Html.Raw(ogImageAlt)" />
+    }
+    <link rel="icon" href="~/img/fav-icon.png" type="image/x-icon">
+
+    <meta name="google-site-verification" content="7Pz13RCOAakfQq4kUqWv7V-bteEd-ZpB8ecqpSqs6pQ" />
+
+    <link rel="canonical" href="@Html.Raw(canonicalUrl)" />
+    <meta property="og:title" content="@Html.Raw(@ogTitle)" />
+    <meta property="og:description" content="@Html.Raw(@ogDescription)" />
+    <meta property="og:type" content="@Html.Raw(@ogType)" />
+    <meta property="og:site_name" content="@Html.Raw("RushMyFlight")" />
+
+
+
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/font-awesome.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/lineicons.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/weather-icons.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/bootstrap.css" />
+    @*<link rel="stylesheet" href="@(Common.WebSitePath)css/styles.css?v=1.00045023142512" />*@
+    <link href="@(Common.WebSitePath)css/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/styles.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/custom.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/locale-currency-modal.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/card.css" />
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.css" integrity="sha512-jwig9JMb/5BPdKZsQfUaybbQEQgtZheK7tRYJassOSmTuljmZZ1PN8U2eMFzvz0lBIyB3cZ9KSCcFH1uJNTc6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />*@
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+   
+
+    @RenderSection("Styles", required: false)
+    
+    <script>
+        window.__localePrefs = {
+            language: '@selectedLanguage',
+            currency: '@selectedCurrency',
+            sitePath: '@(TravelWeb.Utilities.Common.WebSitePath)'
+        };
+    </script>
+    
+
+    <script src="@(Common.WebSitePath)js/jquery-3.2.1.min.js"></script>
+    <script src="@(Common.WebSitePath)js/jquery-ui.min.js"></script>
+    <script src="@(Common.WebSitePath)js/locale-language.js"></script>
+
+    @*<script src="@(Common.WebSitePath)scripts/myjs.js?v=1.0001"></script>*@
+    @*<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/121761/card.js"></script>*@
+    <script src="@(Common.WebSitePath)js/card.js"></script>
+    <script type="text/javascript" src="@(Common.WebSitePath)scripts/myjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+    <script src="@(Common.WebSitePath)js/moment.js"></script>
+    <script src="@(Common.WebSitePath)js/bootstrap.js"></script>
+    <script src="@(Common.WebSitePath)js/SmartBox.js"></script>
+
+    <link href="@(Common.WebSitePath)css/owl.carousel.css" rel="stylesheet">
+    <link href="@(Common.WebSitePath)css/owl.theme.css" rel="stylesheet">
+    <script src="@(Common.WebSitePath)js/owl.carousel.js"></script>
+    
+    @*popup scripts*@
+
+
+    @*//popup scripts ends*@
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentFlag = document.getElementById("current-flag");
+            const hostname = window.location.hostname.toLowerCase();
+
+            // Define flag image URLs
+            const indiaFlag = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/800px-Flag_of_India.svg.png";
+            const usFlag = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/800px-Flag_of_the_United_States.svg.png";
+
+            // Logic to decide which flag to show by default
+            if (hostname.includes(".in")) {
+                currentFlag.src = indiaFlag;
+                currentFlag.alt = "India Flag";
+            } else {
+                currentFlag.src = usFlag;
+                currentFlag.alt = "US Flag";
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Non-critical session sync: run after first paint.
+            setTimeout(function () {
+                fetch("@(TravelWeb.Utilities.Common.WebSitePath)Common/SetSession", {
+                    method: 'GET',
+                    credentials: 'same-origin'
+                }).catch(function () { });
+            }, 1000);
+        });
+    </script>
+
+    <style>
+        /* Style for the flag icons */
+        .flag-icon {
+            width: 24px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+    </style>
+    <style>
+        .flag-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            z-index: 50;
+        }
+    </style>
+    <style>
+   .reason_header {
+      color: white !important;
+    }
+    .phone-help {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .phone-error {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #dc2626;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* Pushes content to the right as per image */
+      padding: 15px 0px;
+      border-radius: 8px; /* Optional: just for aesthetic */
+      margin: 0px auto;
+    }
+
+    /* --- Logo Styles --- */
+    .logo-link {
+      margin-right: auto;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      /* Adjust height as needed based on your actual logo aspect ratio */
+      height: 50px;
+      width: auto;
+    }
+
+    /* --- Right Side Content Wrapper --- */
+    /* This keeps the links, divider, and button together */
+    .nav-right-content {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      margin-right: 50px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+      padding-bottom: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: #ed4214;
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      width: 20px; /* Short width as seen in image */
+      height: 3px;
+      background-color: #ed4214;
+      bottom: -2px; /* Adjust based on your preference */
+      right: 0; /* Aligns the bar to the right side of the text */
+      border-radius: 2px;
+    }
+
+    /* Vertical Divider Line */
+    .divider-nav {
+      height: 30px;
+      width: 1px;
+      background-color: black;
+      margin-right: 50px;
+    }
+
+    /* Right Side Contact Section */
+    .contact-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-text {
+      font-size: 15px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* The Pill Button */
+    .call-btn {
+      background-color: #ed4214;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px; /* Pill shape */
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .call-btn:hover {
+      background-color: #d93a11;
+    }
+
+    .call-btn i.fa-phone-alt {
+      font-size: 14px;
+      transform: scaleX(-1); /* Flips phone icon if needed to match exact style */
+    }
+
+    .number {
+      color: white !important;
+      text-decoration: none !important;
+      font-weight: 600;
+      font-size: 16px;
+      padding-bottom: 0px !important;
+      margin-bottom: 0px !important;
+      White-space:nowrap;
+    }
+
+    .country-select {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      font-weight: 500;
+      padding-left: 10px;
+      border-left: 1px solid rgba(255, 255, 255, 0.3); /* Slight separator inside btn */
+    }
+
+    .country-select i {
+      font-size: 10px;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+      z-index: 102;
+    }
+
+    /* --- Mobile Drawer (Hidden by default) --- */
+    .mobile-drawer {
+      text-align: center;
+      position: fixed;
+      top: 0;
+      right: -300px; /* Hide off-screen */
+      width: 280px;
+      height: 100vh;
+      background-color: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      padding: 80px 30px 30px 30px; /* Top padding for close button space */
+      transition: right 0.3s ease-in-out;
+      z-index: 200;
+    }
+
+    /* Drawer Open State */
+    .mobile-drawer.open {
+      right: 0;
+    }
+
+    /* Mobile Drawer Content Styling */
+    .mobile-drawer a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 5px;
+      padding-bottom: 10px;
+    }
+
+    .mobile-drawer a.active {
+      color: #ed4214;
+    }
+
+    .mobile-drawer .call-btn {
+      justify-content: center;
+      margin-top: 5px;
+    }
+
+    .drawer-close-btn {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* --- Responsive Queries --- */
+    @@media screen and (max-width: 992px) {
+      /* Hide Desktop Content */
+      .nav-right-content {
+        display: none;
+      }
+      /* Show Hamburger */
+      .hamburger {
+        display: block;
+      }
+      /* Adjust Navbar Padding for mobile */
+      .navbar {
+        padding: 15px 20px;
+      }
+    }
+
+    .footer {
+      position: relative; /* needed for skyline pseudo-element */
+      overflow: visible; /* allow skyline to overflow into the white area */
+      background: #06121e;
+      color: #fff;
+      font-family: Montserrat, sans-serif;
+      padding: 40px 12px 0;
+    }
+
+    .footer a {
+      text-decoration: none !important;
+      color: inherit;
+    }
+
+    /* TOP SECTION GRID */
+    .footer-top {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-cityline img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* HEADINGS */
+    .footer-column h3 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .footer-underline {
+      width: 70px;
+      height: 3px;
+      background: #ed4214;
+      margin: 10px 0 0px;
+    }
+
+    /* LIST ITEMS */
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      font-size: 14px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .footer-column ul li:hover {
+      opacity: 1;
+      color: #ed4214;
+    }
+
+    /* TRUST ICONS */
+    .trust-icons img {
+      width: 25%;
+      margin-right: 10px;
+      display: inline-block;
+    }
+
+    .divider-footer {
+      width: 60%;
+      height: 2px;
+      background: #ddd;
+      margin: 18px 0;
+    }
+
+    .payment-title-footer {
+      color: white !important;
+      text-align: start;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .accept-card {
+        margin-top: 15px;
+        font-family: 'Inter';
+    }
+
+    .payment-icons img {
+      width: 240px;
+    }
+
+    /* FOOTER BOTTOM CITYLINE (the white area) */
+    .footer-bottom {
+      position: relative;
+      text-align: center;
+      padding: 40px 20px 20px;
+      background: #ffffff; /* white bottom area */
+      color: #000; /* black text like your screenshot */
+      z-index: 1;
+      /* push the white content down so it starts AFTER the skyline finishes */
+    }
+
+    .social-icons a:hover {
+      opacity: 1;
+    }
+
+    /* MOBILE FIXES (fixed @@media typo) */
+    @@media (max-width: 768px) {
+      .options {
+        gap: 0px !important;
+        padding: 0px !important;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 40px 15px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-underline {
+        margin: 10px auto 25px;
+      }
+
+      .trust-icons {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .logo-pci {
+          display: flex;
+          justify-content: center;
+          padding-top: 15px;
+          img {width: 35% !important;}
+      }
+
+      .trust-icons img {
+        width: 15%;
+        margin-right: 10px;
+        margin-top: 0px;
+      }
+
+      .social-icons {
+          justify-content: center;
+      }
+
+      .divider-footer {
+        width: 38%;
+        margin: 18px auto;
+      }
+
+      .payment-icons img {
+        width: 160px;
+      }
+
+      .payment-title-footer {
+        text-align: center;
+      }
+      /* on small screens the skyline may need less height */
+      :root {
+        --skyline-height: 120px;
+      }
+    }
+
+    #getbutton-whatsapp {
+      top: -64px;
+    }
+
+    .call_cls_btn {
+      cursor: pointer !important;
+      right: 15px !important;
+      top: 15px !important;
+      position: absolute !important;
+      color: #fff !important;
+    }
+
+    .switch-field {
+      display: flex;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    .switch-field input {
+      position: absolute !important;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      width: 1px;
+      border: 0;
+      overflow: hidden;
+    }
+
+    .switch-field label {
+      background-color: #f8f9fa;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      line-height: 1;
+      text-align: center;
+      padding: 8px 16px;
+      margin-right: -1px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.1s ease-in-out;
+    }
+
+    .switch-field label:hover {
+      cursor: pointer;
+    }
+
+    .switch-field label:first-of-type {
+      border-radius: 4px 0 0 4px;
+    }
+
+    .switch-field label:last-of-type {
+      border-radius: 0 4px 4px 0;
+    }
+
+    .nav {
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+      height: 62px !important;
+    }
+
+    @@media (max-width: 750px) {
+      #navbar-main {
+        background: white;
+        height: 302px;
+      }
+    }
+
+    @@media (max-width: 750px) {
+      #navbar-main {
+        background: white;
+        height: 302px;
+      }
+    }
+    /* currency dropdown */
+
+    .currency-desktop select {
+      background-color: #ed4214;
+      border: 0px solid #ddd;
+      color: white;
+      padding: 12px 10px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 550;
+      cursor: pointer;
+      margin-right: 2rem;
+    }
+    /* custom dropdown */
+
+    .currency-box {
+      position: relative;
+      width: 180px;
+      border: 1px solid #ccc;
+      border-radius: 45px;
+      margin-right: 5px;
+    }
+
+    .currency-selected {
+      background: white;
+      color: black;
+      padding: 12px;
+      border-radius: 50px;
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 400;
+      width: 90%;
+      border: 1px solid #cccccc00;
+    }
+
+    .currency-list {
+      position: absolute;
+      top: 45px;
+      width: 120%;
+      background: white;
+      border-radius: 8px;
+      z-index: 10000;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      max-height: 400px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .currency-list div {
+      padding: 8px;
+      cursor: pointer;
+      color: black;
+      font-size: 12px;
+    }
+
+    .currency-list div:hover {
+      background: #f3f3f3;
+    }
+
+    /* hide scrollbar */
+
+    .currency-list::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    .currency-list {
+      z-index: 99999 !important;
+    }
+
+    .currency-list {
+      scrollbar-width: none;
+    }
+    /* phone layout */
+
+    .phone-layout {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 5px;
+    }
+
+    .phone-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-icon img {
+      width: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    .phone-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .phone-text .service-text {
+      font-size: 12px;
+    }
+
+    .phone-text .number {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* mobile currency */
+
+    .mobile-currency {
+      display: none;
+    }
+
+    .mobile-currency select {
+      border: 1px solid #ddd;
+      padding: 4px 6px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    /* responsive */
+
+    @@media (max-width: 992px) {
+      .navbar {
+        padding: 0px 20px;
+      }
+
+      .mobile-currency {
+        display: block;
+        margin-left: auto;
+        margin-right: 10px;
+      }
+    }
+
+    .mobile-currency .currency-box {
+      width: 70px;
+    }
+
+    .mobile-currency .currency-selected {
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+
+    .mobile-currency .currency-list {
+      top: 35px;
+      width: auto;
+    }
+
+    #currencySearch,
+    #currencySearchMobile {
+      width: 100%;
+      padding: 6px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      outline: none;
+    }
+
+    /* Dusra Flag (Circle Container) */
+    .flag-circle-container {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%; /* Isse circle banega */
+      overflow: hidden; /* Bahar ka hissa cut jayega */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #eee;
+    }
+
+    .flag-circle-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Image circle ke hisab se fit ho jayegi */
+    }
+
+    .flag-dropdown {
+      position: relative;
+      margin-left: 15px;
+      cursor: pointer;
+      z-index: 90 !important; /* parent ko bhi upar lao */
+    }
+
+    /* Outer circle */
+    .selected-flag {
+      width: 42px;
+      height: 42px;
+      border: 2px solid #ddd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ed4214;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Inner flag */
+    .selected-flag img {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Dropdown */
+    .flag-options {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: #fff;
+      border-radius: 10px;
+      padding: 6px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      z-index: 99999; /* sabke upar laane ke liye */
+    }
+
+    /* Flags */
+    .flag-options img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      margin: 6px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .flag-options img:hover {
+      transform: scale(1.1);
+    }
+
+    ul,
+    ol {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    h2 {
+      font-weight: 500 !important;
+    }
+
+
+    
+    .header-main {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .header-main.is-scrolled {
+        box-shadow: 0 8px 30px -14px rgba(10, 15, 28, 0.3);
+    }
+
+    .header-main *,
+    .header-main *::before,
+    .header-main *::after {
+        box-sizing: border-box;
+    }
+
+    .header-main a {
+        text-decoration: none;
+    }
+
+    .header-main nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+    }
+
+    .header-main nav > a:first-child {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        color: #fff;
+        transition: color 0.3s ease;
+    }
+
+    .header-main nav > a:first-child > span:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        flex-shrink: 0;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, #60a5fa, #f04709);
+        color: #fff;
+        font-size: 1.125rem;
+        box-shadow: 0 8px 20px -6px rgba(37, 99, 235, 0.4);
+    }
+
+    .header-main nav > a:first-child > span:last-child {
+        color: rgba(0, 0, 0, 0.7);
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        white-space: nowrap;
+    }
+
+    .header-main nav > a:first-child > span:last-child > span {
+        color: #60a5fa;
+        transition: color 0.3s ease;
+    }
+
+    .header-main.is-scrolled nav > a:first-child {
+        color: #111827;
+    }
+
+    .header-main.is-scrolled nav > a:first-child > span:last-child > span {
+        color: #3b82f6;
+    }
+
+    .header-main nav > ul {
+        display: none;
+        align-items: center;
+        gap: 0.25rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: #334155;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .header-main nav > ul a {
+        display: block;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        color: inherit;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .header-main nav > ul a:hover,
+    .header-main #mobileMenu a:hover {
+        background: #fff4ed;
+        color: #f04709;
+    }
+
+    .header-main nav > div {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .header-main nav > div > span {
+        display: none;
+        align-items: center;
+        gap: 0.5rem;
+        color: #475569;
+        font-size: 0.875rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .header-main nav > div > span > span {
+        position: relative;
+        display: flex;
+        width: 0.5rem;
+        height: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .header-main nav > div > span > span > span:first-child {
+        position: absolute;
+        display: inline-flex;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: #34d399;
+        opacity: 0.75;
+        animation: header-main-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .header-main nav > div > span > span > span:last-child {
+        position: relative;
+        display: inline-flex;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: #10b981;
+    }
+
+    @@keyframes header-main-ping {
+        75%, 100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
+    .header-main nav > div > label {
+        display: none;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 9999px;
+        color: #334155;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .header-main nav > div > label > i {
+        color: #94a3b8;
+    }
+
+    .header-main nav > div > label > select {
+        max-width: 5rem;
+        border: 0;
+        outline: none;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+    }
+
+    .header-main nav > div > a {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        border-radius: 9999px;
+        background: #f04709;
+        color: #fff;
+        font-size: 0.875rem;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: 0 8px 20px -6px rgba(37, 99, 235, 0.4);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .header-main nav > div > a:hover {
+        transform: translateY(-2px);
+        background: #f04709;
+    }
+
+    .header-main nav > div > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        flex-shrink: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #111827;
+        color: #fff;
+        font-size: 1.125rem;
+        cursor: pointer;
+    }
+
+    .header-main #mobileMenu {
+        margin: 0 1rem 1rem;
+        padding: 0.75rem;
+        overflow: hidden;
+        border-radius: 1.5rem;
+        background: #fff;
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12);
+        border: 1px solid #e2e8f0;
+    }
+
+    .header-main #mobileMenu[hidden] {
+        display: none;
+    }
+
+    .header-main #mobileMenu a {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-radius: 1rem;
+        color: #111827;
+        font-weight: 600;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .header-main #mobileMenu p {
+        padding: 0.5rem 1rem 0;
+        color: #64748b;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .header-main #mobileMenu a:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 1rem;
+        background: #3b82f6;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .header-main #mobileMenu a:last-child:hover {
+        background: #f04709;
+        color: #fff;
+    }
+
+    @@media (min-width: 640px) {
+        .header-main nav > div > a {
+            display: inline-flex;
+        }
+    }
+
+    @@media (min-width: 768px) {
+        .header-main nav > div > label {
+            display: inline-flex;
+        }
+    }
+
+    @@media (min-width: 1024px) {
+        .header-main nav > ul {
+            display: flex !important;
+        }
+
+        .header-main nav > div > button,
+        .header-main #mobileMenu {
+            display: none;
+        }
+    }
+
+    @@media (min-width: 1280px) {
+        .header-main nav > div > span {
+            display: inline-flex;
+        }
+    }
+
+    @@media (max-width: 639px) {
+        .header-main nav {
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .header-main nav > div {
+            gap: 0.5rem;
+        }
+
+        .header-main nav > a:first-child {
+            gap: 0.5rem;
+        }
+
+        .header-main nav > a:first-child > span:last-child {
+            font-size: 1.1rem;
+        }
+    }
+    .bg-ink-900 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(10 15 28 / var(--tw-bg-opacity, 1));
+}
+    </style>
+</head>
+<body>
+
+    <header id="header" class="header-main sticky top-0 z-50 bg-white/95 backdrop-blur transition [&.is-scrolled]:shadow-[0_8px_30px_-14px_rgba(10,15,28,.3)]">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3" aria-label="Main">
+      <a href="@Url.Action("Index", "Home")" class="flex items-center gap-2.5 text-white transition group-[.is-scrolled]:text-ink-900" aria-label="RushMyTrip home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 263.2 56" width="200" height="64" role="img" aria-label="RushMyTrip"><g transform="scale(0.8750)"><path d="M5 55C3 38 25 34 28 45C31 57 11 56 17 39C23 22 38 23 49 17" fill="none" stroke="#18213A" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="7 6"/><g transform="translate(52 14) scale(.62) translate(-32 -31.5)"><path d="M14 30 L50 14 L36 50 L29 36 Z" fill="#FF5F13" stroke="#FF5F13" stroke-width="2" stroke-linejoin="round"/><path d="M29 36 L50 14 L34 43 Z" fill="#C7340A"/></g></g><path d="M72.45 41.3H77.38V31.11L84.36 41.3H90.45L83.25 31.47C88.04 30.29 90.2 27.37 90.2 23.23C90.2 20.53 89.22 18.23 87.39 16.68C85.66 15.2 83.75 14.7 80.12 14.7H72.45ZM77.38 27.41V19.41H79.58C84.26 19.41 85.23 21 85.23 23.37C85.23 26.18 83.61 27.41 79.79 27.41ZM92.82 32.05C92.82 39.07 95.78 41.77 100.42 41.77C102.83 41.77 104.34 41.16 106.14 39.39V41.3H110.57V21.36H105.78V30.75C105.78 33.42 105.57 34.64 105.03 35.54C104.31 36.69 103.01 37.38 101.39 37.38C99.09 37.38 97.61 36.41 97.61 31.11V21.36H92.82ZM113.16 34.97C113.67 39.61 116.51 41.77 120.47 41.77C124.47 41.77 127.6 38.78 127.6 34.97C127.6 32.01 126.23 30.43 122.06 29.13C118.78 28.09 118.67 28.02 118.67 26.97C118.67 26 119.46 25.28 120.51 25.28C121.52 25.28 122.16 25.82 122.38 26.87H127.06C126.88 23.12 123.89 20.89 120.51 20.89C116.8 20.89 113.88 23.55 113.88 26.97C113.88 29.89 115.47 31.55 119.43 32.88C122.63 33.96 122.81 34.28 122.81 35.43C122.81 36.55 121.88 37.38 120.65 37.38C119.25 37.38 118.46 36.66 117.99 34.97ZM130.26 41.3H135.05V31.19C135.05 26.79 136.53 25.28 139.26 25.28C142.07 25.28 143.15 26.94 143.15 31.11V41.3H147.94V30.03C147.94 23.48 144.92 20.85 140.13 20.85C138.08 20.85 136.49 21.43 135.05 22.73V14.7H130.26Z" fill="#18213A"/><path d="M152.37 41.3H157.3V21.36L164.25 41.3H168.28L175.23 21.36V41.3H180.16V14.7H173.39L166.3 34.86L159.14 14.7H152.37ZM182.54 21.36 189.84 39.43 186.1 47.96H191.25L202.77 21.36H197.26L192.44 34.28L188.01 21.36Z" fill="#FF5F13"/><path d="M203.45 19.41H208.38V41.3H213.32V19.41H218.25V14.7H203.45ZM220.26 41.3H225.05V30.21C225.05 27.12 226.46 25.57 229.34 25.5V20.89H228.98C226.92 20.89 225.92 21.47 224.66 23.3V21.36H220.26ZM231.78 41.3H236.57V21.36H231.78ZM231.82 18.48H236.61V13.69H231.82ZM240.42 47.96H245.21V39.43C247.01 41.05 248.88 41.77 251.33 41.77C257.09 41.77 261.3 37.31 261.3 31.26C261.3 25.25 257.13 20.89 251.37 20.89C248.67 20.89 246.36 21.9 244.82 23.7V21.36H240.42ZM244.92 31.29C244.92 27.87 247.44 25.28 250.76 25.28C254 25.28 256.48 27.91 256.48 31.37C256.48 34.75 254 37.38 250.83 37.38C247.44 37.38 244.92 34.79 244.92 31.29Z" fill="#18213A"/></svg>
+      </a>
+
+      <ul class="items-center gap-1 text-sm font-semibold text-slate-700 lg:flex">
+        <li><a href="@Url.Action("Index", "Home")" class="rounded-full px-4 py-2 transition hover:bg-brand-50 hover:text-brand-600">Home</a></li>
+        <li><a href="/about-us" class="rounded-full px-4 py-2 transition hover:bg-brand-50 hover:text-brand-600">About Us</a></li>
+        <li><a href="/contact-us" class="rounded-full px-4 py-2 transition hover:bg-brand-50 hover:text-brand-600">Contact Us</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <span class=" items-center gap-2 text-sm font-semibold text-slate-600 xl:inline-flex"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>24/7 Live Service</span>
+        <label class=" items-center gap-1.5 rounded-full border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700 md:inline-flex">
+          <i class="fa-solid fa-globe text-slate-400"></i>
+          <select aria-label="Currency" class="bg-transparent focus:outline-none"><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option></select>
+        </label>
+        <a href="tel:+1-855-510-4060" class=" items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-brand-600 sm:inline-flex"><i class="fa-solid fa-phone-volume"></i> +1-855-510-4060</a>
+        <button id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu" class="flex h-11 w-11 items-center justify-center rounded-full bg-ink-900 text-lg text-white lg:hidden"><i class="fa-solid fa-bars" data-icon></i></button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="mx-4 mb-4 overflow-hidden rounded-3xl bg-white p-3 shadow-card ring-1 ring-slate-200 lg:hidden">
+      <a href="@Url.Action("Index", "Home")" class="block rounded-2xl px-4 py-3 font-semibold text-ink-900 hover:bg-brand-50">Home</a>
+      <a href="/about-us" class="block rounded-2xl px-4 py-3 font-semibold text-ink-900 hover:bg-brand-50">About Us</a>
+      <a href="/contact-us" class="block rounded-2xl px-4 py-3 font-semibold text-ink-900 hover:bg-brand-50">Contact Us</a>
+      <p class="px-4 pt-2 text-sm font-semibold text-slate-500">24/7 Live Service</p>
+      <a href="tel:+1-855-510-4060" class="mt-2 flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-4 py-3 font-bold text-white"><i class="fa-solid fa-phone-volume"></i> +1-855-510-4060</a>
+    </div>
+  </header>
+
+    <header style="background-color: white;display:none">
+        <div class="navbar">
+            <a href="@Url.Action("Index", "Home")" class="logo-link">
+                <img src="~/img/RMFLogo.svg" alt="RushMyTrip" class="logo-img">
+            </a>
+
+            <div class="nav-right-content">
+                <nav class="nav-links">
+                    <a href="@Url.Action("Index", "Home")" data-i18n="nav.home">Home</a>
+                    <a href="/about-us" data-i18n="nav.about">About Us</a>
+                    <a href="/contact-us" data-i18n="nav.contact">Contact Us</a>
+
+                </nav>
+
+                <div class="divider-nav"></div>
+
+                <div class="contact-section">
+                    <span class="service-text" data-i18n="nav.service">24/7 Live Service</span>
+                    <button type="button" class="locale-trigger notranslate" data-locale-open data-locale-trigger aria-label="Select language and currency">
+                        <i class="fas fa-globe"></i>
+                        <span data-selected-currency class="notranslate">@selectedCurrency</span>
+                        <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="call-btn">
+                        <img src="~/img/v143_614.png" style="width: 25px; filter: brightness(0) invert(1)">
+                        <a href="tel:+18002317119" class="number">+1-800-231-7119</a>
+
+                        @* <div class="country-select">
+                    <span>USA</span>
+                    </div> *@
+                    </div>
+                </div>
+            </div>
+
+            <div class="hamburger" onclick="toggleDrawer()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-close-btn" onclick="toggleDrawer()">
+            <i class="fas fa-times"></i>
+        </div>
+
+        <a href="~/" data-i18n="nav.home">Home</a>
+        <a href="~/about-us" data-i18n="nav.about">About Us</a>
+        <a href="~/contact-us" data-i18n="nav.contact">Contact Us</a>
+
+        <button type="button" class="locale-trigger locale-trigger-mobile notranslate" data-locale-open data-locale-trigger aria-label="Select language and currency">
+            <i class="fas fa-globe"></i>
+            <span data-selected-currency class="notranslate">@selectedCurrency</span>
+        </button>
+
+        <div class="call-btn">
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+18002317119" class="number">+1-800-231-7119</a>
+        </div>
+        <div style="text-align: center; margin-top: 10px; color: #666; font-size: 14px;" data-i18n="nav.service">
+            24/7 Live Service
+        </div>
+    </div>
+
+    @RenderBody()
+
+    @await Html.PartialAsync("_LocaleCurrencyModal")
+
+    <footer class="bg-ink-900 text-slate-300">
+    <div class="mx-auto grid max-w-7xl gap-10 px-5 py-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <h3 class="text-base font-bold text-white">RushMyTrip.com</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="#about" class="transition hover:text-brand-400">About RushMyFlight</a></li>
+          <li><a href="#contact" class="transition hover:text-brand-400">Contact Us</a></li>
+          <li><a href="#contact" class="transition hover:text-brand-400">Customer Support</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Privacy Policy</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Terms of Use</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Disclaimer</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Blogs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-white">Explore</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="#" class="transition hover:text-brand-400">Business class Deals</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Economy class Deals</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Deals under 199</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Last minute deals</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Summer holidays flight deals</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Airline deals</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">International flight Deals</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-white">Book</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="#" class="transition hover:text-brand-400">Flights to New York</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Flights to Denver</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Flights to San Francisco</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Flights to Las Vegas</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Flights to Seattle</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Flight to Orlando</a></li>
+          <li><a href="#" class="transition hover:text-brand-400">Flights to Honolulu</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-white">From Our Travelers</h3>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <img src="~/NewUI/assets/img/trustpilot.png" alt="Trustpilot" loading="lazy" class="h-12 w-auto rounded">
+          <img src="~/NewUI/assets/img/pci.png" alt="PCI Security Standards Council" loading="lazy" class="h-12 w-auto">
+        </div>
+        <h3 class="mt-6 text-sm font-bold text-white">Connect with us</h3>
+        <div class="mt-3 flex gap-2.5 text-lg">
+          <a href="#" aria-label="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-brand-500 hover:text-white"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="X" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-brand-500 hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-brand-500 hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-brand-500 hover:text-white"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" aria-label="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-brand-500 hover:text-white"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <h3 class="mt-6 text-sm font-bold text-white">We Accept Most Payment Method</h3>
+        <img src="~/NewUI/assets/img/payments.png" alt="Visa, Mastercard, American Express, Discover" loading="lazy" class="mt-3 h-8 w-auto">
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-slate-500 sm:flex-row">
+        <p>&copy; <span id="year">2026</span> RushMyTrip. All rights reserved.</p>
+        <p>Fares and availability are subject to change.</p>
+      </div>
+    </div>
+  </footer>
+
+    <!--<div class="modal fade in" tabindex="-1" role="dialog" style="display: block;">
+        <div>
+            <div>
+                <div>
+                    <a id="btnCloseTimeoutDialogue" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></a>
+                </div>
+                <div>
+                    <header>-->
+    <!-- <a href="#" class="logo"></a> -->
+    <!--<ul class="call">-->
+    <!-- <li><a href="tel:619-785-3836">619-785-3836</a></li> -->
+    <!--<li><a href="tel:+1-619-785-3836">+1-619-785-3836</a></li>
+        </ul>
+    </header>
+    <div class="stage">
+        <div class="left-side">
+            <div class="callcenter-thumb">
+                <div class="allday"></div>
+            </div>
+            <div class="avail">
+                Available Now
+            </div>
+        </div>
+        <div class="right-side">
+            <h1>BEST FARES RATES ARE OFTEN <strong>UNPUBLISHED</strong></h1>
+            <ul>
+                <li>Call waiting time: <span>Near zero</span> </li>
+                <li>Get a Quote:<span>UNDER 1 MINUTE</span></li>
+                <li><span>All Airline Providers</span></li>
+            </ul>
+            <div class="call-section">
+                <a href="tel:+1-619-785-3836" class="callNow">CALL NOW <strong>TOLL FREE</strong></a>
+                <div class="call-nums">-->
+    <!-- <a href="tel:619-785-3836">619-785-3836</a> -->
+    <!--<a href="tel:+1-619-785-3836">+1-619-785-3836</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            </div>
+    </div>-->
+    @*comented popup code*@
+    <div id="bkgOverlay" class="backgroundOverlay" style="display: none !important;"></div>
+
+    <div id="delayedPopup" class="delayedPopupWindow" style="display:none !important; visibility:hidden !important">
+        <div class="popup_top">
+            <div class="popup_middle">
+                <h2>Want help finding the best deal?</h2>
+                <p>Discover unpublished fares by calling our Toll Free Number.</p>
+            </div>
+            <div class="popup_right">
+                <a id="btnClose" title="Click here to close this deal box.">[X]</a>
+            </div>
+        </div>
+        <div class="popup_main_con container" style="color:white">
+            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 no-padding pop_divcon">
+                <div class="popup_reason">
+                    <div class="reason_header">
+
+                        @*commented poopup code ends*@
+
+
+                        @*<h5>Top 3 Reasons</h5>*@
+                        <p>
+                            BEST FARES RATES ARE OFTEN
+                            UNPUBLISHED
+                        </p>
+                    </div>
+                    <div class="reason_content">
+                        <div><img src="/img/check-list.png" width="30" height="30"><p>Call waiting time: Near zero</p></div>
+                        <div><img src="/img/check-list.png" width="30" height="30"><p>Best quote in the Market.</p></div>
+                        <div><img src="/img/check-list.png" width="30" height="30"><p>Include All Airline Providers</p></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-7 col-xs-7 pop_divconone ">
+                <p>Talk to one of our experienced Travel Agents to get the best airfares!</p>
+                <h3>You may save up to 70%*</h3>
+                <div class="callus_div">
+                    <div class="call_divc">
+                        <p>CALL(TOLL FREE)</p>
+                        <a href="tel:+1 855 510 4060">
+                            +1 855 510 4060
+                        </a>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="cllnow_popup">
+                        <a href="tel:+1-855-510-4060">
+                            <i class="fa fa-phone"></i>Call Now
+                        </a>
+                    </div>
+                    <p> Disclaimer - *The fares displayed on the website are up to 70 % cheaper as compared to the highest fare in the same cabin.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pop_divcon mob">
+            </div>
+        </div>
+    </div>
+    <style>
+        .support-bottom-strip {
+            position: fixed !important;
+            bottom: 0 !important;
+            z-index: 100 !important;
+            width: 100% !important;
+            transition: all .5s ease 0s;
+            box-shadow: 0 -2px 3px #333 !important
+        }
+
+            .support-bottom-strip a {
+                background: #fba406 !important;
+                /* background: #2c2c42 !important;*/
+                color: #fff !important;
+                padding: 10px 10px 5px !important;
+                text-align: center !important;
+                display: block !important;
+                height: 70px !important
+            }
+
+        @@media(max-width:365px) {
+            .support-bottom-strip a {
+                height: 50px !important
+            }
+        }
+
+        .support-bottom-strip a:hover {
+            background: #f3ce8a !important;
+            color: #333 !important
+        }
+
+        .support-bottom-strip a span {
+            width: 50px !important;
+            height: 50px !important;
+            float: left !important;
+            font-size: 30px !important;
+            text-align: center !important;
+            line-height: 50px !important;
+            /*      background: #0093d2 !important;*/
+            /*  background: #00b67a !important;*/
+            background: #018997;
+            color: #fff !important;
+            border-radius: 50% !important;
+            margin: 0 0 5px 15px !important
+        }
+
+        @@media(max-width:365px) {
+            .support-bottom-strip a span {
+                width: 35px;
+                height: 35px;
+                float: left;
+                font-size: 20px
+            }
+        }
+
+        .support-bottom-strip a .call-text {
+            font-size: 14px
+        }
+
+        @@media(max-width:365px) {
+            .support-bottom-strip a .call-text {
+                font-size: 11px
+            }
+        }
+
+        .support-bottom-strip a .tele {
+            font-size: 32px;
+            line-height: 1em;
+            font-weight: 700
+        }
+
+        @@media(max-width:365px) {
+            .support-bottom-strip a .tele {
+                font-size: 20px
+            }
+        }
+
+        /* Done ruby Aayushi*/
+        @@media(min-width:800px) {
+            .support-bottom-strip {
+                display: none !important;
+            }
+        }
+
+        #cookiePopup {
+            position: fixed;
+            bottom: 20px;
+            left: 25%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: #061421;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .cookie-btn {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 22%;
+        }
+    </style>
+
+    <div id="cookiePopup">
+        <p>
+            We use cookies to improve your experience on our website.
+            <a href="/privacy-policy">Learn more</a>
+        </p>
+        <button class="cookie-btn" onclick="acceptCookies()">Got it!</button>
+    </div>
+    @RenderSection("Scripts", required: false)
+    <script src="@(Common.WebSitePath)js/locale-currency.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.LocaleCurrency && window.__localePrefs) {
+                LocaleCurrency.init(window.__localePrefs);
+            }
+        });
+    </script>
+    <script>
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const hamburger = document.querySelector('.hamburger');
+
+        function toggleDrawer() {
+            mobileDrawer.classList.toggle('open');
+        }
+
+        // Close drawer when clicking outside
+        document.addEventListener('click', function (event) {
+            const isOpen = mobileDrawer.classList.contains('open');
+            if (!isOpen) return;
+
+            const clickInsideDrawer = mobileDrawer.contains(event.target);
+            const clickOnHamburger = hamburger.contains(event.target);
+
+            // If clicking outside drawer AND not clicking on hamburger → close drawer
+            if (!clickInsideDrawer && !clickOnHamburger) {
+                mobileDrawer.classList.remove('open');
+            }
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#close_call").click(function () {
+
+            });
+            $("#close_call1").click(function () {
+                var div = document.getElementById('Callbottom_popup');
+                div.style.visibility = 'hidden';
+                var div1 = document.getElementById('phncall1');
+                div1.style.visibility = 'visible';
+            });
+
+
+
+        });
+    </script>
+
+    @*commented script of popup*@
+    <script>
+        $("#btnClose").click(function () {
+            $("#bkgOverlay").hide();
+            $("#delayedPopup").hide();
+            //var div = document.getElementById('#delayedPopup');
+            //div.style.visibility = 'hidden';
+            //var div1 = document.getElementById('phncall1');
+            //div1.style.visibility = 'visible';
+        });
+    </script>
+    @*<script>
+    $(document).ready(function () {
+    setTimeout(function () {
+    $("#bkgOverlay").fadeIn();
+    $("#delayedPopup").fadeIn();
+    }, 20000);
+    });
+    </script>*@
+
+    @*commented popup scripts ends here*@
+
+    <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function () {
+            if (!localStorage.getItem("cookieConsentAccepted")) {
+                document.getElementById("cookiePopup").style.display = "flex";
+            }
+        });
+
+        function acceptCookies() {
+            localStorage.setItem("cookieConsentAccepted", "true");
+            document.getElementById("cookiePopup").style.display = "none";
+        }
+                //(function () {
+                //    var options = {
+                //        //facebook: "1769615853297972", // Facebook page ID
+                //        whatsapp: "+917071399748", // WhatsApp number
+                //        call_to_action: "Message us", // Call to action
+                //        button_color: "#FF6550", // Color of button
+                //        position: "left", // Position may be 'right' or 'left'
+
+                //        //order: "facebook,whatsapp", // Order of buttons
+                //    };
+                //    var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+                //    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+                //    s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+                //    var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+                //})();
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#callLayerDesktop').modal('show');
+        })
+    </script>
+    <script>
+        (function () {
+            function loadScript(src, attrs) {
+                var s = document.createElement('script');
+                s.src = src;
+                s.async = true;
+                if (attrs) {
+                    Object.keys(attrs).forEach(function (k) { s.setAttribute(k, attrs[k]); });
+                }
+                document.body.appendChild(s);
+            }
+
+            function loadThirdParty() {
+                // Delay analytics and chat so homepage can render first.
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = window.gtag || function () { dataLayer.push(arguments); };
+                gtag('js', new Date());
+                gtag('config', 'UA-73456368-1');
+                gtag('config', 'UA-226542344-1');
+                gtag('config', 'G-PZQEDD4HKJ');
+                loadScript('https://www.googletagmanager.com/gtag/js?id=G-PZQEDD4HKJ');
+
+                window.Tawk_API = window.Tawk_API || {};
+                window.Tawk_LoadStart = new Date();
+                loadScript('https://embed.tawk.to/664d97d99a809f19fb33925c/1hufhib3c', { crossorigin: '*' });
+
+                // Optional libraries loaded on demand after main content.
+                loadScript('//cdn.jsdelivr.net/npm/sweetalert2@11');
+                loadScript('https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.js', {
+                    integrity: 'sha512-lIdTIGaSjFWSxmWDSyKbLz1OJ3c1o4Vm6FXRguKH1HzOVCRSF8Ypg30+yga7j5TUMh4Sf5iFvC9/NQQr1KumQg==',
+                    crossorigin: 'anonymous',
+                    referrerpolicy: 'no-referrer'
+                });
+            }
+
+            if (document.readyState === 'complete') {
+                setTimeout(loadThirdParty, 1500);
+            } else {
+                window.addEventListener('load', function () {
+                    setTimeout(loadThirdParty, 1500);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

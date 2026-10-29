@@ -1,0 +1,170 @@
+﻿@model BlogListVM
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-8">
+
+    <div>
+        <h1 class="text-2xl font-black text-slate-800 uppercase">
+            Blog Management
+        </h1>
+        <p class="text-sm text-slate-500">
+            Select website and manage blog posts.
+        </p>
+    </div>
+
+    @* WEBSITE DROPDOWN *@
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+
+        <label class="text-xs font-bold text-slate-500 uppercase">
+            Select Website
+        </label>
+
+        <select id="websiteDropdown"
+                class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-200 text-sm">
+
+            <option value="">-- Select Website --</option>
+
+            @foreach (var site in Model.Websites)
+            {
+                <option value="@site.Id"
+                        selected="@(Model.SelectedWebsiteId == site.Id)">
+                    @site.Id - @site.Name
+                </option>
+            }
+        </select>
+
+    </section>
+
+    @* BLOG TABLE *@
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+
+        <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between">
+            <h3 class="font-bold text-slate-700 text-sm uppercase">
+                Blogs
+            </h3>
+
+            <a asp-action="CreateBlog"
+               asp-route-websiteId="@Model.SelectedWebsiteId"
+               class="px-4 py-2 rounded-lg bg-orange-500 hover:bg-orange-600
+                      text-white text-xs font-bold shadow-md">
+
+                <i class="fas fa-plus mr-1"></i>
+                Add Blog
+            </a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100 text-xs text-slate-400 uppercase">
+                        <th class="px-6 py-4">ID</th>
+                        <th class="px-6 py-4">Title</th>
+                        <th class="px-6 py-4">Slug</th>
+                        <th class="px-6 py-4">Status</th>
+                        <th class="px-6 py-4">Created</th>
+                        <th class="px-6 py-4 text-right">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-slate-50">
+
+                    @if (Model.Blogs != null && Model.Blogs.Any())
+                    {
+                        foreach (var blog in Model.Blogs)
+                        {
+                            <tr class="hover:bg-slate-50/50">
+
+                                <td class="px-6 py-3">@blog.BlogPostId</td>
+                                <td class="px-6 py-3 font-semibold">@blog.Title</td>
+                                <td class="px-6 py-3 text-slate-500">@blog.Slug</td>
+
+                                <td class="px-6 py-3">
+                                    <span class="px-2 py-1 rounded-full text-xs font-bold
+                                        @(blog.Status == "published"
+                                            ? "bg-green-100 text-green-700"
+                                            : "bg-slate-100 text-slate-500")">
+                                        @blog.Status
+                                    </span>
+                                </td>
+
+                                <td class="px-6 py-3 text-slate-400">
+                                    @blog.CreatedDate.ToString("dd MMM yyyy")
+                                </td>
+
+                                <td class="px-6 py-3 text-right flex justify-end gap-2">
+
+    <!-- VIEW (Eye Icon) -->
+                                    <a href="@(string.IsNullOrEmpty(Model.Domain)
+                                                                          ? $"{Context.Request.Scheme}://{Context.Request.Host}/blog/{blog.Slug}"
+                                                                          : $"https://{Model.Domain}/blog/{blog.Slug}")"
+       target="_blank"
+       class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600"
+       title="View Blog">
+
+        <!-- Heroicons Eye -->
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="h-4 w-4" fill="none" viewBox="0 0 24 24" 
+             stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5
+                     c4.477 0 8.268 2.943 9.542 7
+                     -1.274 4.057-5.065 7-9.542 7
+                     -4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+    </a>
+
+    <!-- EDIT -->
+    <a asp-action="EditBlog"
+       asp-route-id="@blog.BlogPostId"
+       class="p-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white"
+       title="Edit Blog">
+
+        <!-- Pencil Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="h-4 w-4" fill="none" viewBox="0 0 24 24" 
+             stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M11 5h2M12 7v12m0 0H7m5 0h5m-5 0v-5m0-7a2 2 0 114 0v1H8V7a2 2 0 114 0z" />
+        </svg>
+    </a>
+
+</td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-10 text-slate-400">
+                                Select a website to view blogs.
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("websiteDropdown").addEventListener("change", function () {
+
+            var websiteId = this.value;
+
+            if (websiteId)
+                window.location.href = '/Admin/BlogList?websiteId=' + websiteId;
+            else
+                window.location.href = '/Admin/BlogList';
+        });
+    </script>
+}

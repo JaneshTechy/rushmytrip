@@ -1,0 +1,551 @@
+@model TravelWeb.Models.Hotel.HotelListingViewModel
+@using System.Globalization
+@using System.Linq
+@using TravelWeb.Services
+@{
+    Layout = "_LayoutMain";
+    ViewData["Title"] = ViewData["Title"] ?? "Hotel Listing";
+
+    var isPending = Model?.IsPending == true;
+    var hotels = Model?.Result?.HotelsList ?? new List<TravelWeb.Models.Hotel.HotelItem>();
+    var nights = Model?.Nights > 0 ? Model.Nights : 1;
+    var destination = string.IsNullOrWhiteSpace(Model?.Destination) ? "your destination" : Model.Destination;
+    var checkInLabel = Model?.CheckIn > DateTime.MinValue ? Model.CheckIn.ToString("MMM d", CultureInfo.InvariantCulture) : "";
+    var checkOutLabel = Model?.CheckOut > DateTime.MinValue ? Model.CheckOut.ToString("MMM d", CultureInfo.InvariantCulture) : "";
+    var guestLabel = (Model?.Adults ?? 2) + " Adult" + ((Model?.Adults ?? 2) == 1 ? "" : "s");
+    if ((Model?.Children ?? 0) > 0)
+    {
+        guestLabel += " · " + Model.Children + " Child" + (Model.Children == 1 ? "" : "ren");
+    }
+    guestLabel += " · " + (Model?.Rooms ?? 1) + " Room" + ((Model?.Rooms ?? 1) == 1 ? "" : "s");
+
+    var avgRating = hotels
+        .Select(h => HotelSearchService.ParseGuestRating(h.TripAdvisorRating))
+        .Where(r => r > 0)
+        .DefaultIfEmpty(0)
+        .Average();
+
+    var priceMinBound = hotels.Count == 0 ? 50 : Math.Max(10, (int)Math.Floor(hotels.Min(h => h.TotalPrice / nights)));
+    var priceMaxBound = hotels.Count == 0 ? 500 : Math.Max(priceMinBound + 10, (int)Math.Ceiling(hotels.Max(h => h.TotalPrice / nights)));
+
+    string RatingLabel(double rating)
+    {
+        if (rating >= 4.5) return "Exceptional";
+        if (rating >= 4.0) return "Very Good";
+        if (rating >= 3.5) return "Good";
+        if (rating > 0) return "Fair";
+        return "Unrated";
+    }
+
+    string CurrencySymbol(string code)
+    {
+        return (code ?? "USD").ToUpperInvariant() switch
+        {
+            "INR" => "₹",
+            "EUR" => "€",
+            "GBP" => "£",
+            _ => "$"
+        };
+    }
+
+    var currencySymbol = CurrencySymbol(Model?.Currency ?? hotels.FirstOrDefault()?.Currency ?? "USD");
+    var checkInValue = Model?.CheckIn > DateTime.MinValue ? Model.CheckIn.ToString("MM-dd-yy") : "";
+    var checkOutValue = Model?.CheckOut > DateTime.MinValue ? Model.CheckOut.ToString("MM-dd-yy") : "";
+    var checkInIso = Model?.CheckIn > DateTime.MinValue ? Model.CheckIn.ToString("MM-dd-yy") : checkInValue;
+    var checkOutIso = Model?.CheckOut > DateTime.MinValue ? Model.CheckOut.ToString("MM-dd-yy") : checkOutValue;
+}
+
+@section Styles {
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    @* Exact design CSS from Flight-Hotel-Listing/common.css *@
+    <link rel="stylesheet" href="~/css/hotel-common.css" asp-append-version="true" />
+    @* Bootstrap ↔ Tailwind conflict fixes + loading overlay *@
+    <link rel="stylesheet" href="~/css/hotel-listing.css" asp-append-version="true" />
+}
+
+<div class="hotel-listing-page bg-white text-[var(--ink-900)]" id="hotel-listing-root" data-pending="@(isPending ? "true" : "false")">
+    <div id="hotel-loading-overlay" class="hotel-loading-overlay @(isPending ? "is-active" : "")">
+        <div class="hotel-loading-spinner"></div>
+        <p class="hotel-loading-title">Searching hotels…</p>
+        <p class="hotel-loading-sub" id="hotel-loading-sub">Finding the best stays in @destination. Please wait.</p>
+    </div>
+
+    @* Hero — match listing-hotels.html *@
+    <section class="relative flex items-end flex-col">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Luxury hotel suite bedroom at dusk" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40"></div>
+        </div>
+
+        <div class="relative max-w-[750px] mx-auto px-4 w-full py-[75px] text-center">
+            <div class="relative max-w-[1280px] mx-auto px-4 pt-5 mb-5">
+                <a href="/#hotel-search-panel" class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-semibold rounded-full pl-3 pr-4 py-2 hover:bg-white/25 transition-colors">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <span>Back to search</span>
+                </a>
+            </div>
+            <p class="eyebrow text-white/90 text-sm mb-5">Aurelio Hotels &amp; Resorts</p>
+            <h1 id="hero-title" class="text-[44px] font-extrabold text-white tracking-[-0.02em] leading-[1.15] mb-[22px]">
+                Hotels in @destination
+            </h1>
+
+            <div id="hero-meta" class="flex flex-wrap items-center gap-2 justify-center">
+                @if (!string.IsNullOrEmpty(checkInLabel) && !string.IsNullOrEmpty(checkOutLabel))
+                {
+                    <span class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-white text-xs font-semibold rounded-full px-3 py-1.5" id="meta-dates">
+                        <i class="fa-regular fa-calendar text-[10px]"></i> <span>@checkInLabel – @checkOutLabel</span>
+                    </span>
+                }
+                <span class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-white text-xs font-semibold rounded-full px-3 py-1.5" id="meta-guests">
+                    <i class="fa-solid fa-user-group text-[10px]"></i> <span>@guestLabel</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-white text-xs font-semibold rounded-full px-3 py-1.5" id="meta-count">
+                    <i class="fa-solid fa-bed text-[10px]"></i> <span>@(isPending ? "…" : hotels.Count.ToString()) properties</span>
+                </span>
+                @if (!isPending && avgRating > 0)
+                {
+                    <span class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-white text-xs font-semibold rounded-full px-3 py-1.5" id="meta-rating">
+                        <i class="fa-solid fa-star text-[10px] text-[var(--orange-500)]"></i> <span>@avgRating.ToString("0.0") avg rating</span>
+                    </span>
+                }
+            </div>
+        </div>
+
+        <div id="search" class="relative w-full px-4">
+            <div class="max-w-[1240px] mx-auto -mb-16 sm:-mb-14 bg-white rounded-2xl shadow-md-custom p-4 sm:p-5 border-t-4 border-[var(--orange-600)]">
+                <form id="listing-hotel-search-form" class="grid grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_auto] gap-3 sm:gap-4 items-stretch">
+                    <div class="relative col-span-2 lg:col-span-1 border border-[var(--line)] rounded-xl px-4 py-2.5 focus-within:border-[var(--orange-600)] transition-colors">
+                        <label class="text-[11px] font-semibold text-[var(--ink-500)] uppercase tracking-wide">Destination</label>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z" stroke="var(--ink-500)" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="var(--ink-500)" stroke-width="1.6"/></svg>
+                            <input id="listing-place-input" type="text" value="@destination" placeholder="Where to?" class="w-full text-sm font-medium outline-none placeholder:text-[var(--ink-300)]">
+                        </div>
+                    </div>
+                    <div class="relative border border-[var(--line)] rounded-xl px-4 py-2.5 focus-within:border-[var(--orange-600)] transition-colors">
+                        <label class="text-[11px] font-semibold text-[var(--ink-500)] uppercase tracking-wide">Check In</label>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="shrink-0"><rect x="3" y="5" width="18" height="16" rx="2" stroke="var(--ink-500)" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="var(--ink-500)" stroke-width="1.6" stroke-linecap="round"/></svg>
+                            <input id="listing-checkin" type="text" value="@checkInValue" readonly class="w-full text-sm font-medium outline-none cursor-pointer placeholder:text-[var(--ink-300)]">
+                        </div>
+                    </div>
+                    <div class="relative border border-[var(--line)] rounded-xl px-4 py-2.5 focus-within:border-[var(--orange-600)] transition-colors">
+                        <label class="text-[11px] font-semibold text-[var(--ink-500)] uppercase tracking-wide">Check Out</label>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="shrink-0"><rect x="3" y="5" width="18" height="16" rx="2" stroke="var(--ink-500)" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="var(--ink-500)" stroke-width="1.6" stroke-linecap="round"/></svg>
+                            <input id="listing-checkout" type="text" value="@checkOutValue" readonly class="w-full text-sm font-medium outline-none cursor-pointer placeholder:text-[var(--ink-300)]">
+                        </div>
+                    </div>
+                    <div class="relative border border-[var(--line)] rounded-xl px-4 py-2.5 col-span-2 lg:col-span-1">
+                        <button type="button" id="listing-guest-toggle" class="w-full text-left">
+                            <label class="text-[11px] font-semibold text-[var(--ink-500)] uppercase tracking-wide pointer-events-none">Guests</label>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" stroke="var(--ink-500)" stroke-width="1.6" stroke-linecap="round"/><circle cx="9" cy="7" r="3.4" stroke="var(--ink-500)" stroke-width="1.6"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="var(--ink-500)" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                <span id="listing-guest-summary" class="w-full text-sm font-medium truncate">@guestLabel</span>
+                            </div>
+                        </button>
+                        <div id="listing-guest-panel" class="guest-panel hidden absolute z-30 top-[calc(100%+10px)] left-0 right-0 sm:right-auto sm:w-72 bg-white rounded-xl border border-[var(--line)] p-4 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div><p class="text-sm font-semibold">Adults</p><p class="text-xs text-[var(--ink-500)]">Ages 13+</p></div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" data-target="adults" data-action="dec" class="stepper-btn">−</button>
+                                    <span id="listing-adults-count" class="w-4 text-center text-sm font-semibold">@(Model?.Adults ?? 2)</span>
+                                    <button type="button" data-target="adults" data-action="inc" class="stepper-btn">+</button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div><p class="text-sm font-semibold">Children</p><p class="text-xs text-[var(--ink-500)]">Ages 0–12</p></div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" data-target="children" data-action="dec" class="stepper-btn">−</button>
+                                    <span id="listing-children-count" class="w-4 text-center text-sm font-semibold">@(Model?.Children ?? 0)</span>
+                                    <button type="button" data-target="children" data-action="inc" class="stepper-btn">+</button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-[var(--line)] pt-4">
+                                <div><p class="text-sm font-semibold">Rooms</p><p class="text-xs text-[var(--ink-500)]">1 room fits 2 adults</p></div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" data-target="rooms" data-action="dec" class="stepper-btn">−</button>
+                                    <span id="listing-rooms-count" class="w-4 text-center text-sm font-semibold">@(Model?.Rooms ?? 1)</span>
+                                    <button type="button" data-target="rooms" data-action="inc" class="stepper-btn">+</button>
+                                </div>
+                            </div>
+                            <button type="button" id="listing-guest-done" class="w-full btn-primary rounded-lg py-2.5 text-sm font-semibold">Done</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary col-span-2 lg:col-span-1 rounded-xl px-6 py-3 font-semibold text-sm flex items-center justify-center gap-2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.8"/><path d="M21 21l-4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        <span>Search</span>
+                    </button>
+                </form>
+                <p id="listing-form-msg" class="hidden text-xs font-medium text-[var(--orange-700)] mt-3 px-1"></p>
+            </div>
+        </div>
+    </section>
+
+    <main id="results-area" class="max-w-[1280px] mx-auto px-4 pt-24 pb-16 @(isPending ? "is-loading-blur" : "")">
+        @if (!string.IsNullOrWhiteSpace(Model?.Error) && !isPending)
+        {
+            <div class="mb-6 border border-dashed border-[var(--line)] rounded-2xl py-10 px-6 text-center">
+                <p class="font-bold text-lg mb-2">Unable to load hotels</p>
+                <p class="text-sm text-[var(--ink-500)] mb-4">@Model.Error</p>
+                <a href="/" class="btn-primary inline-flex rounded-xl px-5 py-2.5 text-sm font-semibold">Back to Home</a>
+            </div>
+        }
+
+        <p class="text-xs text-[var(--ink-500)] mb-4">
+            <a href="/" class="hover:text-[var(--orange-600)]">Hotels</a>
+            <span class="mx-1.5">/</span>
+            <span class="text-[var(--ink-900)] font-medium" id="breadcrumb-dest">@destination</span>
+        </p>
+
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <aside class="hl-filters-aside">
+                <div class="filter-panel border border-[var(--line)] rounded-2xl bg-white max-h-[calc(100vh-112px)] overflow-y-auto filters-scroll" data-scope="desktop">
+                    <div class="flex items-center justify-between px-5 py-4 border-b border-[var(--line)]">
+                        <p class="font-extrabold">Filters</p>
+                        <button type="button" class="reset-filters-btn text-xs font-semibold text-[var(--orange-600)] hover:underline">Reset all</button>
+                    </div>
+
+                    <div class="px-5 py-5 border-b border-[var(--line)]">
+                        <p class="font-bold text-sm mb-3">Price per night</p>
+                        <div class="flex items-center justify-between text-sm font-semibold mb-3">
+                            <span class="price-min-label">@currencySymbol@priceMinBound</span>
+                            <span class="text-[var(--ink-300)]">&mdash;</span>
+                            <span class="price-max-label">@currencySymbol@priceMaxBound+</span>
+                        </div>
+                        <div class="relative h-6">
+                            <div class="absolute top-1/2 -translate-y-1/2 w-full h-1.5 bg-[var(--line)] rounded-full"></div>
+                            <input type="range" class="price-min-range filter-range absolute w-full appearance-none bg-transparent" min="@priceMinBound" max="@priceMaxBound" step="10" value="@priceMinBound">
+                            <input type="range" class="price-max-range filter-range absolute w-full appearance-none bg-transparent" min="@priceMinBound" max="@priceMaxBound" step="10" value="@priceMaxBound">
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-5 border-b border-[var(--line)]">
+                        <p class="font-bold text-sm mb-3">Star rating</p>
+                        <div class="flex flex-wrap gap-2">
+                            @for (var s = 5; s >= 2; s--)
+                            {
+                                <label class="star-toggle cursor-pointer">
+                                    <input type="checkbox" class="hidden star-input" value="@s">
+                                    <span class="inline-flex items-center gap-1 border border-[var(--line)] rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors">@s <i class="fa-solid fa-star text-[10px]"></i></span>
+                                </label>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-5 border-b border-[var(--line)]">
+                        <p class="font-bold text-sm mb-3">Guest rating</p>
+                        <div class="flex flex-col gap-2">
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="radio" name="guest-rating" class="filter-radio guest-rating-input" value="0" checked><span>Any rating</span></label>
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="radio" name="guest-rating" class="filter-radio guest-rating-input" value="4.5"><span>4.5+ <span class="text-[var(--ink-500)]">Exceptional</span></span></label>
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="radio" name="guest-rating" class="filter-radio guest-rating-input" value="4"><span>4.0+ <span class="text-[var(--ink-500)]">Very good</span></span></label>
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="radio" name="guest-rating" class="filter-radio guest-rating-input" value="3.5"><span>3.5+ <span class="text-[var(--ink-500)]">Good</span></span></label>
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-5 border-b border-[var(--line)]">
+                        <p class="font-bold text-sm mb-3">Property type</p>
+                        <div class="flex flex-col gap-2" id="property-type-filters">
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Hotel"><span>Hotel</span></label>
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Resort"><span>Resort</span></label>
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Villa"><span>Villa</span></label>
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Boutique Hotel"><span>Boutique Hotel</span></label>
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Apartment"><span>Apartment</span></label>
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-5 border-b border-[var(--line)]" id="amenity-filters">
+                        <p class="font-bold text-sm mb-3">Amenities</p>
+                        <div class="flex flex-col gap-2" id="amenity-filters-list">
+                            @{
+                                var amenityOptions = hotels.Where(h => h.Amenities != null).SelectMany(h => h.Amenities)
+                                    .Where(a => !string.IsNullOrWhiteSpace(a)).Distinct(StringComparer.OrdinalIgnoreCase).Take(10).ToList();
+                                if (amenityOptions.Count == 0)
+                                {
+                                    amenityOptions = new List<string> { "Free WiFi", "Pool", "Spa", "Breakfast Included", "Beachfront", "Free Parking", "Pet Friendly", "Air Conditioning", "Fitness Center", "Bar/Lounge" };
+                                }
+                            }
+                            @foreach (var amenity in amenityOptions)
+                            {
+                                <label class="flex items-center gap-2.5 text-sm cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox amenity-input" value="@amenity"><span>@amenity</span>
+                                </label>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="px-5 py-5" id="neighborhood-filters">
+                        <p class="font-bold text-sm mb-3">Neighborhood</p>
+                        <div class="flex flex-col gap-2" id="neighborhood-filters-list">
+                            @{
+                                var neighborhoods = hotels
+                                    .Select(h => string.IsNullOrWhiteSpace(h.HotelAddress) ? null : h.HotelAddress.Split(',').FirstOrDefault()?.Trim())
+                                    .Where(n => !string.IsNullOrWhiteSpace(n))
+                                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                                    .Take(8)
+                                    .ToList();
+                                if (neighborhoods.Count == 0 && !string.IsNullOrWhiteSpace(Model?.CityName))
+                                {
+                                    neighborhoods.Add(Model.CityName);
+                                }
+                                if (neighborhoods.Count == 0)
+                                {
+                                    neighborhoods = new List<string> { destination };
+                                }
+                            }
+                            @foreach (var n in neighborhoods)
+                            {
+                                <label class="flex items-center gap-2.5 text-sm cursor-pointer">
+                                    <input type="checkbox" class="filter-checkbox neighborhood-input" value="@n"><span>@n</span>
+                                </label>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="hotel-results-main flex-1 min-w-0">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <div>
+                        <h1 class="text-2xl font-extrabold leading-tight" id="results-heading">Stays in @destination</h1>
+                        <p id="results-count" class="text-sm text-[var(--ink-500)] mt-1">@(isPending ? "Searching…" : (hotels.Count + " stays found"))</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button type="button" id="mobile-filter-open" class="hotel-mobile-filter-btn lg:hidden btn-ghost rounded-xl px-4 py-2.5 text-sm font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-xs"></i>
+                            <span>Filters</span>
+                            <span id="mobile-filter-count" class="hidden bg-[var(--orange-600)] text-white text-[10px] font-bold rounded-full w-4 h-4 items-center justify-center"></span>
+                        </button>
+                        <label for="sort-select" class="text-xs font-semibold text-[var(--ink-500)] hotel-sort-label hidden sm:block">Sort by</label>
+                        <select id="sort-select" class="border border-[var(--line)] rounded-xl px-3 py-2.5 text-sm font-semibold outline-none focus:border-[var(--orange-600)] bg-white">
+                            <option value="recommended">Recommended</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="rating-desc">Guest Rating</option>
+                            <option value="stars-desc">Star Rating</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="chips-row" class="hidden flex-wrap gap-2 mb-5"></div>
+
+                <div id="hotel-list" class="flex flex-col gap-5 @(hotels.Count == 0 ? "hidden" : "")">
+                    @foreach (var hotel in hotels)
+                    {
+                        var stars = HotelSearchService.ParseStarRating(hotel.Rating);
+                        var guestRating = HotelSearchService.ParseGuestRating(hotel.TripAdvisorRating);
+                        var nightly = nights > 0 ? hotel.TotalPrice / nights : hotel.TotalPrice;
+                        var image = !string.IsNullOrWhiteSpace(hotel.HotelPicture)
+                            ? hotel.HotelPicture
+                            : (hotel.Images?.FirstOrDefault()?.Url ?? "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80");
+                        var address = string.IsNullOrWhiteSpace(hotel.HotelAddress) ? destination : hotel.HotelAddress;
+                        var amenities = hotel.Amenities ?? new List<string>();
+                        var amenityAttr = string.Join(",", amenities);
+                        var typeLabel = "Hotel";
+                        var providerLabel = string.IsNullOrWhiteSpace(hotel.Provider) ? "WIKI" : hotel.Provider;
+                        var hotelCurrency = CurrencySymbol(hotel.Currency ?? Model?.Currency ?? "USD");
+
+                        <article class="hotel-card card-hover rounded-2xl border border-[var(--line)] bg-white overflow-hidden flex flex-col sm:flex-row fade-up in"
+                                 data-name="@hotel.HotelName"
+                                 data-hotel-code="@hotel.HotelCode"
+                                 data-provider="@providerLabel"
+                                 data-search-id="@(Model?.SearchId ?? "")"
+                                 data-price="@((int)Math.Round(nightly))"
+                                 data-stars="@stars"
+                                 data-rating="@guestRating.ToString("0.0", CultureInfo.InvariantCulture)"
+                                 data-type="@typeLabel"
+                                 data-neighborhood="@address"
+                                 data-amenities="@amenityAttr">
+                            <div class="relative sm:w-72 h-56 sm:h-auto shrink-0 overflow-hidden">
+                                <img src="@image" alt="@hotel.HotelName" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80';">
+                                <span class="absolute top-3 left-3 bg-white/95 text-xs font-semibold px-2.5 py-1 rounded-full">@typeLabel</span>
+                            </div>
+                            <div class="flex-1 p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-start justify-between gap-3">
+                                        <div>
+                                            <h3 class="font-bold text-lg leading-snug">@hotel.HotelName</h3>
+                                            <p class="text-xs text-[var(--ink-500)] mt-1 flex items-center gap-1">
+                                                <i class="fa-solid fa-location-dot text-[10px]"></i><span>@address</span>
+                                            </p>
+                                        </div>
+                                        @if (stars > 0)
+                                        {
+                                            <div class="flex items-center gap-0.5 shrink-0 text-[var(--orange-500)]">
+                                                @for (var i = 0; i < stars; i++)
+                                                {
+                                                    <i class="fa-solid fa-star text-[11px]"></i>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                    @if (guestRating > 0)
+                                    {
+                                        <div class="flex items-center gap-2 mt-3">
+                                            <span class="bg-[var(--orange-600)] text-white text-xs font-extrabold rounded-md px-1.5 py-0.5">@guestRating.ToString("0.0")</span>
+                                            <span class="text-xs font-semibold">@RatingLabel(guestRating)</span>
+                                        </div>
+                                    }
+                                    @if (amenities.Any())
+                                    {
+                                        <div class="flex flex-wrap gap-x-3 gap-y-1 mt-3 text-xs text-[var(--ink-500)]">
+                                            @foreach (var a in amenities.Take(4))
+                                            {
+                                                <span class="inline-flex items-center gap-1"><i class="fa-solid fa-check text-[10px] text-[var(--green)]"></i>@a</span>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                                <div class="sm:text-right sm:pl-4 sm:border-l sm:border-[var(--line)] shrink-0 flex sm:flex-col items-center sm:items-end justify-between gap-1">
+                                    <div>
+                                        <p class="text-[11px] text-[var(--ink-500)]">from</p>
+                                        <p class="font-extrabold text-xl text-[var(--orange-600)]">@hotelCurrency@((int)Math.Round(nightly))</p>
+                                        <p class="text-[11px] text-[var(--ink-500)]">per night · total @hotelCurrency@((int)Math.Round(hotel.TotalPrice))</p>
+                                    </div>
+                                    <button type="button" class="hotel-view-deal btn-primary rounded-xl px-5 py-2.5 text-sm font-semibold whitespace-nowrap">View Deal</button>
+                                </div>
+                            </div>
+                        </article>
+                    }
+                </div>
+
+                <div id="empty-state" class="@((!isPending && hotels.Count == 0) ? "" : "hidden") text-center border border-dashed border-[var(--line)] rounded-2xl py-16 px-6">
+                    <p class="font-bold text-lg mb-2">No hotels found</p>
+                    <p class="text-sm text-[var(--ink-500)]">Try changing your destination, dates, or filters.</p>
+                </div>
+
+                <div id="pagination-row" class="hidden items-center justify-center gap-2 mt-10"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Mobile filter drawer — match listing-hotels.html -->
+    <div id="mobile-filter-drawer" class="lg:hidden fixed inset-0 z-[60] hidden">
+        <div id="mobile-filter-backdrop" class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-y-0 right-0 w-[86%] max-w-sm bg-white flex flex-col">
+            <div class="flex items-center justify-between px-5 py-4 border-b border-[var(--line)]">
+                <p class="font-extrabold text-lg">Filters</p>
+                <button type="button" id="mobile-filter-close" class="w-9 h-9 rounded-full border border-[var(--line)] flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="filter-panel flex-1 overflow-y-auto" data-scope="mobile">
+                <div class="px-5 py-5 border-b border-[var(--line)]">
+                    <p class="font-bold text-sm mb-3">Price per night</p>
+                    <div class="flex items-center justify-between text-sm font-semibold mb-3">
+                        <span class="price-min-label">@currencySymbol@priceMinBound</span>
+                        <span class="text-[var(--ink-300)]">&mdash;</span>
+                        <span class="price-max-label">@currencySymbol@priceMaxBound+</span>
+                    </div>
+                    <div class="relative h-6">
+                        <div class="absolute top-1/2 -translate-y-1/2 w-full h-1.5 bg-[var(--line)] rounded-full"></div>
+                        <input type="range" class="price-min-range filter-range absolute w-full appearance-none bg-transparent" min="@priceMinBound" max="@priceMaxBound" step="10" value="@priceMinBound">
+                        <input type="range" class="price-max-range filter-range absolute w-full appearance-none bg-transparent" min="@priceMinBound" max="@priceMaxBound" step="10" value="@priceMaxBound">
+                    </div>
+                </div>
+                <div class="px-5 py-5 border-b border-[var(--line)]">
+                    <p class="font-bold text-sm mb-3">Star rating</p>
+                    <div class="flex flex-wrap gap-2">
+                        @for (var s = 5; s >= 2; s--)
+                        {
+                            <label class="star-toggle cursor-pointer">
+                                <input type="checkbox" class="hidden star-input" value="@s">
+                                <span class="inline-flex items-center gap-1 border border-[var(--line)] rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors">@s <i class="fa-solid fa-star text-[10px]"></i></span>
+                            </label>
+                        }
+                    </div>
+                </div>
+                <div class="px-5 py-5 border-b border-[var(--line)]">
+                    <p class="font-bold text-sm mb-3">Guest rating</p>
+                    <div class="flex flex-col gap-2">
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="radio" name="guest-rating-mobile" class="filter-radio guest-rating-input" value="0" checked><span>Any rating</span></label>
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="radio" name="guest-rating-mobile" class="filter-radio guest-rating-input" value="4.5"><span>4.5+ <span class="text-[var(--ink-500)]">Exceptional</span></span></label>
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="radio" name="guest-rating-mobile" class="filter-radio guest-rating-input" value="4"><span>4.0+ <span class="text-[var(--ink-500)]">Very good</span></span></label>
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="radio" name="guest-rating-mobile" class="filter-radio guest-rating-input" value="3.5"><span>3.5+ <span class="text-[var(--ink-500)]">Good</span></span></label>
+                    </div>
+                </div>
+                <div class="px-5 py-5 border-b border-[var(--line)]">
+                    <p class="font-bold text-sm mb-3">Property type</p>
+                    <div class="flex flex-col gap-2">
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Hotel"><span>Hotel</span></label>
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Resort"><span>Resort</span></label>
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Villa"><span>Villa</span></label>
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Boutique Hotel"><span>Boutique Hotel</span></label>
+                        <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox type-input" value="Apartment"><span>Apartment</span></label>
+                    </div>
+                </div>
+                <div class="px-5 py-5 border-b border-[var(--line)]">
+                    <p class="font-bold text-sm mb-3">Amenities</p>
+                    <div class="flex flex-col gap-2">
+                        @{
+                            var mobileAmenities = hotels.Where(h => h.Amenities != null).SelectMany(h => h.Amenities)
+                                .Where(a => !string.IsNullOrWhiteSpace(a)).Distinct(StringComparer.OrdinalIgnoreCase).Take(10).ToList();
+                            if (mobileAmenities.Count == 0)
+                            {
+                                mobileAmenities = new List<string> { "Free WiFi", "Pool", "Spa", "Breakfast Included", "Beachfront", "Free Parking", "Pet Friendly", "Air Conditioning", "Fitness Center", "Bar/Lounge" };
+                            }
+                        }
+                        @foreach (var amenity in mobileAmenities)
+                        {
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox amenity-input" value="@amenity"><span>@amenity</span></label>
+                        }
+                    </div>
+                </div>
+                <div class="px-5 py-5">
+                    <p class="font-bold text-sm mb-3">Neighborhood</p>
+                    <div class="flex flex-col gap-2">
+                        @{
+                            var mobileNeighborhoods = hotels
+                                .Select(h => string.IsNullOrWhiteSpace(h.HotelAddress) ? null : h.HotelAddress.Split(',').FirstOrDefault()?.Trim())
+                                .Where(n => !string.IsNullOrWhiteSpace(n))
+                                .Distinct(StringComparer.OrdinalIgnoreCase)
+                                .Take(8)
+                                .ToList();
+                            if (mobileNeighborhoods.Count == 0 && !string.IsNullOrWhiteSpace(Model?.CityName))
+                            {
+                                mobileNeighborhoods.Add(Model.CityName);
+                            }
+                            if (mobileNeighborhoods.Count == 0)
+                            {
+                                mobileNeighborhoods = new List<string> { destination };
+                            }
+                        }
+                        @foreach (var n in mobileNeighborhoods)
+                        {
+                            <label class="flex items-center gap-2.5 text-sm cursor-pointer"><input type="checkbox" class="filter-checkbox neighborhood-input" value="@n"><span>@n</span></label>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[var(--line)] p-4 flex items-center gap-3">
+                <button type="button" id="mobile-filter-reset" class="btn-ghost rounded-xl px-4 py-3 text-sm font-semibold flex-1">Reset</button>
+                <button type="button" id="mobile-filter-apply" class="btn-primary rounded-xl px-4 py-3 text-sm font-semibold flex-1">Show results</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        window.HotelListingConfig = {
+            isPending: @(isPending ? "true" : "false"),
+            priceMin: @priceMinBound,
+            priceMax: @priceMaxBound,
+            currencySymbol: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(currencySymbol)),
+            destination: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(destination)),
+            checkIn: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(checkInIso)),
+            checkOut: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(checkOutIso)),
+            adults: @(Model?.Adults ?? 2),
+            children: @(Model?.Children ?? 0),
+            rooms: @(Model?.Rooms ?? 1),
+            searchUrl: '@Url.Action("Search", "Hotels")',
+            listingUrl: '@Url.Action("Listing", "Hotels")',
+            detailsUrl: '@Url.Action("Details", "Hotels")',
+            searchId: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model?.SearchId ?? ""))
+        };
+    </script>
+    <script src="~/scripts/hotel-listing.js" asp-append-version="true"></script>
+}

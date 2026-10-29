@@ -1,0 +1,183 @@
+﻿@model TravelWeb.Models.FlightFilterVM
+@{
+    Layout = null;
+}
+
+<style>
+    .wrap { max-width:1200px; margin:15px auto; font-family:Arial; }
+    .card { background:#fff; padding:12px; margin-bottom:10px; border-radius:6px;
+            box-shadow:0 2px 6px rgba(0,0,0,.08); }
+    textarea { width:100%; height:140px; font-family:Consolas; }
+    .filters { display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
+    label { font-size:12px; font-weight:bold; }
+    select,input { padding:5px; min-width:130px; }
+    button { padding:7px 15px; background:#007bff; color:#fff; border:0; }
+    .table-box { max-height:420px; overflow-y:auto; border:1px solid #ddd; }
+    table { width:100%; border-collapse:collapse; }
+    th { position:sticky; top:0; background:#f4f6f8; padding:8px; }
+    td { padding:8px; border-bottom:1px solid #eee; }
+
+    table th,
+    table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+<div class="wrap">
+
+    <!-- 🔼 API RESPONSE INPUT -->
+    <div class="card">
+        <form method="post"
+              enctype="multipart/form-data"
+              asp-controller="Home"
+              asp-action="SaveApiResponse">
+
+            <label>Upload API Response JSON File</label>
+            <input type="file" name="jsonFile" accept=".json" />
+
+            <br /><br />
+            <button type="submit">Upload & Save</button>
+        </form>
+
+    </div>
+
+    <!-- 🔽 FILTERS -->
+    <div class="card">
+        <form method="get">
+            <div class="filters">
+
+                <div>
+                    <label>Airline</label><br />
+                    @Html.DropDownList("Airline",
+                        (IEnumerable<SelectListItem>)ViewBag.Airlines)
+                </div>
+
+                <div>
+                    <label>Depart From</label><br />
+                    <input type="time" name="DepartFrom"
+                           value="@(Model.DepartFrom.HasValue ? Model.DepartFrom.Value.ToString(@"hh\:mm") : "")" />
+                </div>
+
+                <div>
+                    <label>Depart To</label><br />
+                    <input type="time" name="DepartTo"
+                           value="@(Model.DepartTo.HasValue ? Model.DepartTo.Value.ToString(@"hh\:mm") : "")" />
+                </div>
+
+                <div>
+                    <label>Arrive From</label><br />
+                    <input type="time" name="ArriveFrom"
+                           value="@(Model.ArriveFrom.HasValue ? Model.ArriveFrom.Value.ToString(@"hh\:mm") : "")" />
+                </div>
+
+                <div>
+                    <label>Arrive To</label><br />
+                    <input type="time" name="ArriveTo"
+                           value="@(Model.ArriveTo.HasValue ? Model.ArriveTo.Value.ToString(@"hh\:mm") : "")" />
+                </div>
+
+                <div>
+                    <label>Stops</label><br />
+                    @Html.DropDownList("Stops",
+                        (IEnumerable<SelectListItem>)ViewBag.Stops)
+                </div>
+
+                <div>
+                    <button type="submit">Search</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- 🔽 RESULTS -->
+    <div class="card">
+        <strong>Total Flights: @Model.Results.Count</strong>
+
+        <div class="table-box">
+            <table>
+                <tr>
+                    <th>Airline</th>
+                    <th>Route</th>
+                    <th>Stops</th>
+                    <th>Base</th>
+                    <th>Fees</th>
+                    <th>Total</th>
+                    <th>Itinerary</th>
+                </tr>
+
+                @foreach (var f in Model.Results)
+                {
+                    // 🔹 ONWARD itinerary ONLY (for route)
+                    var onwardSegments = f.itineraries.First().segments;
+
+                    // 🔹 ALL segments (for stops calculation)
+                    var allSegments = f.itineraries.SelectMany(x => x.segments).ToList();
+                    var stops = allSegments.Count - f.itineraries.Count;
+
+                    <tr>
+                        <!-- Airline -->
+                        <td>
+                            @string.Join(",", f.validatingAirlineCodes)
+                        </td>
+
+                        <!-- Route (ONLY ONWARD) -->
+                        <td>
+                            <strong>
+                                @onwardSegments.First().departure.iataCode
+                                →
+                                @onwardSegments.Last().arrival.iataCode
+                            </strong>
+                        </td>
+
+                        <!-- Stops -->
+                        <td>@stops</td>
+
+                        <!-- Price -->
+                        <td>@(f.price != null ? f.price.@base : "0")</td>
+                        <td>@(f.price != null ? f.price.fees : "0")</td>
+                        <td style="font-weight:bold;">
+                            @(f.price != null ? f.price.grandTotal : "0")
+                        </td>
+
+                        <!-- ITINERARY DETAILS -->
+                        <td style="text-align:left; font-size:12px;">
+
+                            @for (int i = 0; i < f.itineraries.Count; i++)
+                            {
+                                var iti = f.itineraries[i];
+
+                                <div style="margin-bottom:6px;">
+                                    <strong>
+                                        @(i == 0 ? "Onward" : "Return")
+                                    </strong>
+                                    :
+                                    <br />
+
+                                    @foreach (var s in iti.segments)
+                                    {
+                                        <span>
+                                            @s.departure.iataCode
+                                            →
+                                            @s.arrival.iataCode
+                                            (
+                                            @DateTime.Parse(s.departure.at).ToString("HH:mm")
+                                            -
+                                            @DateTime.Parse(s.arrival.at).ToString("HH:mm")
+                                            )
+                                            @s.carrierCode@s.number
+                                        </span>
+                                        <br />
+                                    }
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+
+</div> 

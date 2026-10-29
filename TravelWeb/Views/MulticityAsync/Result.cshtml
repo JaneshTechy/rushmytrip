@@ -1,0 +1,750 @@
+@using TravelWeb.Utilities
+@{
+    ViewData["Title"] = "result";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    var currencySymbol = ViewBag.CurrencySymbol as string ?? "$";
+}
+<link href="@(Common.WebSitePath)css/nouislider.css" rel="stylesheet" />
+<script src="@(Common.WebSitePath)js/nouislider.js"></script>
+<script src="~/css/ListingPage/custom.js"></script>
+<link rel="stylesheet" href="~/css/ListingPage/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="~/css/common.css">
+<link rel="stylesheet" href="~/css/flight-booking.css">
+<link rel="stylesheet" href="~/css/responsive.css">
+
+<style>
+    .loaderassssedeed {
+        height: 4px;
+        --c: no-repeat linear-gradient(#ED4214 0 0);
+        background: var(--c), var(--c), white;
+        background-size: 60% 100%;
+        animation: l16 3s infinite;
+    }
+
+    @@keyframes l16 {
+        0% { background-position: -150% 0, -150% 0; }
+        66% { background-position: 250% 0, -150% 0; }
+        100% { background-position: 250% 0, 250% 0; }
+    }
+
+    body {
+        background-color: #f1f1f1 !important;
+    }
+
+    .backgroundOverlay { display: none !important; }
+
+    .result-outer .card-result .info-flight .row-flight + .row-flight {
+        border-top: 1px dashed #E0E4EF;
+        margin-top: 4px;
+        padding-top: 8px;
+    }
+
+    .result-outer .card-result .card-body {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .result-outer .card-result .info-flight {
+        width: calc(100% - 200px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .result-outer .card-result .price-panel {
+        width: 200px;
+        flex-shrink: 0;
+        text-align: center;
+        background: #fafbff;
+        padding: 20px;
+        border-left: 1px solid #E0E4EF;
+    }
+
+    .mc-leg-chip {
+        display: inline-block;
+        background: #f3f5f7;
+        border: 1px solid #E0E4EF;
+        border-radius: 20px;
+        padding: 4px 10px;
+        font-size: 12px;
+        margin: 4px 4px 0 0;
+        color: #1B2A4A;
+    }
+
+    /* Home-style Multicity amend search */
+    /* Amend Search: collapsible on all viewports for Multicity */
+    .theme-hero-area .amend-search-btn {
+        display: block !important;
+        width: calc(100% - 30px);
+        max-width: 1200px;
+        height: 48px;
+        border: none;
+        border-radius: 10px;
+        background: #ED4214;
+        color: #fff;
+        font-weight: 600;
+        margin: 15px auto;
+        cursor: pointer;
+    }
+
+    #Search-Section.search-section {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        padding: 0 !important;
+        transition: max-height 0.45s ease, opacity 0.3s ease;
+    }
+
+    #Search-Section.search-section.opened {
+        max-height: none;
+        opacity: 1;
+        padding: 12px 0 24px !important;
+        display: block !important;
+        overflow: visible;
+    }
+
+    #Search-Section.opened .flight-search-box,
+    #Search-Section .flight-search-box {
+        display: block;
+    }
+
+    .mc-amend-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 12px 16px 20px;
+    }
+
+    .flight-search-box {
+        background: #fff;
+        padding: 20px 22px;
+        border-radius: 18px;
+        width: 100%;
+        box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+        box-sizing: border-box;
+    }
+
+    .search-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .options {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .options label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #f2f5f7;
+        padding: 10px 16px;
+        border-radius: 12px;
+        font-size: 14px;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .options label.active {
+        background: #ED4214;
+        color: #fff;
+    }
+
+    .options label input {
+        display: none;
+    }
+
+    .class-select select {
+        padding: 12px 14px;
+        background: #f5f7f9;
+        border-radius: 10px;
+        border: 1px solid #e5e8ea;
+    }
+
+    .search-grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        align-items: center;
+        margin-top: 8px;
+    }
+
+    .from-to-wrapper {
+        display: flex;
+        align-items: center;
+        position: relative;
+        gap: 5px;
+    }
+
+    .city-box {
+        flex: 1;
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 14px 16px;
+        border: 1.5px solid #dcdcdc;
+        min-width: 0;
+    }
+
+    .city-box:focus-within { border-color: #ED4214; }
+
+    .swap-center-btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        background: #ffffff;
+        border: 1.5px solid #dcdcdc;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        color: #ED4214;
+    }
+
+    .city-inner {
+        display: grid;
+        grid-template-columns: 30px auto;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .city-icon { width: 24px; height: 24px; object-fit: contain; }
+    .city-text { display: flex; flex-direction: column; width: 100%; }
+    .city-sub { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; font-size: 13px; color: #6b6b6b; }
+    .city-input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: #000;
+        padding: 0;
+        background: transparent;
+        font-family: inherit;
+    }
+
+    .passenger-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #ffffff;
+        border: 1px solid #dfe3e6;
+        border-radius: 12px;
+        padding: 14px 16px;
+        width: 100%;
+        min-height: 74px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    .passenger-icon { width: 26px; height: 26px; }
+    .passenger-text { display: flex; flex-direction: column; width: 100%; }
+    .passenger-label { font-size: 13px; color: #6c7682; }
+    input.passenger-value {
+        height: auto;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        color: #000;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .search-col { display: flex; }
+    .flight-search-box .search-btn,
+    #mc_search_btn.search-btn {
+        display: block !important;
+        width: 100%;
+        padding: 0 40px;
+        height: 74px;
+        background: #ED4214;
+        border: none;
+        border-radius: 12px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    #mcLegsPanel { display: block !important; }
+
+    @@media (max-width: 991px) {
+        .result-outer .card-result .card-body { flex-direction: column; }
+        .result-outer .card-result .info-flight,
+        .result-outer .card-result .price-panel { width: 100%; }
+        .result-outer .card-result .price-panel {
+            border-left: 0;
+            border-top: 1px solid #E0E4EF;
+        }
+        .search-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<div class="theme-hero-area front">
+    <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg theme-hero-area-bg-blur"></div>
+    </div>
+    <div class="theme-hero-area-body mob-margin-extra">
+        <button class="amend-search-btn" id="mcAmendSearchBtn" type="button" data-i18n="result.amendSearch">Amend Search</button>
+
+        <section class="search-section" id="Search-Section">
+            <div class="mc-amend-wrap">
+                <div class="flight-search-box" id="flightSearchBox">
+                    <div class="search-top">
+                        <div class="options">
+                            <label>
+                                <input type="radio" name="trip" value="RoundTrip" onclick="window.location.href='/'" />
+                                <span data-i18n="search.roundTrip">Round Trip</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="trip" value="OneWay" onclick="window.location.href='/'" />
+                                <span data-i18n="search.oneWay">One Way</span>
+                            </label>
+                            <label class="active">
+                                <input type="radio" id="Multicity" name="trip" value="Multicity" checked />
+                                <span data-i18n="search.multiCity">MultiCity</span>
+                            </label>
+                        </div>
+                        <div class="class-select">
+                            <select id="flight_class_select" name="flight_class">
+                                <option id="flight_class_4" value="4" selected data-i18n="search.economy">Economy</option>
+                                <option id="flight_class_3" value="3" data-i18n="search.premium">Premium</option>
+                                <option id="flight_class_2" value="2" data-i18n="search.business">Business</option>
+                                <option id="flight_class_1" value="1" data-i18n="search.first">First</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    @await Html.PartialAsync("_MulticitySearchPartial")
+
+                    <div class="search-grid">
+                        <div class="passenger-box quantity-selector" style="position: relative;">
+                            <img src="@(Common.WebSitePath)img/profile.png" class="passenger-icon" alt="user">
+                            <div class="passenger-text">
+                                <div class="passenger-label" data-i18n="search.passengers">Passengers</div>
+                                <input class="passenger-value theme-search-area-section-input"
+                                       readonly
+                                       name="pass_info"
+                                       id="pass_info"
+                                       placeholder="1 Pax"
+                                       value="1 Pax"
+                                       type="text" />
+                            </div>
+                            <div id="FlySearchPassengers" style="display:none; background-color:#fff; position: absolute; top: 80px; left: 0; width: 300px; z-index: 100; border: 1px solid #dfe3e6; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                <div class="quantity-selector-inner">
+                                    <div id="prsn_popup">
+                                        <ul class="slect_pssngr" style="list-style: none; padding: 0; margin: 0;">
+                                            <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                                <label>Adult &nbsp;<span style="font-size: 11px; color: #666;">(12+ Years)</span></label>
+                                                <div class="count_pssngr" style="display: flex; gap: 10px;">
+                                                    <a href="javascript:void(0);"><em data-field="adult" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                    <input type="text" readonly value="1" name="flight_adult" id="flight_adult" class="inpt_cout_pssngr" style="width: 30px; text-align: center; border: none; color: #000;" />
+                                                    <a href="javascript:void(0);"><em data-field="adult" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                </div>
+                                            </li>
+                                            <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                                <label>Children &nbsp;<span style="font-size: 11px; color: #666;">(2-11 Years)</span></label>
+                                                <div class="count_pssngr" style="display: flex; gap: 10px;">
+                                                    <a href="javascript:void(0);"><em data-field="child" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                    <input type="text" readonly value="0" name="flight_child" id="flight_child" class="inpt_cout_pssngr" style="width: 30px; text-align: center; border: none; color: #000;" />
+                                                    <a href="javascript:void(0);"><em data-field="child" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                </div>
+                                            </li>
+                                            <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                                <label>Infant &nbsp;<span style="font-size: 11px; color: #666;">(0-2 Years)</span></label>
+                                                <div class="count_pssngr" style="display: flex; gap: 10px;">
+                                                    <a href="javascript:void(0);"><em data-field="infant" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                    <input type="text" readonly value="0" name="flight_infant" id="flight_infant" class="inpt_cout_pssngr" style="width: 30px; text-align: center; border: none; color: #000;" />
+                                                    <a href="javascript:void(0);"><em data-field="infant" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="clss_done" id="ind_done" style="text-align: right; margin-top: 10px;">
+                                            <a href="javascript:void(0);" id="prsn_done" style="font-weight: bold; color: #fff; background: #ED4214; text-decoration: none; padding: 6px 12px; border-radius: 6px;">Done</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="search-col">
+                            <button type="button" class="search-btn" id="mc_search_btn" data-i18n="result.searchAgain">Search Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="theme-page-section resultPage" id="padZero">
+    <div id="dvHeight" style="height:10px;">&nbsp;</div>
+    <div id="dvMainResultView" class="result-outer">
+
+        <div class="results-head">
+            <div class="container d-flex space-between">
+                <div class="result-head-left">
+                    <h1 id="mcRouteTitle">
+                        Multi-city
+                        <span>&bull; Multi-city</span>
+                    </h1>
+                </div>
+                <div class="sort-bar">
+                    <span class="sort-chip" id="mcDateChip">—</span>
+                    <span class="sort-chip" id="mcPaxChip">1 Adult</span>
+                    <span class="sort-chip" id="mcCabinChip">Economy</span>
+                    <span class="sort-chip updating-price">
+                        <svg width="11" height="11" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.10162 15.9491C6.86375 15.9207 6.61425 15.8841 6.54738 15.8676C6.44896 15.8442 6.34997 15.8234 6.2505 15.8051C6.1369 15.783 6.02419 15.7566 5.91262 15.7259C5.3945 15.5774 5.35738 15.5653 4.96675 15.4056C4.60738 15.2591 3.94525 14.9168 3.71875 14.7611C3.65675 14.7181 3.59875 14.6834 3.58987 14.6834C3.581 14.6834 3.43613 14.5814 3.26763 14.4568C2.19638 13.6639 1.39213 12.7014 0.811 11.5159C0.711 11.3123 0.629375 11.1317 0.629375 11.1147C0.629375 11.0979 0.611375 11.0516 0.589375 11.0126C0.544 10.9314 0.479375 10.7567 0.42725 10.5761C0.404847 10.4993 0.378775 10.4237 0.349125 10.3494C0.32475 10.2919 0.305125 10.2219 0.305125 10.1937C0.305125 10.1653 0.28075 10.0731 0.251 9.98806C0.22125 9.90369 0.19725 9.80406 0.19725 9.76681C0.19725 9.72981 0.173875 9.60181 0.145 9.48231C0.07475 9.18731 0 8.42319 0 7.99494C0 7.56719 0.07475 6.80306 0.145 6.50819C0.17375 6.38856 0.19725 6.25819 0.19725 6.21819C0.19725 6.17806 0.215375 6.09944 0.23725 6.04319C0.25975 5.98719 0.2885 5.88656 0.30175 5.81969C0.3155 5.75281 0.34675 5.63756 0.372125 5.56281L0.445875 5.34706C0.5 5.18544 0.55025 5.04869 0.57425 4.99544C0.588 4.96569 0.641625 4.84419 0.693875 4.72544C0.778375 4.53356 0.9595 4.17169 1.06537 3.98231C1.104 3.91294 1.11863 3.88994 1.32763 3.56331C1.65875 3.04481 2.22462 2.39969 2.75137 1.93981C2.937 1.77769 3.55713 1.30694 3.585 1.30694C3.59275 1.30694 3.65125 1.27181 3.71537 1.22881C3.88375 1.11606 4.04887 1.02031 4.26412 0.912437C4.34139 0.874226 4.41791 0.83451 4.49363 0.793312C4.52925 0.772812 4.59612 0.742062 4.9395 0.588312C5.01512 0.554562 5.09663 0.523812 5.3315 0.441687C5.38325 0.423687 5.48725 0.385563 5.5615 0.357688C5.63625 0.329938 5.72413 0.306937 5.75688 0.306937C5.78913 0.306937 5.874 0.284437 5.94537 0.256687C6.01662 0.228812 6.146 0.197062 6.23338 0.186312C6.32038 0.176062 6.436 0.151688 6.49025 0.132563C6.544 0.114063 6.6915 0.0900625 6.81787 0.0794375C6.98258 0.0645302 7.14685 0.045148 7.3105 0.0213125C7.6465 -0.0279375 8.377 -0.0279375 8.7095 0.0213125C8.86655 0.0438503 9.02414 0.062398 9.18213 0.0769375C9.30125 0.0868125 9.45313 0.111688 9.52 0.132188C9.58688 0.152188 9.70262 0.177187 9.77687 0.186312C9.85112 0.196187 9.97612 0.226938 10.0546 0.255188C10.1334 0.283938 10.2226 0.306937 10.2534 0.306937C10.2841 0.306937 10.3476 0.324062 10.394 0.345562C10.4409 0.366562 10.54 0.401687 10.6147 0.423687C10.689 0.446187 10.8164 0.490562 10.8985 0.523312C10.98 0.555937 11.0894 0.598937 11.1416 0.618437C11.2379 0.654687 11.9491 1.01056 12.0459 1.07119C12.831 1.56081 13.2349 1.88069 13.7779 2.44169C14.4326 3.11844 14.8672 3.76294 15.3096 4.71169C15.3409 4.77869 15.3886 4.87781 15.416 4.93144C15.4429 4.98569 15.4654 5.04919 15.4654 5.07269C15.4654 5.09644 15.4879 5.16769 15.5156 5.23131C15.5909 5.40419 15.6553 5.60094 15.6856 5.75131C15.7006 5.82506 15.7285 5.91631 15.7475 5.95394C15.7666 5.99144 15.789 6.08681 15.7979 6.16494C15.8066 6.24294 15.8325 6.37094 15.8545 6.44856C15.982 6.88994 16.0454 8.19031 15.9683 8.76544C15.9454 8.93631 15.9195 9.14294 15.9108 9.22444C15.896 9.36406 15.8222 9.72494 15.7592 9.96756L15.6943 10.2244C15.5718 10.7191 15.269 11.4237 14.8994 12.0756C14.7529 12.3343 14.2617 13.0341 14.169 13.1161C14.1606 13.1233 14.1191 13.1723 14.0771 13.2239C14.0351 13.2762 13.9004 13.4222 13.7784 13.5482C13.2407 14.1033 12.8071 14.4466 12.0459 14.9193C11.9556 14.9754 11.19 15.3494 11.0469 15.4076C10.9726 15.4373 10.8486 15.4876 10.7715 15.5188C10.6949 15.5497 10.6094 15.5756 10.5825 15.5761C10.5556 15.5764 10.4849 15.6004 10.4253 15.6292C10.3658 15.6579 10.29 15.6819 10.2564 15.6824C10.2231 15.6829 10.126 15.7064 10.0405 15.7347C9.95512 15.7634 9.83637 15.7943 9.77675 15.8034C9.71725 15.8128 9.58987 15.8382 9.49312 15.8597C9.3965 15.8812 9.10438 15.9232 8.84475 15.9529C8.2656 16.0206 7.68047 16.0193 7.10162 15.9491Z" fill="#d97706" />
+                        </svg>
+                        <span data-i18n="result.pricesUpdating">Prices Updating Fast</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="wrap-cards row-col-static" id="sticky-parent" data-gutter="20" style="color:#0b1f66;">
+                <button class="mobile-filter-btn" type="button" onclick="document.querySelector('.sidebar-search-results').classList.toggle('active')">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" />
+                        <line x1="7" y1="12" x2="17" y2="12" stroke-width="2" />
+                        <line x1="10" y1="18" x2="14" y2="18" stroke-width="2" />
+                    </svg>
+                    <span data-i18n="result.filters">Filters</span>
+                </button>
+
+                <aside class="sidebar-search-results" id="divLeftPanel">
+                    <div class="sidebar-in">
+                        <div class="price-summary">
+                            <h6 class="ps-route" id="mcSideRoute">Multi-city</h6>
+                            <div class="ps-price">
+                                <sup id="mcSideCurrency">@currencySymbol</sup><span id="mcSidePrice">—</span>
+                            </div>
+                            <div class="ps-meta"><span data-i18n="result.perPerson">per person</span> · Multi-city</div>
+                            <div class="ps-badge" data-i18n="result.lowestPrice">Lowest Price Found</div>
+                        </div>
+
+                        <div class="sidebar-card">
+                            <div class="sidebar-card-title">Flights</div>
+                            <div id="mcSideLegs"></div>
+                        </div>
+
+                        <div class="sidebar-card card-booking">
+                            <h3>Need help booking?</h3>
+                            <p>Our travel experts are available 24/7 to find you the best deal.</p>
+                            <a href="tel:+18555104060" class="btn-primary-results d-flex gap-5" style="justify-content:center;">
+                                +1-855-510-4060
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+
+                <article class="cards-result" id="flightsBox">
+                    <div id="loaderassss" class="loaderassssedeed" style="display:block;"></div>
+                    <div class="all-results" id="dvResult"></div>
+                </article>
+            </div>
+            <div class="sidebar-overlay" onclick="document.querySelector('.sidebar-search-results').classList.remove('active')"></div>
+        </div>
+    </div>
+</div>
+
+@* Same wait modal pattern as /result *@
+<div id="myModal" class="modal fade modal-dialog-centered" style="display:block;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row" style="width:100%;">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <img src="img/RMFLogo.png" alt="logo" class="img-responsive center-block" style="max-height:48px;margin:0 auto;display:block;" />
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <div class="plsWaitCaption">
+                    <p data-i18n="result.pleaseWait">Please Wait For Your Flights...</p>
+                    <p data-i18n="result.searchingDeals">Let us search the best Flight Deals For You.</p>
+                </div>
+                <h2 id="mcModalRoute">Multi-city</h2>
+            </div>
+            <div class="modal-footer">
+                <div class="diparCaptionBox">
+                    <div class="row" id="mcModalLegs"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade show" id="mcModalBackdrop"></div>
+
+<script src="~/scripts/multicity-search.js?v=20260721c"></script>
+<script>
+(function () {
+    function getQueryParam(name) {
+        return new URLSearchParams(window.location.search).get(name);
+    }
+
+    function airportCode(val) {
+        if (!val) return '';
+        return String(val).split('-')[0].trim().toUpperCase();
+    }
+
+    function airportCity(val) {
+        if (!val) return '';
+        var parts = String(val).split('-');
+        if (parts.length < 2) return airportCode(val);
+        return parts[1].split(',')[0].trim();
+    }
+
+    function cabinLabel(code) {
+        switch ((code || 'Y').toUpperCase()) {
+            case 'F': case '1': return 'First';
+            case 'B': case '2': return 'Business';
+            case 'P': case '3': return 'Premium';
+            default: return 'Economy';
+        }
+    }
+
+    function hideWaitModal() {
+        $('#myModal').hide();
+        $('#mcModalBackdrop').remove();
+        $('body').removeClass('modal-open');
+    }
+
+    function fillHeaderFromRequest(request) {
+        if (!request || !request.legs || !request.legs.length) return;
+        var legs = request.legs;
+
+        var cities = [];
+        legs.forEach(function (l, i) {
+            cities.push(airportCity(l.from) || airportCode(l.from));
+            if (i === legs.length - 1) {
+                cities.push(airportCity(l.to) || airportCode(l.to));
+            }
+        });
+        var flow = cities.filter(function (c, i, a) { return i === 0 || c !== a[i - 1]; });
+        var arrow = ' <svg width="26" height="13" viewBox="0 0 26 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.283 5.80716L18.2373 0.95335L19.2315 0L26 6.5L19.2315 13L18.2013 12.0467L23.2556 7.19284H12.9863V5.80716H23.283ZM5.77169 5.80716H10.1005V7.19284H5.77169V5.80716ZM0 5.80716H2.88584V7.19284H0V5.80716Z" fill="#1B2A4A" /></svg> ';
+        $('#mcRouteTitle').html(flow.join(arrow) + ' <span>&bull; Multi-city</span>');
+
+        var codes = legs.map(function (l) { return airportCode(l.from) + ' → ' + airportCode(l.to); });
+        $('#mcHeroRoute').val(codes.join('  ·  '));
+        $('#mcSideRoute').text(codes.join(' · '));
+        $('#mcModalRoute').text(codes.join(' · '));
+        $('#mcSideLegs').html(codes.map(function (c, i) {
+            return '<span class="mc-leg-chip">Flight ' + (i + 1) + ': ' + c + '</span>';
+        }).join(''));
+
+        $('#mcModalLegs').html(legs.map(function (l, i) {
+            return '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="diparBox">' +
+                '<strong style="color:black">Flight ' + (i + 1) + '</strong>' +
+                '<p style="color:black!important">' + airportCode(l.from) + ' → ' + airportCode(l.to) + '<br/>' + (l.depDate || '') + '</p>' +
+                '</div>';
+        }).join(''));
+
+        var dates = legs.map(function (l) { return l.depDate; }).filter(Boolean);
+        $('#mcDateChip').text(dates.join(' → '));
+        $('#mcHeroDates').val(dates.join(' → '));
+
+        var adult = request.adult || 1;
+        var child = request.child || 0;
+        var infant = request.infant || 0;
+        var pax = adult + (adult === 1 ? ' Adult' : ' Adults');
+        if (child > 0) pax += ' ' + child + (child === 1 ? ' Child' : ' Children');
+        if (infant > 0) pax += ' ' + infant + (infant === 1 ? ' Infant' : ' Infants');
+        $('#mcPaxChip').text(pax);
+
+        var cabin = cabinLabel(request.cabin);
+        $('#mcCabinChip').text(cabin);
+        if ($('#flight_class_select').length) {
+            var cabinVal = '4';
+            switch ((request.cabin || 'Y').toString().toUpperCase()) {
+                case 'F': case '1': cabinVal = '1'; break;
+                case 'B': case '2': cabinVal = '2'; break;
+                case 'P': case '3': cabinVal = '3'; break;
+            }
+            $('#flight_class_select').val(cabinVal);
+        }
+        $('#pass_info').val((adult + child + infant) + ' Pax, ' + cabin);
+        if ($('#flight_adult').length) {
+            $('#flight_adult').val(adult);
+            $('#flight_child').val(child);
+            $('#flight_infant').val(infant);
+        }
+    }
+
+    function showError(msg) {
+        hideWaitModal();
+        $('#loaderassss').hide();
+        $('#dvResult').html(
+            '<div class="card-result" style="padding:28px;text-align:center;">' +
+            '<h3>Sorry! No Result Found</h3><p>' + (msg || 'Something went wrong.') + '</p>' +
+            '<a href="/" class="btn-primary-results" style="display:inline-block;width:auto;margin-top:12px;">Search Again</a></div>'
+        );
+    }
+
+    function loadResults(searchId) {
+        $.ajax({
+            url: '@(Common.WebSitePath)MulticityAsync/Results',
+            type: 'GET',
+            data: { searchId: searchId },
+            success: function (html) {
+                hideWaitModal();
+                $('#loaderassss').hide();
+                $('#dvResult').html(html);
+                var minPrice = $('#mcMinPrice').val();
+                if (minPrice) $('#mcSidePrice').text(minPrice);
+                if (window.refreshPageI18n) refreshPageI18n();
+            },
+            error: function () {
+                showError('Failed to load combined results.');
+            }
+        });
+    }
+
+    function startSearchFromQuery() {
+        var raw = sessionStorage.getItem('multicityAsyncRequest');
+        if (!raw) {
+            showError('No multicity search found. Please start a new search from home.');
+            return;
+        }
+
+        var request;
+        try { request = JSON.parse(raw); } catch (e) {
+            showError('Invalid multicity search payload.');
+            return;
+        }
+
+        fillHeaderFromRequest(request);
+
+        $.ajax({
+            url: '@(Common.WebSitePath)MulticityAsync/Search',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(request),
+            success: function (res) {
+                if (!res || !res.success) {
+                    showError((res && res.error) || 'No multicity results found.');
+                    return;
+                }
+                if (res.minPrice) $('#mcSidePrice').text(res.minPrice);
+                var url = new URL(window.location.href);
+                url.searchParams.set('searchID', res.searchId);
+                window.history.replaceState({}, '', url.toString());
+                loadResults(res.searchId);
+            },
+            error: function (xhr) {
+                showError(xhr.responseText || 'Multicity search failed.');
+            }
+        });
+    }
+
+    $(function () {
+        $('body').addClass('modal-open');
+
+        function t(key, fallback) {
+            return (window.SiteI18n && SiteI18n.t) ? SiteI18n.t(key, fallback) : fallback;
+        }
+
+        function setAmendBtnLabel(isOpen) {
+            var $btn = $('#mcAmendSearchBtn');
+            var label = isOpen ? t('result.hideSearch', 'Hide Search') : t('result.amendSearch', 'Amend Search');
+            $btn.text(label);
+            $btn.attr('data-i18n', isOpen ? 'result.hideSearch' : 'result.amendSearch');
+        }
+
+        // Collapsible amend search (own handler — avoids myjs #amendSearchBtn double-toggle)
+        $('#mcAmendSearchBtn').off('click.mcToggle').on('click.mcToggle', function (e) {
+            e.preventDefault();
+            var $section = $('#Search-Section');
+            $section.toggleClass('opened');
+            setAmendBtnLabel($section.hasClass('opened'));
+        });
+        // Start collapsed
+        $('#Search-Section').removeClass('opened');
+        setAmendBtnLabel(false);
+
+        // Prefill home-style Multicity amend search from session
+        var raw = sessionStorage.getItem('multicityAsyncRequest');
+        var request = null;
+        if (raw) {
+            try { request = JSON.parse(raw); } catch (e) { request = null; }
+        }
+
+        if (request) {
+            fillHeaderFromRequest(request);
+            if (window.MulticitySearch && typeof MulticitySearch.prefill === 'function') {
+                MulticitySearch.prefill(request);
+            } else if (window.MulticitySearch) {
+                MulticitySearch.show(true);
+            }
+        } else if (window.MulticitySearch) {
+            MulticitySearch.show(true);
+        }
+
+        // Search Again = same as home Multicity search
+        $('#mc_search_btn').off('click.mcSearch').on('click.mcSearch', function (e) {
+            e.preventDefault();
+            if (window.MulticitySearch && typeof MulticitySearch.submit === 'function') {
+                MulticitySearch.submit();
+            }
+        });
+
+        // Passenger popup (same as home)
+        $('#pass_info').off('click.mcAmend').on('click.mcAmend', function (e) {
+            e.stopPropagation();
+            $('#FlySearchPassengers').slideToggle();
+        });
+        $('#prsn_done').off('click.mcAmend').on('click.mcAmend', function () {
+            if (window.MulticitySearch && MulticitySearch.updatePassengerSummary) {
+                MulticitySearch.updatePassengerSummary();
+            }
+            $('#FlySearchPassengers').slideUp();
+        });
+        $(document).off('click.mcAmendDoc').on('click.mcAmendDoc', function (e) {
+            if (!$(e.target).closest('#FlySearchPassengers, #pass_info, .passenger-box').length) {
+                $('#FlySearchPassengers').slideUp();
+            }
+        });
+        $(document).off('click.mcAmendInc', '.inc_der').on('click.mcAmendInc', '.inc_der', function () {
+            setTimeout(function () {
+                if (window.MulticitySearch && MulticitySearch.updatePassengerSummary) {
+                    MulticitySearch.updatePassengerSummary();
+                }
+            }, 50);
+        });
+        $('#flight_class_select').off('change.mcAmend').on('change.mcAmend', function () {
+            if (window.MulticitySearch && MulticitySearch.updatePassengerSummary) {
+                MulticitySearch.updatePassengerSummary();
+            }
+        });
+
+        var existing = getQueryParam('searchID');
+        if (existing) {
+            loadResults(existing);
+        } else {
+            startSearchFromQuery();
+        }
+    });
+})();
+</script>

@@ -1,0 +1,2547 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    string current = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
+    string end = DateTime.Now.AddDays(14).ToString("yyyy-MM-dd");
+
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<input type="hidden" id="hdntotpax" value="1" />
+<input type="hidden" id="hdnADT" value="1" />
+<input type="hidden" id="hdnCHD" value="0" />
+<input type="hidden" id="hdnINF" value="0" />
+<input type="hidden" id="hdnFLYCLS" value="Economy" />
+<input type="hidden" id="hdnFLYCLSCode" value="4" />
+<input type="hidden" id="hdntxtToDate" />
+
+@*Done by Aayushi*@
+@*new add start here*@
+
+
+@*<script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#bkgOverlay").fadeIn();
+                $("#delayedPopup").fadeIn();
+            }, 20000);
+        });
+    </script>*@
+@*new add ends here*@
+<html>
+<head>
+    <!-- For standard Material Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- (Optional) for outlined, round, sharp or two-tone variants -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="@(TravelWeb.Utilities.Common.WebSitePath)myjs.js"></script>
+    <script>
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
+<style>
+    .item {
+        background: rgba(255, 255, 255, 0.20);
+    }
+    /* Section spacing and header (consistent with prior conversions) */
+    .deals-today-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+    /* py-16 */
+    .deals-today-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    /* mb-12 */
+    .deals-today-title {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+        color: #1F2937;
+    }
+
+    .deals-today-subtitle {
+        color: #6B7280;
+        margin-top: 0.5rem;
+    }
+
+    .deals-today-underline {
+        width: 5rem;
+        height: .25rem;
+        background: #FF4A55;
+        margin: .5rem auto 0;
+        border-radius: 9999px;
+    }
+
+    @@media (prefers-color-scheme: dark) {
+        .deals-today-title {
+            color: #F9FAFB;
+        }
+
+        .deals-today-subtitle {
+            color: #9CA3AF;
+        }
+    }
+
+    /* Responsive grid */
+    .deals-today-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* grid-cols-1 */
+        gap: 2rem; /* gap-8 */
+    }
+
+    @@media (min-width: 640px) { /* sm */
+        .deals-today-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (min-width: 1024px) { /* lg */
+        .deals-today-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /* Cards */
+    .deal-card {
+        position: relative; /* relative */
+        border-radius: .5rem; /* rounded-lg */
+        overflow: hidden; /* overflow-hidden */
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1); /* shadow-lg */
+        transform: translateZ(0);
+        transition: transform 300ms ease; /* hover:-translate-y-2 */
+    }
+
+        .deal-card:hover {
+            transform: translateY(-0.5rem);
+        }
+    /* -translate-y-2 */
+
+    .deal-card__img {
+        width: 100%; /* w-full */
+        height: 12rem; /* h-48 */
+        object-fit: cover; /* object-cover */
+        display: block;
+    }
+
+    .deal-card__body {
+        padding: 1.5rem;
+    }
+    /* p-6 */
+
+    .deal-card__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* flex justify-between items-center */
+        margin-bottom: 0.5rem; /* mb-2 */
+    }
+
+    .deal-card__title {
+        font-size: 1.25rem; /* text-xl */
+        font-weight: 600; /* font-semibold */
+        color: #1F2937;
+    }
+
+    .deal-card__price {
+        font-size: 1.125rem; /* text-lg */
+        font-weight: 700; /* font-bold */
+        color: #e5e7eb; /* light gray on dark; adjust as needed for theme */
+    }
+
+    .deal-card__route {
+        color: #6B7280; /* secondary text */
+        margin-bottom: 1rem; /* mb-4 */
+    }
+
+    .deal-card__meta {
+        display: flex;
+        align-items: center;
+        color: #6B7280;
+        font-size: .875rem; /* text-sm */
+    }
+
+    .deal-card__meta-icon {
+        font-size: 1rem; /* text-base */
+        margin-right: .25rem; /* mr-1 */
+    }
+
+    @@media (prefers-color-scheme: dark) {
+        .deal-card__title {
+            color: #F9FAFB;
+        }
+
+        .deal-card__route, .deal-card__meta {
+            color: #9CA3AF;
+        }
+    }
+
+    .deals-section {
+        padding-top: 4rem; /* py-16 */
+        padding-bottom: 4rem;
+    }
+
+    .deals-hero {
+        position: relative;
+        /* border-radius: 0.5rem; */ /* rounded-lg */
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); /* shadow-lg */
+        overflow: hidden;
+        background-size: cover; /* bg-cover */
+        background-position: center; /* bg-center */
+        min-height: 500px; /* min-h-[500px] */
+        display: flex; /* flex */
+        align-items: center; /* items-center */
+        justify-content: center; /* justify-center */
+        color: #fff; /* text-white */
+    }
+
+    .deals-hero__overlay {
+        position: absolute; /* absolute inset-0 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5); /* bg-black bg-opacity-50 */
+    }
+
+    .deals-hero__content {
+        position: relative; /* relative z-10 */
+        z-index: 10;
+        width: 100%; /* w-full */
+        max-width: 64rem; /* max-w-4xl */
+        margin-left: auto; /* mx-auto */
+        margin-right: auto;
+        padding-left: 1rem; /* px-4 */
+        padding-right: 1rem;
+        text-align: center; /* text-center */
+    }
+
+    .deals-title {
+        font-size: 1.875rem; /* text-3xl */
+        line-height: 2.25rem;
+        font-weight: 700; /* font-bold */
+        margin-bottom: 1.5rem; /* mb-6 */
+    }
+
+    @@media (min-width: 768px) {
+        .deals-title {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    .deals-card {
+        background: rgba(255,255,255,0.10); /* bg-white/10 */
+        backdrop-filter: blur(6px); /* backdrop-blur-sm */
+        border-radius: 0.5rem; /* rounded-lg */
+        padding: 5rem; /* p-4 */
+        margin: 2rem;
+    }
+
+    .deals-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem; /* space-y-3 */
+    }
+
+    .deal-row {
+        display: grid; /* grid */
+        grid-template-columns: 1fr auto auto; /* 2 cols for route + two autos for dates/price */
+        align-items: center; /* items-center */
+        gap: 0.5rem; /* gap-2 */
+        padding: 0.75rem; /* p-3 */
+        border-radius: 0.5rem; /* rounded-lg */
+        transition: background-color 300ms ease; /* transition-colors duration-300 */
+    }
+
+        .deal-row:hover {
+            background: rgba(255,255,255,0.20); /* hover:bg-white/20 */
+        }
+
+    .deal-route {
+        font-weight: 600; /* font-semibold */
+        text-align: left; /* text-left */
+    }
+
+    .deal-dates {
+        font-size: 0.875rem; /* text-sm */
+        opacity: 0.95;
+    }
+
+    .deal-price {
+        font-weight: 700; /* font-bold */
+        font-size: 1.125rem; /* text-lg */
+        color: #e5e7eb; /* text-secondary (approx light gray on dark) */
+    }
+
+    /* Match original responsive grid where route spans 2 of 4 columns */
+    @@media (min-width: 640px) {
+        .deal-row {
+            grid-template-columns: 2fr 1fr 1fr; /* emulates grid-cols-4 with route col-span-2 */
+        }
+    }
+    /* Spacing wrapper reused from previous section style */
+    .why-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+    /* py-16 */
+
+    .why-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    /* mb-12 */
+    .why-title {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+        color: #1F2937;
+    }
+
+    .why-subtitle {
+        color: #6B7280;
+        margin-top: 0.5rem;
+    }
+
+    .why-underline {
+        width: 5rem;
+        height: 0.25rem;
+        background: #FF4A55;
+        margin: 0.5rem auto 0;
+        border-radius: 9999px;
+    }
+
+    @@media (prefers-color-scheme: dark) {
+        .why-title {
+            color: #F9FAFB;
+        }
+
+        .why-subtitle {
+            color: #9CA3AF;
+        }
+    }
+
+    /* Responsive grid */
+    .why-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem; /* gap-8 */
+    }
+
+    @@media (min-width: 640px) { /* sm */
+        .why-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (min-width: 1024px) { /* lg */
+        .why-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    /* Cards */
+    .why-card {
+        padding: 5.5rem; /* p-6 */
+        border-radius: 0.5rem; /* rounded-lg */
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); /* shadow-md */
+        text-align: center;
+        transform: translateZ(0); /* for smoother hover */
+        transition: transform 300ms ease; /* hover:scale-105 duration-300 */
+    }
+
+        .why-card:hover {
+            transform: scale(1.05);
+        }
+
+    /* Gradient backgrounds */
+    .why-card--purple {
+        background: linear-gradient(135deg, #F3E8FF 0%, #FFE4E6 100%); /* from-purple-100 to-pink-100 */
+    }
+
+    .why-card--indigo {
+        background: linear-gradient(135deg, #DBEAFE 0%, #E0E7FF 100%); /* from-blue-100 to-indigo-100 */
+    }
+
+    .why-card--greenblue {
+        background: linear-gradient(135deg, #DCFCE7 0%, #DBEAFE 100%); /* from-green-100 to-blue-100 */
+    }
+
+    .why-card--redyellow {
+        background: linear-gradient(135deg, #FEE2E2 0%, #FEF3C7 100%); /* from-red-100 to-yellow-100 */
+    }
+
+    /* Dark-mode friendly overlays (approximate Tailwind dark variants) */
+    @@media (prefers-color-scheme: dark) {
+        .why-card--purple {
+            background: linear-gradient(135deg, rgba(88,28,135,.3) 0%, rgba(131,24,67,.3) 100%);
+        }
+
+        .why-card--indigo {
+            background: linear-gradient(135deg, rgba(30,58,138,.3) 0%, rgba(49,46,129,.3) 100%);
+        }
+
+        .why-card--greenblue {
+            background: linear-gradient(135deg, rgba(20,83,45,.3) 0%, rgba(30,58,138,.3) 100%);
+        }
+
+        .why-card--redyellow {
+            background: linear-gradient(135deg, rgba(153,27,27,.3) 0%, rgba(161,98,7,.3) 100%);
+        }
+    }
+
+    /* Icon pill */
+    .why-icon {
+        display: inline-block;
+        margin-bottom: 1rem; /* mb-4 */
+        padding: 1rem; /* p-4 */
+        border-radius: 9999px; /* rounded-full */
+        background: #FFA3AB; /* primary light */
+        color: #FF4A55; /* primary */
+    }
+
+        .why-icon .material-icons {
+            font-size: 2.875rem;
+            line-height: 1;
+        }
+    /* text-3xl */
+
+    /* Text */
+    .why-card__title {
+        font-size: 2.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #1F2937;
+    }
+
+    .why-card__text {
+        color: #6B7280;
+    }
+
+    @@media (prefers-color-scheme: dark) {
+        .why-card__title {
+            color: #F9FAFB;
+        }
+
+        .why-card__text {
+            color: #9CA3AF;
+        }
+    }
+</style>
+<style>
+    .best-price-div {
+        background: #fba406;
+        float: left;
+        margin-bottom: 50px;
+        width: 100%;
+        margin-top: -218px;
+        position: absolute;
+        z-index: 100;
+    }
+
+    @@media (min-width: 1200px) {
+        .container {
+            width: 1210px;
+        }
+    }
+
+    .best_price {
+        font-size: 20px;
+        padding-top: 0;
+        font-weight: 600;
+        margin-bottom: 2px;
+        margin-top: 15px;
+    }
+
+    .sub_con {
+        position: relative;
+        font-size: 90%;
+        line-height: 0;
+        vertical-align: baseline;
+        z-index: 99;
+        cursor: pointer;
+    }
+
+    .infomation_con {
+        display: none;
+        position: absolute;
+        left: -227px;
+        top: 32px;
+        width: 450px;
+        background: #f8f8f8;
+        font-family: Montserrat;
+        line-height: 16px;
+        color: #333;
+        padding: 8px 15px 8px 15px;
+        font-size: 13px;
+        line-height: 16px;
+        border-radius: 4px;
+        border: 2px solid #a31c20;
+        z-index: 988;
+        /* box-shadow: 1px 3px 4px rgba(0 0 0 / 40%);*/
+    }
+
+    .best-price-div img {
+        float: left;
+        margin-top: -23px;
+        width: 120px;
+        margin-bottom: -41px;
+        margin-right: 30px;
+    }
+
+    .trustbutton-main-div {
+        width: 100%;
+        margin-top: 0;
+        background-color: #e6f6fe;
+        box-shadow: 5px 5px 9px #dcddde;
+        padding: 0;
+        float: left;
+    }
+
+    .trustbutton-div {
+        width: 72%;
+        margin: 0 auto;
+    }
+
+    .best-price-img, .easy-booking-img, .customer-care-img, .fb-like-img {
+        width: auto;
+        height: 50px;
+    }
+
+    .best-price-txt-div {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .border {
+        background: url(../img/dividers_vertical.png) 0 0 no-repeat;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-size: 3px;
+    }
+
+    .main-block, .social-icon {
+        transition: transform .6s;
+    }
+
+    .easy-booking-div {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0%;
+    }
+
+    .homePage #hero-search-form {
+        background: none !important;
+        padding: 0px !important;
+        border-radius: 8px;
+        /* -webkit-border-radius: 8px; */
+        -moz-border-radius: 8px;
+        border: 0px !important;
+    }
+
+    .homePage .theme-search-area-submit {
+        position: absolute;
+        top: 0;
+        height: 55px;
+        right: 1px;
+    }
+
+    .theme-search-area-stacked .theme-search-area-submit-curved {
+        border-radius: 0 0px 0px 0;
+    }
+
+    .featureSection {
+        padding: 0em !important;
+        margin-bottom: 0;
+        position: initial !important;
+        width: 100%;
+        z-index: 9;
+        margin-top: 0px !important;
+    }
+
+    @@media (max-width: 767px) {
+        .todayDealHome h1 {
+            font-size: 30px !important;
+        }
+
+        .todayDealHome p {
+            font-size: 11px !important;
+        }
+    }
+
+    .theme-search-area-subtitle {
+        margin-top: 58px;
+        margin-bottom: -106px;
+    }
+
+    .hover-button {
+        color: #ffffff; /* Text color */
+        padding: 10px 20px; /* Padding for the button */
+        border: none; /* Remove default border */
+        border-radius: 4px; /* Rounded corners */
+        cursor: pointer; /* Cursor style */
+        transition: background-color 0.3s ease; /* Smooth transition for color change */
+    }
+
+        /* Styles for the button when hovered over */
+        .hover-button:hover {
+            color: #e51937;
+        }
+
+    /*#tagLine {
+
+                                    }*/
+
+</style>
+
+
+@*Home*@
+<div class="theme-hero-area homePage" style="height:600px;">
+    <div class="theme-hero-area-bg-wrap">
+        @*<div class="theme-hero-area-bg" style="background-image:url(@(TravelWeb.Utilities.Common.WebSitePath)img/hero-banner.jpg);"></div>*@
+        <div class="theme-hero-area-bg" style="background-image: url( @(TravelWeb.Utilities.Common.WebSitePath)img/BannerForRMF.png);"></div>
+        <div class="theme-hero-area-mask"></div>
+    </div>
+    <div class="theme-hero-area-body homepage-margin">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="theme-search-area _pt-150 _pb-100 _pv-mob-60 theme-search-area-stacked">
+                         <div class="theme-search-area-header _c-w _ta-c">
+                            <h1 class="theme-search-area-title">  Search for Flights  </h1> 
+                            <p class="theme-search-area-subtitle hidden">Compare 200 flight providers at once</p>
+                        </div> 
+                        <br />
+                         <div class="container" style="margin-left: -15px; position: relative; bottom: -10px;">
+                            <div class="switch-field">
+                                <input type="radio" id="RoundTrip" name="flight-options" value="RoundTrip" checked onclick="onewayfromdate('RoundTrip')" />
+                                <label for="RoundTrip">RoundTrip</label>
+                                <input type="radio" id="OneWay" name="flight-options" value="OneWay" onclick="onewaytodate('OneWay');" />
+                                <label for="OneWay">OneWay</label>
+                              
+                            </div>
+
+                        </div>
+
+                        <div class="theme-search-area-form" id="hero-search-form">
+                            <div class="row clone" id="clone" data-gutter="none">
+                                <div class="col-md-5 ">
+                                    <div class="row " data-gutter="none">
+                                        <div class="col-md-6 ">
+                                            <div class="theme-search-area-section first theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_from" type="text" onClick="this.select()" class="theme-search-area-section-input typeahead" value="" placeholder="From City" data-provide="typeahead" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_to" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue" value="" type="text" placeholder="To City" data-provide="typeahead" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="row" data-gutter="none">
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                    <input id="txtFromDate" class="theme-search-area-section-input" value="dd-mm-yyyy" type="text" placeholder="From" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 " id="ToDateConatiner">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                    <input id="txtToDate" class="theme-search-area-section-input" value="dd-mm-yyyy" type="text" placeholder="To" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved quantity-selector" data-increment="Passengers">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-people" id="newcolor"></i>
+                                                    <input class="theme-search-area-section-input" readonly name="pass_info" id="pass_info" placeholder="1 Pax, Economy" value="1 Pax, Economy" type="text" />
+                                                    <div class="" id="FlySearchPassengers" style="display:none; background-color:#fff;">
+                                                        <div class="quantity-selector-inner">
+                                                            <div id="prsn_popup">
+                                                                <ul class="slect_pssngr">
+                                                                    <li>
+                                                                        <label>Adult &nbsp;<span>(12+ Years)</span></label>
+                                                                        <div class="count_pssngr">
+                                                                            <a href="javascript:void(0);"><em data-field="adult" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                            <input type="text" readonly value="1" name="flight_adult" id="flight_adult" class="inpt_cout_pssngr" />
+                                                                            <a href="javascript:void(0);"><em data-field="adult" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>Children &nbsp;<span>(2-11 Years)</span></label>
+                                                                        <div class="count_pssngr">
+                                                                            <a href="javascript:void(0);"><em data-field="child" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                            <input type="text" readonly value="0" name="flight_child" id="flight_child" class="inpt_cout_pssngr" />
+                                                                            <a href="javascript:void(0);"><em data-field="child" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>Infant &nbsp;<span>(0-2 Years)</span></label>
+                                                                        <div class="count_pssngr">
+                                                                            <a href="javascript:void(0);"><em data-field="infant" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                            <input type="text" readonly value="0" name="flight_infant" id="flight_infant" class="inpt_cout_pssngr" />
+                                                                            <a href="javascript:void(0);"><em data-field="infant" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="combin_class">
+                                                                    <ul class="in_list_cls">
+                                                                        <li><input type="radio" name="flight_class" id="flight_class_4" value="4" checked /> <label for="flight_class_4">Economy</label></li>
+                                                                        <li><input type="radio" name="flight_class" id="flight_class_3" value="3" /> <label for="flight_class_3">Premimum</label></li>
+                                                                        <li><input type="radio" name="flight_class" id="flight_class_2" value="2" /> <label for="flight_class_2">Business</label></li>
+                                                                        <li><input type="radio" name="flight_class" id="flight_class_1" value="1" /> <label for="flight_class_1">First</label></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="clss_done" id="ind_done">
+                                                                    <a href="javascript:void(0);" id="prsn_done">Done</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <button class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-no-border theme-search-area-submit-curved" id="flight_submit">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-9 MultiCitydata" id="Showmultielect" style="display:none;margin-top:11px">
+                                    <div class="row" data-gutter="none">
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section first theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_from1" type="text" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue" value="" placeholder="From City" data-provide="typeahead" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_to1" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue" value="" type="text" placeholder="To City" data-provide="typeahead" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                    <input id="txtFromDate1" class="theme-search-area-section-input multipledate" value="From" type="text" placeholder="From" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @* <div class="col-md-1 ">
+                                            <button class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-no-border theme-search-area-submit-curved" id="flight_remove2" onclick="RemoveRow('flight_remove2')">Remove</button>
+                                        </div> *@
+                                    </div>
+                                    <div class="col-md-5 hover-button" id="ButtonShow" style="display:block">
+                                        <button class="icon-btn" style="border:none;background:none" onclick="addNewRow('Showmultielect2');">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Add Another flight</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 MultiCitydata" id="Showmultielect2" style="display:none;margin-top:11px">
+                                    <div class="row" data-gutter="none">
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section first theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_from2" type="text" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue" value="" placeholder="From City" data-provide="typeahead" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_to2" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue" value="" type="text" placeholder="To City" data-provide="typeahead" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                    <input id="txtFromDate2" class="theme-search-area-section-input multipledate" value="From" type="text" placeholder="From" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <button class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-no-border theme-search-area-submit-curved" id="flight_remove2" onclick="RemoveRow('flight_remove2')">Remove</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 hover-button" id="ButtonShow2" style="display:block">
+                                        <button class="icon-btn" style="border:none;background:none" onclick="addNewRow('Showmultielect3');">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Add Another flight</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 MultiCitydata" id="Showmultielect3" style="display:none;margin-top:11px">
+                                    <div class="row" data-gutter="none">
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section first theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_from3" type="text" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue" value="" placeholder="From City" data-provide="typeahead" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_to3" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue" value="" type="text" placeholder="To City" data-provide="typeahead" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                    <input id="txtFromDate3" class="theme-search-area-section-input multipledate" value="From" type="text" placeholder="To" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <button class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-no-border theme-search-area-submit-curved" id="flight_remove3" onclick="RemoveRow('flight_remove3')">Remove</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 hover-button" id="ButtonShow3" style="display:block">
+                                        <button class="icon-btn" style="border:none;background:none" onclick="addNewRow('Showmultielect4');">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Add Another flight</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 MultiCitydata" id="Showmultielect4" style="display:none;margin-top:11px">
+                                    <div class="row" data-gutter="none">
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section first theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_from4" type="text" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue" value="" placeholder="From City" data-provide="typeahead" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_to4" onClick="this.select()" class="theme-search-area-section-input typeahead inputvalue multipledate" value="" type="text" placeholder="To City" data-provide="typeahead" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                    <input id="txtFromDate4" class="theme-search-area-section-input" value="From" type="text" placeholder="To" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <button class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-no-border theme-search-area-submit-curved" id="flight_remove4" onclick="RemoveRow('flight_remove4');">Remove</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            @* <div class="col-md-5 hover-button" id="ButtonShow" style="display:none">
+                                <button class="icon-btn" style="border:none;background:none" onclick="addNewRow();">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>Add Another flight</span>
+                                </button>
+                            </div> *@
+                        </div>
+
+                        <div><p class="theme-search-area-subtitle" id="tagLine" style="color:white!important">RushMyFlight is the leading online travel search site that serve affrordable flight prices people to around the world</p></div>
+                        @*<div class="theme-search-area-form" id="hero-search-form">
+
+                                <div class="row" data-gutter="none">
+
+                                    <div class="col-md-5 ">
+                                        <div class="row" data-gutter="none">
+                                            <div class="col-md-6 ">
+                                                <div class="theme-search-area-section first theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                    <div class="theme-search-area-section-inner">
+                                                        <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                                                        <input id="flight_from" class="theme-search-area-section-input typeahead" value="" type="text" placeholder="Departure" data-provide="typeahead" />
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                    <div class="theme-search-area-section-inner">
+                                                        <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                                                        <input id="flight_to" class="theme-search-area-section-input typeahead" value="" type="text" placeholder="Arrival" data-provide="typeahead" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="row" data-gutter="none">
+                                            <div class="col-md-4 ">
+                                                <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                    <div class="theme-search-area-section-inner">
+                                                        <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                                        <input id="txtFromDate" class="theme-search-area-section-input" value="" type="text" onchange="vali('txtFromDate');" placeholder="MM-DD-YYYY" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 ">
+                                                <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                    <div class="theme-search-area-section-inner">
+
+                                                        <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                                        <input id="txtToDate" class="theme-search-area-section-input" value="+ Add Return" type="text" onchange="vali('txtToDate');" placeholder="MM-DD-YYYY" />
+                                                        <span class="closereturn" style="cursor:pointer; display:none;">X</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 lastInput">
+                                                <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved quantity-selector" data-increment="Passengers">
+                                                    <div class="theme-search-area-section-inner">
+                                                        <i class="theme-search-area-section-icon lin lin-people"></i>
+                                                        <input class="theme-search-area-section-input" readonly name="pass_info" id="pass_info" placeholder="1 Pax, Economy" value="1 Pax, Economy" type="text" />
+                                                        <div class="" id="FlySearchPassengers" style="display:none; background-color:#fff;">
+                                                            <div class="quantity-selector-inner">
+                                                                <div id="prsn_popup">
+                                                                    <ul class="slect_pssngr">
+                                                                        <li>
+                                                                            <label>Adult &nbsp;<span>(12+ Years)</span></label>
+                                                                            <div class="count_pssngr">
+                                                                                <a href="javascript:void(0);"><em data-field="adult" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                                <input type="text" readonly value="1" name="flight_adult" id="flight_adult" class="inpt_cout_pssngr" />
+                                                                                <a href="javascript:void(0);"><em data-field="adult" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>Children &nbsp;<span>(2-11 Years)</span></label>
+                                                                            <div class="count_pssngr">
+                                                                                <a href="javascript:void(0);"><em data-field="child" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                                <input type="text" readonly value="0" name="flight_child" id="flight_child" class="inpt_cout_pssngr" />
+                                                                                <a href="javascript:void(0);"><em data-field="child" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <label>Infant &nbsp;<span>(0-2 Years)</span></label>
+                                                                            <div class="count_pssngr">
+                                                                                <a href="javascript:void(0);"><em data-field="infant" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                                <input type="text" readonly value="0" name="flight_infant" id="flight_infant" class="inpt_cout_pssngr" />
+                                                                                <a href="javascript:void(0);"><em data-field="infant" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="combin_class">
+                                                                        <ul class="in_list_cls">
+                                                                            <li><input type="radio" name="flight_class" id="flight_class_4" value="4" checked /> <label for="flight_class_4">Economy</label></li>
+                                                                            <li><input type="radio" name="flight_class" id="flight_class_3" value="3" /> <label for="flight_class_3">Premium</label></li>
+                                                                            <li><input type="radio" name="flight_class" id="flight_class_2" value="2" /> <label for="flight_class_2">Business</label></li>
+                                                                            <li><input type="radio" name="flight_class" id="flight_class_1" value="1" /> <label for="flight_class_1">First</label></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="clss_done" id="ind_done">
+                                                                        <a href="javascript:void(0);" id="prsn_done">Done</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 go-style-mob " style="margin: -10px -20px 0 0;">
+                                        <button class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-no-border theme-search-area-submit-curved" id="flight_submit">Go!</button>
+                                    </div>
+                                </div>
+                            </div>*@
+                        @*<div class="theme-search-area-options theme-search-area-options-white theme-search-area-options-center theme-search-area-options-dot-primary-inverse clearfix">
+                                <div class="btn-group theme-search-area-options-list" data-toggle="buttons">
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" name="flight-options" id="flight-option-1" checked />Round Trip
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="flight-options" id="flight-option-2" />One Way
+                                    </label>
+                                </div>
+                            </div>*@
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="best-price-div">
+            <div class="container">
+                <img src="https://www.flightsmojo.com/img/ribbon.png" alt="">
+                <div class="best_price">
+                    Best Price <span style="color:white">Promise</span><sup class="sub_con">
+                        <i class="fa fa-info-circle priceconinfo" aria-hidden="true">
+                            <div class="infomation_con">
+                                <p style="font-weight:600; color:#a31c20;">Price Match Guarantee (PMG)</p>
+                                <p>FlightsMojo guarantees you the LOWEST PRICE on International and Domestic Flights Bookings departing from United States. If, within 24 hours of booking, customer finds a lower Airfare of same itinerary* on any other website (US-based online travel agency OTA), we will either cancel your current itinerary and provide you a full refund, or refund you the entire difference in price.</p>
+
+                                <p>In order to claim the refund, you need to provide us with the required documentation via mail at care@flightmojo.com so that we can verify all the elements of date and time of travel, destination name, name of the airline, class of service, fare and other details are the same as the itinerary you booked with us and available for booking online. We need to verify your documents to check whether the information provided meets the requirement of our Best Price Promise Policy or not. You can contact our customer service number (+1-800-231-7119) to claim refund. Once your refund request is approved, FlightsMojo.com will refund the amount of difference in the price at the earliest.</p>
+                            </div>
+                        </i>
+                    </sup>
+                    We make sure you get the Best deal online
+                </div>
+                <p>We have agreements with leading  airline consolidators to provide cheapest airfare deals without compromising on great service.</p>
+            </div>
+        </div>*@
+
+</div>
+
+<div class="theme-hero-area featureSection">
+
+    <!--<div class="trustbutton-main-div">
+        <div class="container fluid">
+            <div class="row">
+                <div class="trustbutton-div">
+                    <div class="col-sm-3 col-md-3 col-lg-3 text-center border" style="background: none;">
+                        <div class="main-block">
+                            <img src="/img/best-price.png" class="best-price-img">
+                            <div class="best-price-txt-div">
+                                <h3>Best Price Guarantee</h3>
+                                <p>Find our lowest price to destinations worldwide. guaranteed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 text-center border">
+                        <div class="main-block">
+                            <img src="/img/easy-booking.png" class="easy-booking-img">
+                            <div class="easy-booking-div">
+                                <h3>Easy Booking</h3>
+                                <p>Search, select and save the fastest way to book your trip</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 text-center border">
+                        <div class="main-block">
+                            <img src="/img/customer-caretwo.png" class="customer-care-img">
+                            <div class="customer-care-div">
+                                <h3>Customer Care</h3>
+                                <p>Get award-winning service and special deals by calling +1-800-231-7119</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 text-center border">
+                        <div class="main-block">
+                            <div class="fb-like-main-div">
+                                <img src="/img/fbl-like.png" class="fb-like-img">
+                                <div class="fb-like-div">-->
+    <!-- <p class="easy-booking-head"></p> -->
+    <!--<img src="/img/fb-like.png" class="fb-like-logo"> <img src="/img/fb-share.png" class="fb-share-logo">
+                                    <p>
+                                        People love our offers.<br>
+                                        You will too!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="theme-page-section trustbutton-main-div">
+        <div class="row">
+            <div class="trustbutton-div">
+                <h1>Our Awesome Features</h1>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-md-3 col-xs-3 text-center border" style="background: none;">
+                    <div class="main-block">
+                        <img src="/img/trust_icon1.png" class="best-price-img">
+                        <div class="best-price-txt-div">
+                            <h3>Cheap Booking Fares</h3>
+                            <p>Find yourself the ultimate deals on low-cost flight deals like nowhere.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-md-3 col-xs-3 text-center border">
+                    <div class="main-block">
+                        <img src="/img/trust_icon2.png" class="easy-booking-img">
+                        <div class="easy-booking-div">
+                            <h3>Exciting Travel Deals</h3>
+                            <p>Search over thousands of airlines, hotels, and flight deals all at one place.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-md-3 col-xs-3 text-center border">
+                    <div class="main-block">
+                        <img src="/img/trust_icon3.png" class="customer-care-img">
+                        <div class="customer-care-div">
+                            <h3>Effortless Bookings</h3>
+                            <p>Search, Explore, Select and Fly – the only easy way to book your trips.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-md-3 col-xs-3 text-center border">
+                    <div class="main-block">
+                        <img src="/img/trust_icon4.png" class="customer-care-img">
+                        <div class="customer-care-div">
+                            <h3>24x7 Customer Services</h3>
+                            <p>Connect with us on all your queries on flights and hotel bookings.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr style="width:500px;color:gainsboro" />
+    <section class="deals-today-section">
+        <div class="deals-today-header">
+            <h1 class="trustbutton-div"><strong>Top Flight Deals</strong></h1>
+            <p class="deals-today-subtitle">Grab these limited-time offers before they're gone!</p>
+        </div>
+
+        <div class="deals-today-grid">
+            <div class="deal-card">
+                <img alt="New York" class="deal-card__img" src="https://img.unsplash.com/photo-1755721017755-59284e3e94ff?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169" />
+                <div class="deal-card__body">
+                    <div class="deal-card__row">
+                        <h3 class="deal-card__title">New York</h3>
+                       @*  <p class="deal-card__price">$150</p> *@
+                    </div>
+                    <p class="deal-card__route">NYC - From Los Angeles, CA</p>
+                    <div class="deal-card__meta">
+                       @*  <span class="material-icons deal-card__meta-icon">calendar_today</span> *@
+                        <span style="font-size: small;">Fare refreshed hourly</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deal-card">
+                <img alt="Los Angeles" class="deal-card__img" src="https://img.unsplash.com/photo-1523833082115-1e8e294bd14e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1295" />
+                <div class="deal-card__body">
+                    <div class="deal-card__row">
+                        <h3 class="deal-card__title">Los Angeles</h3>
+                        @* <p class="deal-card__price">$180</p> *@
+                    </div>
+                    <p class="deal-card__route">LAX - From New York, NY</p>
+                    <div class="deal-card__meta">
+                        @* <span class="material-icons deal-card__meta-icon">calendar_today</span> *@
+                        <span style="font-size: small;">Editor’s pick</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deal-card">
+                <img alt="Miami" class="deal-card__img" src="https://img.unsplash.com/photo-1566827346655-6ad4e69dd3f9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1240" />
+                <div class="deal-card__body">
+                    <div class="deal-card__row">
+                        <h3 class="deal-card__title">Miami</h3>
+                        @* <p class="deal-card__price">$210</p> *@
+                    </div>
+                    <p class="deal-card__route">MIA - From Chicago, IL</p>
+                    <div class="deal-card__meta">
+                        @* <span class="material-icons deal-card__meta-icon">calendar_today</span> *@
+                        <span style="font-size: small;">Smart value</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    @*<div class="theme-page-section trustPilotSlider">
+            <div class="container">
+
+                <div class="trustPilotSlider-inner">
+                    <div class="row" style="display:flex">
+                        <div class="col-lg-3 col-md-3 hidden-xs">
+                            <div class="trustPilotImg">
+
+                                <img class="img-responsive" src="~/img/Anodyne-UK.png" style="width:70%" />
+                            </div>
+                            <span id="reviews">Based on 1,148 reviews</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12" id="link">
+                            <div id="owl-demo">
+
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg"> <img class="img-responsive" src="https://ahcpowertools.com/product_img/uploaded_img/star-icon.jpg" alt="Owl Image"></div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 Day ago</span></div>
+                                    </div>
+                                    <h3 class="heading-theme-title">Assistance was great</h3>
+                                    <p>Assistance was great. Very helpful through entire process and flight change too.</p>
+                                    <p class="theme-testimonial-author">Mr.Bill Kane</p>
+                                </div>
+
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg"> <img class="img-responsive" src="https://ahcpowertools.com/product_img/uploaded_img/star-icon.jpg" alt="Owl Image"></div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">5 Day ago</span></div>
+                                    </div>
+                                    <h3 class="heading-theme-title">Joshua Phillips was very helpful in…</h3>
+                                    <p>Joshua Phillips was very helpful in accommodating our family trip. Amazing job sir. Thanks so much. Will def use him again</p>
+                                    <p class="theme-testimonial-author">Angela Andrea jaramillo-Badill</p>
+                                </div>
+
+
+
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg"> <img class="img-responsive" src="https://ahcpowertools.com/product_img/uploaded_img/star-icon.jpg" alt="Owl Image"></div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">7 Day ago</span></div>
+                                    </div>
+                                    <h3 class="heading-theme-title">it was excellent service</h3>
+                                    <p>hi i have a good experience with the purchase of this ticket thank you very much .mike Wilson from abel Marquez </p>
+                                    <p class="theme-testimonial-author">Eryk Estevez</p>
+                                </div>
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg"> <img class="img-responsive" src="https://ahcpowertools.com/product_img/uploaded_img/star-icon.jpg" alt="Owl Image"></div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">15 Day ago</span></div>
+                                    </div>
+                                    <h3 class="heading-theme-title">Wonderful Experience...</h3>
+                                    <p>
+                                        This was the best choice I've made in choosing a site for flight reservations..
+                                        I would recommend it as a first choice when booking a flight.
+                                    </p>
+                                    <p class="theme-testimonial-author">Ibrahim Franco Calero</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    @*change*@  @*<div class="theme-page-section trustbutton-main-div">
+            <div class="row">
+                <div class="trustbutton-div">
+                    <h1>Our Awesome Features</h1>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-md-3 col-xs-3 text-center border" style="background: none;">
+                        <div class="main-block">
+                            <img src="/img/trust_icon1.png" class="best-price-img">
+                            <div class="best-price-txt-div">
+                                <h3>Cheap Booking Fares</h3>
+                                <p>Find yourself the ultimate deals on low-cost flight deals like nowhere.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-md-3 col-xs-3 text-center border">
+                        <div class="main-block">
+                            <img src="/img/trust_icon2.png" class="easy-booking-img">
+                            <div class="easy-booking-div">
+                                <h3>Exciting Travel Deals</h3>
+                                <p>Search over thousands of airlines, hotels, and flight deals all at one place.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-md-3 col-xs-3 text-center border">
+                        <div class="main-block">
+                            <img src="/img/trust_icon3.png" class="customer-care-img">
+                            <div class="customer-care-div">
+                                <h3>Effortless Bookings</h3>
+                                <p>Search, Explore, Select and Fly – the only easy way to book your trips.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-md-3 col-xs-3 text-center border">
+                        <div class="main-block">
+                            <img src="/img/trust_icon4.png" class="customer-care-img">
+                            <div class="customer-care-div">
+                                <h3>24x7 Customer Services</h3>
+                                <p>Connect with us on all your queries on flights and hotel bookings.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>*@  @*change ends*@
+    @*<div class="theme-hero-area-body">
+                <div class="">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="row row-col-mob-gap three-box" data-gutter="10">
+                                    <div class="col-md-4 ">
+                                        <div class="feature feature-white feature-center">
+                                            <i class="feature-icon feature-icon-white feature-icon-box feature-icon-line feature-icon-round fa fa-globe"></i>
+                                            <div class="feature-caption ">
+                                                <h5 class="feature-title">Explore the World</h5>
+                                                <p class="feature-subtitle">Start to discrover. We will help you to visit any place you can imagine</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <div class="feature feature-white feature-center">
+                                            <i class="feature-icon feature-icon-white feature-icon-box feature-icon-line feature-icon-round fa fa-gift"></i>
+                                            <div class="feature-caption ">
+                                                <h5 class="feature-title">Gifts & Rewards</h5>
+                                                <p class="feature-subtitle">Get even more from our service. Spend less and travel more</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <div class="feature feature-white feature-center">
+                                            <i class="feature-icon feature-icon-white feature-icon-box feature-icon-line feature-icon-round fa fa-credit-card"></i>
+                                            <div class="feature-caption ">
+                                                <h5 class="feature-title">Best prices</h5>
+                                                <p class="feature-subtitle">Contact us anytime, anywhere. We will resolve any issues ASAP</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+</div>
+@*<hr style="width: 500px; color:gainsboro" />*@
+<div class=" todayDealHome" >
+
+    <div class="container-fluid deal-top">
+        <div class="theme-page-section-header">
+                    <h1 style="color:white !important">Best Deals</h1>
+            <p style="text-align:center;color:white;margin-bottom:10px !important;">Save your money with our best offers</p>
+                </div>
+        <div class="row">
+           
+            <div class="row">
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/buenos aires.jpeg">
+                                <img class="pic-2" src="./img/buenos aires.jpeg">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="Compare"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/offer/Economy-Class-Deals/2">Economy Class Deals</a></h3>*@
+                            <h3 class="title">
+                                @*<a href="#">NYC<img src="/img/airplane.png" />EZE $586.60</a>*@
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a style="text-align:left !important;display:inline-flex !important" href="/result?depart=NYC&arrival=EZE&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">NYC<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">EZE</span><span class="checknow">CheckNow</span></a>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/guadalajara.jpeg">
+                                <img class="pic-2" src="./img/guadalajara.jpeg">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="BooK A Flight"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/offer/Business-Class-Deals/7">Business Class Deals</a></h3>*@
+                            @*<h3 class="title"><a href="#">ATL-GDL $456.80</a></h3>*@
+                            <h3 class="title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @*<a style="text-align:left !important;display:inline-flex !important" href="/result?qs=HOME|Home|ATL|GDL|@current|@end|1|0|0|2|4|false">ATL<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">GDL</span><span class="checknow">CheckNow</span></a>*@
+                                        <a style="text-align:left !important;display:inline-flex !important" href="/result?depart=NYC&arrival=HNL&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">ATL<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">GDL</span><span class="checknow">CheckNow</span></a>
+
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/hawaii.jpeg">
+                                <img class="pic-2" src="./img/hawaii.jpeg">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="BooK A Flight"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/offer/Last-Minute-Deals/4">Last Minute Deal</a></h3>*@
+                            @*<h3 class="title"><a href="#">NYC-HNL $543.20</a></h3>*@
+                            <h3 class="title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @*<a style="text-align:left !important;display:inline-flex !important" href="/result?qs=HOME|Home|NYC|HNL|@current|@end|1|0|0|2|4|false">NYC<span class="detailplane " id="HNL"><img class="detailplane " id="HNL" src="/img/airplane.png" /></span><span style="margin-left:2%">HNL</span><span class="checknow">CheckNow</span></a>*@
+                                        <a style="text-align:left !important;display:inline-flex !important" href="result?depart=NYC&arrival=HNL&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">NYC<span class="detailplane " id="HNL"><img class="detailplane " id="HNL" src="/img/airplane.png" /></span><span style="margin-left:2%">HNL</span><span class="checknow">CheckNow</span></a>
+
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/lagos.jpeg">
+                                <img class="pic-2" src="./img/lagos.jpeg">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="BooK A Flight"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/airline">Airline Deals</a></h3>*@
+                            @*<h3 class="title"><a href="#">NYC-LOS $680.40</a></h3>*@
+                            <h3 class="title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a style="text-align:left !important;display:inline-flex !important" href="/result?depart=NYC&arrival=LOS&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">NYC<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">LOS</span><span class="checknow">CheckNow</span></a>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/miami.JPEG">
+                                <img class="pic-2" src="./img/miami.JPEG">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="BooK A Flight"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/offer/International-Flights/6">International Flights Offers</a></h3>*@
+                            @*<h3 class="title"><a href="#">PHL-MIA $220.40</a></h3>*@
+                            <h3 class="title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a style="text-align:left !important;display:inline-flex !important" href="/result?depart=PHL&arrival=MIA&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">PHL<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">MIA</span><span class="checknow">CheckNow</span></a>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/new orleans.gif.jpeg">
+                                <img class="pic-2" src="./img/new orleans.gif.jpeg">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="BooK A Flight"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/offer/Beach-Deals/10">Beach Deals</a></h3>*@
+                            @*<h3 class="title"><a href="#">NYC-MCI $320.00</a></h3>*@
+                            <h3 class="title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a style="text-align:left !important;display:inline-flex !important" href="/result?depart=NYC&arrival=MCI&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">NYC<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">MCI</span><span class="checknow">CheckNow</span></a>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/orlendo.jpeg">
+                                <img class="pic-2" src="./img/orlendo.jpeg">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="BooK A Flight"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/offer/Deals-Under-199-Deals/3">Deals Under 199</a></h3>*@
+                            @*<h3 class="title"><a href="#">NYC-MCO $220.00</a></h3>*@
+                            <h3 class="title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a style="text-align:left !important;display:inline-flex !important" href="/result?depart=NYC&arrival=MCO&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">NYC<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">MCO</span><span class="checknowExtra4">CheckNow</span></a>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/Dubai.JPEG">
+                                <img class="pic-2" src="./img/Dubai.JPEG">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="BooK A Flight"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/offer/Summer-Holidays-Deals/5">Summer Holidays Flights</a></h3>*@
+                            @*<h3 class="title"><a href="#">NYC-DXB $444.60</a></h3>*@
+                            <h3 class="title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a style="text-align:left !important;display:inline-flex !important" href="/result?depart=NYC&arrival=DXB&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">NYC<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">DXB</span><span class="checknow">CheckNow</span></a>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-3 box-img-deal">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a class="image">
+                                <img class="pic-1" src="./img/buenos aires.jpeg">
+                                <img class="pic-2" src="./img/buenos aires.jpeg">
+                            </a>
+
+                            <ul class="product-links">
+                                <li><a data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                <li><a data-tip="Compare"><i class="fa fa-plane"></i></a></li>
+                                <li><a data-tip="View"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content">
+                            @*<h3 class="title"><a href="/offer/Economy-Class-Deals/2">Economy Class Deals</a></h3>*@
+                            <h3 class="title">
+                                @*<a href="#">NYC<img src="/img/airplane.png" />EZE $586.60</a>*@
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a style="text-align:left !important;display:inline-flex !important" href="/result?depart=NYC&arrival=EZE&trip=round&departOn[]=@current&af=bdfqV.kbQjUML5VDRxLrOg--&ch=flightshall&adult=1&child=0&infant=0&seniors=0&cabin=Y&returnOn=@end&utm_source=&utm_medium=cpc&utm_campaign=promotional">NYC<span style="margin-left:2%"><img class="detailplane" src="/img/airplane.png" /></span><span style="margin-left:2%">EZE</span><span class="checknow">CheckNow</span></a>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-4 col-sm-3 box-img-deal">
+                            <div class="product-grid">
+                                <div class="product-image">
+                                    <a class="image">
+                                        <img class="pic-1" src="./img/internasnal-flight-deal.jpg">
+                                        <img class="pic-2" src="./img/internasnal-flight-deal.jpg">
+                                    </a>
+
+                                    <ul class="product-links">
+                                        <li><a  data-tip="Price"><i class="fa fa-money"></i></a></li>
+                                        <li><a  data-tip="BooK A Flight"><i class="fa fa-plane"></i></a></li>
+                                        <li><a  data-tip="View"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="title"><a href="#">New York Flights</a></h3>
+                                </div>
+                            </div>
+                        </div>*@
+
+            </div>
+
+            <div class="row row-col-mob-gap eight-boxex" data-gutter="10" style="display:none;">
+                <div class="col-md-3 ">
+                    <div class="banner banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                        <img class="banner-img" src="./img/economy-flight.jpg" alt="Image Alternative text" title="Image Title" />
+                        <div class="banner-mask"></div>
+                        @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Economy-Class-Deals/2"></a>*@
+                        <a class="banner-link" href="#"></a>
+                        <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-">
+                            <h5 class="banner-title ">Economy Class Deals</h5>
+                            <p class="banner-subtitle _fw-n _mt-5">Rountrips from $129</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="banner  banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                        <img class="banner-img" src="./img/free-flight.jpg" alt="Image Alternative text" title="Image Title" />
+                        <div class="banner-mask"></div>
+                        @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Business-Class-Deals/7">*@
+                        <a class="banner-link" href="#">
+                            <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                                <h5 class="banner-title ">Business Class Deals</h5>
+                                <p class="banner-subtitle _fw-n _mt-5">Earn free miles with rewards system</p>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="banner  banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                        <img class="banner-img" src="./img/first-class-banner.jpg" alt="Image Alternative text" title="Image Title" />
+                        <div class="banner-mask"></div>
+                        @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Last-Minute-Deals/4">*@
+                        <a class="banner-link" href="#">
+                            <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                                <h5 class="banner-title ">Last Minute Deals</h5>
+                                <p class="banner-subtitle _fw-n _mt-5">Save up to 30%</p>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="banner banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                        <img class="banner-img" src="./img/las-minut-banner.jpg" alt="Image Alternative text" title="Image Title" />
+                        <div class="banner-mask"></div>
+                        @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)airline">*@
+                        <a class="banner-link" href="#">
+                            <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                                <h5 class="banner-title ">Airline Deals</h5>
+                                <p class="banner-subtitle _fw-n _mt-5">Travel smart, travel cheap</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-col-mob-gap  " data-gutter="10" style="display:none;">
+                <div class="col-md-3 ">
+                    <div class="banner  banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                        <img class="banner-img" src="./img/internasnal-flight-deal.jpg" alt="Image Alternative text" title="Image Title" />
+                        <div class="banner-mask"></div>
+                        @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/International-Flights/6">*@
+                        <a class="banner-link" href="#">
+                            <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                                <h5 class="banner-title ">International Flights Offers</h5>
+                                <p class="banner-subtitle _fw-n _mt-5">Rountrips from $129</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="banner  banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                        <img class="banner-img" src="./img/beach-deals.jpg" alt="Image Alternative text" title="Image Title" />
+                        <div class="banner-mask"></div>
+                        @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Beach-Deals/10">*@
+                        <a class="banner-link" href="#">
+                            <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                                <h5 class="banner-title ">Beach Deals</h5>
+                                <p class="banner-subtitle _fw-n _mt-5">Earn free miles with rewards system</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="banner banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                        <img class="banner-img" src="./img/deal-under.jpg" alt="Image Alternative text" title="Image Title" />
+                        <div class="banner-mask"></div>
+                        @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Deals-Under-199-Deals/3">*@
+                        <a class="banner-link" href="#">
+                            <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                                <h5 class="banner-title ">Deals Under 199</h5>
+                                <p class="banner-subtitle _fw-n _mt-5">Save up to 30%</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="banner banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                        <img class="banner-img" src="./img/summer-holidays.jpg" alt="Image Alternative text" title="Image Title" />
+                        <div class="banner-mask"></div>
+                        @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Summer-Holidays-Deals/5">*@
+                        <a class="banner-link" href="#">
+                            <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                                <h5 class="banner-title ">Summer Holidays Flights</h5>
+                                <p class="banner-subtitle _fw-n _mt-5">Travel smart, travel cheap</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row row-col-mob-gap eight-boxex" data-gutter="10" style="display:none;">
+            <div class="col-md-3 ">
+                <div class="banner banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                    <img class="banner-img" src="./img/economy-flight.jpg" alt="Image Alternative text" title="Image Title" />
+                    <div class="banner-mask"></div>
+                    @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Economy-Class-Deals/2"></a>*@
+                    <a class="banner-link" href="#"></a>
+                    <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-">
+                        <h5 class="banner-title ">Economy Class Deals</h5>
+                        <p class="banner-subtitle _fw-n _mt-5">Rountrips from $129</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="banner  banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                    <img class="banner-img" src="./img/free-flight.jpg" alt="Image Alternative text" title="Image Title" />
+                    <div class="banner-mask"></div>
+                    @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Business-Class-Deals/7">*@
+                    <a class="banner-link" href="#">
+                        <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                            <h5 class="banner-title ">Business Class Deals</h5>
+                            <p class="banner-subtitle _fw-n _mt-5">Earn free miles with rewards system</p>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="banner  banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                    <img class="banner-img" src="./img/first-class-banner.jpg" alt="Image Alternative text" title="Image Title" />
+                    <div class="banner-mask"></div>
+                    @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Last-Minute-Deals/4">*@
+                    <a class="banner-link" href="#">
+                        <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                            <h5 class="banner-title ">Last Minute Deals</h5>
+                            <p class="banner-subtitle _fw-n _mt-5">Save up to 30%</p>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="banner banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                    <img class="banner-img" src="./img/las-minut-banner.jpg" alt="Image Alternative text" title="Image Title" />
+                    <div class="banner-mask"></div>
+                    @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)airline">*@
+                    <a class="banner-link" href="#">
+                        <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                            <h5 class="banner-title ">Airline Deals</h5>
+                            <p class="banner-subtitle _fw-n _mt-5">Travel smart, travel cheap</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row row-col-mob-gap  " data-gutter="10" style="display:none;">
+            <div class="col-md-3 ">
+                <div class="banner  banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                    <img class="banner-img" src="./img/internasnal-flight-deal.jpg" alt="Image Alternative text" title="Image Title" />
+                    <div class="banner-mask"></div>
+                    @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/International-Flights/6">*@
+                    <a class="banner-link" href="#">
+                        <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                            <h5 class="banner-title ">International Flights Offers</h5>
+                            <p class="banner-subtitle _fw-n _mt-5">Rountrips from $129</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="banner  banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                    <img class="banner-img" src="./img/beach-deals.jpg" alt="Image Alternative text" title="Image Title" />
+                    <div class="banner-mask"></div>
+                    @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Beach-Deals/10">*@
+                    <a class="banner-link" href="#">
+                        <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                            <h5 class="banner-title ">Beach Deals</h5>
+                            <p class="banner-subtitle _fw-n _mt-5">Earn free miles with rewards system</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="banner banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                    <img class="banner-img" src="./img/deal-under.jpg" alt="Image Alternative text" title="Image Title" />
+                    <div class="banner-mask"></div>
+                    @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Deals-Under-199-Deals/3">*@
+                    <a class="banner-link" href="#">
+                        <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                            <h5 class="banner-title ">Deals Under 199</h5>
+                            <p class="banner-subtitle _fw-n _mt-5">Save up to 30%</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="banner banner-animate banner-animate-mask-in banner-animate-zoom-in">
+                    <img class="banner-img" src="./img/summer-holidays.jpg" alt="Image Alternative text" title="Image Title" />
+                    <div class="banner-mask"></div>
+                    @*<a class="banner-link" href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Summer-Holidays-Deals/5">*@
+                    <a class="banner-link" href="#">
+                        <div class="banner-caption _ta-c _pb-20 _pt-60 banner-caption-bottom banner-caption-grad">
+                            <h5 class="banner-title ">Summer Holidays Flights</h5>
+                            <p class="banner-subtitle _fw-n _mt-5">Travel smart, travel cheap</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section>
+    <div class="theme-page-section trustPilotSlider" id="topAirlineDeal">
+        <div class="container">
+            <h5 class="text-center theme-page-section-title mb-2" style="margin-bottom: 0px;color: #11172b;margin-top: 20px;font-weight: bold;">Top Airline Deals</h5>
+            <div class="trustPilotSlider-inner" id="topDealBg">
+
+                <div class="row" style="display:flex">
+                    <div class="col-lg-3 col-md-3 hidden-xs" id="topDealTitle">
+                        <div class="trustPilotImg">
+                            <img class="img-responsive" src="https://www.savethestudent.org/uploads/flights.jpg" />
+                        </div>
+                        @*<div class="topDealBar">
+                                    <h3>Top Airline Deals</h3>
+                                </div>*@
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <div id="owl-demo">
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg">
+                                        <img id="icon-responsive" style="width:30%; " src="~/img/TopAirlines/AF.png" alt="Owl Image">
+                                    </div>
+
+                                    @*<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 day ago</span></div>*@
+                                </div>
+                                <h3 class="heading-theme-title"> Air France </h3>
+                                <p class="topDealParagraph">Founded in the year 1933, Air France (AF) is the flag carrier of France, ...</p>
+                                @*<p class="theme-testimonial-author">Mr.Bill Kane</p>*@
+                            </div>
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg">
+                                        <img id="icon-responsive" style="width:30%" ; src="~/img/TopAirlines/BA.png" alt="Owl Image">
+                                    </div>
+                                    @*<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 day ago</span></div>*@
+                                </div>
+                                <h3 class="heading-theme-title"> British Airways</h3>
+                                <p class="topDealParagraph">Founded in the year 1974, British Airways (BA) is the flag carrier of the ...</p>
+                                @*<p class="theme-testimonial-author">Mr.Bill Kane</p>*@
+                            </div>
+
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg">
+                                        <img id="icon-responsive" style="width:30%" ; src="~/img/TopAirlines/NK.png" alt="Owl Image">
+                                    </div>
+                                    @* <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 day ago</span></div>*@
+                                </div>
+                                <h3 class="heading-theme-title"> Spirit Airlines</h3>
+                                <p class="topDealParagraph">The history of America's most preferable ultra-low-cost carrier.</p>
+                                @*<p class="theme-testimonial-author">Mr.Bill Kane</p>*@
+                            </div>
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg">
+                                        <img id="icon-responsive" style="width:30%" ; src="~/img/TopAirlines/LH.png" alt="Owl Image">
+                                    </div>
+                                    @*<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 day ago</span></div>*@
+                                </div>
+                                <h3 class="heading-theme-title"> Lufthansa</h3>
+                                <p class="topDealParagraph">Lufthansa Airlines (LH) is the largest German airline and one of the most...</p>
+                                @*<p class="theme-testimonial-author">Mr.Bill Kane</p>*@
+                            </div>
+
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg">
+                                        <img id="icon-responsive" style="width:30%" ; src="~/img/TopAirlines/EK.png" alt="Owl Image">
+                                    </div>
+                                    @*<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 day ago</span></div>*@
+                                </div>
+                                <h3 class="heading-theme-title"> Emirates</h3>
+                                <p class="topDealParagraph">Emirates (EK) is one of the prominent airlines of UAE owned by the government... </p>
+                                @*<p class="theme-testimonial-author">Mr.Bill Kane</p>*@
+                            </div>
+
+
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg">
+                                        <img id="icon-responsive" style="width:30%" ; src="~/img/TopAirlines/UA.png" alt="Owl Image">
+                                    </div>
+                                    @*<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 day ago</span></div>*@
+                                </div>
+                                <h3 class="heading-theme-title">  United Airlines</h3>
+                                <p class="topDealParagraph">The foundation of the United Airlines (UA) was led back in the year 1926,... </p>
+                                @*<p class="theme-testimonial-author">Mr.Bill Kane</p>*@
+                            </div>
+
+
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg">
+                                        <img id="icon-responsive" style="width:30%" ; src="~/img/TopAirlines/QR.png" alt="Owl Image">
+                                    </div>
+                                    @* <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 day ago</span></div>*@
+                                </div>
+                                <h3 class="heading-theme-title">   Qatar Airways</h3>
+                                <p class="topDealParagraph">Qatar Airways (QR) is one of the eminent scheduled flight service providers of... </p>
+                                @*<p class="theme-testimonial-author">Mr.Bill Kane</p>*@
+                            </div>
+
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 starImg">
+                                        <img id="icon-responsive" style="width:30%" ; src="~/img/TopAirlines/AC.png" alt="Owl Image">
+                                    </div>
+                                    @*<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><span class="datePost">1 day ago</span></div>*@
+                                </div>
+                                <h3 class="heading-theme-title">    Air Canada</h3>
+                                <p class="topDealParagraph">Air Canada (AC) is the flag carrier, and the largest airline of Canada in terms of ... </p>
+                                @*<p class="theme-testimonial-author">Mr.Bill Kane</p>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- start Popular filghts routes -->
+@* <section class="deals-section">
+    <div class="deals-hero" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCat5ilOCuesjaRRxvMoZGomBwbGxXKXjE77iq3GBzBfew1cE1vw2otRAooIVuctXE2m_mtwXZMp_-cPYl50IBrEq788P4FjySBjZsKtejrOX6yrhhoYec1dwYFYmpN_WCpWy39NjC7NtutBXdfP0jc1A37AXqJdZSZO3wOTn_f9i4_Sxg1g6Bo2h7dEAcp2QoaxK60-IPVjElrWTb6wQNKsz8oAckUZ4xzzKfrG7vjEctEvalqVCaHo4z0B_a4k1OtTuQuSBhR69mc');">
+        <div class="deals-hero__overlay"></div>
+        <div class="deals-hero__content">
+            <h1 class="trustbutton-div"><strong>Top Round Trip Flight Deals</strong></h1>
+
+            <div class="deals-card">
+                <div class="deals-list">
+                    <div class="deal-row">
+                        <div class="deal-route">NYC ⇌ London</div>
+                        <div class="deal-dates">Jan 15 - Jan 22</div>
+                        <div class="deal-price">$599</div>
+                    </div>
+
+                    <div class="deal-row">
+                        <div class="deal-route">LA ⇌ Tokyo</div>
+                        <div class="deal-dates">Feb 02 - Feb 10</div>
+                        <div class="deal-price">$750</div>
+                    </div>
+
+                    <div class="deal-row">
+                        <div class="deal-route">MIA ⇌ Paris</div>
+                        <div class="deal-dates">Mar 10 - Mar 18</div>
+                        <div class="deal-price">$620</div>
+                    </div>
+
+                    <div class="deal-row">
+                        <div class="deal-route">CHI ⇌ Rome</div>
+                        <div class="deal-dates">Apr 05 - Apr 13</div>
+                        <div class="deal-price">$680</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section> *@
+
+<section class="why-section">
+    <div class="why-header">
+        <h1 class="trustbutton-div"><strong>Why Choose Us?</strong></h1>
+        <p class="why-subtitle">Your trusted partner in travel.</p>
+    </div>
+
+    <div class="why-grid">
+        <div class="why-card why-card--purple">
+            <div class="why-icon">
+                <span class="material-icons">local_offer</span>
+            </div>
+            <h3 class="why-card__title">Best Price Guarantee</h3>
+            <p class="why-card__text">Find the lowest fares for your flights, backed by our price match promise.</p>
+        </div>
+
+        <div class="why-card why-card--indigo">
+            <div class="why-icon">
+                <span class="material-icons">airplane_ticket</span>
+            </div>
+            <h3 class="why-card__title">Easy Booking</h3>
+            <p class="why-card__text">A seamless booking experience from start to finish. Fast, simple, and secure.</p>
+        </div>
+
+        <div class="why-card why-card--greenblue">
+            <div class="why-icon">
+                <span class="material-icons">support_agent</span>
+            </div>
+            <h3 class="why-card__title">24/7 Support</h3>
+            <p class="why-card__text">Our dedicated team is here to help you around the clock with any questions.</p>
+        </div>
+
+        <div class="why-card why-card--redyellow">
+            <div class="why-icon">
+                <span class="material-icons">explore</span>
+            </div>
+            <h3 class="why-card__title">Wide Selection</h3>
+            <p class="why-card__text">Access a vast inventory of flights from hundreds of airlines worldwide.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="theme-page-section theme-page-section-xxl filghtRoutesSection" style="display:none">
+    @*<div class="container-fluid width-full">
+                <div class="theme-page-section-header">
+                    <h5 class="theme-page-section-title"><span>Popular Flight Routes</span></h5>
+                </div>
+                <div class="row">
+                    <ul class="nav nav-tabs cityTab">
+                        <li class="active" onclick="CityTab('JFK')" id="tab_NYC"><a data-toggle="tab" href="javascript:void(0);">New York</a></li>
+                        <li onclick="CityTab('ORD')" id="tab_ORD"><a data-toggle="tab" href="javascript:void(0);">Chicago </a></li>
+                        <li onclick="CityTab('DEN')" id="tab_DEN"><a data-toggle="tab" href="javascript:void(0);">Denver</a></li>
+                        <li onclick="CityTab('SFO')" id="tab_SFO"><a data-toggle="tab" href="javascript:void(0);">san francisco</a></li>
+                        <li onclick="CityTab('LAS')" id="tab_LAS"><a data-toggle="tab" href="javascript:void(0);">Las Vegas</a></li>
+                        <li onclick="CityTab('SEA')" id="tab_SEA"><a data-toggle="tab" href="javascript:void(0);">Seattle</a></li>
+                        <li onclick="CityTab('MCO')" id="tab_MCO"><a data-toggle="tab" href="javascript:void(0);">Orlando</a></li>
+                    </ul>
+                    <div id="dvpopularCity"></div>
+
+                </div>
+            </div>*@
+</div>
+
+
+<script>
+    $(function () {
+        CityTab('JFK');
+        $('ul.cityTab li').each(function () {
+
+            $(this).removeClass("active");
+        });
+        $('#tab_NYC').addClass("active");
+
+    });
+    function CityTab(cityname) {
+        $('ul.cityTab li').each(function () {
+
+            $(this).removeClass("active");
+        });
+        $('#tab_' + cityname).addClass("active");
+
+         $.ajax({
+            type: "get",
+            url: "@(TravelWeb.Utilities.Common.WebSitePath)popular/city",
+            data: { "dest": "" + cityname + "" },
+            contentType: "application/html; charset=utf-8",
+            accepts: "application/html; charset=utf-8",
+            //dataType: "json",
+            success: function (response) {
+            $('#dvpopularCity').html(response);
+
+            }
+
+            });
+
+    }
+</script>
+<!-- close -->
+<div class="theme-hero-area" style="display:none">
+    <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg-pattern theme-hero-area-bg-pattern-ultra-light" style="background-image:url(img/patterns/travel/1.png);"></div>
+        <div class="theme-hero-area-grad-mask theme-hero-area-grad-mask-i"></div>
+        <div class="theme-hero-area-inner-shadow theme-hero-area-inner-shadow-light"></div>
+    </div>
+    <div class="theme-hero-area-body">
+        <div class="container">
+            <div class="theme-page-section _p-0">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="theme-mobile-app">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="theme-mobile-app-section">
+                                        <img class="theme-mobile-app-img" src="img/mockups/phone-1.png" alt="Image Alternative text" title="Image Title" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="theme-mobile-app-section">
+                                        <div class="theme-mobile-app-body">
+                                            <div class="theme-mobile-app-header">
+                                                <h2 class="theme-mobile-app-title">Download our app</h2>
+                                                <p class="theme-mobile-app-subtitle">Book and manage your trips on the go. Be notified of our hot deals and offers.</p>
+                                            </div>
+                                            <ul class="theme-mobile-app-btn-list">
+                                                <li>
+                                                    <a class="btn btn-dark theme-mobile-app-btn" href="#">
+                                                        <i class="theme-mobile-app-logo">
+                                                            <img src="img/brands/apple.png" alt="Image Alternative text" title="Image Title" />
+                                                        </i>
+                                                        <span>
+                                                            Download on
+                                                            <br />
+                                                            <span>App Store</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="btn btn-dark theme-mobile-app-btn" href="#">
+                                                        <i class="theme-mobile-app-logo">
+                                                            <img src="img/brands/play-market.png" alt="Image Alternative text" title="Image Title" />
+                                                        </i>
+                                                        <span>
+                                                            Download on
+                                                            <br />
+                                                            <span>Play Market</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    //Added on bharat beacause browser back button value can't refresh this method use value are referesh
+    window.addEventListener("pageshow", function (event) {
+        debugger;
+        var historyTraversal = event.persisted ||
+            (typeof window.performance != "undefined" &&
+                window.performance.navigation.type === 2);
+        if (historyTraversal) {
+            // Handle page restore.
+            window.location.reload();
+        }
+    });
+</script>
+<script>
+    var flight = 1;
+    var arr = new Array();
+
+    function onewayfromdate(value) {
+            if (value == 'RoundTrip') {
+                debugger;
+                flight = 1;
+                $("#txtToDate").val("");
+                $("#txtToDate").prop('disabled', false);
+            var $divs = $('#showsmultiselect');
+            $divs.css('display', 'none');
+
+            var Showmultielect2 = $('#Showmultielect2');
+            Showmultielect2.css('display', 'none');
+            var Showmultielect3 = $('#Showmultielect3');
+            Showmultielect3.css('display', 'none');
+            var Showmultielect4 = $('#Showmultielect4');
+            Showmultielect4.css('display', 'none');
+            var Showmultielect = $('#Showmultielect');
+            Showmultielect.css('display', 'none');
+            var Showmultielect2 = $('#ToDateConatiner');
+            Showmultielect2.css('display', 'block');
+            const divElement = document.querySelector('.theme-hero-area.homePage');
+            divElement.style.height = `${600}px`
+
+            const addflight = document.getElementById('ButtonShow');
+            addflight.style.display = 'none';
+                txtToDate.style.background = 'white';
+
+            }
+
+        }
+
+        function onewaytodate(value) {
+            debugger;
+        flight = 1;
+            if (value == 'OneWay') {
+                $("#txtToDate").val("+ Add Return");
+                $("#txtToDate").prop('disabled', true);
+            var $divs = $('#showsmultiselect');
+            $divs.css('display', 'none');
+            var Showmultielect2 = $('#Showmultielect2');
+            Showmultielect2.css('display', 'none');
+            var Showmultielect3 = $('#Showmultielect3');
+            Showmultielect3.css('display', 'none');
+            var Showmultielect4 = $('#Showmultielect4');
+            Showmultielect4.css('display', 'none');
+            var Showmultielect = $('#Showmultielect');
+            Showmultielect.css('display', 'none');
+            const addflight = document.getElementById('ButtonShow');
+            addflight.style.display = 'none';
+            const divElement = document.querySelector('.theme-hero-area.homePage');
+            divElement.style.height = `${600}px`;
+            var Showmultielect2 = $('#ToDateConatiner');
+            Showmultielect2.css('display', 'block');
+            }
+
+
+        }
+    //code by janesh '26122023'
+    function MultiCity(value) {
+        if (value == 'Multiselect') {
+            debugger;
+            $("#txtToDate").val("");
+            $("#txtToDate").prop('disabled', false);
+            const div = document.getElementById('Showmultielect');
+            div.style.display = (div.style.display === 'none' || div.style.display === 'block') ? 'block' : 'none';
+            const divElement = document.querySelector('.theme-hero-area.homePage');
+
+            const currentHeight = parseInt(divElement.style.height, 10) || 600;
+            var Showmultielect2 = $('#ToDateConatiner');
+            Showmultielect2.css('display', 'none');
+            const newHeight = currentHeight + 50;
+            divElement.style.height = `${newHeight}px`;
+            const Div = document.getElementById('ButtonShow');
+            Div.style.display = 'block';
+
+            $("#txtToDate").val("+ Add Return");
+
+
+        }
+    }
+
+    function RemoveRow(value) {
+        debugger;
+        if (value == 'flight_remove2') {
+            const multiSelectElement = document.getElementById('Showmultielect2');
+            multiSelectElement.style.display = 'none';
+            const Div = document.getElementById('ButtonShow');
+            Div.style.display = 'block';
+            flight = --flight;
+
+
+        }
+         if (value == 'flight_remove3') {
+            const multiSelectElement = document.getElementById('Showmultielect3');
+            multiSelectElement.style.display = 'none';
+            const Div = document.getElementById('ButtonShow');
+            Div.style.display = 'none';
+            // const ButtonShow2 = document.getElementById('ButtonShow2');
+            // ButtonShow2.style.display = 'block';
+            flight = --flight;
+
+        }
+        if (value == 'flight_remove4') {
+            const multiSelectElement = document.getElementById('Showmultielect4');
+            multiSelectElement.style.display = 'none';
+            const Div = document.getElementById('ButtonShow');
+            Div.style.display = 'none';
+            // const ButtonShow3 = document.getElementById('ButtonShow3');
+            // ButtonShow3.style.display = 'block';
+            flight = --flight;
+
+        }
+    }
+
+
+
+    function addNewRow(value) {
+        debugger
+
+        flight = ++flight;
+        arr.push(flight);
+        if (value == 'Showmultielect2')
+        {
+            const div = document.getElementById('Showmultielect2');
+            div.style.display = (div.style.display === 'none' || div.style.display === 'block') ? 'block' : 'none';
+            const divElement = document.querySelector('.theme-hero-area.homePage');
+            const currentHeight = parseInt(divElement.style.height, 10) || 600;
+            const newHeight = currentHeight + 50;
+            divElement.style.height = `${newHeight}px`;
+            const previusButton = document.getElementById('ButtonShow');
+            previusButton.style.display = 'none';
+            const Div = document.getElementById('ButtonShow2');
+            Div.style.display = 'block';
+        }
+        if (value == 'Showmultielect3')
+        {
+            const div = document.getElementById('Showmultielect3');
+            div.style.display = (div.style.display === 'none' || div.style.display === 'block') ? 'block' : 'none';
+            const divElement = document.querySelector('.theme-hero-area.homePage');
+            const currentHeight = parseInt(divElement.style.height, 10) || 600;
+            const newHeight = currentHeight + 50;
+            divElement.style.height = `${newHeight}px`;
+            const previusButton = document.getElementById('ButtonShow2');
+            previusButton.style.display = 'none';
+            const Div = document.getElementById('ButtonShow3');
+            Div.style.display = 'block';
+        }
+        if (value == 'Showmultielect4')
+        {
+            const div = document.getElementById('Showmultielect4');
+            div.style.display = (div.style.display === 'none' || div.style.display === 'block') ? 'block' : 'none';
+            const divElement = document.querySelector('.theme-hero-area.homePage');
+            const currentHeight = parseInt(divElement.style.height, 10) || 600;
+            const newHeight = currentHeight + 50;
+            divElement.style.height = `${newHeight}px`;
+            const previusButton = document.getElementById('ButtonShow3');
+            previusButton.style.display = 'none';
+            // const Div = document.getElementById('ButtonShow');
+            // Div.style.display = 'none';
+
+        }
+
+
+    }
+    //   $(".multipledate").datepicker({
+
+    //     minDate: 0,
+    //     dateFormat: 'mm-dd-yy',
+    //     beforeShow: function () {
+    //         debugger
+    //         if ($(window).width() < 768) {
+    //             return { numberOfMonths: 1 };
+    //         } else {
+    //             return { numberOfMonths: 2 };
+    //         }
+    //     },
+    //     // numberOfMonths: 2,
+    //     onSelect: function (selected) {
+    //         var dt = new Date(selected);
+    //         dt.setDate(dt.getDate() + 1);
+
+    //         if (($("input:radio[name='flight-options']:checked").val() == "Multiselect")) {
+    //             var TDate = Add7Days();
+    //             $("#txtToDate").val(TDate);
+
+    //             $("#txtFromDate1").datepicker("option", "minDate", dt);
+    //         }
+    //     },
+
+    //     onClose: function () {
+    //         if (($("input:radio[name='flight-options']:checked").val() == "Multiselect")) {
+
+    //             $("#txtToDate").datepicker("show").load();
+
+    //         }
+    //     }
+
+    // });
+
+    // $("#txtToDate").datepicker({
+    //     showOn: "both",
+    //     onSelect: function (dateText, inst) {debugger
+    //         $("#txtFromDate1").datepicker("option", "minDate",
+    //             $("#txtFromDate1").datepicker("getDate"));
+    //     }
+    // });
+
+</script>
+<script>
+
+    $(document).ready(function () {
+        $('#pass_info').click(function (e) {
+            $('#FlySearchPassengers').slideToggle();
+            e.stopPropagation();
+            $('#loadmore').hide();
+        });
+
+        $("#txtToDate").val("");
+        $("#txtFromDate").val("");
+        // trustpilot carousel
+        $("#owl-demo").owlCarousel({
+
+            autoPlay: false, //Set AutoPlay to 3 seconds
+            pagination: false,
+            //dots: false,
+            navigation: true,
+            navigationText: [
+                "<i class='fa fa-chevron-left'></i>",
+                "<i class='fa fa-chevron-right'></i>"
+            ],
+            items: 3,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 2]
+
+        });
+    });
+</script>
+
+
+<script>
+    var ipaddress = ""
+    $.getJSON("https://api.ipify.org?format=json", function (data) {
+        ipaddress = (data.ip);
+        console.log(data.ip);
+        console.log(ipaddress);
+    });
+    $(function () {
+
+        $('#pass_info').val($('#hdntotpax').val() + " Pax, " + $('#hdnFLYCLS').val());
+        $('#flight_adult').val($('#hdnADT').val());
+        $('#flight_child').val($('#hdnCHD').val());
+        $('#flight_infant').val($('#hdnINF').val());
+
+        $('#flight_class_' + $('#hdnFLYCLSCode').val()).prop("checked", true);
+    });
+</script>
+<script>
+    // Edited By Deepak
+
+
+    function DateFromString(str) {
+        str = str.split(/\D+/);
+        str = new Date(str[2], str[0] - 1, (parseInt(str[1]) + ));
+        //if (parseInt(str[0]) < 10)
+        // str[0] = "0" + str[0];
+
+        return MMDDYYYY(str);
+    }
+    function MMDDYYYY(str) {
+        var ndateArr = str.toString().split(' ');
+        var Months = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec';
+        return (parseInt(Months.indexOf(ndateArr[1]) / 4) + 1) + '-' + ndateArr[2] + '-' + ndateArr[3];
+    }
+    function Add7Days() {
+        var date = $("#txtFromDate").val();
+
+        var ndate = DateFromString(date);
+        var split = ndate.split("-");
+        if (parseInt(split[0]) < 10)
+            split[0] = "0" + split[0];
+
+        ndate = split[0] + "-" + split[1] + "-" + split[2];
+
+        return ndate;
+    }
+    function DateFromString(str) {
+        str = str.split(/\D+/);
+        str = new Date(str[2], str[0] - 1, (parseInt(str[1]) + 1));
+        //if (parseInt(str[0]) < 10)
+        // str[0] = "0" + str[0];
+
+        return MMDDYYYY(str);
+    }
+    $('input:radio[name="flight-options"]').change(
+        function () {
+
+            $("#txtToDate").val("");
+            //var date = $("#txtFromDate").val();
+            //if (date == "") {
+            // alert("Please Select FromDate!!")
+            // return false;
+            //}
+            //else {
+            if ($(this).is(':checked') && $(this).val() == 'RoundTrip') {
+                // append goes here
+                //$(".todateusedinjs").show();
+                $("#txtToDate").prop('disabled', false);
+
+                if (txtToDate.disabled == false) {
+                    $("#txtToDate").val("+ Add Return");
+                    txtToDate.style.background = '#fff';
+                }
+
+
+                var date = $("#txtfromdate").val();
+                if (date != "") {
+                    var tdate = add7days();
+                    $("#txttodate").val(tdate);
+
+                }
+                //alert("You select round trip");
+            }
+            else if ($(this).is(':checked') && $(this).val() == 'OneWay') {
+                $("#txtToDate").val("+ Add Return");
+                //$("#todateusedinjs").hide();
+
+                $("#txtToDate").prop('disabled', true);
+
+                if (txtToDate.disabled == true) {
+                    txtToDate.style.background = '#D8d8D8';
+                    //txtToDate.style.display = 'none';
+                }
+
+            }
+
+        }
+
+                    //if ($("input:radio[name='flight-options']:checked").val() == "OneWay") {
+
+                    //}
+
+                })
+
+
+
+
+</script>
+
+

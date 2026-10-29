@@ -1,0 +1,826 @@
+﻿@model BookingPageVM
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Flight Bookings";
+}
+
+<div id="mainContent" class="space-y-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-black text-slate-800 uppercase tracking-tight">Flight Bookings</h1>
+            <p class="text-sm text-slate-500">Manage reservations, view segments, and handle billing details.</p>
+        </div>
+       @*  <div class="flex items-center gap-2">
+            <span class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-500 shadow-sm">
+                Total Records: @Model.TotalRecords
+            </span>
+        </div> *@
+
+        <div class="flex items-center gap-2">
+
+    <input type="text"
+           id="bookingSearch"
+           value="@ViewBag.BookingNumber"
+           placeholder="Search Booking #"
+           class="px-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-400" />
+
+    <button onclick="searchBooking()"
+            class="px-4 py-2 bg-orange-500 text-white rounded-xl text-sm font-bold">
+        Search
+    </button>
+
+</div>
+    </div>
+
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[1000px]">
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100">
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Booking #</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Flight</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Route</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">
+                            IB / OB Airline
+                        </th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest text-center">Pax</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Status</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Flight Status</th>
+                         <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Agent</th>
+                          <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Pax Name</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest text-right">Quick Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                    @foreach (var b in Model.FlightBookings)
+                    {
+                        <tr class="hover:bg-slate-50/30 transition-colors group">
+                            <td class="px-2">
+                                <div class="font-bold text-slate-800 text-sm">@b.BookingNumber</div>
+                                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">
+                                    @(b.BookingDate?.ToString("dd MMM yyyy") ?? "-")
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="h-8 w-8 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 border border-orange-100">
+                                        <i class="fas fa-plane text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-bold text-slate-700">@b.Airline</div>
+                                        <div class="text-[10px] text-slate-400 font-medium">@b.FlightClass | @b.FlightWay</div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="font-bold text-slate-800">@b.FromDeparture</span>
+                                    <i class="fas fa-arrow-right text-[10px] text-orange-400"></i>
+                                    <span class="font-bold text-slate-800">@b.ToDestination</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400 font-semibold mt-1">
+                                    @b.DepartDate?.ToString() — @b.ReturnDate?.ToString()
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="text-xs text-slate-400 font-semibold mt-1"style="font-size:x-small">
+                                    OB - @b.OutboundAirline
+                                </div>
+                                <div class="text-xs text-slate-400 font-semibold mt-1" style="font-size:x-small">
+                                    IB - @b.InboundAirline
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold border border-slate-200">
+                                    @b.TotalPassesngers
+                                </span>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 rounded-full bg-green-50 text-green-600 text-[10px] font-black uppercase tracking-widest ring-1 ring-green-100">
+                                    @b.Status
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 rounded-full bg-green-50 text-green-600 text-[10px] font-black uppercase tracking-widest ring-1 ring-green-100">
+                                    @b.FlightStatus
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">
+                                    @b.Agent
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">
+                                    @b.PaxFullName
+                                </span>
+                            </td>
+
+                           @*  <td class="px-6 py-4 text-right">
+                                <div class="flex items-center justify-end gap-1.5">
+                                    <button onclick="loadPassengers(@b.BookingId)" class="px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-tight bg-white border border-slate-200 text-slate-600 hover:border-orange-500 hover:text-orange-600 transition shadow-sm">Pax</button>
+<button onclick="loadSegments(@b.BookingId, '@b.FlightClass', '@b.FlightWay')" class="px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-tight bg-white border border-slate-200 text-slate-600 hover:border-orange-500 hover:text-orange-600 transition shadow-sm">
+    Segments
+</button>                                    <button onclick="loadPriceDetails(@b.BookingId)" class="px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-tight bg-white border border-slate-200 text-slate-600 hover:border-green-600 hover:text-green-600 transition shadow-sm">Price</button>
+                                    <button onclick="loadContactDetails(@b.BookingId)" class="px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-tight bg-white border border-slate-200 text-slate-600 hover:border-green-600 hover:text-green-600 transition shadow-sm">Contact</button>
+                                    <button onclick="loadCard(@b.BookingId)" class="px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-tight bg-slate-900 text-white hover:bg-black transition shadow-md"><i class="fas fa-credit-card"></i></button>
+                                    <button onclick="loadRemarks(@b.BookingId)"
+                                            class="px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-tight
+               bg-white border border-slate-200 text-slate-600
+               hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">
+                                        Remarks
+                                    </button>
+                                </div>
+                            </td> *@
+
+                            <td class="px-6 py-4 text-right relative">
+    <div class="flex justify-end">
+
+        <!-- Main Button -->
+        <button onclick="toggleDropdown(@b.BookingId)"
+                class="px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-tight 
+                       bg-orange-400 text-white hover:bg-black transition shadow-md flex items-center gap-1">
+            <i class="fas fa-bars"></i> Options
+        </button>
+
+        <!-- Dropdown -->
+        <div id="dropdown-@b.BookingId"
+             class="hidden absolute right-0 mt-2 w-40 bg-white border border-slate-200 rounded-lg shadow-lg z-50">
+
+            <button onclick="loadPassengers(@b.BookingId)"
+                    class="w-full text-left px-3 py-2 text-[11px] hover:bg-orange-50">
+                Pax
+            </button>
+
+            <button onclick="loadSegments(@b.BookingId, '@b.FlightClass', '@b.FlightWay')"
+                    class="w-full text-left px-3 py-2 text-[11px] hover:bg-orange-50">
+                Segments
+            </button>
+
+            <button onclick="loadPriceDetails(@b.BookingId)"
+                    class="w-full text-left px-3 py-2 text-[11px] hover:bg-green-50">
+                Price
+            </button>
+
+            <button onclick="loadContactDetails(@b.BookingId)"
+                    class="w-full text-left px-3 py-2 text-[11px] hover:bg-green-50">
+                Contact
+            </button>
+
+            <button onclick="loadCard(@b.BookingId)"
+                    class="w-full text-left px-3 py-2 text-[11px] hover:bg-gray-100">
+                Card
+            </button>
+
+            <button onclick="loadRemarks(@b.BookingId)"
+                    class="w-full text-left px-3 py-2 text-[11px] hover:bg-indigo-50">
+                Remarks
+            </button>
+            <button onclick="sendCancellationEmail(@b.BookingId)"
+        class="w-full text-left px-3 py-2 text-[11px] hover:bg-red-50 text-red-600">
+    Cancellation Email
+</button>
+<button onclick="deleteBooking(@b.BookingId)"
+        class="w-full text-left px-3 py-2 text-[11px] hover:bg-red-100 text-red-700">
+    Delete Booking
+</button>
+
+        </div>
+    </div>
+</td>
+                        </tr>
+
+                        <tr id="details-@b.BookingId" style="display:none;" class="bg-slate-50/50">
+                            <td colspan="6" class="px-8 py-6">
+                                <div class="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 details-box relative animate-fade-in">
+                                    <button onclick="$('#details-@b.BookingId').hide()" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 transition">
+                                        <i class="fas fa-times-circle text-lg"></i>
+                                    </button>
+                                    <div class="content-area">
+                                        <div class="flex items-center gap-3 text-slate-400">
+                                            <i class="fas fa-circle-notch animate-spin"></i> Loading details...
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="flex items-center justify-center gap-2 py-4">
+       @*  @for (int i = 1; i <= Math.Ceiling((double)Model.TotalRecords / Model.PageSize); i++)
+        {
+            <button onclick="loadPage(@i)"
+                    class="h-10 w-10 flex items-center justify-center rounded-xl font-bold text-sm transition-all @(i == Model.PageNumber ? "bg-orange-500 text-white shadow-lg shadow-orange-200" : "bg-white border border-slate-200 text-slate-500 hover:bg-slate-50")">
+                @i
+            </button>
+        } *@
+
+        @{
+            int totalPages = (int)Math.Ceiling((double)Model.TotalRecords / Model.PageSize);
+            int currentPage = Model.PageNumber;
+            int startPage = Math.Max(1, currentPage - 1);
+            int endPage = Math.Min(totalPages, startPage + 2);
+
+            if (endPage - startPage < 2)
+            {
+                startPage = Math.Max(1, endPage - 2);
+            }
+        }
+
+        <div class="flex items-center justify-center gap-2 py-4">
+
+            @* Prev Button *@
+            @if (currentPage > 1)
+            {
+                <button onclick="loadPage(@(currentPage - 1))"
+                        class="px-4 h-10 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold">
+                    Prev
+                </button>
+            }
+
+            @for (int i = startPage; i <= endPage; i++)
+            {
+                <button onclick="loadPage(@i)"
+                        class="h-10 w-10 flex items-center justify-center rounded-xl font-bold text-sm transition-all
+                @(i == currentPage
+                    ? "bg-orange-500 text-white shadow-lg shadow-orange-200"
+                    : "bg-white border border-slate-200 text-slate-500 hover:bg-slate-50")">
+                    @i
+                </button>
+            }
+
+            @* Next Button *@
+            @if (currentPage < totalPages)
+            {
+                <button onclick="loadPage(@(currentPage + 1))"
+                        class="px-4 h-10 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold">
+                    Next
+                </button>
+            }
+
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    function showRow(id, html) {
+        $("tr[id^='details-']").hide(); // close other rows
+        let row = $("#details-" + id);
+        row.fadeIn(300);
+        row.find(".content-area").html(html);
+
+        $('html, body').animate({
+            scrollTop: row.offset().top - 200
+        }, 500);
+    }
+
+    // ---------------- PASSENGERS ----------------
+    function loadPassengers(id) {
+        jQuery.get("/Admin/GetPassengers", { bookingId: id }, function (data) {
+
+            let html = `
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="h-8 w-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h5 class="font-black text-slate-800 uppercase tracking-tight">Passenger List</h5>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
+
+           data.forEach(x => {
+    const dob = x.dob ? new Date(x.dob).toLocaleDateString('en-GB') : '-';
+
+    html += `
+        <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50">
+            
+            <p class="text-sm">
+                <span class="font-semibold text-slate-600">Title:</span>
+                ${x.paxTitle ?? '-'}
+            </p>
+
+            <p class="text-sm">
+                <span class="font-semibold text-slate-600">First Name:</span>
+                ${x.firstName ?? '-'}
+            </p>
+
+            <p class="text-sm">
+                <span class="font-semibold text-slate-600">Middle Name:</span>
+                ${x.middleName ?? '-'}
+            </p>
+
+            <p class="text-sm">
+                <span class="font-semibold text-slate-600">Last Name:</span>
+                ${x.lastName ?? '-'}
+            </p>
+
+            <p class="text-sm">
+                <span class="font-semibold text-slate-600">Passenger Type:</span>
+                ${x.paxType}
+            </p>
+
+            <p class="text-sm">
+                <span class="font-semibold text-slate-600">Gender:</span>
+                ${x.gender ?? 'N/A'}
+            </p>
+
+            <p class="text-sm">
+                <span class="font-semibold text-slate-600">DOB:</span>
+                ${dob}
+            </p>
+
+        </div>`;
+});
+
+            html += "</div>";
+            showRow(id, html);
+        });
+    }
+
+    // ---------------- SEGMENTS ----------------
+    function loadSegments(id, flightClass, flightWay) {
+    jQuery.get("/Admin/GetSegments", { bookingId: id }, function (data) {
+
+        function stopText(count) {
+            return count === 0 ? "Non-stop" : count + " Stop(s)";
+        }
+
+        function formatDate(dt) {
+            return dt ? new Date(dt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) : "-";
+        }
+
+        let html = `
+            <h5 class="font-black text-slate-800 uppercase tracking-tight mb-6 flex items-center gap-2">
+               
+                <i class="fas fa-route text-orange-500"></i> 
+                <span>Flight Segments</span>
+                 <span style="color: green;margin-left: 8rem;font-size: small;">${flightClass} | ${flightWay}</span>
+            </h5>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">`;
+
+        // OUTBOUND
+        html += `
+            <div>
+                <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
+                    <span class="font-black text-[11px] uppercase tracking-widest text-slate-400">Outbound Journey</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-orange-100 text-orange-700 rounded-md">
+                        ${stopText(data.outboundStopCount)}
+                    </span>
+                </div>
+                <div class="space-y-4">`;
+
+        data.outboundSegments.forEach(x => {
+            html += segmentTemplate(x, formatDate);
+        });
+
+        html += `</div></div>`;
+
+        // INBOUND
+        if (data.inboundSegments && data.inboundSegments.length > 0) {
+            html += `
+                <div>
+                    <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
+                        <span class="font-black text-[11px] uppercase tracking-widest text-slate-400">Inbound Journey</span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 bg-green-100 text-green-700 rounded-md">
+                            ${stopText(data.inboundStopCount)}
+                        </span>
+                    </div>
+                    <div class="space-y-4">`;
+
+            data.inboundSegments.forEach(x => {
+                html += segmentTemplate(x, formatDate);
+            });
+
+            html += `</div></div>`;
+        }
+
+        html += `</div>`;
+        showRow(id, html);
+    });
+}
+
+    function segmentTemplate(x, formatDate) {debugger
+        return `
+            <div class="relative pl-6 border-l-2 border-slate-100">
+                <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-4 border-orange-500"></div>
+                <div class="text-xs font-bold text-slate-800 mb-1">
+                    ${x.airline} <span class="text-slate-400 font-medium ml-2">${x.flightNo}</span>
+                    <span class="text-slate-400 font-medium ml-2">${x.boundClass}</span>
+                </div>
+                
+                <div class="flex items-center gap-3 text-[11px] text-slate-500">
+                    <div class="flex flex-col">
+                        <span class="font-black text-slate-700">${x.dcode}</span>
+                        <span>${formatDate(x.depDate)}</span>
+                    </div>
+                    <i class="fas fa-long-arrow-alt-right text-orange-300"></i>
+                    <div class="flex flex-col">
+                        <span class="font-black text-slate-700">${x.gcode}</span>
+                        <span>${formatDate(x.arrDate)}</span>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    // ---------------- PRICE DETAILS ----------------
+    function loadPriceDetails(id) {debugger
+        jQuery.get("/Admin/GetPriceDetails", { bookingId: id }, function (x) {
+
+            let html = `
+                <div class="flex items-center gap-2 mb-6 text-green-600">
+                    <i class="fas fa-receipt text-xl"></i>
+                    <h5 class="font-black uppercase tracking-tight text-slate-800">Financial Breakdown</h5>
+                </div>
+                <div class="overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-slate-50 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                <th class="px-6 py-4">Type</th>
+                                <th class="px-6 py-4">Count</th>
+                                <th class="px-6 py-4">Fare</th>
+                                <th class="px-6 py-4">Tax</th>
+                                <th class="px-6 py-4">Markup</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50">
+                            ${rowPrice('Adult', x.adult, x.adultFare, x.adutlTax, x.adultMarkup)}
+                            ${rowPrice('Child', x.child, x.childFare, x.childTax, x.childMarkup)}
+                            ${rowPrice('Infant', x.infant, x.infantFare, x.infantTax, x.infantMarkup)}
+                            <tr class="bg-green-50/50">
+                                <td colspan="4" class="px-6 py-4 font-black text-slate-600 uppercase text-xs">
+                                    Total Nett Amount
+                                </td>
+                                <td class="px-6 py-4 font-black text-green-600 text-lg">
+                                    $ ${x.nett ?? 0}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>`;
+
+            showRow(id, html);
+        });
+    }
+
+    function rowPrice(label, count, fare, tax, markup) {debugger
+        if (!count || count === 0) return '';
+        return `
+            <tr>
+                <td class="px-6 py-4 font-bold text-slate-700">${label}</td>
+                <td class="px-6 py-4 text-slate-500">${count}</td>
+                <td class="px-6 py-4 text-slate-500">$ ${fare ?? 0}</td>
+                <td class="px-6 py-4 text-slate-500">$ ${tax ?? 0}</td>
+                <td class="px-6 py-4 text-orange-500 font-bold">$ ${markup ?? 0}</td>
+            </tr>`;
+    }
+
+      // ---------------- CONTACT DETAILS ----------------
+    function loadContactDetails(id) {
+        jQuery.get("/Admin/GetContactDetails", { bookingId: id }, function (x) {
+
+            if (!x.success || !x.data) {
+                alert("Booking not found or access denied.");
+                return;
+            }
+
+            const data = x.data; // <-- get the actual object
+
+            let html = `
+                <div class="relative flex items-center mb-6">
+                    <!-- Left heading -->
+                    <h5 class="font-black text-slate-800 uppercase tracking-tight flex items-center gap-2">
+                        <i class="fas fa-id-card text-green-500"></i> Contact Profile
+                    </h5>
+
+                    <!-- Center name -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2">
+                        <span class="text-sm font-black text-slate-700 uppercase tracking-tight">
+                            ${data.paxFullName ?? "-"}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col p-4 bg-slate-50 rounded-xl">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Primary Contact</span>
+                        <span class="text-sm font-bold text-slate-700 underline">${data.contactPerson ?? "-"}</span>
+                    </div>
+                    <div class="flex flex-col p-4 bg-slate-50 rounded-xl">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Email</span>
+                        <span class="text-sm font-bold text-slate-700">${data.contactEmail ?? "-"}</span>
+                    </div>
+                    <div class="flex flex-col p-4 bg-slate-50 rounded-xl">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Agent</span>
+                        <span class="text-sm font-bold text-slate-700">${data.agent ?? "-"}</span>
+                    </div>
+                    <div class="flex flex-col p-4 bg-slate-50 rounded-xl">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Comments</span>
+                        <span class="text-sm font-bold text-slate-700">${data.comments ?? "No comments recorded."}</span>
+                    </div>
+                </div>`;
+
+            showRow(id, html);
+        });
+    }
+    // ---------------- CARD DETAILS ----------------
+    function loadCard(id) {debugger
+        jQuery.get("/Admin/GetCardDetails", { bookingId: id }, function (data) {debugger
+
+            let html = `
+                <h5 class="font-black text-slate-800 uppercase tracking-tight mb-6 flex items-center gap-2">
+                    <i class="fas fa-credit-card text-indigo-500"></i> Payment & Billing
+                </h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">`;
+
+            // Address
+            if (data.data.address) {debugger
+                html += `
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Billing Address</p>
+                        <p class="text-sm font-bold text-slate-700 leading-relaxed">
+                            ${data.data.address.billAddress1 ?? ""} ${data.data.address.billAddress2 ?? ""}<br/>
+                                    ${data.data.address.billCity ?? ""}, ${data.data.address.billState ?? ""} ${data.data.address.billPostalCode ?? ""}<br/>
+                                <span class="text-orange-500 underline uppercase text-xs">${data.data.address.billCountry ?? ""}</span>
+                        </p>
+                    </div>`;
+            }
+
+            // Cards
+            html += `<div>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 pl-2">Card Details</p>
+                        <div class="space-y-3">`;
+
+            if (!data.data.cards || data.data.cards.length === 0) {
+                html += `<div class="p-4 text-slate-400 italic text-sm">No card details found or You don't have access.</div>`;
+            } else {
+                data.data.cards.forEach(x => {
+                    html += `
+                        <div class="p-4 rounded-xl border border-slate-100 bg-white shadow-sm flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-black text-slate-800 uppercase">${x.cardType}</p>
+                                    <p class="text-sm font-medium text-slate-500 mt-1">${x.cardName}</p>
+                                <p class="text-sm font-medium text-slate-500 mt-1">${x.cardNumber}</p>
+                                     <p class="text-sm font-medium text-slate-500 mt-1">${x.cvc}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+                                    Expiry: ${x.expiryDate}/${x.expiryYear}
+                                </p>
+                            </div>
+                        </div>`;
+                });
+            }
+
+            html += `</div></div></div>`;
+            showRow(id, html);
+        });
+    }
+
+         // ---------------- PAGINATION ----------------
+        function loadPage(page) {
+
+        // fade + disable
+        $("#mainContent").addClass('opacity-50 pointer-events-none');
+
+        // 🔥 load ONLY inner content, NOT layout
+        $("#mainContent").load("/Admin/BookingDeatils?pageNumber=" + page + " #mainContent > *", function () {
+
+            // remove fade after load
+            $("#mainContent").removeClass('opacity-50 pointer-events-none');
+
+        });
+    }
+
+    function loadRemarks(id) {
+
+        jQuery.get("/Admin/GetConversation", { bookingId: id }, function (data) {
+
+            let html = `
+                <div class="flex flex-col h-[400px]">
+
+                    <div class="flex items-center justify-between mb-4">
+
+    <!-- LEFT SIDE -->
+    <div class="flex items-center gap-2">
+        <i class="fas fa-comments text-indigo-500"></i>
+        <h5 class="font-black text-slate-800 uppercase">Conversation</h5>
+    </div>
+
+    <!-- RIGHT SIDE (NEW UI) -->
+    <div class="flex items-center gap-2" style="margin-right: 3rem;">
+
+        <!-- Status Dropdown -->
+        <select id="status-${id}"
+                class="px-2 py-1 text-[11px] border border-slate-200 rounded-lg focus:outline-none">
+            <option value="">Status</option>
+            <option value="FollowUp">FollowUp</option>
+            <option value="Ticketed">Ticketed</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Pending">Pending</option>
+        </select>
+
+        <!-- Save Button -->
+        <button onclick="updateStatus(${id})"
+                class="px-2 py-1 text-[11px] bg-indigo-600 text-white rounded-lg">
+            Save
+        </button>
+
+    </div>
+
+</div>
+
+                    <div id="chatBox-${id}"
+                         class="flex-1 overflow-y-auto space-y-3 p-3 bg-slate-50 rounded-xl">
+            `;
+
+            if (!data.length) {
+                html += `<p class="text-sm text-slate-400 italic">No messages yet</p>`;
+            }
+
+            data.forEach(x => {
+
+                let isAdmin = x.senderRole.includes("Admin");
+
+                html += `
+                    <div class="flex ${isAdmin ? 'justify-end' : 'justify-start'}">
+                        <div class="max-w-[70%] p-3 rounded-2xl text-sm
+                                    ${isAdmin ?
+                        'bg-indigo-600 text-white' :
+                        'bg-white border border-slate-200'}">
+
+                            <div class="text-[10px] font-black mb-1 opacity-70">
+                                ${x.senderName} • ${x.time}
+                            </div>
+
+                            ${x.message}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-200 mt-3 flex gap-2">
+                        <input id="msg-${id}"
+                               class="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-sm"
+                               placeholder="Type reply..." />
+
+                        <button onclick="sendMessage(${id})"
+                                class="px-4 bg-indigo-600 text-white rounded-xl text-sm font-bold">
+                            Send
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            showRow(id, html);
+
+            setTimeout(() => {
+                let box = document.getElementById("chatBox-" + id);
+                box.scrollTop = box.scrollHeight;
+            }, 100);
+        });
+    }
+    function sendMessage(id) {
+
+        let msg = $("#msg-" + id).val();
+
+        if (!msg.trim()) return;
+
+        jQuery.post("/Admin/SendMessage",
+            {
+                bookingId: id,
+                message: msg
+            },
+            function (res) {
+
+                if (res.success) {
+                    loadRemarks(id); // Refresh chat
+                }
+            });
+    }
+
+    function sendCancellationEmail(id) {
+
+    if (!confirm("Are you sure you want to send cancellation email?")) return;
+
+    jQuery.post("/Admin/SendCancellationEmail",
+        {
+            bookingId: id
+        },
+        function (res) {
+
+            if (res.success) {
+                alert("Cancellation email sent successfully");
+            }else {
+
+            if (res.message === "Not Authorized") {
+                alert("You are not authorized to perform this action.");
+            }
+            else {
+                alert(res.message || "Failed to send email");
+            }
+        }
+        });
+}
+
+    function toggleDropdown(id) {
+    var el = document.getElementById("dropdown-" + id);
+
+    // Close all other dropdowns
+    document.querySelectorAll('[id^="dropdown-"]').forEach(d => {
+        if (d !== el) d.classList.add("hidden");
+    });
+
+    // Toggle current
+    el.classList.toggle("hidden");
+}
+function deleteBooking(bookingId) {
+
+    if (!confirm("Are you sure you want to delete this booking?"))
+        return;
+
+    $.ajax({
+        url: '/Admin/DeleteBooking',
+        type: 'POST',
+        data: { bookingId: bookingId },
+
+        success: function (res) {
+
+            if (res.success) {
+
+                alert("Booking deleted successfully");
+                location.reload();
+            }
+            else {
+
+                if (res.message === "Not Authorized") {
+                    alert("You are not authorized to delete this booking.");
+                }
+                else {
+                    alert(res.message || "Failed to delete booking");
+                }
+            }
+        },
+
+        error: function () {
+            alert("Something went wrong.");
+        }
+    });
+}
+// Close on outside click
+document.addEventListener("click", function (e) {
+    if (!e.target.closest('[onclick^="toggleDropdown"]') && !e.target.closest('[id^="dropdown-"]')) {
+        document.querySelectorAll('[id^="dropdown-"]').forEach(d => d.classList.add("hidden"));
+    }
+});
+
+
+function updateStatus(id) {
+
+    let status = $("#status-" + id).val();
+
+    if (!status) {
+        alert("Please select status");
+        return;
+    }
+
+    // backend call (tum baad me bana lena)
+    jQuery.post("/Admin/UpdateBookingStatus",
+        {
+            bookingId: id,
+            status: status
+        },
+        function (res) {
+            if (res.success) {
+                alert("Status updated");
+            } else {
+                alert("Failed");
+            }
+        });
+}
+
+
+function searchBooking() {
+
+    let bookingNo = $("#bookingSearch").val();
+
+    $("#mainContent").addClass('opacity-50 pointer-events-none');
+
+    $("#mainContent").load(
+        "/Admin/BookingDeatils?pageNumber=1&bookingNumber=" + encodeURIComponent(bookingNo) + " #mainContent > *",
+        function () {
+            $("#mainContent").removeClass('opacity-50 pointer-events-none');
+        });
+}
+</script>

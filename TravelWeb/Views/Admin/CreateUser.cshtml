@@ -1,0 +1,182 @@
+﻿@model TravelWeb.Models.AdminUserPageVM
+@using Newtonsoft.Json
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "User Management";
+}
+
+<div class="space-y-10">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-black text-slate-800 uppercase tracking-tight">Admin User Management</h1>
+            <p class="text-sm text-slate-500">Create, update, and manage administrative access levels.</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full">Total Users: @Model.Users.Count()</span>
+        </div>
+    </div>
+
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="px-8 py-4 border-b border-slate-100 bg-slate-50/50 flex items-center gap-2">
+            <div class="h-2 w-2 rounded-full @(Model.FormUser.UserId == 0 ? "bg-orange-500" : "bg-green-500")"></div>
+            <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">
+                @(Model.FormUser.UserId == 0 ? "Register New User" : "Edit Existing User")
+            </h3>
+        </div>
+
+        <form asp-action="Save" method="post" class="p-8">
+            <input type="hidden" asp-for="FormUser.UserId" />
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Username</label>
+                    <input asp-for="FormUser.UserName" placeholder="e.g. jsmith"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 outline-none transition-all text-sm" />
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Email Address</label>
+                    <input asp-for="FormUser.UserEmail" type="email" placeholder="admin@rushmyflight.com"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 outline-none transition-all text-sm" />
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Password</label>
+                    <input asp-for="FormUser.Password" type="password" placeholder="Leave blank to keep current password"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 outline-none transition-all text-sm" />
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Phone Number</label>
+                    <input asp-for="FormUser.UserPhone" placeholder="+1 (555) 000-0000"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all text-sm" />
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Allowed IP Address</label>
+                    <input asp-for="FormUser.AllowedIPAddress" placeholder="e.g. 192.168.1.1 or *"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all text-sm" />
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">System Role</label>
+                    <select asp-for="FormUser.RoleId" asp-items="ViewBag.Roles"
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all text-sm bg-white cursor-pointer"></select>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex gap-6">
+                    @if (Model.FormUser.UserId > 0)
+                    {
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input asp-for="FormUser.IsActive" class="w-5 h-5 rounded border-slate-300 text-green-600 focus:ring-green-500 cursor-pointer" />
+                            <span class="text-sm font-bold text-slate-600 group-hover:text-green-600 transition">Active Status</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input asp-for="FormUser.IsLocked" class="w-5 h-5 rounded border-slate-300 text-orange-600 focus:ring-orange-500 cursor-pointer" />
+                            <span class="text-sm font-bold text-slate-600 group-hover:text-orange-600 transition">Account Locked</span>
+                        </label>
+                    }
+                </div>
+
+                <div class="flex gap-3">
+                    @if (Model.FormUser.UserId > 0)
+                    {
+                        <a asp-action="CreateUser" class="px-6 py-3 rounded-xl border border-slate-200 text-slate-500 font-bold text-sm hover:bg-slate-50 transition">Cancel</a>
+                    }
+                    <button type="submit" class="px-10 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm shadow-lg shadow-orange-200 transition-all flex items-center gap-2">
+                        <i class="fas @(Model.FormUser.UserId == 0 ? "fa-plus" : "fa-save")"></i>
+                        @(Model.FormUser.UserId == 0 ? "Create User" : "Update Profile")
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[800px]">
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100">
+                        <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">User Profile</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Account Details</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest text-center">Security Status</th>
+                        <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                    @foreach (var u in Model.Users)
+                    {
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-8 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
+                                    <div class="h-10 w-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs shadow-inner">
+                                        @u.UserName.Substring(0, 1).ToUpper()
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-slate-800 text-sm">@u.UserName</p>
+                                        <p class="text-[10px] font-bold text-orange-500 uppercase tracking-tighter">@u.RoleName</p>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="space-y-1">
+                                    <p class="text-sm text-slate-600 flex items-center gap-2">
+                                        <i class="far fa-envelope text-slate-300 w-4 text-center"></i> @u.UserEmail
+                                    </p>
+                                    <div class="flex items-center gap-4 text-[11px] font-medium text-slate-400">
+                                        <span class="flex items-center gap-1"><i class="fas fa-history text-slate-300"></i> Login: @(u.LastLoginAt?.ToString("g") ?? "Never")</span>
+                                        <span class="flex items-center gap-1"><i class="fas fa-phone text-slate-300"></i> @u.UserPhone</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="flex items-center justify-center gap-1.5">
+                                    @if (u.IsActive)
+                                    {
+                                        <span class="px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[9px] font-black uppercase tracking-tighter ring-1 ring-green-200">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[9px] font-black uppercase tracking-tighter ring-1 ring-slate-200">Off</span>
+                                    }
+
+                                    @if (u.IsLocked)
+                                    {
+                                        <span class="px-2 py-0.5 rounded-full bg-red-100 text-red-600 text-[9px] font-black uppercase tracking-tighter ring-1 ring-red-200 shadow-sm" title="Account Locked">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    }
+                                </div>
+                            </td>
+
+                            <td class="px-8 py-4 text-right whitespace-nowrap">
+                                <div class="flex items-center justify-end gap-1.5 opacity-1 group-hover:opacity-100 transition-opacity">
+                                    <a asp-action="CreateUser" asp-route-editId="@u.UserId" title="Edit User"
+                                       class="h-7 w-7 flex items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-orange-500 hover:border-orange-500 transition shadow-sm">
+                                        <i class="fas fa-pencil-alt text-[10px]"></i>
+                                    </a>
+                                    <a asp-action="ToggleActive" asp-route-id="@u.UserId" title="Toggle Status"
+                                       class="h-7 w-7 flex items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-green-500 hover:border-green-500 transition shadow-sm">
+                                        <i class="fas fa-power-off text-[10px]"></i>
+                                    </a>
+                                    <a asp-action="ToggleLock" asp-route-id="@u.UserId" title="Lock/Unlock"
+                                       class="h-7 w-7 flex items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-red-500 hover:border-red-500 transition shadow-sm">
+                                        <i class="fas @(u.IsLocked ? "fa-unlock" : "fa-lock") text-[10px]"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@u.UserId" onclick="return confirm('Delete user @u.UserName?')" title="Delete"
+                                       class="h-7 w-7 flex items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-red-600 hover:border-red-600 transition shadow-sm">
+                                        <i class="fas fa-trash-alt text-[10px]"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

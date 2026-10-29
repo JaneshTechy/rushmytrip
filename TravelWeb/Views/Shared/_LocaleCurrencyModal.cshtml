@@ -1,0 +1,44 @@
+@using TravelWeb.Utilities
+@{
+    var selectedLanguage = LocaleCurrencyHelper.GetSelectedLanguage(Context);
+    var selectedCurrency = LocaleCurrencyHelper.GetSelectedCurrency(Context);
+}
+
+<div id="localeModalOverlay" class="locale-modal-overlay notranslate" role="dialog" aria-modal="true" aria-labelledby="localeModalTitle">
+    <div class="locale-modal">
+        <div class="locale-modal-header">
+            <button type="button" class="locale-modal-close" data-locale-close aria-label="Close">&times;</button>
+        </div>
+        <div class="locale-modal-body">
+            <h2 id="localeModalTitle" class="locale-section-title" data-i18n="modal.language">Language</h2>
+            <div class="locale-lang-tabs" role="tablist">
+                @foreach (var lang in LocaleCurrencyHelper.Languages)
+                {
+                    <button type="button"
+                            class="locale-lang-tab @(lang.Code == selectedLanguage ? "active" : "")"
+                            data-lang="@lang.Code"
+                            role="tab"
+                            aria-selected="@(lang.Code == selectedLanguage ? "true" : "false")">
+                        <img src="https://flagcdn.com/w40/@(lang.FlagCountry).png" alt="@lang.FlagCountry" />
+                        <span>@lang.Label</span>
+                    </button>
+                }
+            </div>
+
+            <h2 class="locale-section-title" data-i18n="modal.currency">Currency</h2>
+            <div class="locale-currency-grid">
+                @foreach (var currency in LocaleCurrencyHelper.Currencies)
+                {
+                    <button type="button"
+                            class="locale-currency-item @(currency.Code == selectedCurrency ? "active" : "")"
+                            data-currency="@currency.Code"
+                            title="@currency.Code @currency.Symbol">
+                        <img src="https://flagcdn.com/w40/@(currency.FlagCountry).png" alt="@currency.Code" />
+                        <span class="locale-currency-code">@currency.Code</span>
+                        <span class="locale-currency-symbol">@currency.Symbol</span>
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

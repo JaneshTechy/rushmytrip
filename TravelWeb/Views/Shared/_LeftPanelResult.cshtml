@@ -1,0 +1,862 @@
+﻿@using TravelWeb.Models;
+@model FlightsResult;
+@{
+    var cheapestFlight = Model.FlightsList
+        .OrderBy(x => x.TotalCost)
+        .FirstOrDefault();
+
+    var firstOutbound = cheapestFlight?.Outbound?.FirstOrDefault();
+    var lastOutbound = cheapestFlight?.Outbound?.LastOrDefault();
+    var depRange = Model.OutBoundDep?.Split(':');
+
+    int min = depRange != null ? Convert.ToInt32(depRange[0]) : 0;
+    int max = depRange != null ? Convert.ToInt32(depRange[1]) : 1440;
+
+    var slots = new[]
+        {
+        new { Label = "Morning", Start = 360, End = 720, Icon="🌅" },
+        new { Label = "Afternoon", Start = 720, End = 1080, Icon="☀️" },
+        new { Label = "Evening", Start = 1080, End = 1440, Icon="🌇" },
+        new { Label = "Night", Start = 0, End = 360, Icon="🌙" }
+    };
+}
+@if (ViewBag.IsAvailable == false)
+{
+
+
+    <div class="middle-search_no">
+        <div class="no_result">
+            <div class="no_result_left">
+                <div class=""><img src="~/img/img/call_center.jpg" alt="call-center"></div>
+                <h1 data-i18n="result.noResults">Sorry! No Result Found</h1>
+                <p>We have Searched more than million Flights Combination. We didn't find any Flights for Your Search. </p>
+                <h3>Let Our Agents Help You Find The Best Flight Option!</h3>
+                <h5> Call Now Toll Free</h5>
+                <a href="tel:+1 8002317119"><dfn></dfn> +1 8002317119</a>
+                <div class="mobile_last">
+                    <a href="tel:+1 8002317119" class="btn  float-right" aria-hidden="true" style="background-color: #0b4a80 !important; color:#fff; "> <i class="fa fa-phone"></i> CALL </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-calling " style="display:none">
+        <div class="mobile_left"><img src="/img/call-icon.png" class="dep-ai-img"> </div>
+        <div class="mobile_mid">
+            <h3>Call us for phone only </h3>
+            <span>unpublished fares</span>
+            <div class="deal-code">Deal Code: A2258512</div>
+        </div>
+        <div class="mobile_last">
+            <a href="tel:+1 800 231 7119" class="btn  float-right" aria-hidden="true" style="background-color: #0b4a80 !important; color:#fff; "> <i class="fa fa-phone"></i> CALL </a>
+        </div>
+
+    </div>
+
+
+}
+else
+{
+
+    <div class="sidebar-in">
+        
+        <div class="price-summary">
+            <h6 class="ps-route">@Model.FlightsSearch.From.CityCode → @Model.FlightsSearch.To.CityCode @(Model.FlightsSearch.RetDate != null ? "Round Trip" : "One Way")</h6>
+            <div class="ps-price">
+                <sup>@cheapestFlight?.Currency</sup>@cheapestFlight?.TotalCost
+            </div>
+
+            <div class="ps-meta">
+                <span data-i18n="result.perPerson">per person</span> · @(cheapestFlight?.FlightClass)
+            </div>
+            <div class="ps-badge" data-i18n="result.lowestPrice">Lowest Price Found</div>
+            <button class="btn-primary-results sidebar-select-btn"
+                    data-id="@cheapestFlight.FlightId"
+                    data-i18n="result.bookPrice">
+                Book at This Price
+            </button>
+        </div>
+
+        <div class="clear-filters d-flex space-between">
+            <h5 data-i18n="result.filters">Filters</h5>
+            <button class="d-flex gap-5 bg-transparent text-sm" onclick="ClearAllFilters()">
+                ✖ <span data-i18n="result.clearAll">Clear All</span>
+            </button>
+        </div>
+
+        <div class="sidebar-card">
+            <div class="sidebar-card-title d-flex space-between">
+                <span data-i18n="result.stops">Stops</span>
+                <a href="#" onclick="ResetStops(); return false;" data-i18n="result.reset">Reset</a>
+            </div>
+
+            <div class="stop-options">
+
+                <!-- NON STOP -->
+                <div class="stop-option d-flex space-between @(Model.StopExtra.Count > 0 && Model.StopExtra[0].TotalCost != 0 ? "" : "disabled")" onclick="toggleStop(this,0)">
+           
+                    <input type="checkbox" class="stopscheckbox" id="stop_0" value="0"
+                            style="display:none;"
+                            @(Model.StopExtra.Count > 0 && Model.StopExtra[0].TotalCost == 0 ? "disabled" : "") />
+
+                    <div class="stop-check">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12" stroke-width="3"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="stop-info">
+                        <div class="stop-name" data-i18n="result.nonStop">Non-stop</div>
+                        <div class="stop-avail">
+                            @(Model.StopExtra.Count > 0 && Model.StopExtra[0].TotalCost == 0 ? "No flights available" : "Best option")
+                        </div>
+                    </div>
+
+                    <div class="stop-price">
+                        @(Model.StopExtra.Count > 0 && Model.StopExtra[0].TotalCost == 0
+                            ? "–"
+                            : ViewBag.Currency + "" + Math.Floor(Model.StopExtra[0].TotalCost))
+                    </div>
+                </div>
+
+
+                <!-- 1 STOP -->
+                <div class="stop-option d-flex space-between @(Model.StopExtra.Count > 1 && Model.StopExtra[1].TotalCost != 0 ? "" : "disabled")" onclick="toggleStop(this,1)">
+           
+                    <input type="checkbox" class="stopscheckbox" id="stop_1" value="1"
+                            style="display:none;"
+                            @(Model.StopExtra.Count > 1 && Model.StopExtra[1].TotalCost == 0 ? "disabled" : "") />
+
+                    <div class="stop-check">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12" stroke-width="3"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="stop-info">
+                        <div class="stop-name">1 Stop</div>
+                        <div class="stop-avail">
+                            @(Model.StopExtra.Count > 1 && Model.StopExtra[1].TotalCost == 0 ? "No flights available" : "Best option")
+                        </div>
+                    </div>
+
+                    <div class="stop-price">
+                        @(Model.StopExtra.Count > 1 && Model.StopExtra[1].TotalCost == 0
+                            ? "–"
+                            : ViewBag.Currency + "" + Math.Floor(Model.StopExtra[1].TotalCost))
+                    </div>
+                </div>
+
+
+                <!-- 2 STOP -->
+                <div class="stop-option d-flex space-between @(Model.StopExtra.Count > 2 && Model.StopExtra[2].TotalCost != 0 ? "" : "disabled")" onclick="toggleStop(this,2)">
+           
+                    <input type="checkbox" class="stopscheckbox" id="stop_2" value="2"
+                            style="display:none;"
+                            @(Model.StopExtra.Count > 2 && Model.StopExtra[2].TotalCost == 0 ? "disabled" : "") />
+
+                    <div class="stop-check">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12" stroke-width="3"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="stop-info">
+                        <div class="stop-name">2 Stops</div>
+                        <div class="stop-avail">
+                            @(Model.StopExtra.Count > 2 && Model.StopExtra[2].TotalCost == 0 ? "No flights available" : "More options")
+                        </div>
+                    </div>
+
+                    <div class="stop-price">
+                        @(Model.StopExtra.Count > 2 && Model.StopExtra[2].TotalCost == 0
+                            ? "–"
+                            : ViewBag.Currency + "" + Math.Floor(Model.StopExtra[2].TotalCost))
+                    </div>
+                </div>
+
+
+                <!-- 3+ STOP -->
+                <div class="stop-option d-flex space-between @(Model.StopExtra.Count > 3 && Model.StopExtra[3].TotalCost != 0 ? "" : "disabled")" onclick="toggleStop(this,3)">
+           
+                    <input type="checkbox" class="stopscheckbox" id="stop_3" value="3"
+                            style="display:none;"
+                            @(Model.StopExtra.Count > 3 && Model.StopExtra[3].TotalCost == 0 ? "disabled" : "") />
+
+                    <div class="stop-check">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12" stroke-width="3"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="stop-info">
+                        <div class="stop-name">3+ Stops</div>
+                        <div class="stop-avail">
+                            @(Model.StopExtra.Count > 3 && Model.StopExtra[3].TotalCost == 0 ? "No flights available" : "Budget option")
+                        </div>
+                    </div>
+
+                    <div class="stop-price">
+                        @(Model.StopExtra.Count > 3 && Model.StopExtra[3].TotalCost == 0
+                            ? "–"
+                            : ViewBag.Currency + "" + Math.Floor(Model.StopExtra[3].TotalCost))
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="sidebar-card">
+            <div class="sidebar-card-title">Price Range</div>
+
+            <div class="price-slider-wrap">
+
+                <!-- LABELS -->
+                <div class="price-range-labels">
+                    <span id="minPriceLabel">$0</span>
+                    <span id="maxPriceLabel">$0</span>
+                </div>
+
+                <!-- ✅ IMPORTANT: NEW SLIDER -->
+                <div id="slider-range"></div>
+
+                <!-- DISPLAY -->
+                <div class="price-current" id="priceDisplay"></div>
+
+            </div>
+        </div>
+        <div class="sidebar-card">
+            <div class="sidebar-card-title d-flex space-between">
+                Airlines
+                <a href="#" onclick="ResetAirline()">Clear all</a>
+            </div>
+
+            <div class="airline-options">
+
+            @{
+                    string ArrAirlineDetails = "";
+                }
+
+                @foreach (var airlineItem in Model.ListAirline)
+                {
+                    if (airlineItem == null) { break; }
+
+                    ArrAirlineDetails += airlineItem.Code + "~" + airlineItem.Name + "~" + airlineItem.TotalCost + "~" + airlineItem.Stops + "|";
+
+                    var shortCode = airlineItem.Code.Length >= 2 ? airlineItem.Code.Substring(0, 2).ToUpper() : airlineItem.Code;
+
+                    <div class="airline-option"
+                            onclick="toggleAirline(this,'@airlineItem.Code')">
+
+                        <!-- HIDDEN CHECKBOX (IMPORTANT) -->
+                        <input type="checkbox"
+                                class="chkAirlinelist"
+                                id="airline_@airlineItem.Code"
+                                value="@airlineItem.Code"
+                                style="display:none;" />
+
+                        <div class="airline-check">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <polyline points="20,6 9,17 4,12" stroke-width="3"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="airline-logo d-flex">
+                            @shortCode
+                        </div>
+
+                        <div class="airline-name">
+                            @airlineItem.Name
+                        </div>
+
+                        <div class="airline-price">
+                            $@airlineItem.TotalCost
+                        </div>
+                    </div>
+                }
+
+                <!-- REQUIRED (DO NOT REMOVE) -->
+                <input type="hidden" value="@ArrAirlineDetails" id="hdnAirlineDetails" />
+
+            </div>
+        </div>
+     <div class="sidebar-card">
+            <div class="sidebar-card-title d-flex space-between">
+                Departure Time
+            </div>
+
+            <div class="time-grid">
+                @foreach (var slot in slots)
+                {
+                    bool show = !(slot.End < min || slot.Start > max);
+
+                    if (show)
+                    {
+                        <div class="time-tile"
+                                data-start="@slot.Start"
+                                data-end="@slot.End"
+                                onclick="toggleTile(this)">
+
+                            <span class="time-tile-icon">@slot.Icon</span>
+                            <div class="time-tile-lbl">@slot.Label</div>
+
+                            <div class="time-tile-range">
+                                @($"{((slot.Start / 60) % 12 == 0 ? 12 : (slot.Start / 60) % 12)}{(slot.Start < 720 ? "am" : "pm")} – {((slot.End / 60) % 12 == 0 ? 12 : (slot.End / 60) % 12)}{(slot.End <= 720 ? "am" : "pm")}")
+                            </div>
+
+                        </div>
+                    }
+                }
+            </div>
+        </div> 
+        <div class="sidebar-card card-booking">
+            <h3>Need help booking?</h3>
+            <p>Our travel experts are available 24/7 to find you the best deal.</p>
+            <a href="tel:+18555104060" class="btn-call btn-primary-results d-flex gap-5">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                </svg>
+                +1-855-510-4060
+            </a>
+        </div>
+    </div>
+    <script>
+                function toggleStop(el, val) {
+
+            var checkbox = $('#stop_' + val);
+
+            if (checkbox.prop('disabled')) return;
+
+            checkbox.prop('checked', !checkbox.prop('checked'));
+
+            $(el).toggleClass('active');
+
+            $('#hdnPageIndex').val("0");
+
+            filterResult();
+        }
+
+        $(document).on('change', '.stopscheckbox', function () {
+
+            var val = $(this).val();
+
+            if ($(this).is(':checked')) {
+                $('[onclick="toggleStop(this,' + val + ')"]').addClass('active');
+            } else {
+                $('[onclick="toggleStop(this,' + val + ')"]').removeClass('active');
+            }
+        });
+                $(document).ready(function () {
+
+            $(".sidebar-select-btn").click(function (e) {
+                e.preventDefault();
+
+                var flight_id = $(this).data("id");
+
+                var chkAdultmore = parseInt(localStorage.getItem("moreadultcount")) || 0;
+                var chkChildmore = parseInt(localStorage.getItem("morechildcount")) || 0;
+
+                var qsval = window.location.search.replace(/\?/g, '');
+                var searchId = $("#SearchId").val();
+
+                var url = "@(TravelWeb.Utilities.Common.WebSitePath + "details?")"
+                    + qsval
+                    + "&flightId=" + flight_id
+                    + "&moreadultcount=" + chkAdultmore
+                    + "&morechildcount=" + chkChildmore
+                    + "&searchID=" + searchId;
+
+                $("#loading").show();
+
+                window.location.href = url;
+            });
+
+        });
+    </script>
+
+
+    <aside class="sidebar" id="link">
+        <button class="sidebar-close"><i class="fa fa-times"></i></button>
+        <div class="filter-section">
+
+
+        </div>
+    </aside>
+
+    <input type="hidden" id="hdnMinPrice" value="@(Model.MinPrice)" />
+    <input type="hidden" id="hdnMaxPrice" value="@(Model.MaxPrice)" />
+    <input type="hidden" id="hdnAirlineCnt" value="@(Model.ListAirline.Count())" />
+    <input type="hidden" id="hdnDepartureSlots" value="" />
+    <input type="hidden" id="hdnoutboundDep" value="@(Model.OutBoundDep)" />
+    <input type="hidden" id="hdnoutboundArr" value="@(Model.OutBoundArr)" />
+    <input type="hidden" id="hdninboundDep" value="@(Model.InBoundDep)" />
+    <input type="hidden" id="hdninboundArr" value="@(Model.InBoundArr)" />
+    <input type="hidden" id="hdnResultCount" value="@Model.FlightsList.Count" />
+    <input type="hidden" id="SearchId" value="@Model.SearchId" />
+    <input type="hidden" id="hdnSortResult" value="price" />
+    <script>
+                debugger;
+                var SearchId = document.getElementById("SearchId").value;
+                //var searchid = localStorage.setItem("searchID", SearchId);
+                var MinPrice = document.getElementById("hdnMinPrice").value;
+
+                console.log(SearchId, MinPrice);
+                //window.onload = function () {
+                //    var SearchId = document.getElementById("SearchId").value;
+                //    var searchid = localStorage.setItem("searchID",SearchId );
+                //    console.log(searchid);
+                //}
+
+            @* $(function () {
+
+        var DetailAirline = $('#hdnAirlineDetails').val();
+
+        var ArrDetailairline = DetailAirline.split('|');
+
+
+       var matrixHtml = "";
+
+        for (c = 0; c < ArrDetailairline.length-1; c++)
+        {
+           // alert(ArrDetailairline[c]);
+            var acode = ArrDetailairline[c].split('~')[0];
+            var aname = ArrDetailairline[c].split('~')[1];
+            var aPrice = ArrDetailairline[c].split('~')[2];
+            var aStops = ArrDetailairline[c].split('~')[3];
+            matrixHtml += "";
+
+            matrixHtml += ' <div class="item" style="cursor:pointer;" onClick="CheckMatrix(\'' + acode + '\')">';
+            matrixHtml += ' <div class="arilin_logo">';
+            matrixHtml += '  <img class="img-responsive" src="@(TravelWeb.Utilities.Common.WebSitePath)img/airline/icon/' + acode+'.png" alt="Image Alternative text" />';
+            matrixHtml += '</div>';
+            matrixHtml += '  <p class="arilin_name">' + aname+'</p>';
+            matrixHtml += '<p class="arilin_price">$' + aPrice+'</p>';
+            if (0 == parseInt(aStops)) { aStops = 'Non ';}
+            matrixHtml += '<p class="arilin_stop">(' + aStops + ' stop)</p>';
+
+            matrixHtml += ' </div>';
+        }
+        $('#owl-demo').html(matrixHtml);
+        $("#owl-demo").owlCarousel({
+
+            autoPlay: false, //Set AutoPlay to 3 seconds
+            pagination: false,
+            //dots: false,
+            navigation: true,
+            navigationText: [
+                "<i class='fa fa-chevron-left'></i>",
+                "<i class='fa fa-chevron-right'></i>"
+            ],
+            items: 6,
+            itemsDesktop: [1199, 6],
+            itemsDesktopSmall: [979, 5],
+            itemsTablet: [600, 4],
+            itemsMobile: [500, 3],
+
+        });
+       // alert(matrixHtml);
+
+
+    }); *@
+
+                    $(function () {
+                            var currency = '@ViewBag.Currency';
+
+                    var DetailAirline = $('#hdnAirlineDetails').val();
+                    var ArrDetailairline = DetailAirline.split('|');
+
+                    var headerRow = '<tr><td></td>';
+                    var nonStopRow = '<tr><td>Non-stop / 1 stop</td>';
+                    var multiStopRow = '<tr><td>1+ stops</td>';
+
+                    for (var c = 0; c < ArrDetailairline.length - 1; c++) {
+
+                        var parts = ArrDetailairline[c].split('~');
+
+                        var acode = parts[0];
+                        var aname = parts[1];
+                        var aPrice = parts[2];
+                        var aStops = parseInt(parts[3]);
+
+                        // Header (airline logos)
+                        headerRow +=
+                            '<td onclick="CheckMatrix(\'' + acode + '\')" style="cursor:pointer; text-align: center;">' +
+                            '<img style="display: inline-block;" src="@(TravelWeb.Utilities.Common.WebSitePath)img/airline/icon/' + acode + '.png" alt="' + aname + '">' +
+                            '</td>';
+
+                        // Price rows based on stops
+                        if (aStops <= 1) {
+                            nonStopRow += '<td>' + currency + ' ' + aPrice + '</td>';
+                            multiStopRow += '<td>-</td>';
+                        } else {
+                            nonStopRow += '<td>-</td>';
+                            multiStopRow += '<td>' + currency + ' ' + aPrice + '</td>';
+                        }
+                    }
+
+                    headerRow += '</tr>';
+                    nonStopRow += '</tr>';
+                    multiStopRow += '</tr>';
+
+                    var tableHtml =
+                        '<table class="airline-logos">' +
+                        headerRow +
+                        nonStopRow +
+                        multiStopRow +
+                        '</table>';
+
+                    $('#owl-demo').html(tableHtml);
+                });
+            function CheckMatrix(acode) {
+                $('#hdnSorPrice').val("0");
+                $('#hdnSortResult').val("price");
+                $('#hdnPageIndex').val("0");
+                $('.stopscheckbox').each(function (i, items) {
+                    $(this).prop('checked', false);
+                });
+                $('.chkAirlinelist').each(function (i, items) {
+                   $(this).prop('checked',false);
+                });
+                $('#airline_' + acode).prop('checked', true);
+                filterResult();
+                setPriceLowToHigh();
+            }
+    </script>
+
+    <script>
+         $(function () {
+            @*  $("#fltcount").html(@Model.MultiFlightsList.Count()); *@
+                    $("#fltcount").html(@Model.FlightsList.Count());
+                $('#results-sidebar-close').click(function () {
+                 // alert('btn');
+                 $('#divLeftPanel .sticky-col.customHideClass').hide();
+             });
+
+             $("#amount").val("$" + $("#hdnMinPrice").val() + " - $" + $("#hdnMaxPrice").val());
+             jQuery('#outboundDepature-amount').val(setSliderTime($("#hdnoutboundDep").val()));
+             jQuery('#outboundArrival-amount').val(setSliderTime($("#hdnoutboundArr").val()));
+             jQuery('#inboundDeparture-amount').val(setSliderTime($("#hdninboundDep").val()));
+             jQuery('#inboundArrival-amount').val(setSliderTime($("#hdninboundArr").val()));
+             SetPriceRange();
+             SetOutBoundDep();
+             SetOutBoundArr();
+             SetInBoundDep();
+             SetInBoundArr();
+
+         });
+        function toggleTile(el) {
+
+            $(el).toggleClass("on");
+
+            var selectedRanges = [];
+
+            $(".time-tile.on").each(function () {
+
+                var start = $(this).data("start");
+                var end = $(this).data("end");
+
+                selectedRanges.push(start + "-" + end); // ✅ FIXED
+            });
+
+            $("#hdnDepartureSlots").val(selectedRanges.join('|'));
+
+            filterResult();
+        }
+                 function toggleAirline(el, code) {
+
+            // Toggle UI class
+            $(el).toggleClass('checked');
+
+            // Toggle hidden checkbox (THIS IS KEY)
+            var chk = $('#airline_' + code);
+            chk.prop('checked', !chk.prop('checked'));
+
+            // Trigger your existing filter
+            filterResult();
+        }
+
+        function setSliderTime(jurtime) {
+            var jurval = jurtime.split(":")
+            var hours1 = Math.floor(jurval[0] / 60);
+            var minutes1 = jurval[0] - (hours1 * 60);
+
+            if (hours1 < 10) hours1 = '0' + hours1;
+            if (minutes1 < 10) minutes1 = '0' + minutes1;
+
+            if (minutes1 == 0) minutes1 = '00';
+
+            var hours2 = Math.floor(jurval[1] / 60);
+            var minutes2 = jurval[1] - (hours2 * 60);
+
+            if (hours2 < 10) hours2 = '0' + hours2;
+            if (minutes2 < 10) minutes2 = '0' + minutes2;
+
+            if (minutes2 == 0) minutes2 = '00';
+            var rvalue = hours1 + ':' + minutes1 + '-' + hours2 + ':' + minutes2;
+            return rvalue;
+        }
+        function ResetPriceSlider() {
+            var minprice = parseInt('@(Model.MinPrice)');
+            var maxprice = parseInt('@(Model.MaxPrice)');
+
+            var slider = document.getElementById('slider-range');
+
+            slider.noUiSlider.set([minprice, maxprice]);
+
+            $("#hdnMinPrice").val(minprice);
+            $("#hdnMaxPrice").val(maxprice);
+
+            filterResult();
+        }
+
+        function ResetOutDep() {
+            var outboundDepature_slider_range = document.getElementById('outboundDepature-slider-range');
+            var outDepVal = '@(Model.OutBoundDep)';
+            outboundDepature_slider_range.noUiSlider.set([parseInt(outDepVal.split(':')[0]), parseInt(outDepVal.split(':')[1])]);
+            filterResult();
+        }
+        function ResetOutArr() {
+            var outboundArrival_slider_range = document.getElementById('outboundArrival-slider-range');
+            var outArrVal = '@(Model.OutBoundArr)';
+            outboundArrival_slider_range.noUiSlider.set([parseInt(outArrVal.split(':')[0]), parseInt(outArrVal.split(':')[1])]);
+            filterResult();
+        }
+        function ResetInDep() {
+            var inboundDeparture_slider_range = document.getElementById('inboundDeparture-slider-range');
+            var InDepVal = '@(Model.InBoundDep)';
+            inboundDeparture_slider_range.noUiSlider.set([parseInt(InDepVal.split(':')[0]), parseInt(InDepVal.split(':')[1])]);
+            filterResult();
+        }
+        function ResetInArr() {
+            var inboundArrival_slider_range = document.getElementById('inboundArrival-slider-range');
+            var InArrVal = '@(Model.InBoundArr)';
+            inboundArrival_slider_range.noUiSlider.set([parseInt(InArrVal.split(':')[0]), parseInt(InArrVal.split(':')[1])]);
+            filterResult();
+        }
+
+        function ResetAirline() {
+
+            $('.chkAirlinelist').prop('checked', false);
+
+            // REMOVE UI CHECK STATE ALSO
+            $('.airline-option').removeClass('checked');
+
+            filterResult();
+        }
+
+        function ResetStops() {
+            $('.stopscheckbox').each(function (i, items) {
+                if ($(this).prop('checked')) {
+                    this.checked = false;
+                }
+            });
+            filterResult();
+        }
+
+                function SetPriceRange() {
+
+            var min = parseInt($("#hdnMinPrice").val());
+            var max = parseInt($("#hdnMaxPrice").val());
+
+            var slider = document.getElementById('slider-range');
+
+            noUiSlider.create(slider, {
+                start: [min, max],
+                connect: true,
+                step: 1,
+                behaviour: 'drag',
+                range: {
+                    'min': min,
+                    'max': max
+                }
+            });
+
+            // 🔥 LIVE UI UPDATE (while dragging)
+            slider.noUiSlider.on('update', function (values) {
+
+                var minVal = parseInt(values[0]);
+                var maxVal = parseInt(values[1]);
+
+                $("#minPriceLabel").text("$" + minVal.toLocaleString());
+                $("#maxPriceLabel").text("$" + maxVal.toLocaleString());
+                $("#priceDisplay").text("$" + minVal.toLocaleString() + " - $" + maxVal.toLocaleString());
+
+            });
+
+            // 🔥 APPLY FILTER (after release)
+            slider.noUiSlider.on('change', function (values) {
+
+                var minVal = parseInt(values[0]);
+                var maxVal = parseInt(values[1]);
+
+                $("#hdnMinPrice").val(minVal);
+                $("#hdnMaxPrice").val(maxVal);
+                 $('#hdnSortResult').val("price");
+                filterResult();
+            });
+        }
+        function SetOutBoundDep() {
+            var outboundDepature_slider_range = document.getElementById('outboundDepature-slider-range');
+            var outDepVal = '@(Model.OutBoundDep)';
+             var outDepVal1 = outDepVal;
+            if (outDepVal.split(':')[0] == outDepVal.split(':')[1]) {
+                outDepVal = outDepVal.split(':')[0] + ":" + parseInt(outDepVal.split(':')[0]) + 1;
+            }
+                var outdep = outDepVal.split(':');
+            noUiSlider.create(outboundDepature_slider_range, {
+                start: [parseInt(outdep[0]), parseInt(outdep[1])],
+                connect: true,
+                range: {
+                    'min': parseInt(outdep[0]),
+                    'max': parseInt(outdep[1])
+                }
+
+            });
+            outboundDepature_slider_range.noUiSlider.on('change', function (values, handle) {
+                var d =  parseInt(values[0]) + ":" + parseInt(values[1]);
+                $("#hdnoutboundDep").val(setSliderTime(d));
+                $('#outboundDepature-amount').val(setSliderTime(d));
+                filterResult();
+            });
+            if (outDepVal1.split(':')[0] == outDepVal1.split(':')[1]) {
+                outboundDepature_slider_range.setAttribute('disabled', true);
+            }
+        }
+        function SetOutBoundArr() {
+            var outboundArrival_slider_range = document.getElementById('outboundArrival-slider-range');
+            var outArrVal = '@(Model.OutBoundArr)';
+             var outArrVal1 = outArrVal;
+            if (outArrVal.split(':')[0] == outArrVal.split(':')[1]) {
+                outArrVal = outArrVal.split(':')[0] + ":" + parseInt(outArrVal.split(':')[0]) + 1;
+            }
+            var outarr = outArrVal.split(':');
+            noUiSlider.create(outboundArrival_slider_range, {
+                start: [parseInt(outarr[0]), parseInt(outarr[1])],
+                connect: true,
+                range: {
+                    'min': parseInt(outarr[0]),
+                    'max': parseInt(outarr[1])
+                }
+
+            });
+            outboundArrival_slider_range.noUiSlider.on('change', function (values, handle) {
+                var d =  parseInt(values[0]) + ":" + parseInt(values[1]);
+                $("#hdnoutboundArr").val(setSliderTime(d));
+                $('#outboundArrival-amount').val(setSliderTime(d));
+                filterResult();
+            });
+            if (outArrVal1.split(':')[0] == outArrVal1.split(':')[1]) {
+                outboundArrival_slider_range.setAttribute('disabled', true);
+            }
+        }
+        function SetInBoundDep() {
+            var inboundDeparture_slider_range = document.getElementById('inboundDeparture-slider-range');
+            var InDepVal = '@(Model.InBoundDep)';
+             var InDepVal1 = InDepVal;
+            if (InDepVal.split(':')[0] == InDepVal.split(':')[1]) {
+                InDepVal = InDepVal.split(':')[0] + ":" + parseInt(InDepVal.split(':')[0]) + 1;
+            }
+                 var Indep = InDepVal.split(':');
+            noUiSlider.create(inboundDeparture_slider_range, {
+                start: [parseInt(Indep[0]), parseInt(Indep[1])],
+                connect: true,
+                range: {
+                    'min': parseInt(Indep[0]),
+                    'max': parseInt(Indep[1])
+                }
+
+            });
+            inboundDeparture_slider_range.noUiSlider.on('change', function (values, handle) {
+                var d =  parseInt(values[0]) + ":" + parseInt(values[1]);
+                $("#hdninboundDep").val(setSliderTime(d));
+                $('#inboundDeparture-amount').val(setSliderTime(d));
+                filterResult();
+            });
+            if (InDepVal1.split(':')[0] == InDepVal1.split(':')[1]) {
+                inboundDeparture_slider_range.setAttribute('disabled', true);
+            }
+        }
+        function SetInBoundArr() {
+            var inboundArrival_slider_range = document.getElementById('inboundArrival-slider-range');
+            var InArrVal = '@(Model.InBoundArr)';
+              var InArrVal1 = InArrVal;
+            if (InArrVal.split(':')[0] == InArrVal.split(':')[1]) {
+                InArrVal = InArrVal.split(':')[0] + ":" + parseInt(InArrVal.split(':')[0]) + 1;
+            }
+                 var InArr = InArrVal.split(':');
+            noUiSlider.create(inboundArrival_slider_range, {
+                start: [parseInt(InArr[0]), parseInt(InArr[1])],
+                connect: true,
+                range: {
+                    'min': parseInt(InArr[0]),
+                    'max': parseInt(InArr[1])
+                }
+
+            });
+            inboundArrival_slider_range.noUiSlider.on('change', function (values, handle) {
+                var d =  parseInt(values[0]) + ":" + parseInt(values[1]);
+                $("#hdninboundArr").val(setSliderTime(d));
+                $('#inboundArrival-amount').val(setSliderTime(d));
+                filterResult();
+            });
+            if (InArrVal1.split(':')[0] == InArrVal1.split(':')[1]) {
+                inboundArrival_slider_range.setAttribute('disabled', true);
+            }
+        }
+                function ClearAllFilters() {
+
+            // ===== STOPS =====
+            $('.stopscheckbox').prop('checked', false);
+            $('.stop-option').removeClass('active');
+
+            // ===== AIRLINES =====
+            $('.chkAirlinelist').prop('checked', false);
+            $('.airline-option').removeClass('checked');
+
+            // ===== DEPARTURE TILES =====
+            $('.time-tile').removeClass('on');
+            $('#hdnDepartureSlots').val("");
+
+            // ===== PRICE (RESET SLIDER DIRECTLY - NO FUNCTION CALL) =====
+            var minprice = parseInt('@(Model.MinPrice)');
+            var maxprice = parseInt('@(Model.MaxPrice)');
+            var slider = document.getElementById('slider-range');
+
+            if (slider && slider.noUiSlider) {
+                slider.noUiSlider.set([minprice, maxprice]);
+            }
+
+            $("#hdnMinPrice").val(minprice);
+            $("#hdnMaxPrice").val(maxprice);
+
+            // ===== TIME SLIDERS =====
+            if (document.getElementById('outboundDepature-slider-range')?.noUiSlider)
+                document.getElementById('outboundDepature-slider-range').noUiSlider.set([0, 1440]);
+
+            if (document.getElementById('outboundArrival-slider-range')?.noUiSlider)
+                document.getElementById('outboundArrival-slider-range').noUiSlider.set([0, 1440]);
+
+            if (document.getElementById('inboundDeparture-slider-range')?.noUiSlider)
+                document.getElementById('inboundDeparture-slider-range').noUiSlider.set([0, 1440]);
+
+            if (document.getElementById('inboundArrival-slider-range')?.noUiSlider)
+                document.getElementById('inboundArrival-slider-range').noUiSlider.set([0, 1440]);
+
+            // ===== HIDDEN FIELDS RESET =====
+            $("#hdnoutboundDep").val("");
+            $("#hdnoutboundArr").val("");
+            $("#hdninboundDep").val("");
+            $("#hdninboundArr").val("");
+
+            // ===== SORT RESET =====
+            $('#hdnSortResult').val("price");
+            $('#hdnSorPrice').val("0");
+            $('#hdnSortDuration').val("0");
+            $('#hdnSorByAirlineName').val("0");
+
+            // ===== PAGE RESET =====
+            $('#hdnPageIndex').val("0");
+
+            // ===== FINAL CALL =====
+            filterResult();
+        }
+    </script>
+}

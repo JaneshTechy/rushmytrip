@@ -1,0 +1,463 @@
+﻿@model TravelWeb.Models.CliqPaymentRequest
+@{
+    ViewData["Title"] = "Secure Payment";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<style>
+    body {
+        background: #f3f5f9;
+        font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    .payment-container {
+        max-width: 520px;
+        margin: 56px auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 8px 28px rgba(0,0,0,.12);
+        padding: 36px 40px;
+        transition: .3s;
+    }
+
+        .payment-container:hover {
+            box-shadow: 0 10px 32px rgba(0,0,0,.18);
+        }
+
+    h2 {
+        font-weight: 700;
+        color: #1e293b;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .secure-badge {
+        text-align: center;
+        color: #198754;
+        font-weight: 500;
+        margin-bottom: 22px;
+        font-size: 1.3rem;
+    }
+
+        .secure-badge i {
+            color: #198754;
+            margin-right: 6px;
+        }
+
+    label {
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 4px;
+    }
+
+    input[type="text"], input[type="number"], input[type="email"], input[list] {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        transition: border-color .2s, box-shadow .2s;
+    }
+
+    input:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 .15rem rgba(13,110,253,.25);
+        outline: none;
+    }
+
+    ::placeholder {
+        color: #9ca3af;
+    }
+
+    #payBtn {
+        width: 100%;
+        background: linear-gradient(90deg,#16a34a,#15803d);
+        color: #fff;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1.05rem;
+        transition: .3s;
+    }
+
+        #payBtn:hover {
+            background: linear-gradient(90deg,#15803d,#166534);
+        }
+
+    .divider {
+        border-bottom: 1px solid #e2e8f0;
+        margin: 16px 0 18px;
+    }
+
+    .card-row-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .card-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    #cardNumber {
+        letter-spacing: 2px;
+        font-family: "Courier New", monospace;
+    }
+
+    .footer-note {
+        text-align: center;
+        font-size: .85rem;
+        color: #6b7280;
+        margin-top: 18px;
+    }
+
+    .brandbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        margin-top: 16px;
+        opacity: .9;
+        flex-wrap: wrap;
+    }
+
+        .brandbar img {
+            height: 28px;
+            filter: grayscale(10%);
+            transition: .25s;
+        }
+
+            .brandbar img:hover {
+                filter: none;
+                transform: scale(1.08);
+            }
+
+    .input-with-datalist {
+        position: relative;
+    }
+
+    .datalist-panel {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        margin-top: 2px;
+        background: #fff;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        box-shadow: 0 8px 28px rgba(0,0,0,.12);
+        overflow-y: auto;
+        max-height: calc(4 * 40px);
+        display: none;
+    }
+
+    .datalist-item {
+        padding: 10px 12px;
+        font-size: .95rem;
+        line-height: 20px;
+        cursor: pointer;
+        color: #111827;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+        .datalist-item:hover, .datalist-item.active {
+            background: #f3f4f6;
+        }
+
+    .input-with-datalist.open input[list] {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    /* Helper texts and errors */
+    .text-help {
+        color: #6b7280;
+        font-size: .85rem;
+        margin-top: -6px;
+        margin-bottom: 10px;
+    }
+
+    .text-error {
+        color: #dc2626;
+        font-size: .85rem;
+    }
+
+    .gateway-strip {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        color: #0f172a;
+    }
+
+        .gateway-strip img {
+            height: 40px;
+        }
+</style>
+
+<div class="payment-container" role="region" aria-labelledby="payTitle">
+    <div class="gateway-strip">
+        <img src="@Url.Content("~/img/brands/cliq-payments-inline.png")" alt="Cliq Payments" />
+        <span class="badge rounded-pill text-bg-success">Live</span>
+    </div>
+
+    <h2 id="payTitle">Secure Payment</h2>
+    <div class="secure-badge"><i class="bi bi-lock-fill"></i> 256-bit SSL Encrypted Payment</div>
+
+    <form id="paymentForm" asp-action="Process" method="post" novalidate>
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-error"></div>
+
+        <label asp-for="Amount">Amount</label>
+        <input asp-for="Amount" type="number" step="0.01" placeholder="Enter amount" autocomplete="off" inputmode="decimal" />
+        <div class="text-help">Charged in your account’s billing currency.</div>
+
+        <div class="divider"></div>
+
+        <label>Card Number</label>
+        <input asp-for="CardNumber" id="cardNumber" class="form-control" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="•••• •••• •••• ••••" />
+
+        <div class="card-row">
+            <div>
+                <label>Month</label>
+                <input id="expMonth" type="number" min="1" max="12" placeholder="MM" autocomplete="off" />
+            </div>
+            <div>
+                <label>Year</label>
+                <input id="expYear" type="number" min="2025" max="2100" placeholder="YYYY" autocomplete="off" />
+            </div>
+            <input type="hidden" asp-for="CardExpiry" id="CardExpiry" />
+            <script>
+                document.getElementById("paymentForm").addEventListener("submit", function(e){
+                    var month = document.getElementById("expMonth").value;
+                    var year = document.getElementById("expYear").value;
+
+                    month = month.padStart(2, '0');
+                    year = year.toString().slice(-2);
+
+                    document.getElementById("CardExpiry").value = month + year;
+                });
+            </script>
+
+            <div>
+                <label>CVV</label>
+                <input asp-for="CardCvv" id="cardCode" class="form-control" inputmode="numeric" maxlength="4" placeholder="123" autocomplete="off" />
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="card-row-2">
+            <div>
+                <label asp-for="FirstName">First Name</label>
+                <input asp-for="FirstName" placeholder="John" autocomplete="given-name" />
+            </div>
+
+            <div>
+                <label asp-for="LastName">Last Name</label>
+                <input asp-for="LastName" placeholder="Doe" autocomplete="family-name" />
+            </div>
+        </div>
+
+
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" type="email" placeholder="john@example.com" autocomplete="email" />
+
+        <label asp-for="Address1">Address</label>
+        <input asp-for="Address1" placeholder="123 Main St" autocomplete="address-line1" />
+        <div class="card-row-2">
+            <div>
+                <label>Country</label>
+                <div class="input-with-datalist" id="CountryWrap">
+                    <input asp-for="Country" type="text" id="Country" name="Country" autocomplete="off" placeholder="United States" required />
+                    <div class="datalist-panel" id="CountryPanel"></div>
+                </div>
+                <datalist id="CountryList"></datalist>
+            </div>
+
+            <div>
+                <label>State</label>
+                <div class="input-with-datalist" id="StateWrap">
+                    <input asp-for="State" type="text" id="State" name="State" autocomplete="off" placeholder="California" required />
+                    <div class="datalist-panel" id="StatePanel"></div>
+                </div>
+                <datalist id="StateList"></datalist>
+            </div>
+        </div>
+
+        <div class="card-row-2">
+            <div>
+                <label>City</label>
+                <div class="input-with-datalist" id="CityWrap">
+                    <input asp-for="City" type="text" id="City" name="City" autocomplete="off" placeholder="San Francisco" required />
+                    <div class="datalist-panel" id="CityPanel"></div>
+                </div>
+                <datalist id="CityList"></datalist>
+            </div>
+
+            <div>
+                <label asp-for="Zip">Zip Code</label>
+                <input asp-for="Zip" autocomplete="postal-code" placeholder="94105" />
+            </div>
+        </div>
+
+        <input type="hidden" name="OpaqueDataDescriptor" />
+        <input type="hidden" name="OpaqueDataValue" />
+
+        <button id="payBtn" type="submit" class="mt-2">
+            <i class="bi bi-shield-check"></i> Pay Securely
+        </button>
+
+        <div class="brandbar">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" />
+            <img src="@Url.Content("~/img/brands/mastercard.png")" alt="Mastercard" />
+            <img src="@Url.Content("~/img/brands/amex.png")" alt="American Express" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Visa" />
+            @* <img src="@Url.Content("~/img/brands/paypal.png")" alt="PayPal" /> *@
+            <img src="@Url.Content("~/img/brands/cliq-payments-inline.png")" alt="Processed by Cliq" />
+        </div>
+
+        <div class="footer-note">© 2025 Your Company. All rights reserved.</div>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        function luhn(card) {
+          let sum = 0, alt = false;
+          for (let i = card.length - 1; i >= 0; i--) {
+            let n = parseInt(card[i], 10);
+            if (alt) { n *= 2; if (n > 9) n -= 9; }
+            sum += n; alt = !alt;
+          }
+          return (sum % 10) === 0;
+        }
+
+        function wireCustomDatalist(inputId, datalistId, panelId) {
+          const input = document.getElementById(inputId);
+          const datalist = document.getElementById(datalistId);
+          const panel = document.getElementById(panelId);
+          const wrap = panel.parentElement;
+          let activeIndex = -1;
+
+          function getAllOptions(){ return Array.from(datalist.options).map(o=>o.value); }
+          function render(list){
+            panel.innerHTML = '';
+            const frag = document.createDocumentFragment();
+            list.forEach((val,i)=>{
+              const div = document.createElement('div');
+              div.className = 'datalist-item';
+              div.textContent = val;
+              if(i===activeIndex) div.classList.add('active');
+              div.addEventListener('mousedown', e=>{
+                e.preventDefault(); e.stopPropagation();
+                input._suppressUpdate = true; input.value = val; hide();
+                setTimeout(()=>{ input.dispatchEvent(new Event('input',{bubbles:true})); input._suppressUpdate=false; }, 100);
+              });
+              frag.appendChild(div);
+            });
+            panel.appendChild(frag);
+          }
+          function show(){ wrap.classList.add('open'); panel.style.display='block'; }
+          function hide(){ wrap.classList.remove('open'); panel.style.display='none'; activeIndex=-1; }
+          function update(){
+            const q = input.value.trim().toLowerCase();
+            const all = getAllOptions();
+            const filtered = q ? all.filter(v=>v.toLowerCase().includes(q)) : all;
+            render(filtered); filtered.length ? show() : hide();
+          }
+          input.addEventListener('focus', update);
+          input.addEventListener('input', ()=>{ if(!input._suppressUpdate) update(); });
+          input.addEventListener('keydown', e=>{
+            const items = Array.from(panel.querySelectorAll('.datalist-item')); if(!items.length) return;
+            if(e.key==='ArrowDown'){ e.preventDefault(); activeIndex=(activeIndex+1)%items.length; render(items.map(i=>i.textContent)); }
+            else if(e.key==='ArrowUp'){ e.preventDefault(); activeIndex=(activeIndex-1+items.length)%items.length; render(items.map(i=>i.textContent)); }
+            else if(e.key==='Enter'){ e.preventDefault();
+              if(activeIndex>=0 && activeIndex<items.length){
+                const val = items[activeIndex].textContent;
+                input._suppressUpdate = true; input.value = val; hide();
+                setTimeout(()=>{ input.dispatchEvent(new Event('input',{bubbles:true})); input._suppressUpdate=false; },100);
+              } else { hide(); }
+            } else if(e.key==='Escape'){ hide(); }
+          });
+          document.addEventListener('mousedown', e=>{ if(!wrap.contains(e.target)) hide(); });
+          const ro = new ResizeObserver(()=>{ panel.style.minWidth = input.offsetWidth + 'px'; });
+          ro.observe(input);
+        }
+
+        const countries = @Html.Raw(ViewBag.CountriesJson ?? "[]");
+        const states = @Html.Raw(ViewBag.StatesJson ?? "[]");
+
+        const countryInput = document.getElementById("Country");
+        const stateInput = document.getElementById("State");
+        const countryList = document.getElementById("CountryList");
+        const stateList = document.getElementById("StateList");
+
+        function updateCountryList(){
+          const uniqueCountries = [...new Set(countries.map(c => c.name))].sort();
+          countryList.innerHTML = uniqueCountries.map(c => `<option value="${c}">`).join('');
+        }
+        function updateStateList(country=null){
+          let filtered = states;
+          if(country){
+            const countryCode = countries.find(c => c.name === country)?.alpha_2;
+            if(countryCode){ filtered = states.filter(s => s.code.startsWith(countryCode + "-")); }
+          }
+          const uniqueStates = [...new Set(filtered.map(s => s.name))].sort();
+          stateList.innerHTML = uniqueStates.map(s => `<option value="${s}">`).join('');
+        }
+        countryInput.addEventListener("input", e => {
+          updateStateList(e.target.value);
+          stateInput.value = "";
+        });
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+          wireCustomDatalist('Country','CountryList','CountryPanel');
+          wireCustomDatalist('State','StateList','StatePanel');
+          wireCustomDatalist('City','CityList','CityPanel');
+          updateCountryList(); updateStateList();
+
+          const payBtn = document.getElementById('payBtn');
+          const requiredIds = [
+            'Amount','cardNumber','expMonth','expYear','cardCode',
+            'FirstName','LastName','Email','Address1','Country','City','Zip'
+          ];
+          function isFilled(){
+            return requiredIds.every(id=>{
+              const el = document.getElementById(id) || document.querySelector(`[name="${id}"]`);
+              return el && el.value && el.value.toString().trim().length>0;
+            });
+          }
+          function toggle(){ payBtn.disabled = !isFilled(); }
+          requiredIds.forEach(id=>{
+            const el = document.getElementById(id) || document.querySelector(`[name="${id}"]`);
+            el && el.addEventListener('input', toggle);
+          });
+          toggle();
+        });
+
+        document.getElementById('paymentForm').addEventListener('submit', function(e){
+          e.preventDefault();
+          const cardNumber = document.getElementById('cardNumber').value.replace(/\s+/g,'');
+          const expMonth = document.getElementById('expMonth').value;
+          const expYear = document.getElementById('expYear').value;
+          const cardCode = document.getElementById('cardCode').value;
+
+          if(!/^\d{13,19}$/.test(cardNumber) || !luhn(cardNumber)){ alert('Invalid card number.'); return; }
+          const m = parseInt(expMonth,10), y = parseInt(expYear,10);
+          const now = new Date(); const thisYear = now.getFullYear(); const thisMonth = now.getMonth()+1;
+          if(!(m>=1 && m<=12) || !(y>=thisYear && y<=2100) || (y===thisYear && m<thisMonth)){ alert('Invalid expiration date.'); return; }
+          if(!/^\d{3,4}$/.test(cardCode)){ alert('Invalid CVV.'); return; }
+          e.target.submit();
+        });
+    </script>
+}

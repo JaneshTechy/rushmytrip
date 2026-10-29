@@ -1,0 +1,619 @@
+2026-10-28 17:27:56.5420||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 17:28:00.9476||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 17:28:00.9613||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 17:28:00.9613||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 18:09:09.6689||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 18:09:10.7534||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 18:09:10.7603||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 18:09:10.7603||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 18:10:15.5506||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=4ca8c938-30d6-479b-8581-6f2bbda6a93d | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 12:40:15 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Access-Control-Allow-Origin: *
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=dKr3u5bQ5wb1FpufubujuSrWmvUteHjpm%2B2tgtEbqA7vsS8yE%2FyfgN3cn2ZG7Ofb0rKHF8wejkKsqHvxXrpPatV%2FEgFFTkoVSHSLsldGuRGOfG0ejPkEF37OZ7sICUZJKGR25xP81rLRo0hDot8%3D"}]}
+  Vary: Accept-Encoding
+  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  referrer-policy: same-origin
+  Alt-Svc: h3=":443"; ma=86400
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a01977df643f0-MRS
+  Content-Type: application/json; charset=utf-8
+} | Count=51 | DurationMs=141.8865 
+2026-10-28 18:19:05.9766||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=b488e94d-b9fe-471c-a606-69a503d3f736 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 12:49:05 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"2a24d-w/9AoSMV7OHZaP5vv309N5omC+g"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=mwwN7vv8qHm7UXaO%2FgT2Xl4bigTbnfhcJ7CUrz%2Bp4IL%2FfYgGdnt%2BbEPgBvixV%2BovMZrWCpUXbfLboWAnseQ1VDIu%2FAb0K9aCfPOvJFt9YyapYGUe51MLKaaqfbGzssdWRt9pPY1AvuPN%2FBAcJkg%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a0ee7db0dcdbb-MRS
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=119 | DurationMs=9.5895 
+2026-10-28 18:20:05.1154||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=fab7e787-08b3-4d10-b0e4-e938f730d0b4 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 12:50:05 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"7563-rkd6sIammOgmPr1SuhZ4zId0sKA"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=dwnRKTLuMTkChm2dZBP8aDjglxot8HKUOy4hZgS79m0dmTK1wm4zXYBO921b8lV%2Fw2tDm8ZI9nyNYd0M4Uppu1eww125csY4%2FHovnZy6QPNaTpK8k7g4mUrWBtaTNxF0RJBoINYnvb5zhdEa%2Fq8%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a1063a9f92a68-CDG
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=19 | DurationMs=0.919 
+2026-10-28 18:24:50.1761||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 18:24:53.1305||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 18:24:53.1305||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 18:24:53.1490||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 18:25:16.3451||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=efd848d6-b821-4e4a-ade1-56a410cf6960 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 12:55:16 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"61-NGEZWxLaj6H4g6yG/hJVVU5Ftzw"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EhuxiEajuZi1duJFmnC36Xfw9wgLW5PF6ZtVJh%2BDBspniSLz%2BzETjYXqRWA%2BuW61qnbivEGtQ2UtFiBycYYycZZs26SUYJY7pwqP4Lu7ghtMBGwkL2%2FasdcN3uYjvRyK7%2FqESG8gzAfX7dKGk0s%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a17fdcc65f31f-SJC
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=0 | DurationMs=135.7384 
+2026-10-28 18:25:16.8708|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. System.InvalidOperationException: Sequence contains no elements
+   at TravelWeb.Controllers.ResultController.search(String depart, String Flight1Depart, String Multiselect, String Flight1arrival, String arrival, String trip, String departOn, String adult, String child, String infant, String cabin, String returnOn, Boolean IsDirect, String utm_source, String seniors, String SearchId, String currency) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Controllers\ResultController.cs:line 903
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TravelWeb.Middleware.LocaleMiddleware.InvokeAsync(HttpContext context) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Middleware\LocaleMiddleware.cs:line 28
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2026-10-28 18:41:37.1113||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 18:41:38.6854||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 18:41:38.6943||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 18:41:38.6943||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 18:42:26.4498||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=ff47333f-02c3-48e7-9cfa-bb9e559030bd | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 13:12:25 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"558ab-3HAUkkEeAocQ72auyuomZ6phbrQ"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Cl9JyeyL%2Bj7EWdtvf5pb7kGD4s%2BaB1vJbNUD3bQolpvtlAqNIVtWs8oDVW6h88wzwV%2BFt%2FzuIn0D351I7BE7beXW3nMBpZ91lgheNJHqM%2FnQPo2FOupBN%2FsT5sCxgulI9wnoDvrWexYW9q9AZV0%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a310e2cf4b67b-CDG
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=209 | DurationMs=257.9634 
+2026-10-28 18:42:42.6653||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=e122be73-d2ad-4f85-92db-fc0fe39b4e0c | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 13:12:42 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"61-VdmkYYVxFEnjKvKL7oh8/kIsF24"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=8Cs9rv3dnDQRGCv66eVIJCtlNjqAv8vk0ntgM79mY18klZs7u4xpUVt%2Biv58CPRr9dysPSHr0LgTfRYO4x5%2FTlGRI5aQfPbuhCgVceWxwnpxstQI%2F34obSDfdMprrhj%2FsMP%2BAeBcljZsE93p24w%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a318b2a4afd6c-SIN
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=0 | DurationMs=2.3456 
+2026-10-28 18:42:43.1017|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. System.InvalidOperationException: Sequence contains no elements
+   at TravelWeb.Controllers.ResultController.search(String depart, String Flight1Depart, String Multiselect, String Flight1arrival, String arrival, String trip, String departOn, String adult, String child, String infant, String cabin, String returnOn, Boolean IsDirect, String utm_source, String seniors, String SearchId, String currency) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Controllers\ResultController.cs:line 903
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TravelWeb.Middleware.LocaleMiddleware.InvokeAsync(HttpContext context) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Middleware\LocaleMiddleware.cs:line 28
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2026-10-28 18:44:53.0397||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 18:44:54.9587||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 18:44:54.9627||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 18:44:54.9627||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 18:49:20.2824||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=87f81b80-4e65-470c-84c1-1df2e914e5f8 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 13:19:19 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"49e3c-U0pddXJ05cOCDdeb65jVVB+jXvc"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=XcHbqEtPFZQSlTP%2Fku3FmFSrC7hkAW83riUv%2FXW%2FgYQIPHoNhrtwmup1GpZgIJX8L0R4m1Rv1TR9a%2BrXShoeSraAurClnG6cIFxY9DPFi99BK0EhUzbPttlhlbPA8VtuUfILNUi7TJl%2B9ZCjrjY%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a3b2e4b5edcfc-CDG
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=185 | DurationMs=348.3962 
+2026-10-28 19:33:58.6213||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 19:34:04.0066||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 19:34:04.0198||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 19:34:04.0198||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 19:34:30.3758||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=ab4f82c7-a560-4b39-8c97-4dce5f694778 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 14:04:29 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"558ae-vfeZQFfJrL++WkiRGPA2NAHVZ8g"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LEu0Q3kXBO6ZwGBr8d30%2BEVeaJzTv9hISt%2FyXfv1uQeFAkxVsDrc9uyXZPFFIs06bgnOXpPRrbRY5LorBYrHCKzX%2BOiLv5X92uFA9%2B99yerLHHlmO5%2B76cUMp1ZoYiYLCN8oam55FssNH7mCtg0%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a7d528d39e7d0-SYD
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=209 | DurationMs=311.4109 
+2026-10-28 19:41:11.3579||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 19:41:16.2772||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 19:41:16.2982||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 19:41:16.3257||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 19:41:37.4485||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=b6b154dd-fe02-4342-999c-7f0241db2183 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 14:11:35 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"564e7-wbMLt4QsrfHj3dj3CnWj/YdH7wI"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=W%2FaCu1Y2rVPJL0CK0DyiWOKDcXhgp%2Bq2%2BqbE54x8qExL5PCn6ucppjxmPml6y2YgD1MNQHLSE2N3XYHMA3RqSx0yUYPsmjn3oMq0vdXkQL2Y0BEx%2FNX9ijYYfKI9vTd8ynpO8eFcu7UpdhJGTLs%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51a87c19b24ca9b-GIG
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=212 | DurationMs=292.0567 
+2026-10-28 20:06:37.4881||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 20:06:42.7565||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 20:06:42.7709||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 20:06:42.7709||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 20:07:37.1260||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=14949435-4198-4f00-bbe5-bfd884a08300 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 14:37:36 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Access-Control-Allow-Origin: *
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=MAWk6CHJlcgmKrLVDXcjiMlpvje%2BcYIsXY57B3rPEL9vHMmqflMd%2Ft52X8K37zpPZM23Cd7fFvAzs3%2Fucwlmyi5iaDi0LKkrrm3xwkzFX0QYMPs68voqsjEupvFiDjMCX%2BX5Q36VYu8R5sNc1Zs%3D"}]}
+  Vary: Accept-Encoding
+  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  referrer-policy: same-origin
+  Alt-Svc: h3=":443"; ma=86400
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51aad45698dff86-SIN
+  Content-Type: application/json; charset=utf-8
+} | Count=41 | DurationMs=257.4378 
+2026-10-28 20:11:31.4918||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 20:11:39.4518||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 20:11:39.4733||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 20:11:39.4869||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 20:12:10.7657||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=118166ce-c624-4c85-a469-dd27d312f5e3 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 14:42:10 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"61-jWsQb262Gn1qSZqrVMD9MaKNexE"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=kVt4fh0k1W90OQaIahxd%2BPtF5td%2F1Szvcaa4ZiuvlFVlpJehrQB6Vlv7sft3b9o9kYuEBcKdFPFlDUCDvIkMIli5nnomwQhugsjsF%2BtV2NEqLSFNUkhBI86LMtknDfpILWKdDJV7RmetEEdVC%2F8%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51ab49b6a13ce32-SIN
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=0 | DurationMs=189.5672 
+2026-10-28 20:12:11.4885|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. System.InvalidOperationException: Sequence contains no elements
+   at TravelWeb.Controllers.ResultController.search(String depart, String Flight1Depart, String Multiselect, String Flight1arrival, String arrival, String trip, String departOn, String adult, String child, String infant, String cabin, String returnOn, Boolean IsDirect, String utm_source, String seniors, String SearchId, String currency) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Controllers\ResultController.cs:line 903
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TravelWeb.Middleware.LocaleMiddleware.InvokeAsync(HttpContext context) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Middleware\LocaleMiddleware.cs:line 28
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2026-10-28 20:22:03.2034||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=a255a416-91e8-4fa9-8cb1-33d52029d71c | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 14:52:03 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"61-CW0fh3fFEXgXfN5PhfbB5QimLXc"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zVqTkSpm0YSAbACbJjlr2TanTCx098bqFcKMjP87AKlUyDPanKgJ7h9lYbhv%2BcTNc6lzxEcP63KLjQewa5iklGxXbEdJjBKzeKXdqTQ7WJR0q4iaagiwykd0dh6AAlfruKampqCDSsRMhysx4e8%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51ac31538f6d14a-CDG
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=0 | DurationMs=1.3618 
+2026-10-28 20:22:03.5085|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. System.InvalidOperationException: Sequence contains no elements
+   at TravelWeb.Controllers.ResultController.search(String depart, String Flight1Depart, String Multiselect, String Flight1arrival, String arrival, String trip, String departOn, String adult, String child, String infant, String cabin, String returnOn, Boolean IsDirect, String utm_source, String seniors, String SearchId, String currency) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Controllers\ResultController.cs:line 903
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TravelWeb.Middleware.LocaleMiddleware.InvokeAsync(HttpContext context) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Middleware\LocaleMiddleware.cs:line 28
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2026-10-28 20:22:14.0299||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=50378c99-d465-44b2-a480-1fb83e14cdce | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 14:52:14 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  Access-Control-Allow-Origin: *
+  ETag: W/"7b-WU5rwkbEblvKTKlp0P2A/2ej++4"
+  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  referrer-policy: same-origin
+  Alt-Svc: h3=":443"; ma=86400
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=yK07h33qppF6MH%2Frdu1bXTidhOfoELgAw8N94h3akSNa5JB6U8RiS4xV0kTo8%2FIaiFm7RKSH1mB%2FVOeBnzd%2BTPY%2B7EEwAQmY5i2A4klgrSLQNeIGQ1w0H%2FAk%2FGVZo7ZgZPx2fUJIz%2F%2Fp7geHUFk%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51ac3573b9076b3-HKG
+  Content-Type: application/json; charset=utf-8
+} | Count=0 | DurationMs=1.0279 
+2026-10-28 20:22:14.3563|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. System.InvalidOperationException: Sequence contains no elements
+   at TravelWeb.Controllers.ResultController.search(String depart, String Flight1Depart, String Multiselect, String Flight1arrival, String arrival, String trip, String departOn, String adult, String child, String infant, String cabin, String returnOn, Boolean IsDirect, String utm_source, String seniors, String SearchId, String currency) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Controllers\ResultController.cs:line 903
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TravelWeb.Middleware.LocaleMiddleware.InvokeAsync(HttpContext context) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Middleware\LocaleMiddleware.cs:line 28
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2026-10-28 20:22:31.8470||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=6d6bd32b-a435-4d61-90d2-941d6b851898 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 14:52:31 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  Access-Control-Allow-Origin: *
+  ETag: W/"7b-WU5rwkbEblvKTKlp0P2A/2ej++4"
+  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  referrer-policy: same-origin
+  Alt-Svc: h3=":443"; ma=86400
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=I1ZbrRtnqHXIrdfjmX26oNcSOOGKua96%2BQzDye72iCn5gDH630sQI7tbp2k3bzwDJJEwQvrDXu05PjdsdJ9Ak%2FkEfD2dB8Igz%2FLZh1CdRD2s%2FMU927bp%2FYZ%2F97b%2FVYe63nJZWumSa%2BAOOuyZFOA%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51ac3c928e6db93-CDG
+  Content-Type: application/json; charset=utf-8
+} | Count=0 | DurationMs=0.8909 
+2026-10-28 20:22:32.1466|1|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request. System.InvalidOperationException: Sequence contains no elements
+   at TravelWeb.Controllers.ResultController.search(String depart, String Flight1Depart, String Multiselect, String Flight1arrival, String arrival, String trip, String departOn, String adult, String child, String infant, String cabin, String returnOn, Boolean IsDirect, String utm_source, String seniors, String SearchId, String currency) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Controllers\ResultController.cs:line 903
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TravelWeb.Middleware.LocaleMiddleware.InvokeAsync(HttpContext context) in D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\Middleware\LocaleMiddleware.cs:line 28
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2026-10-28 20:23:07.0376||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=36b87efe-4ba9-4818-ac56-d0f9ec05a56b | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 14:53:06 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Access-Control-Allow-Origin: *
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=BGq7dGJ8bmZIOVJCgflKJrZ7gFthiil9BgnU7G9Nm4gJ021r8mW28K82qg54RNOj8gtkqTwFsIZQlfJA5CsE1KeFgoQr6UP8OyO8eTcop0nEDlpFE4h715rTxftlLeNaPtArU25CHCwz28LGR4Q%3D"}]}
+  Vary: Accept-Encoding
+  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  referrer-policy: same-origin
+  Alt-Svc: h3=":443"; ma=86400
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51ac42bb8021fa9-HKG
+  Content-Type: application/json; charset=utf-8
+} | Count=3 | DurationMs=71.9941 
+2026-10-28 20:29:45.3357||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 20:29:48.9853||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 20:29:49.0049||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 20:29:49.0230||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 20:36:09.4053||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 20:36:11.9329||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 20:36:11.9399||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 20:36:11.9399||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 20:37:05.0064||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=a2c49783-8337-4229-9ed2-1f257a777e18 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 15:07:04 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Access-Control-Allow-Origin: *
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=bsv6ueUX%2B4t3WzqIki97g65CMPhLhSJgdHNJIxsQldW15FslcDnMqLsn%2BOPoinjs0wN9qqt5CanATujTgGWseHeMeAB%2FwtUtsmPUNzrZ9soliqXXGueimjmcpcwQ0QzKGFgPQxlDoEsNBtxNv3s%3D"}]}
+  Vary: Accept-Encoding
+  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  referrer-policy: same-origin
+  Alt-Svc: h3=":443"; ma=86400
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51ad89f4950defa-MRS
+  Content-Type: application/json; charset=utf-8
+} | Count=116 | DurationMs=157.7484 
+2026-10-28 20:39:05.9052||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 20:39:08.5336||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 20:39:08.5336||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 20:39:08.5336||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 20:40:02.1811||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=a311dd5a-8462-4cf1-8a9b-a84e0cb2d160 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 15:10:01 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Access-Control-Allow-Origin: *
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ikRow7BKkEaUwU4bvSorfjMUH0kxnjOwI3wF27F89J3xMLcnnccHDFdcQZOjKLc3B%2Bp%2F0LWapagls6ugPdfEMeFnL%2BSjBRqR9qesBwHI8enQHnbucNDSivws3gQpVSGabEu1Jm4iuA8RDotditc%3D"}]}
+  Vary: Accept-Encoding
+  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  referrer-policy: same-origin
+  Alt-Svc: h3=":443"; ma=86400
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51adcf5ef8b135a-SIN
+  Content-Type: application/json; charset=utf-8
+} | Count=99 | DurationMs=151.2041 
+2026-10-28 20:46:34.7611||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 20:46:36.4974||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 20:46:36.5013||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 20:46:36.5013||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 20:48:07.6150||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 20:48:09.0387||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 20:48:09.0387||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 20:48:09.0387||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 20:57:19.0340||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 20:57:20.8753||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 20:57:20.8825||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 20:57:20.8825||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 21:01:36.5279||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 21:01:37.9017||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 21:01:37.9017||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 21:01:37.9101||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 21:15:05.6544||DEBUG|TravelWeb.Program|init main function 
+2026-10-28 21:15:08.2302||INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2026-10-28 21:15:08.2516||INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2026-10-28 21:15:08.2578||INFO|Microsoft.Hosting.Lifetime|Content root path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb 
+2026-10-28 21:16:16.7962||INFO|TravelWeb.Utilities.Common|Flight API Timing | SearchId=211321c3-9b5a-408e-8564-ce2d34448f75 | StatusCode=StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.HttpConnectionResponseContent, Headers:
+{
+  Date: Wed, 28 Oct 2026 15:46:16 GMT
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: cloudflare
+  Vary: Accept-Encoding
+  X-Powered-By: Express
+  Access-Control-Allow-Origin: *
+  ETag: W/"2ec3a-aVPiSkYKWufry0q0aQ+s+ADJ+jM"
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  x-xss-protection: 1; mode=block
+  x-permitted-cross-domain-policies: master-only
+  referrer-policy: same-origin
+  Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ZYUHyG%2BUDi3dCNP0ighmC6tM16ZDXrHv97ab5mRwXLZY8L2%2FqgfXlItsTqzyMPXRc%2BuX%2FseQd%2BcJhLYVjU9GuTEq%2FykWgZnVygwwNTsKZJxYXGf%2BraTeK9yue4y%2BzR%2BhKyWUZmxB717OccFykFc%3D"}]}
+  cf-cache-status: DYNAMIC
+  Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+  CF-RAY: a51b127b18ff603b-SIN
+  Alt-Svc: h3=":443"; ma=86400
+  Content-Type: application/json; charset=utf-8
+} | Count=119 | DurationMs=240.5783 

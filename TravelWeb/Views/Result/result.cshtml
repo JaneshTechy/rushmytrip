@@ -1,0 +1,1480 @@
+﻿@using TravelWeb.Utilities;
+@using TravelWeb.Models;
+@model FlightsResult;
+@{
+    ViewData["Title"] = "result";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    var nwDate = "";
+    var PageSize = 14;
+}
+<link href="@(Common.WebSitePath)css/nouislider.css" rel="stylesheet" />
+<script src="@(Common.WebSitePath)js/nouislider.js"></script>
+<script src="~/css/ListingPage/custom.js"></script>
+<link rel="stylesheet" href="~/css/ListingPage/style.css">
+
+<script type="application/javascript" src="https://ipinfo.io/?format=jsonp&callback=getIP"></script>
+<script type="application/javascript" src="https://ipinfo.io/?format=jsonp&callback=getIP"></script>
+<style>
+    .loaderassssedeed {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(2px);
+    }
+    .loaderassssedeed.is-active {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .loaderassssedeed .loader-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid #e5e7eb;
+        border-top-color: #ED4214;
+        border-radius: 50%;
+        animation: detailsSelectSpin 0.8s linear infinite;
+    }
+    .loaderassssedeed .loader-bar {
+        height: 4px;
+        width: min(280px, 70vw);
+        --c: no-repeat linear-gradient(#ED4214 0 0);
+        background: var(--c), var(--c), #fff;
+        background-size: 60% 100%;
+        animation: l16 3s infinite;
+        border-radius: 2px;
+    }
+    .loaderassssedeed .loader-text {
+        font-size: 14px;
+        color: #334155;
+        font-weight: 600;
+    }
+
+    @@keyframes detailsSelectSpin {
+        to { transform: rotate(360deg); }
+    }
+
+    @@keyframes l16 {
+        0% {
+            background-position: -150% 0, -150% 0;
+        }
+
+        66% {
+            background-position: 250% 0, -150% 0;
+        }
+
+        100% {
+            background-position: 250% 0, 250% 0;
+        }
+    }
+
+    body {
+        background-color: #f1f1f1 !important;
+    }
+
+    .backgroundOverlay {
+        display: none !important
+    }
+</style>
+
+<style>
+    main_li_summry {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .main_li_summry li {
+        list-style: none;
+        float: left;
+    }
+
+    .top_smy_des {
+        float: left;
+        margin-right: 5px;
+    }
+
+    @@media only screen and (max-width: 380px) {
+        .theme-search-results-item-flight-section-meta-time {
+            margin-top: 10px !important
+        }
+    }
+
+    /*#editBtnResult {
+                            text-align: right;
+                            background: linear-gradient(to right,#e83819,#f3850b);
+                            color: #fff;
+                            font-size: 16px;
+                            border: 0;
+                            padding: 6px 20px;
+                            border-radius: 20px;
+                            focus: none;
+                            margin: 6px 0;*/
+    /* float:right*/
+    /*}*/
+</style>
+<style>
+    p {
+        /* font-family: 'Montserrat', sans-serif !important;*/
+        font-family: 'Roboto' !important;
+    }
+
+    body {
+        background: #f1f1f1 !important;
+    }
+</style>
+
+<style>
+    .SessionTimeOut {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        margin: 0 auto;
+        z-index: 999999;
+        background: rgba(0, 0, 0, 0.61);
+    }
+
+        .SessionTimeOut .sessionbox {
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            position: relative;
+            height: 214px;
+            width: 460px;
+        }
+
+        .SessionTimeOut .BookingProgressBar {
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            position: relative;
+            height: 214px;
+            width: 460px;
+        }
+
+    .BookingProgressBar p {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .session-head {
+        background: #ee6221;
+        font-size: 22px;
+        color: #fff;
+        margin: 0;
+        border-radius: 6px 6px 0 0;
+        padding: 8px;
+    }
+
+    .session_content h3 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+        .session_content h3 i {
+            padding-right: 15px;
+            font-size: 25px;
+            color: #fba406;
+            padding-top: 8px;
+        }
+
+    .session_content {
+        padding: 15px;
+        display: inline-block;
+    }
+
+    .session-exp {
+        width: 100%;
+        box-shadow: 1px 0 5px 0 rgba(0,0,0,0.75);
+        background: #fff;
+        background-color: #fff;
+        border-radius: 5px;
+        z-index: 99999;
+        /*border-top: 28px solid #ee6221;*/
+    }
+
+    .session-logo img {
+        width: 60%;
+    }
+
+    .search-button-01 {
+        color: #fff;
+        background-color: black;
+        border-color: black;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .search-button-02 {
+        color: #fff;
+        background-color: #fba406;
+        border-color: #fba406;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .iata-badge {
+        background: #e9f2ff;
+        color: #0071e3;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-weight: 600;
+        /* Hide badge if empty */
+        display: inline-block;
+        text-transform: uppercase;
+    }
+
+        .iata-badge:empty {
+            display: none;
+        }
+</style>
+<script src="~/js/bootstrap.js"></script>
+<link href="~/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="~/css/common.css">
+<link rel="stylesheet" href="~/css/flight-booking.css">
+<link rel="stylesheet" href="~/css/responsive.css">
+
+
+<input type="hidden" id="hdntotpax" value="@(Convert.ToInt16(ViewBag.adult) + Convert.ToInt16(ViewBag.child) + Convert.ToInt16(ViewBag.infant))" />
+<input type="hidden" id="hdnADT" value="@(Convert.ToInt16(ViewBag.adult))" />
+<input type="hidden" id="hdnCHD" value="@(Convert.ToInt16(ViewBag.child))" />
+<input type="hidden" id="hdnINF" value="@(Convert.ToInt16(ViewBag.infant))" />
+<input type="hidden" id="hdnFLYCLS" value="@(ViewBag.flightClass)" />
+<input type="hidden" id="hdnFLYCLSCode" value="@(ViewBag.FlyClass)" />
+<input type="hidden" id="hdntxtToDate" />
+
+<script>
+    $(function () {
+        debugger;
+        // coment by janesh-30102023;
+        // var chkAdultmore = localStorage.getItem("moreadultcount");
+        // var chkChildmore = localStorage.getItem("morechildcount");
+        // if(@ViewBag.MorderAdult!=null){
+        //     chkAdultmore = @(Convert.ToInt16(ViewBag.MorderAdult));
+        //     chkChildmore = @(Convert.ToInt16(ViewBag.MoreChild));
+        // }
+        chkAdultmore = @(Convert.ToInt16(ViewBag.MorderAdult));
+        chkChildmore = @(Convert.ToInt16(ViewBag.MoreChild));
+        localStorage.setItem("moreadultcount", chkAdultmore);
+        localStorage.setItem("morechildcount", chkChildmore);
+
+        var infant = $('#hdnINF').val();
+        infant = parseInt(infant);
+        if (chkAdultmore != null && chkChildmore != null) {
+            $('#pass_info').val(parseInt(chkAdultmore) + parseInt(chkChildmore)+infant + "Pax," + $('#hdnFLYCLS').val());
+            $('#flight_adult').val(chkAdultmore);
+            $('#flight_child').val(chkChildmore);
+        }
+        else {
+            $('#pass_info').val($('#hdntotpax').val() + " Pax, " + $('#hdnFLYCLS').val());
+            $('#flight_adult').val($('#hdnADT').val());
+            $('#flight_child').val($('#hdnCHD').val());
+
+        }
+        $('#flight_infant').val($('#hdnINF').val());
+    $('#flight_class_select').val($('#hdnFLYCLSCode').val());
+    });
+    $(function () {
+        $('#pass_info').click(function () {
+            $('#FlySearchPassengers').slideToggle();
+
+        });
+
+        $("#prsn_done").click(function () {
+            $("#FlySearchPassengers").slideUp("slow");
+        });
+        $('body').click(function () {
+            $("#FlySearchPassengers").slideUp("slow");
+        });
+        $('.#FlySearchPassengers').click(function (e) {
+            e.stopPropagation();
+        });
+
+    });
+
+
+</script>
+
+
+<style>
+    /*    .navbar-collapse.collapse {
+                            display: block !important;
+                            height: 62px !important;
+                            padding-bottom: 0;
+                            overflow: visible !important;
+                        }*/
+    .nav {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        height: 62px !important;
+    }
+</style>
+
+<div class="theme-hero-area front">
+    <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg theme-hero-area-bg-blur"></div>
+    </div>
+    <div class="theme-hero-area-body mob-margin-extra">
+        <button class="amend-search-btn" id="amendSearchBtn" data-i18n="result.amendSearch">
+    Amend Search
+</button>
+        <section class="search-section" id="Search-Section">
+            <div class="mobile-controls">
+                <button class="mobile-btn time-btn"><span data-i18n="result.time">Time</span> <i class="fa fa-chevron-down"></i></button>
+                <button class="mobile-btn stops-btn"><span data-i18n="result.stops">Stops</span> <i class="fa fa-chevron-down"></i></button>
+                <button class="mobile-btn filter-btn"><span data-i18n="result.filters">Filter</span> <i class="fa fa-filter"></i></button>
+            </div>
+
+            <div class="time-dropdown">
+                <div class="dropdown-option" data-i18n="result.departureTime">Departure Time</div>
+                <div class="dropdown-option" data-i18n="result.arrivalTime">Arrival Time</div>
+            </div>
+
+            <div class="stops-dropdown">
+                <div class="dropdown-option" data-i18n="result.nonStop">Non-stop</div>
+                <div class="dropdown-option">1 Stop</div>
+                <div class="dropdown-option">2+ Stops</div>
+            </div>
+
+            <div class="trip-options">
+                <div class="toggle-switch">
+                    @if (ViewBag.RoundTrip == 2)
+                    {
+                        <button type="button" class="toggle-btn active" id="RoundTrip" name="flight-options" data-trip="roundtrip" onclick="switchingOne()" data-i18n="search.roundTrip">Round Trip</button>
+
+                        <button type="button" class="toggle-btn" id="OneWay" name="flight-options" data-trip="oneway" onclick="onewaytodate('OneWay')" data-i18n="search.oneWay">One Way</button>
+                    }
+                    else if (ViewBag.RoundTrip == 1)
+                    {
+                        <button type="button" class="toggle-btn active" id="OneWay" name="flight-options" data-trip="oneway" onclick="onewaytodate('OneWay');" data-i18n="search.oneWay">One Way</button>
+
+                        <button type="button" class="toggle-btn" id="RoundTrip" name="flight-options" onclick="switchingOne()" data-trip="roundtrip" data-i18n="search.roundTrip">Round Trip</button>
+                    }
+                </div>
+                <div class="trip-btn">
+                    <select id="flight_class_select" name="flight_class">
+                        <option id="flight_class_4" value="4" data-i18n="search.economy">Economy</option>
+                        <option id="flight_class_3" value="3" data-i18n="search.premium">Premium</option>
+                        <option id="flight_class_2" value="2" data-i18n="search.business">Business</option>
+                        <option id="flight_class_1" value="1" data-i18n="search.first">First</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="search-form" id="hero-search-form">
+                <div class="swap_wrapper">
+                    <div class="form-group">
+                        <div class="city-input">
+                            <span class="input-icon icon-plane-departure"> <img src="img/air.png" class="img-fluid"></span>
+                            <div class="city-content">
+                                <div class="city-label" data-i18n="search.fromCity">From City</div>
+                                <input id="flight_from" type="text" value="@(ViewBag.departure)" class="city-input-field" placeholder="Departure" data-i18n-placeholder="search.departure" data-provide="typeahead" onClick="this.select()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="swapBtn" class="swap-btn"><span class="icon-exchange"></span></div>
+
+                    <div class="form-group">
+                        <div class="city-input">
+                            <span class="input-icon icon-plane-arrival">
+                                <img src="img/land.png" class="img-fluid">
+                            </span>
+                            <div class="city-content">
+                                <div class="city-label" data-i18n="search.toCity">To City</div>
+
+                                <input id="flight_to" type="text" class="city-input-field inputvalue" value="@(ViewBag.destination)" placeholder="Arrival" data-i18n-placeholder="search.arrival" data-provide="typeahead" onClick="this.select()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calender_wrap notranslate">
+                    <div class="form-group">
+
+                        <div class="input-wrapper">
+                            <span class="input-icon icon-calendar"></span>
+                            <label data-i18n="search.departure">Departure</label>
+                            <div class="date-input" style="padding-right: 0px">
+                                <input id="txtFromDate" class="theme-search-area-section-input notranslate" value="@(Convert.ToDateTime(ViewBag.DepartDate).ToString("MM-dd-yyyy"))" type="text" placeholder="dd-mm-yyyy" autocomplete="off" style="padding: 0px; height: auto" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hrline">
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="input-wrapper">
+                            <span class="input-icon icon-calendar-plus"></span>
+                            <label data-i18n="search.returning">Returning</label>
+                            <div class="date-input" style="padding-right: 0px">
+                                @if (ViewBag.ReturnDate == "0001-01-01" || ViewBag.ReturnDate == "1900-01-01")
+                                {
+                                    <input id="txtToDate" class="theme-search-area-section-input notranslate" value="" type="text" placeholder="+ Add Return" data-i18n-placeholder="search.addReturn" autocomplete="off" style="padding: 0px; height: auto" />
+                                    <span class="closereturn" style="cursor:pointer; display:none; color:black">X</span>
+                                }
+                                else
+                                {
+                                    <input id="txtToDate" class="theme-search-area-section-input notranslate" value="@(Convert.ToDateTime(ViewBag.ReturnDate).ToString("MM-dd-yyyy"))" type="text" placeholder="dd-mm-yyyy" autocomplete="off" style="padding: 0px; height: auto" />
+                                    <span class="closereturn" style="cursor: pointer; display: none; color: black">X</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="passenger-dropdown-wrapper">
+                    <div class="form-group adult">
+                        <label data-i18n="search.passengers">Passenger(s)</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon icon-user"></span>
+                            <input class="theme-search-area-section-input" readonly name="pass_info" id="pass_info" placeholder="1 Pax, Economy" value="1 Pax, Economy" type="text" />
+                        </div>
+                    </div>
+                    <div class="" id="FlySearchPassengers" style="display:none;">
+                        <div class="quantity-selector-inner">
+                            <div id="prsn_popup">
+                                <ul class="slect_pssngr" style="list-style: none; padding: 0; margin: 0;">
+                                    <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                        <label>Adult &nbsp;<span style="font-size: 11px; color: #666;">(12+ Years)</span></label>
+                                        <div class="count_pssngr" style="display: flex; gap: 10px;">
+                                            <a href="javascript:void(0);"><em data-field="adult" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                            <input type="text" readonly value="1" name="flight_adult" id="flight_adult" class="inpt_cout_pssngr" style="width: 30px; text-align: center; border: none; color: #000;" />
+                                            <a href="javascript:void(0);"><em data-field="adult" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                        </div>
+                                    </li>
+                                    <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                        <label>Children &nbsp;<span style="font-size: 11px; color: #666;">(2-11 Years)</span></label>
+                                        <div class="count_pssngr" style="display: flex; gap: 10px;">
+                                            <a href="javascript:void(0);"><em data-field="child" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                            <input type="text" readonly value="0" name="flight_child" id="flight_child" class="inpt_cout_pssngr" style="width: 30px; text-align: center; border: none; color: #000;" />
+                                            <a href="javascript:void(0);"><em data-field="child" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                        </div>
+                                    </li>
+                                    <li style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                        <label>Infant &nbsp;<span style="font-size: 11px; color: #666;">(0-2 Years)</span></label>
+                                        <div class="count_pssngr" style="display: flex; gap: 10px;">
+                                            <a href="javascript:void(0);"><em data-field="infant" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                            <input type="text" readonly value="0" name="flight_infant" id="flight_infant" class="inpt_cout_pssngr" style="width: 30px; text-align: center; border: none; color: #000;" />
+                                            <a href="javascript:void(0);"><em data-field="infant" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="clss_done" id="ind_done" style="text-align: right; margin-top: 10px;">
+                                    <a href="javascript:void(0);" id="prsn_done" style="font-weight: bold; color: #fff; background: #0971ff; text-decoration: none;">Done</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="search-btn" id="flight_submit" data-i18n="search.search">Search</button>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="theme-page-section resultPage" id="padZero">
+
+    <div id="dvHeight" style="height:10px;">&nbsp;</div>
+    <div id="dvMainResultView" style="display:show;" class="result-outer">
+        <input type="hidden" id="hdncounterlooppaging" />
+
+        <div class="results-head">
+            <div class="container d-flex space-between">
+                <div class="result-head-left">
+                    <h1>
+                        @(ViewBag.departure?.ToString().Split('-')[1].Split(',')[0])
+                        <svg width="26" height="13" viewBox="0 0 26 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.283 5.80716L18.2373 0.95335L19.2315 0L26 6.5L19.2315 13L18.2013 12.0467L23.2556 7.19284H12.9863V5.80716H23.283ZM5.77169 5.80716H10.1005V7.19284H5.77169V5.80716ZM0 5.80716H2.88584V7.19284H0V5.80716Z" fill="#1B2A4A" />
+                        </svg>
+                        @(ViewBag.destination?.ToString().Split('-')[1].Split(',')[0])
+                        <span>
+                            &bull;
+                            @if (ViewBag.ReturnDate != null && ViewBag.ReturnDate != "{1/1/1900 12:00:00 AM}" && ViewBag.ReturnDate != "1900-01-01")
+                            {
+                                <span data-i18n="search.roundTrip">Round Trip</span>
+                            }
+                            else
+                            {
+                                <span data-i18n="search.oneWay">One Way</span>
+                            }
+                        </span>
+                    </h1>
+                </div>
+                <div class="sort-bar">
+                    <span class="sort-chip">
+                        @{
+                            DateTime? departDate = ViewBag.departOn as DateTime?;
+                            DateTime? returnDate = ViewBag.returnOn as DateTime?;
+                            DateTime? returnOn = ViewBag.returnOn as DateTime?;
+                        }
+
+                        @if (returnOn != null && returnOn != new DateTime(1900, 1, 1))
+                        {
+                            @departDate?.ToString("MMM dd")
+                            <text>→</text> @returnDate?.ToString("MMM dd, yyyy")
+                        }
+                        else
+                        {
+                            @departDate?.ToString("MMM dd, yyyy")
+                        }
+                    </span>
+                    <span id="passengerSummary" class="sort-chip">
+                        @ViewBag.Adult @(ViewBag.Adult == 1 ? "Adult" : "Adults")
+
+                        @if (ViewBag.Child != null && ViewBag.Child > 0)
+                        {
+                            @ViewBag.Child @(ViewBag.Child == 1 ? "Child" : "Children")
+                        }
+
+                        @if (ViewBag.Infant != null && ViewBag.Infant > 0)
+                        {
+                            @ViewBag.Infant @(ViewBag.Infant == 1 ? "Infant" : "Infants")
+                        }
+                    </span>
+                    <span class="sort-chip">
+                        @{
+                            string cabin = "Unknown";
+                            int cabinValue = 0;
+
+                            if (int.TryParse(ViewBag.cabin?.ToString(), out cabinValue))
+                            {
+                                switch (cabinValue)
+                                {
+                                    case 1:
+                                        cabin = "First";
+                                        break;
+                                    case 2:
+                                        cabin = "Business";
+                                        break;
+                                    case 3:
+                                        cabin = "Premium";
+                                        break;
+                                    case 4:
+                                        cabin = "Economy";
+                                        break;
+                                }
+                            }
+                        }
+                        @cabin
+                    </span>
+                    <span class="sort-chip updating-price">
+                        <svg width="11" height="11" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.10162 15.9491C6.86375 15.9207 6.61425 15.8841 6.54738 15.8676C6.44896 15.8442 6.34997 15.8234 6.2505 15.8051C6.1369 15.783 6.02419 15.7566 5.91262 15.7259C5.3945 15.5774 5.35738 15.5653 4.96675 15.4056C4.60738 15.2591 3.94525 14.9168 3.71875 14.7611C3.65675 14.7181 3.59875 14.6834 3.58987 14.6834C3.581 14.6834 3.43613 14.5814 3.26763 14.4568C2.19638 13.6639 1.39213 12.7014 0.811 11.5159C0.711 11.3123 0.629375 11.1317 0.629375 11.1147C0.629375 11.0979 0.611375 11.0516 0.589375 11.0126C0.544 10.9314 0.479375 10.7567 0.42725 10.5761C0.404847 10.4993 0.378775 10.4237 0.349125 10.3494C0.32475 10.2919 0.305125 10.2219 0.305125 10.1937C0.305125 10.1653 0.28075 10.0731 0.251 9.98806C0.22125 9.90369 0.19725 9.80406 0.19725 9.76681C0.19725 9.72981 0.173875 9.60181 0.145 9.48231C0.07475 9.18731 0 8.42319 0 7.99494C0 7.56719 0.07475 6.80306 0.145 6.50819C0.17375 6.38856 0.19725 6.25819 0.19725 6.21819C0.19725 6.17806 0.215375 6.09944 0.23725 6.04319C0.25975 5.98719 0.2885 5.88656 0.30175 5.81969C0.3155 5.75281 0.34675 5.63756 0.372125 5.56281L0.445875 5.34706C0.5 5.18544 0.55025 5.04869 0.57425 4.99544C0.588 4.96569 0.641625 4.84419 0.693875 4.72544C0.778375 4.53356 0.9595 4.17169 1.06537 3.98231C1.104 3.91294 1.11863 3.88994 1.32763 3.56331C1.65875 3.04481 2.22462 2.39969 2.75137 1.93981C2.937 1.77769 3.55713 1.30694 3.585 1.30694C3.59275 1.30694 3.65125 1.27181 3.71537 1.22881C3.88375 1.11606 4.04887 1.02031 4.26412 0.912437C4.34139 0.874226 4.41791 0.83451 4.49363 0.793312C4.52925 0.772812 4.59612 0.742062 4.9395 0.588312C5.01512 0.554562 5.09663 0.523812 5.3315 0.441687C5.38325 0.423687 5.48725 0.385563 5.5615 0.357688C5.63625 0.329938 5.72413 0.306937 5.75688 0.306937C5.78913 0.306937 5.874 0.284437 5.94537 0.256687C6.01662 0.228812 6.146 0.197062 6.23338 0.186312C6.32038 0.176062 6.436 0.151688 6.49025 0.132563C6.544 0.114063 6.6915 0.0900625 6.81787 0.0794375C6.98258 0.0645302 7.14685 0.045148 7.3105 0.0213125C7.6465 -0.0279375 8.377 -0.0279375 8.7095 0.0213125C8.86655 0.0438503 9.02414 0.062398 9.18213 0.0769375C9.30125 0.0868125 9.45313 0.111688 9.52 0.132188C9.58688 0.152188 9.70262 0.177187 9.77687 0.186312C9.85112 0.196187 9.97612 0.226938 10.0546 0.255188C10.1334 0.283938 10.2226 0.306937 10.2534 0.306937C10.2841 0.306937 10.3476 0.324062 10.394 0.345562C10.4409 0.366562 10.54 0.401687 10.6147 0.423687C10.689 0.446187 10.8164 0.490562 10.8985 0.523312C10.98 0.555937 11.0894 0.598937 11.1416 0.618437C11.2379 0.654687 11.9491 1.01056 12.0459 1.07119C12.831 1.56081 13.2349 1.88069 13.7779 2.44169C14.4326 3.11844 14.8672 3.76294 15.3096 4.71169C15.3409 4.77869 15.3886 4.87781 15.416 4.93144C15.4429 4.98569 15.4654 5.04919 15.4654 5.07269C15.4654 5.09644 15.4879 5.16769 15.5156 5.23131C15.5909 5.40419 15.6553 5.60094 15.6856 5.75131C15.7006 5.82506 15.7285 5.91631 15.7475 5.95394C15.7666 5.99144 15.789 6.08681 15.7979 6.16494C15.8066 6.24294 15.8325 6.37094 15.8545 6.44856C15.982 6.88994 16.0454 8.19031 15.9683 8.76544C15.9454 8.93631 15.9195 9.14294 15.9108 9.22444C15.896 9.36406 15.8222 9.72494 15.7592 9.96756L15.6943 10.2244C15.5718 10.7191 15.269 11.4237 14.8994 12.0756C14.7529 12.3343 14.2617 13.0341 14.169 13.1161C14.1606 13.1233 14.1191 13.1723 14.0771 13.2239C14.0351 13.2762 13.9004 13.4222 13.7784 13.5482C13.2407 14.1033 12.8071 14.4466 12.0459 14.9193C11.9556 14.9754 11.19 15.3494 11.0469 15.4076C10.9726 15.4373 10.8486 15.4876 10.7715 15.5188C10.6949 15.5497 10.6094 15.5756 10.5825 15.5761C10.5556 15.5764 10.4849 15.6004 10.4253 15.6292C10.3658 15.6579 10.29 15.6819 10.2564 15.6824C10.2231 15.6829 10.126 15.7064 10.0405 15.7347C9.95512 15.7634 9.83637 15.7943 9.77675 15.8034C9.71725 15.8128 9.58987 15.8382 9.49312 15.8597C9.3965 15.8812 9.10438 15.9232 8.84475 15.9529C8.2656 16.0206 7.68047 16.0193 7.10162 15.9491ZM7.6895 14.3866C7.727 14.3573 7.76563 14.2991 7.77588 14.2582C7.79838 14.1678 11.4301 6.88694 11.4985 6.79569C11.5561 6.71856 11.5615 6.59506 11.5087 6.55156C11.481 6.52819 11.1332 6.52081 10.205 6.52231C9.50875 6.52381 8.92338 6.52431 8.90425 6.52381C8.876 6.52281 8.87013 6.05756 8.873 4.06481C8.875 2.71269 8.86863 1.59406 8.85888 1.57856C8.84913 1.56281 8.811 1.55019 8.77388 1.55019C8.72163 1.55019 8.69725 1.57269 8.66512 1.65119C8.6045 1.79719 8.437 2.12869 7.62162 3.71181C7.45226 4.04035 7.2833 4.3691 7.11475 4.69806C6.97025 4.98081 6.74225 5.42469 6.60887 5.68431C6.24987 6.38222 5.89162 7.08051 5.53412 7.77919C4.9175 8.98369 4.84287 9.12731 4.81637 9.15906C4.76512 9.22106 4.73725 9.36406 4.76613 9.41781C4.79238 9.46706 4.84475 9.46906 6.1465 9.46706C6.89063 9.46619 7.50437 9.47006 7.51075 9.47581C7.52787 9.49344 7.5215 14.1396 7.50387 14.2503C7.49225 14.3231 7.5 14.3616 7.53325 14.3948C7.59075 14.4524 7.6065 14.4519 7.6895 14.3866Z" fill="#d97706" />
+                        </svg>
+                        <span data-i18n="result.pricesUpdating">Prices Updating Fast</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="wrap-cards row-col-static" id="sticky-parent" data-gutter="20" style="color:#0b1f66;">
+                <button class="mobile-filter-btn" onclick="toggleMobileFilters()">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <line x1="4" y1="6" x2="20" y2="6" stroke-width="2"/>
+                        <line x1="7" y1="12" x2="17" y2="12" stroke-width="2"/>
+                        <line x1="10" y1="18" x2="14" y2="18" stroke-width="2"/>
+                    </svg>
+                    <span data-i18n="result.filters">Filters</span>
+                </button>
+                <aside class="sidebar-search-results" id="divLeftPanel"></aside>
+
+                <article class="cards-result" id="flightsBox">
+
+                    <div class="matrixSlider-inner price-table">
+                        <div class="row" style="margin: 0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0">
+                                <div id="owl-demo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="loaderassss" class="loaderassssedeed" style="display:none;" aria-live="polite" aria-busy="true">
+                        <div class="loader-spinner" aria-hidden="true"></div>
+                        <div class="loader-bar" aria-hidden="true"></div>
+                        <div class="loader-text">Checking live fares…</div>
+                    </div>
+
+@*                     <div class="all-results" id="dvResult"></div>
+ *@                    <div class="all-results @(ViewBag.cabin == "2" ? "business-class" : "")" id="dvResult"></div>
+ 
+                    <div class="load-more" style="cursor:pointer;" id="loadmore" onclick="LoadMoreFlight();" data-i18n="result.loadMore">
+                        Load More Flights
+                    </div>
+
+                    <img src="/img/moreload.gif" id="imgMore" style="display:none" />
+
+                    <a style="display:none;" class="btn _tt-uc _fs-sm btn-dark btn-block btn-lg" id="btnloadmore" href="javascript:void(0);">
+                        Load
+                        ults
+                    </a>
+                </article>
+            </div>
+            <div class="sidebar-overlay" onclick="closeMobileFilters()"></div>
+
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered rmf-pass">
+        <div class="modal-content">
+            <div class="modal-header rmf-head">
+                <img src="img/RMFLogo.png" alt="logo" class="img-responsive center-block" />
+            </div>
+             <div class="modal-body rmf-body">
+                <div class="plsWaitCaption">
+                    <p class="rmf-eyebrow" data-i18n="result.pleaseWait">Please wait for your flights<span class="rmf-dots"><span></span><span></span><span></span></span></p>
+                    <p class="rmf-sub" data-i18n="result.searchingDeals">We're searching the best flight deals for you.</p>
+                </div>
+                <h2>
+                    @(ViewBag.DepCode)
+                    <div class="rmf-path-wrap">
+                        <img src="./img/airline/aeroplane.gif" />
+                    </div>
+                    @(ViewBag.DestCode)
+                </h2>
+
+            </div>
+
+            <div class="rmf-tear">
+                <div class="rmf-notch left"></div>
+                <div class="rmf-notch right"></div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="diparCaptionBox">
+                    <div class="rmf-stub">
+                        <div class="rmf-field" id="diparBox">
+                            <div class="rmf-field-label">Departure Date</div>
+                            <div class="rmf-field-value">@(Convert.ToDateTime(ViewBag.DepartDate).ToString("dd-MMM-yyyy"))</div>
+                        </div>
+
+                        @if (ViewBag.RoundTrip.ToString() == "2")
+                        {
+
+                            <div class="rmf-field" id="diparBox">
+                                <div class="rmf-field-label">Return Date</div>
+                                <div class="rmf-field-value">@(Convert.ToDateTime(ViewBag.ReturnDate).ToString("dd-MMM-yyyy"))</div>
+                            </div>
+                        }
+                        else
+                        {
+
+                            <text>One Way</text>
+                        }
+
+
+                        <div class="rmf-field" id="diparBox">
+                            <div class="rmf-field-label">Class</div>
+                            <div class="rmf-field-value">@(ViewBag.FlightClass)</div>
+                        </div>
+                        <div class="rmf-field accent" id="diparBox">
+                            <div class="rmf-field-label">Traveller</div>
+                            <div class="rmf-field-value">@(ViewBag.adult) Adult @(ViewBag.child) Child @(ViewBag.infant) Infant</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divSessionOut" class="SessionTimeOut" style="display: none;">
+    <div class="sessionbox">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12"></div>
+                <div class="col-md-12 session-exp nopadding">
+                    <div class="session_content">
+                        <h3 class="text-center t-color2"><i class="fa fa-clock-o"></i>Your Session has expired</h3><br>
+                        <p class="text-center session-color">
+                            Your preferred search session has expired. We regret the inconvenience caused
+                        </p><br>
+                        <div class="text-center"><p><a class="search-button-02" onclick="window.location.href='@ViewBag.BackToResult'" data-i18n="result.searchAgain">Search Again</a></p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const swapBtn = document.getElementById('swapBtn');
+        const fromInput = document.getElementById('flight_from');
+        const toInput = document.getElementById('flight_to');
+        const fromBadge = document.getElementById('fromBadge');
+        const toBadge = document.getElementById('toBadge');
+        function updateBadgeFromInput(inputElement, badgeElement) {
+            const val = inputElement.value.trim();
+            const match = val.match(/^([A-Z]{3})[ -]/) || val.match(/\(([A-Z]{3})\)/);
+
+            if (match) {
+                badgeElement.textContent = match[1]; // Set text to "MIA"
+                badgeElement.style.display = 'block'; // Make visible
+            } else {
+                badgeElement.textContent = "";
+                badgeElement.style.display = 'none';  // Hide if invalid/empty
+            }
+        }
+
+        let lastFromVal = "";
+        let lastToVal = "";
+
+        setInterval(() => {
+            if (fromInput.value !== lastFromVal) {
+                lastFromVal = fromInput.value;
+                updateBadgeFromInput(fromInput, fromBadge);
+            }
+
+            if (toInput.value !== lastToVal) {
+                lastToVal = toInput.value;
+                updateBadgeFromInput(toInput, toBadge);
+            }
+        }, 200);
+
+        if (swapBtn) {
+            let isRotated = false;
+            swapBtn.addEventListener('click', () => {
+                const tempValue = fromInput.value;
+                fromInput.value = toInput.value;
+                toInput.value = tempValue;
+
+                lastFromVal = fromInput.value;
+                lastToVal = toInput.value;
+
+                updateBadgeFromInput(fromInput, fromBadge);
+                updateBadgeFromInput(toInput, toBadge);
+
+                const icon = swapBtn.querySelector('.icon-exchange') || swapBtn;
+                icon.style.transition = "transform 0.3s ease";
+                icon.style.transform = isRotated ? "rotate(0deg)" : "rotate(180deg)";
+                isRotated = !isRotated;
+            });
+        }
+    });
+</script>
+
+<script>
+
+    $(function () {debugger
+        if (window.SiteI18n) {
+            SiteI18n.setupDatepicker();
+            SiteI18n.reapply();
+        }
+        getResultPage();
+    });
+    function setPriceLowToHigh() {
+
+        $("#dvSort li span").removeClass("active");
+        $("#dvSort li span:first-child").addClass("active");
+    }
+    $("#dvSort li span").click(function () {
+        $("#dvSort li span").removeClass("active");
+        $(this).addClass("active");
+    })
+    //Edit result btn
+    $('#editBtnResult').click(function () {
+        $('#hero-search-form').toggle();
+    });
+    //Filters result
+    $('#mobileFilters').click(function () {
+        $('#divLeftPanel .sticky-col.customHideClass').toggle();
+    });
+
+
+    $("#drpSorting").change(function () {
+        if ($('option:selected', this).text() == "Price (Low to High)") {
+            SortByPrice(0, 1);
+
+        }
+        else if ($('option:selected', this).text() == "Price (High to Low)") {
+            SortByPrice(1, 1);
+        }
+        else if ($('option:selected', this).text() == "Duration (Low to High)") {
+            SortByDuration(0, 1);
+
+        }
+        else if ($('option:selected', this).text() == "Duration (High to Low)") {
+            SortByDuration(1, 1);
+        }
+        else if ($('option:selected', this).text() == "Airline (A-Z)") {
+            SortByAirlineName(0, 1);
+        }
+        else if ($('option:selected', this).text() == "Airline (Z-A)") {
+            SortByAirlineName(1, 1);
+        }
+    });
+
+</script>
+
+<script>
+
+            function showLoaderwddwwwd() {
+          var el = document.getElementById("loaderassss");
+          if (!el) return;
+          el.style.display = "flex";
+          el.classList.add("is-active");
+    }
+
+    function hideLoaderdwdw() {
+          var el = document.getElementById("loaderassss");
+          if (!el) return;
+          el.classList.remove("is-active");
+          el.style.display = "none";
+    }
+
+    var ipaddress = ""
+    window.onload = (event) => {
+    $.getJSON("https://api.ipify.org?format=json", function (data) {
+        ipaddress = (data.ip);
+        console.log(data.ip);
+        console.log(ipaddress);
+    });
+    };
+
+
+     function getResultPage() {
+         $('#hdnPageIndex').val("0");
+
+
+     var geturl = {
+        depart: "@(ViewBag.depart)",
+        arrival: "@(ViewBag.arrival)",
+        trip: "@(ViewBag.trip)",
+        departOn: "@(ViewBag.departOn)",
+        adult: "@(ViewBag.adult)",
+        child: "@(ViewBag.child)",
+        infant: "@(ViewBag.infant)",
+        returnOn: "@(ViewBag.returnOn)",
+        utm_source: "@(ViewBag.utm_source)",
+        IsDirect: "@(ViewBag.IsDirect)",
+        seniors: "@(ViewBag.seniors)",
+        cabin: "@(ViewBag.cabin)",
+        source: "@(ViewBag.source)",
+        searchID: "@(ViewBag.searchID)",
+
+        // Always search fares in USD (ignore localStorage / UI currency picker)
+        currency: "USD"
+    };
+    try { localStorage.setItem("selectedCurrency", "USD"); } catch (e) { }
+         $.ajax({
+             type: "get",
+             beforeSend: function () {
+                 $("#myModal").modal({
+                     backdrop: 'static',
+                     keyboard: false
+                 });
+                 $('#loadmore').hide();
+             },
+             url: "@(TravelWeb.Utilities.Common.WebSitePath)Result/search",
+             data: geturl,
+            contentType: "application/html; charset=utf-8",
+            accepts: "application/html; charset=utf-8",
+             success: function (response) {
+                 var $bundle = $('<div>').append($.parseHTML(response, document, true));
+                 var $left = $bundle.find('#rmf-left');
+                 var $results = $bundle.find('#rmf-results');
+
+                 if ($left.length && $results.length) {
+                     // Single round-trip: left panel + first page of flights
+                     $('#divLeftPanel').html($left.html());
+                     $('#dvResult').html($results.html());
+                     $('#dvMainResultView').show();
+                     $('#dvHeight').hide();
+                     var total = parseInt($results.attr('data-total') || $('#TotallistCount').val() || '0', 10);
+                     if (!isNaN(total) && total > 0) {
+                         $('#TotallistCount').val(total);
+                         $('#hdnResultCount').val(total);
+                     }
+                     var PageSize = @PageSize;
+                     if (total > PageSize) $('#loadmore').show();
+                     else $('#loadmore').hide();
+                     bindResultFilterHandlers();
+                 } else {
+                     // Fallback for multicity / older response shape
+                     $('#divLeftPanel').html(response);
+                     $('#loadmore').hide();
+                     FirstloadResult();
+                 }
+
+                 $('#myModal').modal('hide');
+                if (window.refreshPageI18n) refreshPageI18n();
+            },
+             failure: function (response) {
+                 $('#myModal').modal('hide');
+                alert("Sorry! no flight found");
+            },
+             error: function (response) {
+                 $('#myModal').modal('hide');
+                alert("Sorry! No flight found");
+             },
+             complete: function () {
+                 $('#myModal').modal('hide');
+             },
+
+        });
+    }
+
+
+    function SortByAirlineName(vl,chk) {
+
+        if (parseInt($('#hdnSorByAirlineName').val()) == 0) {
+            $('#hdnSorByAirlineName').val("1");
+        }
+        else {
+            $('#hdnSorByAirlineName').val("0");
+        }
+        if (chk == 1 && vl == 0) {
+
+            $('#hdnSorByAirlineName').val("0");
+
+        }
+        else if (chk == 1 && vl == 1) {
+            $('#hdnSorByAirlineName').val("1");
+        }
+
+        $('#hdnSortResult').val("airline");
+        $('#hdnPageIndex').val("0");
+        filterResult();
+        setPriceLowToHigh();
+    }
+    function SortByPrice(vl,chk) {
+
+        if (parseInt($('#hdnSorPrice').val()) == 0) {
+            $('#hdnSorPrice').val("1");
+            $("#sppricelow").removeClass("active");
+            $("#sppricehigh").addClass("active");
+
+        }
+
+        else {
+            $('#hdnSorPrice').val("0");
+            $("#sppricehigh").removeClass("active");
+            $("#sppricelow").addClass("active");
+        }
+
+
+        if (chk == 1 && vl == 0) {
+
+            $('#hdnSorPrice').val("0");
+
+        }
+        else if (chk == 1 && vl == 1) {
+            $('#hdnSorPrice').val("1");
+        }
+        $('#hdnSortResult').val("price");
+        $('#hdnPageIndex').val("0");
+        filterResult();
+    }
+    function SortByDuration(vl,chk) {
+
+        if (parseInt($('#hdnSortDuration').val()) == 0) {
+            $('#hdnSortDuration').val("1");
+        }
+        else {
+            $('#hdnSortDuration').val("0");
+        }
+
+
+        if (chk == 1 && vl == 0) {
+
+            $('#hdnSortDuration').val("0");
+
+        }
+        else if (chk == 1 && vl == 1) {
+            $('#hdnSortDuration').val("1");
+        }
+
+
+        $('#hdnSortResult').val("durarion");
+        $('#hdnPageIndex').val("0");
+        filterResult();
+        setPriceLowToHigh();
+    }
+
+
+
+
+    function bindResultFilterHandlers() {
+        $('.stopscheckbox').off('click.resultFilter').on('click.resultFilter', function () {
+            $('#hdnSorPrice').val("0");
+            $('#hdnSortResult').val("price");
+            filterResult();
+            setPriceLowToHigh();
+        });
+
+        $('.chkAirlinelist').off('click.resultFilter').on('click.resultFilter', function () {
+            $('#hdnSorPrice').val("0");
+            $('#hdnSortResult').val("price");
+            $('#hdnPageIndex').val("0");
+            filterResult();
+            setPriceLowToHigh();
+        });
+    }
+
+    function FirstloadResult() {
+        loadResult(",", ",");
+        bindResultFilterHandlers();
+    }
+
+    var _filterResultTimer = null;
+    var _filterXhr = null;
+
+    function filterResult() {
+        if (_filterResultTimer) clearTimeout(_filterResultTimer);
+        _filterResultTimer = setTimeout(function () {
+            var stopsx = '';
+            $('.stopscheckbox').each(function (i, items) {
+                if ($(this).prop('checked')) {
+                    stopsx += $(items).val() + ',';
+                }
+            });
+            var airlinesx = '';
+            $('.chkAirlinelist').each(function (i, items) {
+                if ($(this).prop('checked')) {
+                    airlinesx += $(items).val() + ',';
+                }
+            });
+            loadResult(stopsx, airlinesx);
+        }, 180);
+    }
+
+    var flightlistlength = "";
+    var flight = parseInt(flightlistlength);
+
+    function loadResult(stopsx, airlinesx) {
+        $('#loadmore').hide();
+        $('#myModal').modal('hide');
+        if ((typeof (airlinesx) == "undefined" || airlinesx == ''))
+        {
+            airlinesx = ',';
+        }
+       if ((typeof (stopsx) == "undefined" || stopsx == ''))
+        {
+            stopsx = ',';
+       }
+       var searchid = document.getElementById("SearchId").value;
+        var MinPrice = document.getElementById("hdnMinPrice").value;
+
+        $('#hdnstopsx').val(stopsx);
+        $('#hdnairlinesx').val(airlinesx);
+        var pageindex = 1;
+        var PageSize = @PageSize;
+        if (_filterXhr && _filterXhr.readyState !== 4) {
+            try { _filterXhr.abort(); } catch (e) { }
+        }
+       _filterXhr = $.ajax({
+
+             type: "get",
+             beforeSend: function () {
+                       showLoaderwddwwwd();
+             },
+           url: "@(TravelWeb.Utilities.Common.WebSitePath)flightresult/Partial/result",
+           data: { "Stopsx": "" + $('#hdnstopsx').val() + "", "Airlinex": "" + $('#hdnairlinesx').val() + "", "DepSlots": "" + $('#hdnDepartureSlots').val() + "", "MinPrice": "" + $('#hdnMinPrice').val() + "", "MaxPrice": "" + $('#hdnMaxPrice').val() + "", "SortPrice": "" + $('#hdnSorPrice').val() + "", "SortDuration": "" + $('#hdnSortDuration').val() + "", "SorByAirlineName": "" + $('#hdnSorByAirlineName').val() + "", "SortResult": "" + $('#hdnSortResult').val() + "", "Pageindex": "" + pageindex + "", "PageSize": "" + PageSize + "", "OutDep": "" + $('#hdnoutboundDep').val() + "", "OutArr": "" + $('#hdnoutboundArr').val() + "", "InnDep": "" + $('#hdninboundDep').val() + "", "InnArr": "" + $('#hdninboundArr').val() + "", "searchID": "" + searchid },
+            contentType: "application/html; charset=utf-8",
+            accepts: "application/html; charset=utf-8",
+           success: function (response) {
+                       hideLoaderdwdw();
+                $('#dvResult').html(response);
+                $('#myModal').modal('hide');
+                $('#dvMainResultView').show();
+               $('#dvHeight').hide();
+               $('#loadmore').show();
+
+               var TotalList = $("#TotallistCount").val();
+               TotalList = parseInt(TotalList);
+               if (TotalList < PageSize) {
+                   $('#loadmore').hide();
+
+               }
+               if (window.refreshPageI18n) refreshPageI18n();
+            },
+            failure: function (response) {
+                hideLoaderdwdw();
+                $('#dvResult').html("");
+            },
+            error: function (xhr) {
+                  if (xhr && xhr.statusText === "abort") return;
+                  hideLoaderdwdw();
+                  $('#dvResult').html("");
+             },
+
+        });
+    }
+</script>
+
+<script>
+
+    function showFlightResults(pageIndex) {
+
+        var SearchId = document.getElementById("SearchId").value;
+        var PageSize = @PageSize;
+        var result = $("#hdnResultCount").val();
+       var searchflightlist= parseInt(result);
+        if (flightlistlength >= searchflightlist-1) {
+            $.ajax({
+                type: "GET",
+                url: "@(TravelWeb.Utilities.Common.WebSitePath)flightresult/Partial/resultviewNew",
+                data: { "Pageindex": "" + pageIndex + "", "PageSize": "" + PageSize + "", "Airlinex": "" + $('#hdnairlinesx').val() + "", "searchID": "" + SearchId },
+                contentType: "application/html; charset=utf-8",
+                accepts: "application/html; charset=utf-8",
+                success: function (response) {
+                    $('#dvResult').html(response);
+                    $('#myModal').modal('hide');
+                    $('#dvMainResultView').show();
+                    $('#dvHeight').hide();
+                    $('#loadmore').hide();
+                    var counterlooppaging = parseInt($('#hdnResultCount').val()) / PageSize;
+                    $('#hdncounterlooppaging').val(counterlooppaging);
+                    if (window.refreshPageI18n) refreshPageI18n();
+                },
+                failure: function (response) {
+                },
+                error: function (response) {
+                }
+            });
+        }
+            else {
+                     $.ajax({
+            type: "GET",
+            url: "@(TravelWeb.Utilities.Common.WebSitePath)flightresult/Partial/resultviewNew",
+            data: { "Pageindex": "" + pageIndex + "", "PageSize": "" + PageSize + "", "Airlinex": "" + $('#hdnairlinesx').val() + "", "searchID": "" + SearchId },
+            contentType: "application/html; charset=utf-8",
+            accepts: "application/html; charset=utf-8",
+            success: function (response) {
+                $('#dvResult').html(response);
+                $('#myModal').modal('hide');
+                $('#dvMainResultView').show();
+                $('#dvHeight').hide();
+                var counterlooppaging = parseInt($('#hdnResultCount').val()) / PageSize;
+                $('#hdncounterlooppaging').val(counterlooppaging);
+                if (window.refreshPageI18n) refreshPageI18n();
+
+            },
+            failure: function (response) {
+            },
+            error: function (response) {
+            }
+                });
+            }
+    }
+
+
+</script>
+
+<script>
+    var todate = $("#txtToDate").val();
+    if (window.FlightSearchDate ? FlightSearchDate.isEmpty(todate) : (todate == '+ Add Return' || !todate)) {
+        $("#txtToDate").prop('disabled', true);
+    }
+    else {
+        $("#txtToDate").click(function () {
+            var formdate = document.getElementById('txtFromDate').value;
+            var split = formdate.split("-");
+            if (parseInt(split[0]) < 10)
+                split[0] = "0" + split[0];
+            ndate = split[0] + "-" + split[1] + "-" + split[2];
+            var str = $("#txtFromDate").val();
+            str = str.split(/\D+/);
+            str = new Date(str[2], str[0] - 1, (parseInt(str[1]) + 1));
+            var ndateArr = str.toString().split(' ');
+            var Months = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec';
+            var newdate = (parseInt(Months.indexOf(ndateArr[1]) / 4) + 1) + '-' + ndateArr[2] + '-' + ndateArr[3];
+
+            $("#txtFromDate").datepicker({
+                minDate: new Date()
+            });
+
+            $("#txtToDate").datepicker("option", "minDate", newdate);
+
+            $("#txtToDate").focus();
+        });
+    }
+    $("#RoundTrip").click(function () {
+        $("#txtToDate").val("");
+    $("#txtToDate").prop('disabled', false);
+    var formdate = document.getElementById('txtFromDate').value;
+    var split = formdate.split("-");
+    if (parseInt(split[0]) < 10)
+        split[0] = "0" + split[0];
+    ndate = split[0] + "-" + split[1] + "-" + split[2];
+    var str = $("#txtFromDate").val();
+    str = str.split(/\D+/);
+    str = new Date(str[2], str[0] - 1, (parseInt(str[1]) + 1));
+    var ndateArr = str.toString().split(' ');
+    var Months = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec';
+    var newdate = (parseInt(Months.indexOf(ndateArr[1]) / 4) + 1) + '-' + ndateArr[2] + '-' + ndateArr[3];
+
+    $("#txtFromDate").datepicker({
+        minDate: new Date()
+    });
+
+    $("#txtToDate").datepicker("option", "minDate", newdate);
+    $("#txtToDate").focus();
+    });
+
+
+    function onewaytodate(value) {
+
+        $('#OneWay').addClass('active');
+        $('#RoundTrip').removeClass('active');
+
+        if (value == 'OneWay') {
+            if (window.FlightSearchDate) {
+                FlightSearchDate.setEmpty();
+            } else {
+                $("#txtToDate").val("");
+            }
+            $("#txtToDate").prop('disabled', true);
+        }
+
+    }
+
+</script>
+<script>
+
+    function ResultAllData() {
+         var PageSize = @PageSize;
+        var pageindex = 1;
+            $.ajax({
+            type: "get",
+            beforeSend: function () { $("#imgMore").show(); },
+            url: "@(TravelWeb.Utilities.Common.WebSitePath)flightresult/Partial/result",
+             data: { "Stopsx": "" + $('#hdnstopsx').val() + "", "Airlinex": "" + $('#hdnairlinesx').val() + "", "MinPrice": "" + $('#hdnMinPrice').val() + "", "MaxPrice": "" + $('#hdnMaxPrice').val() + "", "SortPrice": "" + $('#hdnSorPrice').val() + "", "SortDuration": "" + $('#hdnSortDuration').val() + "", "SorByAirlineName": "" + $('#hdnSorByAirlineName').val() + "", "SortResult": "" + $('#hdnSortResult').val() + "", "Pageindex": "" + pageindex + "","PageSize":""+PageSize+"" },
+            contentType: "application/html; charset=utf-8",
+            accepts: "application/html; charset=utf-8",
+                     success: function (response) {
+                         localStorage.setItem('FlightsResultDetail', JSON.stringify(response));
+                           showFlightResults(counter);
+                $('#dvResult').append(response);
+                $("#imgMore").hide();
+
+            },
+            failure: function (response) {
+            },
+            error: function (response) {
+             },
+
+        });
+    }
+
+    function LoadMore(counterlooppaging) {
+        $("#loadmore").remove();
+        LoadMoreFlight();
+    }
+    var counter = 1;
+    var temp = 0;
+    function LoadMoreFlight()
+    {
+
+        console.log("check load more increment");
+        debugger;
+        var listoverset = $('#hdnairlinesx').val();
+        if (listoverset != "," && listoverset != undefined) {
+            temp++;
+            counter = temp;
+        }
+        else {
+            counter++;
+        }
+        var SearchId = document.getElementById("SearchId").value;
+        var pageindex =  counter
+        var PageSize = @PageSize;
+        var result = $("#hdnResultCount").val();
+
+        var searchflightlist = parseInt(result);
+
+
+            $.ajax({
+                type: "get",
+                beforeSend: function () { $("#imgMore").show(); },
+                url: "@(TravelWeb.Utilities.Common.WebSitePath)flightresult/Partial/result",
+                data: { "Stopsx": "" + $('#hdnstopsx').val() + "", "Airlinex": "" + $('#hdnairlinesx').val() + "",  "DepSlots": "" + $('#hdnDepartureSlots').val() + "", "MinPrice": "" + $('#hdnMinPrice').val() + "", "MaxPrice": "" + $('#hdnMaxPrice').val() + "", "SortPrice": "" + $('#hdnSorPrice').val() + "", "SortDuration": "" + $('#hdnSortDuration').val() + "", "SorByAirlineName": "" + $('#hdnSorByAirlineName').val() + "", "SortResult": "" + $('#hdnSortResult').val() + "", "Pageindex": "" + pageindex + "", "PageSize": "" + PageSize + "", "searchID": "" + SearchId },
+                contentType: "application/html; charset=utf-8",
+                accepts: "application/html; charset=utf-8",
+                success: function (response) {
+                    $('#loadmore').show();
+                    var PageSize = @PageSize;
+                    var Listoverload = (counter * PageSize);
+                    if (searchflightlist <= Listoverload) {
+                        $('#loadmore').hide();
+
+                    }
+                    $('#dvResult').append(response);
+                    $("#imgMore").hide();
+                    if (window.refreshPageI18n) refreshPageI18n();
+                },
+                failure: function (response) {
+                },
+                error: function (response) {
+                },
+
+            });
+
+
+
+        }
+
+
+</script>
+<script>
+    window.onload = function () {
+        inactivityTime();
+    }
+</script>
+<script>
+    var inactivityTime = function () {
+        var time;
+        window.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onkeydown = resetTimer;
+        document.onmousedown = resetTimer;
+        document.ontouchstart = resetTimer;
+        document.onclick = resetTimer;
+        document.onkeydown = resetTimer;
+        document.addEventListener('scroll', resetTimer, true);
+        function logout() {
+            $('#divSessionOut').show();
+        }
+
+        function resetTimer() {
+            clearTimeout(time);
+            time = setTimeout(logout, 60 * 60 * 1000)
+        }
+    };
+
+    function switchingOne() {
+        console.log('clickedOne!');
+        // document.getElementById("txtToDate").style.background = "white"; Change Done By Himanshu
+        document.getElementById("txtToDate").removeAttribute("disabled");
+
+        $('#RoundTrip').addClass('active');
+        $('#OneWay').removeClass('active');
+
+    }
+
+</script>
+<input type="hidden" value="0" id="hdnPageIndex" />
+
+<input type="hidden" value="," id="hdnstopsx" />
+<input type="hidden" value="," id="hdnairlinesx" />
+
+<script>
+    const swapBtn = document.getElementById('swapBtn');
+    const fromInput = document.getElementById('flight_from');
+    const toInput = document.getElementById('flight_to');
+    const fromBadge = document.getElementById('fromBadge');
+    const toBadge = document.getElementById('toBadge');
+
+    let isRotated = false;
+
+    swapBtn.addEventListener('click', () => {
+        const tempValue = fromInput.value;
+        fromInput.value = toInput.value;
+        toInput.value = tempValue;
+
+        const tempBadge = fromBadge.textContent;
+        fromBadge.textContent = toBadge.textContent;
+        toBadge.textContent = tempBadge;
+
+        if (!isRotated) {
+            swapBtn.style.transform = "translate(-50%, -50%) rotate(180deg)";
+        } else {
+            swapBtn.style.transform = "translate(-50%, -50%) rotate(0deg)";
+        }
+        isRotated = !isRotated;
+    });
+</script>
+<script>
+        function updatePassengerSummary() {
+        var adult = parseInt($("#flight_adult").val()) || 0;
+        var child = parseInt($("#flight_child").val()) || 0;
+        var infant = parseInt($("#flight_infant").val()) || 0;
+        var t = window.SiteI18n ? SiteI18n.t.bind(SiteI18n) : function (k, fb) { return fb; };
+        var text = "";
+
+        if (adult > 0) {
+            text += "<strong>" + adult + "</strong> " + (adult > 1 ? t('search.adults', 'Adults') : t('search.adult', 'Adult')) + " ";
+        }
+
+        if (child > 0) {
+            text += "<strong>" + child + "</strong> " + (child > 1 ? t('search.children', 'Children') : t('search.child', 'Child')) + " ";
+        }
+
+        if (infant > 0) {
+            text += "<strong>" + infant + "</strong> " + (infant > 1 ? t('search.infants', 'Infants') : t('search.infant', 'Infant'));
+        }
+
+        $("#passengerSummary").html(text.trim());
+    }
+</script>
+<script>
+    // Delegated Select handler — partial scripts often do not run after AJAX .html()
+    $(document).on('click', '.btn-primary-inverse, .sidebar-select-btn, .mob-select-btn', function (e) {
+        e.preventDefault();
+        var flight_id = $(this).data('id');
+        if (!flight_id) {
+            return;
+        }
+
+        var chkAdultmore = parseInt(localStorage.getItem('moreadultcount'), 10) || 0;
+        var chkChildmore = parseInt(localStorage.getItem('morechildcount'), 10) || 0;
+        var qsval = window.location.search.replace(/^\?/, '');
+        var searchId = ($('#searchId').val() || $('#SearchId').val() || '@(ViewBag.searchID)' || '').toString();
+        if (searchId.indexOf(',') >= 0) {
+            searchId = searchId.substring(searchId.lastIndexOf(',') + 1);
+        }
+
+        var detailsUrl = '@(TravelWeb.Utilities.Common.WebSitePath)details?' + qsval
+            + '&flightId=' + encodeURIComponent(flight_id)
+            + '&moreadultcount=' + chkAdultmore
+            + '&morechildcount=' + chkChildmore
+            + '&searchID=' + encodeURIComponent(searchId);
+
+        if (typeof showLoaderwddwwwd === 'function') {
+            showLoaderwddwwwd();
+        }
+
+        // Prepare + verifier run while loader is shown; navigate only after response
+        $.ajax({
+            url: '/details/prepare',
+            type: 'POST',
+            data: { searchId: searchId, flightId: flight_id },
+            timeout: 90000
+        }).always(function () {
+            window.location.href = detailsUrl;
+        });
+    });
+</script>

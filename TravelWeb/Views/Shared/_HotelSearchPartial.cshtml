@@ -1,0 +1,119 @@
+@{
+    var checkInDefault = DateTime.Now.AddDays(3).ToString("MM-dd-yy");
+    var checkOutDefault = DateTime.Now.AddDays(6).ToString("MM-dd-yy");
+}
+
+<form id="hotel-search-form" class="hotel-search-form" autocomplete="off">
+    <div class="hotel-search-grid">
+        <div class="city-box hotel-dest-box">
+            <div class="city-inner">
+                <svg class="hotel-field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z" stroke="#646a72" stroke-width="1.6" />
+                    <circle cx="12" cy="9" r="2.4" stroke="#646a72" stroke-width="1.6" />
+                </svg>
+                <div class="city-text">
+                    <div class="city-sub">
+                        <span class="city-label">Destination</span>
+                    </div>
+                    <input id="hotel_place"
+                           class="inputvalue city-input"
+                           type="text"
+                           placeholder="Where to?"
+                           value=""
+                           style="font-size:16px;" />
+                </div>
+            </div>
+        </div>
+
+        <div class="date-range-box hotel-date-box notranslate">
+            <div class="date-left" onclick="document.getElementById('hotel_checkin').focus();">
+                <img src="img/flexibleticket.png" class="date-icon" alt="cal">
+                <div class="date-info">
+                    <label for="hotel_checkin" class="return-label">Check In</label>
+                    <input id="hotel_checkin"
+                           class="return-add theme-search-area-section-input notranslate"
+                           type="text"
+                           placeholder="Select date"
+                           value="@checkInDefault"
+                           readonly
+                           autocomplete="off" />
+                </div>
+            </div>
+
+            <div class="date-divider"></div>
+
+            <div class="date-right" onclick="document.getElementById('hotel_checkout').focus();">
+                <img src="img/flexibleticket.png" class="date-icon" alt="cal">
+                <div class="return-info">
+                    <label for="hotel_checkout" class="return-label">Check Out</label>
+                    <input id="hotel_checkout"
+                           class="return-add theme-search-area-section-input notranslate"
+                           type="text"
+                           placeholder="Select date"
+                           value="@checkOutDefault"
+                           readonly
+                           autocomplete="off" />
+                </div>
+            </div>
+        </div>
+
+        <div class="passenger-box hotel-guest-box" style="position: relative;">
+            <svg class="hotel-field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" stroke="#646a72" stroke-width="1.6" stroke-linecap="round" />
+                <circle cx="9" cy="7" r="3.4" stroke="#646a72" stroke-width="1.6" />
+                <path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#646a72" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+
+            <div class="passenger-text" id="hotel-guest-toggle" role="button" tabindex="0">
+                <div class="passenger-label">Guests</div>
+                <input class="passenger-value theme-search-area-section-input"
+                       readonly
+                       id="hotel_guest_summary"
+                       value="2 Adults · 1 Room"
+                       type="text" />
+            </div>
+
+            <div id="hotel-guest-panel" class="hotel-guest-panel" style="display:none;">
+                <div class="hotel-guest-row">
+                    <div>
+                        <p class="hotel-guest-title">Adults</p>
+                        <p class="hotel-guest-sub">Ages 13+</p>
+                    </div>
+                    <div class="hotel-stepper">
+                        <button type="button" class="hotel-stepper-btn" data-target="adults" data-action="dec">−</button>
+                        <span id="hotel_adults_count">2</span>
+                        <button type="button" class="hotel-stepper-btn" data-target="adults" data-action="inc">+</button>
+                    </div>
+                </div>
+                <div class="hotel-guest-row">
+                    <div>
+                        <p class="hotel-guest-title">Children</p>
+                        <p class="hotel-guest-sub">Ages 0–12</p>
+                    </div>
+                    <div class="hotel-stepper">
+                        <button type="button" class="hotel-stepper-btn" data-target="children" data-action="dec">−</button>
+                        <span id="hotel_children_count">0</span>
+                        <button type="button" class="hotel-stepper-btn" data-target="children" data-action="inc">+</button>
+                    </div>
+                </div>
+                <div class="hotel-guest-row hotel-guest-row-border">
+                    <div>
+                        <p class="hotel-guest-title">Rooms</p>
+                        <p class="hotel-guest-sub">1 room fits 2 adults</p>
+                    </div>
+                    <div class="hotel-stepper">
+                        <button type="button" class="hotel-stepper-btn" data-target="rooms" data-action="dec">−</button>
+                        <span id="hotel_rooms_count">1</span>
+                        <button type="button" class="hotel-stepper-btn" data-target="rooms" data-action="inc">+</button>
+                    </div>
+                </div>
+                <button type="button" id="hotel-guest-done" class="hotel-guest-done">Done</button>
+            </div>
+        </div>
+
+        <div class="search-col">
+            <button type="submit" class="search-btn" id="hotel_submit">Search</button>
+        </div>
+    </div>
+    <p id="hotel-form-msg" class="hotel-form-msg" style="display:none;"></p>
+</form>

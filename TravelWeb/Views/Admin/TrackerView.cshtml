@@ -1,0 +1,59 @@
+﻿@model TrackerDetailVM
+
+@{
+    ViewData["Title"] = "User Tracking Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-6">
+
+    <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-black text-slate-800 uppercase">
+            User Tracking Details
+        </h1>
+
+        <a asp-action="TrackerDetails"
+           class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-bold hover:bg-slate-300 transition">
+            Back
+        </a>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+
+            <div><strong>Id:</strong> @Model.Id</div>
+            <div><strong>SearchId:</strong> @Model.SearchId</div>
+            <div><strong>ParentSearchId:</strong> @Model.ParentSearchId</div>
+            <div><strong>Source:</strong> @Model.Source</div>
+            <div><strong>RootSource:</strong> @Model.RootSource</div>
+            <div><strong>Stage:</strong> @Model.Stage</div>
+            <div><strong>PreviousStage:</strong> @Model.PreviousStage</div>
+            <div><strong>FromLocation:</strong> @Model.FromLocation</div>
+            <div><strong>ToLocation:</strong> @Model.ToLocation</div>
+            <div><strong>DepartureDate:</strong> @Model.DepartureDate</div>
+            <div><strong>ReturnDate:</strong> @Model.ReturnDate</div>
+            <div><strong>TripType:</strong> @(Model.TripType == "R" ? "ROUND" : "ONEWAY")</div>
+            <div><strong>Adults:</strong> @Model.Adults</div>
+            <div><strong>Children:</strong> @Model.Children</div>
+            <div><strong>Infants:</strong> @Model.Infants</div>
+            <div><strong>CabinClass:</strong> @Model.CabinClass</div>
+            <div><strong>IPAddress:</strong> @Model.IPAddress</div>
+            <div><strong>UserAgent:</strong> @Model.UserAgent</div>
+            <div><strong>BookingReference:</strong> @Model.BookingReference</div>
+            <div><strong>CreatedAt:</strong> @Model.CreatedAt</div>
+            <div><strong>UpdatedAt:</strong> @Model.UpdatedAt</div>
+            <div><strong>PriceWithoutMarkup:</strong> $@Model.PriceWithoutMarkup</div>
+            <div><strong>Markup:</strong> $@Model.Markup</div>
+            <div><strong>Rule:</strong> @Model.Rule</div>
+            <div><strong>Airline:</strong> @Model.Airline</div>
+            <div><strong>SubClass:</strong> @Model.SubClass</div>
+            <div><strong>ModifiedBy:</strong> @Model.ModifiedBy</div>
+            <div><strong>SubDetailStage:</strong> @Model.SubDetailStage</div>
+            <div><strong>TotalAmount:</strong> <span class="text-green-600 font-bold">$@Model.TotalAmount</span></div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,206 @@
+﻿@model List<ApiFlightData>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+<div class="space-y-6">
+
+    <!-- ================= FILTER SECTION ================= -->
+    <form method="get" class="bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 class="font-black text-slate-800 uppercase mb-4">
+            Filters
+        </h2>
+
+        <input type="hidden" name="file" value="@ViewBag.FileName" />
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+            <!-- Airline -->
+            <div>
+                <label class="text-xs font-bold text-slate-400 uppercase">Airline</label>
+                @Html.DropDownList(
+                         "Airline",
+                         (List<SelectListItem>)ViewBag.Airlines,
+                         new { @class = "w-full border rounded-lg p-2" }
+                         )
+            </div>
+
+            <!-- Stops -->
+            <div>
+                <label class="text-xs font-bold text-slate-400 uppercase">Stops</label>
+                @Html.DropDownList(
+                         "Stops",
+                         (List<SelectListItem>)ViewBag.Stops,
+                         new { @class = "w-full border rounded-lg p-2" }
+                         )
+            </div>
+
+            <!-- Depart Time -->
+            <div>
+                <label class="text-xs font-bold text-slate-400 uppercase">Depart Time</label>
+                <div class="flex gap-2">
+                    <input type="time" name="DepartFrom" value="@@Request.Query["DepartFrom"]" class="w-full border rounded-lg p-2" />
+                    <input type="time" name="DepartTo" value="@@Request.Query["DepartTo"]" class="w-full border rounded-lg p-2" />
+                </div>
+            </div>
+
+            <!-- Apply -->
+            <div class="flex items-end">
+                <button type="submit"
+                        class="w-full bg-slate-900 text-white rounded-lg px-4 py-2 font-bold">
+                    Apply
+                </button>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- ================= SUMMARY ================= -->
+    <div class="flex justify-between text-sm text-slate-500">
+        <div>Total Records: <b>@ViewBag.TotalCount</b></div>
+        <div>Showing: <b>@ViewBag.FilteredCount</b></div>
+    </div>
+
+    <!-- ================= TABLE ================= -->
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full min-w-[1200px]">
+                <thead>
+                    <tr class="bg-slate-50 border-b border-slate-100">
+                        <th class="px-6 py-4 text-xs font-black uppercase">Airline</th>
+                        <th class="px-6 py-4 text-xs font-black uppercase">Route</th>
+                        <th class="px-6 py-4 text-xs font-black uppercase">Departure</th>
+                        <th class="px-6 py-4 text-xs font-black uppercase">Arrival</th>
+                        <th class="px-6 py-4 text-xs font-black uppercase text-center">Stops</th>
+                        <th class="px-6 py-4 text-xs font-black uppercase text-right">Price</th>
+                        <th class="px-6 py-4 text-xs font-black uppercase text-right">Itinerary</th>
+
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-slate-50">
+                    
+
+                    @foreach (var f in Model)
+                    {
+                        // 🔹 ONWARD itinerary (for route)
+                        var onwardSegments = f.itineraries.First().segments;
+                        var ReturnSegments = f.itineraries.Last().segments;
+                        var dep = onwardSegments.First();
+                        var arr = ReturnSegments.Last();
+
+                        // 🔹 ALL segments (for stops)
+                        var allSegments = f.itineraries.SelectMany(x => x.segments).ToList();
+                        var stops = allSegments.Count - f.itineraries.Count;
+
+                        <tr class="hover:bg-slate-50/40 transition">
+                            <!-- Airline -->
+                            <td class="px-6 py-4 font-bold text-slate-800">
+                                @string.Join(",", f.validatingAirlineCodes ?? new List<string>())
+                            </td>
+
+                            <!-- Route (ONWARD only) -->
+                            <td class="px-6 py-4 font-semibold">
+                                @onwardSegments.First().departure.iataCode
+                                →
+                                @onwardSegments.Last().arrival.iataCode
+                            </td>
+
+                            <!-- Departure -->
+                            <td class="px-6 py-4 text-sm">
+                                @DateTime.Parse(dep.departure.at).ToString("yyyy-MM-dd HH:mm")
+
+                            </td>
+
+                            <!-- Arrival -->
+                            <td class="px-6 py-4 text-sm">
+                                @DateTime.Parse(arr.arrival.at).ToString("yyyy-MM-dd HH:mm")
+
+                            </td>
+
+                            <!-- Stops -->
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-1 rounded bg-slate-100 text-xs font-bold">
+                                    @stops
+                                </span>
+                            </td>
+
+                            <!-- Price -->
+                            <td class="px-6 py-4 text-right font-black text-green-600">
+                                @f.price.currency @f.price.grandTotal
+                            </td>
+
+                            <!-- ================= ITINERARY DETAILS ================= -->
+                            <td class="px-6 py-4 text-xs leading-relaxed">
+                                @for (int i = 0; i < f.itineraries.Count; i++)
+                                {
+                                    var iti = f.itineraries[i];
+
+                                    <div class="mb-2">
+                                        <strong class="text-slate-700">
+                                            @(i == 0 ? "Onward" : "Return")
+                                        </strong>
+                                        <br />
+
+                                        @foreach (var s in iti.segments)
+                                        {
+                                            <span class="text-slate-600">
+                                                @s.departure.iataCode
+                                                →
+                                                @s.arrival.iataCode
+                                                (
+                                                @DateTime.Parse(s.departure.at).ToString("HH:mm")
+                                                -
+                                                @DateTime.Parse(s.arrival.at).ToString("HH:mm")
+                                                )
+                                                <span class="font-semibold">
+                                                    @s.carrierCode@s.number
+                                                </span>
+                                            </span>
+                                            <br />
+                                        }
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+
+
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-10 text-slate-400 font-semibold">
+                                No flights found for selected filters
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (ViewBag.TotalPages > 1)
+            {
+                <div class="flex justify-center gap-2 mt-6">
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <a href="@Url.Action("ViewFlightApiResponse", new {
+                    file = ViewBag.FileName,
+                    PageNumber = i,
+                    PageSize = ViewBag.PageSize,
+                    Airline = Context.Request.Query["Airline"],
+                    Stops = Context.Request.Query["Stops"],
+                    DepartFrom = Context.Request.Query["DepartFrom"],
+                    DepartTo = Context.Request.Query["DepartTo"]
+                })"
+                           class="h-9 w-9 flex items-center justify-center rounded-lg text-sm font-bold
+                      @(i == ViewBag.PageNumber
+                        ? "bg-orange-500 text-white shadow"
+                        : "bg-white border border-slate-200 text-slate-500 hover:bg-slate-50")">
+                            @i
+                        </a>
+                    }
+                </div>
+            }
+
+        </div>
+    </section>
+</div>

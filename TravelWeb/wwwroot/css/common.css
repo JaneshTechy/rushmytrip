@@ -1,0 +1,63 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* jQuery UI 1.12+ autocomplete highlight */
+.ui-autocomplete .ui-menu-item-wrapper.ui-state-hover,
+.ui-autocomplete .ui-menu-item-wrapper.ui-state-focus,
+.ui-autocomplete .ui-menu-item-wrapper.ui-state-active {
+    background: #ED4214 !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+/* Common Button Styles */
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* Common Input Styles */
+
+/* Common Link Styles */
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+/* Responsive Grid */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+}

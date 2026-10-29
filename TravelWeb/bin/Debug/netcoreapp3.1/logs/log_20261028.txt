@@ -1,0 +1,94 @@
+2026-10-28 18:10:15 - LoadMarkupRulesFromFile started
+2026-10-28 18:10:15 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:10:15 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:10:15 - File read successfully
+2026-10-28 18:10:15 - Rules loaded: 2
+2026-10-28 18:19:06 - LoadMarkupRulesFromFile started
+2026-10-28 18:19:06 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:19:06 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:19:06 - File read successfully
+2026-10-28 18:19:06 - Rules loaded: 2
+2026-10-28 18:20:05 - LoadMarkupRulesFromFile started
+2026-10-28 18:20:05 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:20:05 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:20:05 - File read successfully
+2026-10-28 18:20:05 - Rules loaded: 2
+2026-10-28 18:42:26 - LoadMarkupRulesFromFile started
+2026-10-28 18:42:26 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:42:26 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:42:26 - File read successfully
+2026-10-28 18:42:26 - Rules loaded: 2
+2026-10-28 18:49:20 - LoadMarkupRulesFromFile started
+2026-10-28 18:49:20 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:49:20 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 18:49:20 - File read successfully
+2026-10-28 18:49:20 - Rules loaded: 2
+2026-10-28 19:34:30 - LoadMarkupRulesFromFile started
+2026-10-28 19:34:30 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 19:34:30 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 19:34:30 - File read successfully
+2026-10-28 19:34:30 - Rules loaded: 2
+2026-10-28 19:41:37 - LoadMarkupRulesFromFile started
+2026-10-28 19:41:37 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 19:41:37 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 19:41:37 - File read successfully
+2026-10-28 19:41:37 - Rules loaded: 2
+2026-10-28 19:43:28 - Index API Hit
+2026-10-28 19:43:32 - PrepareDetails error: Verifier API 400: {"message":"invalid or incomplete id — use a fresh CallMethod=1&reprice=1 offer id"}
+2026-10-28 19:43:32 - Verifier error: Verifier API 400: {"message":"invalid or incomplete id — use a fresh CallMethod=1&reprice=1 offer id"}
+2026-10-28 19:43:32 - Details bookingOptions count=0
+2026-10-28 19:43:32 - Index API Hit
+2026-10-28 19:43:34 - Verifier error: Verifier API 400: {"message":"invalid or incomplete id — use a fresh CallMethod=1&reprice=1 offer id"}
+2026-10-28 19:43:34 - Details bookingOptions count=0
+2026-10-28 20:07:37 - LoadMarkupRulesFromFile started
+2026-10-28 20:07:37 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 20:07:37 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 20:07:37 - File read successfully
+2026-10-28 20:07:37 - Rules loaded: 2
+2026-10-28 20:23:07 - LoadMarkupRulesFromFile started
+2026-10-28 20:23:07 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 20:23:07 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 20:23:07 - File read successfully
+2026-10-28 20:23:07 - Rules loaded: 2
+2026-10-28 20:24:07 - Index API Hit
+2026-10-28 20:24:13 - Verifier deserialize error: Unexpected character encountered while parsing value: e. Path '', line 0, position 0.
+2026-10-28 20:24:13 - Verifier bookingOptions parse error: Unexpected character encountered while parsing value: e. Path '', line 0, position 0.
+2026-10-28 20:24:13 - Verifier error: Verifier API 504: error code: 504
+
+2026-10-28 20:24:14 - Details bookingOptions count=0
+2026-10-28 20:24:15 - Verifier ok offerId=STILAX-20261111-20261209-DL1993_DL1788-0700-DL960_DL1845-2115-1609-1USD bookingOptions=0
+2026-10-28 20:24:15 - Index API Hit
+2026-10-28 20:24:21 - Verifier deserialize error: Unexpected character encountered while parsing value: e. Path '', line 0, position 0.
+2026-10-28 20:24:21 - Verifier bookingOptions parse error: Unexpected character encountered while parsing value: e. Path '', line 0, position 0.
+2026-10-28 20:24:21 - Verifier error: Verifier API 504: error code: 504
+
+2026-10-28 20:24:21 - Details bookingOptions count=0
+2026-10-28 20:37:05 - LoadMarkupRulesFromFile started
+2026-10-28 20:37:05 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 20:37:05 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 20:37:05 - File read successfully
+2026-10-28 20:37:05 - Rules loaded: 2
+2026-10-28 20:40:02 - LoadMarkupRulesFromFile started
+2026-10-28 20:40:02 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 20:40:02 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 20:40:02 - File read successfully
+2026-10-28 20:40:02 - Rules loaded: 2
+2026-10-28 20:40:36 - Index API Hit
+2026-10-28 20:40:42 - Verifier ok offerId=JFKLAX-20261125-20261212-B6523-0710-B62724-2259-587-0USD bookingOptions=0
+2026-10-28 20:40:43 - Index API Hit
+2026-10-28 20:40:44 - Verifier ok offerId=JFKLAX-20261125-20261212-B6523-0710-B62724-2259-587-0USD bookingOptions=0
+2026-10-28 20:40:44 - Details bookingOptions count=0
+2026-10-28 20:40:45 - Verifier ok offerId=JFKLAX-20261125-20261212-B6523-0710-B62724-2259-587-0USD bookingOptions=0
+2026-10-28 20:40:45 - Details bookingOptions count=0
+2026-10-28 21:16:17 - LoadMarkupRulesFromFile started
+2026-10-28 21:16:17 - Resolved path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 21:16:17 - File path: D:\.NetProjectRushmyflightCompany\Rushmytrip_281026\September_2026\TravelWeb\wwwroot\Rules\markup_rules\Rush\markup_rules.json
+2026-10-28 21:16:17 - File read successfully
+2026-10-28 21:16:17 - Rules loaded: 2
+2026-10-28 21:16:31 - Index API Hit
+2026-10-28 21:16:32 - PrepareDetails error: Verifier API 400: {"message":"invalid or incomplete id — use a fresh CallMethod=1&reprice=1 offer id"}
+2026-10-28 21:16:32 - Index API Hit
+2026-10-28 21:16:34 - Verifier error: Verifier API 400: {"message":"invalid or incomplete id — use a fresh CallMethod=1&reprice=1 offer id"}
+2026-10-28 21:16:34 - Details bookingOptions count=0
+2026-10-28 21:16:35 - Verifier error: Verifier API 400: {"message":"invalid or incomplete id — use a fresh CallMethod=1&reprice=1 offer id"}
+2026-10-28 21:16:35 - Details bookingOptions count=0

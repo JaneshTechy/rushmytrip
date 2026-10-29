@@ -1,0 +1,110 @@
+﻿@model List<MetaAirlineResult>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-6">
+
+    <!-- ================= FILTER ================= -->
+    <form method="get" class="bg-white border rounded-2xl p-6">
+        <input type="hidden" name="searchId" value="@ViewBag.SearchId" />
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            <!-- Airline -->
+            <div>
+                <label class="text-xs font-bold uppercase text-slate-400">Airline</label>
+                <select name="airline" class="w-full border rounded-lg p-2">
+                    <option value="">All</option>
+                    @foreach (string a in ViewBag.Airlines)
+                    {
+                        <option value="@a" selected="@(a == ViewBag.SelectedAirline)">
+                            @a
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <!-- Stops -->
+            <div>
+                <label class="text-xs font-bold uppercase text-slate-400">Stops</label>
+                <select name="stops" class="w-full border rounded-lg p-2">
+                    <option value="">All</option>
+                    <option value="0" selected="@(ViewBag.SelectedStops == 0)">Non-Stop</option>
+                    <option value="1" selected="@(ViewBag.SelectedStops == 1)">1 Stop</option>
+                </select>
+            </div>
+
+            <div class="flex items-end">
+                <button class="w-full bg-slate-900 text-white rounded-lg px-4 py-2 font-bold">
+                    Apply
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- ================= TABLE ================= -->
+    <section class="bg-white border rounded-3xl overflow-hidden">
+        <table class="w-full min-w-[1300px]">
+            <thead class="bg-slate-50">
+                <tr>
+                    <th class="px-4 py-3 text-xs uppercase">Airline</th>
+                    <th class="px-4 py-3 text-xs uppercase">Route</th>
+                    <th class="px-4 py-3 text-xs uppercase">Stops</th>
+                    <th class="px-4 py-3 text-xs uppercase">Duration</th>
+                    <th class="px-4 py-3 text-xs uppercase">Price</th>
+                    <th class="px-4 py-3 text-xs uppercase">Segments</th>
+                </tr>
+            </thead>
+
+            <tbody class="divide-y">
+                @foreach (var f in Model)
+                {
+                    var allSegs = f.segments
+                    .SelectMany(x => x.oSeg)
+                    .SelectMany(x => x.iSeg)
+                    .ToList();
+
+                    <tr>
+                        <td class="px-4 py-3 font-bold">
+                            @string.Join(", ", allSegs.Select(x => x.airlineNm).Distinct())
+                        </td>
+
+                        <td class="px-4 py-3">
+                            @allSegs.First().dApt → @allSegs.Last().aApt
+                        </td>
+
+                        <td class="px-4 py-3">@f.stop</td>
+
+                        <td class="px-4 py-3">@f.totalDuration min</td>
+
+                        <td class="px-4 py-3 font-bold text-green-600">
+                            ₹ @f.totalAmt
+                        </td>
+
+                        <!-- SEGMENTS -->
+                        <td class="px-4 py-3 text-xs leading-relaxed">
+                            @foreach (var seg in allSegs)
+                            {
+                                <div>
+                                    @seg.dApt → @seg.aApt
+                                    (@seg.dTime - @seg.aTime)
+                                    <strong>@seg.ma@seg.fn</strong>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" class="text-center py-10 text-slate-400 font-bold">
+                            No meta response found
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+</div>

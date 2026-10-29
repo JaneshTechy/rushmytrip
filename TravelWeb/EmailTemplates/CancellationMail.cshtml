@@ -1,0 +1,579 @@
+﻿@using System.Xml
+@using TravelWeb.Utilities;
+@model TravelWeb.Areas.Admin.Models.EmailbookingModel
+@{
+    Layout = null;
+}
+
+
+@{
+    var bookingPaxCount = @Model.BookingPaxDetail.Count;
+    var adultFlightBooking = @Model.FlightBooking.Adult;
+    var childFlightBooking = @Model.FlightBooking.Child;
+    var infantFlightBooking = @Model.FlightBooking.Infant;
+    var sumOfAll = adultFlightBooking + childFlightBooking + infantFlightBooking;
+
+    if (bookingPaxCount != sumOfAll)
+    {
+        Model.FlightBooking.Adult = @Model.BookingPaxDetail.Where(x => x.PaxType == "Adult").Count();
+        Model.FlightBooking.Child = @Model.BookingPaxDetail.Where(x => x.PaxType == "Child").Count();
+        Model.FlightBooking.Infant = @Model.BookingPaxDetail.Where(x => x.PaxType == "Infant").Count();
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Booking Cancelled – RushMyFlight</title>
+    <!-- External Icon Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--[if mso]>
+    <noscript>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+    </noscript>
+    <![endif]-->
+</head>
+<body style="margin:0;padding:0;background-color:#f0f2f5;font-family:'Segoe UI',Arial,sans-serif;">
+
+    <!-- Preheader text (hidden) -->
+    <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">
+        Your RushMyFlight booking @(Model.FlightBooking?.BookingNumber ?? "N/A") has been Cncelled. Here are the details.
+    </span>
+
+    <!-- Email Wrapper -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"
+           style="background-color:#f0f2f5;padding:30px 0;">
+        <tr>
+            <td align="center">
+                <!-- Main Container -->
+                <table role="presentation" width="620" cellspacing="0" cellpadding="0" border="0"
+                       style="max-width:620px;width:100%;background-color:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+                    <tr>
+                        <td style="background:#30BA7D;">
+                            <!-- Cancellation Icon Badge -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td align="center" style="padding-bottom:10px;">
+                                        <a href="https://rushmyflight.com" target="_blank" style="display:inline-block; padding-top: 35px;">
+                                            <img src="https://rushmyflight.com/emailIcons/logo-email-template.png" alt="RushMyFlight Logo"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <h1 style="margin:0;color:#ffffff;font-size:26px;font-weight:700;letter-spacing:-0.5px;">
+                                            Booking Cancelled
+                                        </h1>
+                                        <p style="margin:2px 0 30px; color:rgba(255,255,255,0.90);font-size:14px;letter-spacing:0.3px;">
+                                            Your flight reservation has been successfully cancelled
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- ═══ CANCELLATION ALERT BAND ═══ -->
+                    <tr>
+                        <td style="background-color:#fff5f2;border-top:3px solid #f18061;border-bottom:1px solid #fde0d8;padding:18px 40px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td width="36" valign="middle">
+                                        <div style="width:32px;height:32px;border-radius:50%;background-color:#ed4214;text-align:center;line-height:32px;font-size:16px;color:#ffffff;font-weight:bold;">✕</div>
+                                    </td>
+                                    <td style="padding-left:14px;" valign="middle">
+                                        <p style="margin:0;color:#b83000;font-size:14px;font-weight:600;">
+                                            Cancellation Confirmed — Booking Reference: <span style="font-family:monospace;background:#fde0d8;padding:2px 8px;border-radius:4px;font-size:13px;">@(Model.FlightBooking?.BookingNumber ?? "N/A")</span>
+                                        </p>
+                                        @*                                         make this date dynamic right now takes today's date'
+ *@                                        <p style="margin:4px 0 0;color:#9e3a10;font-size:12.5px;">
+                                            Cancelled on: @DateTime.Now.ToString("dddd, MMMM d, yyyy")
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- ═══ GREETING ═══ -->
+                    <tr>
+                        <td style="padding:32px 40px 0;">
+                            <p style="margin:0;font-size:15px;color:#1a3a2a;font-weight:600;">@($"{Model?.BookingPaxDetail?.FirstOrDefault()?.FirstName ?? ""} {Model?.FlightBooking?.PaxFullName ?? ""}"),</p>
+                            <p style="margin:12px 0 0;font-size:13.5px;color:#4a5568;line-height:1.55;">
+                                This is a confirmation of your cancellation request and your cancellation is in progress. If any query please contact our customer support at or send us an
+                                email at and one of our travel expert will be pleased to assist you.In Such unlikely event, if your tickets cannot be processed for any reason you
+                                will be notified via email or by telephone and your payment will not be processed
+                            </p>
+                        </td>
+                    </tr>
+                    <!-- ═══ FLIGHT DETAILS SECTION ═══ -->
+                    <tr>
+                        <td style="padding:28px 40px 0;">
+                            <h2 style="margin:0 0 16px;font-size:13px;font-weight:700;color:#2d6a4f;text-transform:uppercase;letter-spacing:1.2px;border-bottom:2px solid #e8f5ef;padding-bottom:10px;">
+                                <i class="fa-solid fa-plane"></i> Booked Itinerary
+                            </h2>
+                            <!-- DEPARTURE FLIGHT -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                   style="background:#f8fffe;border:1px solid #c8e6d4;border-radius:10px;margin-bottom:14px;overflow:hidden;">
+                                <tr>
+                                    <td style="padding:0;">
+                                        <!-- Flight Header -->
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                               style="background-color:#1f9561;border-radius:10px 10px 0 0;">
+                                            <tr>
+                                                <td width="50%" style="padding:8px 18px;">
+                                                    <span style="color:#caedda;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px; line-height: 1;">Outbound Flight</span>
+                                                    
+                                                </td>
+                                                <td width="50%" align="right" style="padding:8px 18px; text-align: right;">
+                                                    <span style="color:#B83000;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:0.5px; background: #FFF5F2; margin-right: 10px;">@(Model.OutBoundFlights.Count - 1) - Stop/s</span>
+                                                    <span style="color:#B83000;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:0.5px; background: #FFF5F2;">Booked</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Flight Body -->
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            @if (Model?.OutBoundFlights != null)
+                                            {
+                                                foreach (var item in Model.OutBoundFlights)
+                                                {
+                                                    @* int outBoundStop = Model.OutBoundFlights.Count - 1; *@
+
+                                                    @* TimeSpan time = XmlConvert.ToTimeSpan(item?.ElapsedTime ?? "PT0H0M");
+                                                    string journeyTimeOut = $"{(int)time.TotalHours}h {time.Minutes}m"; *@
+
+                                                    <tr>
+                                                        <td style="padding:18px 18px 14px;">
+                                                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                <tr>
+                                                                    <td width="30%" style="text-align:left;">
+                                                                        <div style="font-size:28px;font-weight:700;color:#1a3a2a;">
+                                                                            @(item?.FromAirport?.CityCode ?? "")
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#999;margin-top:2px;">
+                                                                            @(item?.FromAirport?.CityName ?? "")
+                                                                        </div>
+                                                                        <div style="font-size:13px;font-weight:600;color:#2d6a4f;margin-top:6px;">
+                                                                            @(item?.DepartureDate != null ? item.DepartureDate.ToString("hh:mm tt") : "")
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#718096;">
+                                                                            @(item?.DepartureDate != null ? item.DepartureDate.ToString("ddd,MMM dd") : "")
+                                                                        </div>
+                                                                    </td>
+                                                                    <td width="40%" style="text-align:center;padding:0 10px;">
+                                                                        @* <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px;">
+                                                                            @if (outBoundStop == 0)
+                                                                            {
+                                                                                <span>Non-Stop</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span>@outBoundStop Stop</span>
+                                                                            }
+                                                                        </div> *@
+                                                                        @* <div style="font-size:11px;color:#2d6a4f;font-weight:600;">
+                                                                            @journeyTimeOut
+                                                                        </div> *@
+                                                                        <div style="margin-top:8px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:3px 8px 6px;display:inline-block;line-height: 1;">
+                                                                            <span style="font-size:11px;color:#4a5568;font-weight:600;">
+                                                                                @(item?.Airline?.Code ?? "")-@(item?.FlightNo ?? "")
+                                                                            </span>
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#999;margin-top:4px;">
+                                                                            @(item?.Airline?.Name ?? "")
+                                                                        </div>
+                                                                    </td>
+                                                                    <td width="30%" style="text-align:right;">
+                                                                        <div style="font-size:28px;font-weight:700;color:#1a3a2a;">
+                                                                            @(item?.ToAirport?.CityCode ?? "")
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#999;margin-top:2px;">
+                                                                            @(item?.ToAirport?.CityName ?? "")
+                                                                        </div>
+                                                                        <div style="font-size:13px;font-weight:600;color:#2d6a4f;margin-top:6px;">
+                                                                            @(item?.ArrivalDate != null ? item.ArrivalDate.ToString("hh:mm tt") : "")
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#718096;">
+                                                                            @(item?.ArrivalDate != null ? item.ArrivalDate.ToString("ddd,MMM dd") : "")
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            @if (Model?.OutBoundFlights != null && Model.OutBoundFlights.Any() && Model?.InBoundFlights != null && Model.InBoundFlights.Any())
+                            {
+                                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                       style="background:#f8fffe;border:1px solid #c8e6d4;border-radius:10px;margin-bottom:14px;overflow:hidden;">
+
+                                    <tr>
+                                        <td style="padding:0;">
+                                            <!-- Flight Header -->
+                                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                                   style="background-color:#1f9561;border-radius:10px 10px 0 0;">
+                                                <tr>
+                                                    <td width="50%" style="padding:8px 18px;">
+                                                        <span style="color:#caedda;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px; line-height: 1;">Return Flight</span>
+
+                                                    </td>
+                                                    <td width="50%" align="right" style="padding:8px 18px; text-align: right;">
+                                                        <span style="color:#B83000;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:0.5px; background: #FFF5F2; margin-right: 10px;">@(Model.InBoundFlights.Count - 1) - Stop/s</span>
+                                                        <span style="color:#B83000;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:0.5px; background: #FFF5F2;">Booked</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            @foreach (var item in Model.InBoundFlights)
+                                            {
+                                                @* int InBoundStop = (Model?.InBoundFlights?.Count ?? 0) - 1;
+
+                                                TimeSpan time = XmlConvert.ToTimeSpan(item?.ElapsedTime ?? "PT0H0M");
+                                                string journeyTimeIn = $"{(int)time.TotalHours}h {time.Minutes}m"; *@
+
+                                                <!-- Flight Body -->
+                                                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                    <tr>
+                                                        <td style="padding:18px 18px 14px;">
+                                                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                <tr>
+                                                                    <td width="30%" style="text-align:left;">
+                                                                        <div style="font-size:28px;font-weight:700;color:#1a3a2a;">
+                                                                            @(item?.FromAirport?.CityCode ?? "")
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#999;margin-top:2px;">
+                                                                            @(item?.FromAirport?.CityName ?? "")
+                                                                        </div>
+                                                                        <div style="font-size:13px;font-weight:600;color:#2d6a4f;margin-top:6px;">
+                                                                            @(item?.DepartureDate != null ? item.DepartureDate.ToString("hh:mm tt") : "")
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#718096;">
+                                                                            @(item?.DepartureDate != null ? item.DepartureDate.ToString("ddd,MMM dd") : "")
+                                                                        </div>
+                                                                    </td>
+                                                                    <td width="40%" style="text-align:center;padding:0 10px;">
+                                                                       @*  <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px;">
+                                                                            @if (InBoundStop == 0)
+                                                                            {
+                                                                                <span>Non-Stop</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span>@InBoundStop Stop</span>
+                                                                            }
+                                                                        </div> *@
+                                                                        @* <div style="font-size:11px;color:#2d6a4f;font-weight:600;">
+                                                                            @journeyTimeIn
+                                                                        </div> *@
+                                                                        <div style="margin-top:8px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:3px 8px 6px;display:inline-block;line-height: 1;">
+                                                                            <span style="font-size:11px;color:#4a5568;font-weight:600;">
+                                                                                @(item?.Airline?.Code ?? "")-@(item?.FlightNo ?? "")
+                                                                            </span>
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#999;margin-top:4px;">
+                                                                            @(item?.Airline?.Name ?? "")
+                                                                        </div>
+                                                                    </td>
+                                                                    <td width="30%" style="text-align:right;">
+                                                                        <div style="font-size:28px;font-weight:700;color:#1a3a2a;">
+                                                                            @(item?.ToAirport?.CityCode ?? "")
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#999;margin-top:2px;">
+                                                                            @(item?.ToAirport?.CityName ?? "")
+                                                                        </div>
+                                                                        <div style="font-size:13px;font-weight:600;color:#2d6a4f;margin-top:6px;">
+                                                                            @(item?.ArrivalDate != null ? item.ArrivalDate.ToString("hh:mm tt") : "")
+                                                                        </div>
+                                                                        <div style="font-size:11px;color:#718096;">
+                                                                            @(item?.ArrivalDate != null ? item.ArrivalDate.ToString("ddd,MMM dd") : "")
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            }
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            }
+                        </td>
+                    </tr>
+                    <!-- ═══ PASSENGER & REFUND ═══ -->
+                    <tr>
+                        <td style="padding:15px 40px 0;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                                <tr>
+                                    <td width="48%" valign="top">
+                                        <h3 style="margin:0 0 12px;font-size:13px;font-weight:700;color:#2d6a4f;text-transform:uppercase;letter-spacing:1px;">Passenger</h3>
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                               style="background:#f8fffe;border:1px solid #c8e6d4;border-radius:8px;">
+                                            @if (Model?.BookingPaxDetail != null)
+                                            {
+                                                foreach (var item in Model.BookingPaxDetail)
+                                                {
+                                                    var firstInitial = item?.FirstName != null && item.FirstName.Length > 0
+                                                    ? item.FirstName[0].ToString()
+                                                    : "";
+
+                                                    var lastInitial = item?.LastName != null && item.LastName.Length > 0
+                                                    ? item.LastName[0].ToString()
+                                                    : "";
+
+                                                    var initials = (firstInitial + lastInitial);
+
+                                                    <tr>
+                                                        <td style="padding:14px 16px;">
+                                                            <div style="display:inline-block;width:32px;height:32px;background:#2d6a4f;border-radius:50%;text-align:center;line-height:32px;color:#fff;font-weight:700;font-size:13px;margin-bottom:8px;">
+                                                                @(initials?.ToUpper() ?? "")
+                                                            </div>
+                                                            <div style="font-size:14px;font-weight:700;color:#2d6a4f;">
+                                                                @(item?.FirstName ?? "") @(item?.LastName ?? "")
+                                                            </div>
+                                                            <div style="font-size:12px;color:#999;margin-top:2px;">
+                                                                @(item?.PaxType ?? "") • @(item?.PaxTitle ?? "")
+                                                            </div>
+                                                            <div style="margin-top:10px;padding-top:10px;border-top:1px solid #e2e8f0;">
+                                                                <span style="font-size:11px;color:#888;">Ticket Status</span><br />
+                                                                <span style="font-size:12px;font-weight:600;color:#c0392b;">Cancelled</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </table>
+                                    </td>
+                                    <td width="4%"></td>
+                                    <!-- Refund Summary -->
+                                    <td width="48%" valign="top">
+                                        <h3 style="margin:0 0 12px;font-size:13px;font-weight:700;color:#2d6a4f;text-transform:uppercase;letter-spacing:1px;">Summary</h3>
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                               style="background:#f8fffe;border:1px solid #c8e6d4;border-radius:8px;">
+                                            <tr>
+                                                @{
+                                                    var booking = Model?.FlightBooking;
+
+                                                    decimal adultTotal = (booking?.AdultFare ?? 0) * (booking?.Adult ?? 0);
+                                                    decimal childTotal = (booking?.ChildFare ?? 0) * (booking?.Child ?? 0);
+                                                    decimal infantTotal = (booking?.InfantFare ?? 0) * (booking?.Infant ?? 0);
+
+                                                    decimal totalBaseFare = adultTotal + childTotal + infantTotal;
+
+                                                    decimal adultTotalTax = (booking?.AdutlTax ?? 0) * (booking?.Adult ?? 0);
+                                                    decimal childTotalTax = (booking?.ChildTax ?? 0) * (booking?.Child ?? 0);
+                                                    decimal infantTotalTax = (booking?.InfantTax ?? 0) * (booking?.Infant ?? 0);
+
+                                                    decimal totalTax = adultTotalTax + childTotalTax + infantTotalTax;
+
+                                                    decimal payable = totalBaseFare + totalTax;
+                                                }
+                                                <td style="padding:14px 16px;">
+                                                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                        <tr>
+                                                            <td style="font-size:12px;color:#888;padding-bottom:8px;">Base Fare</td>
+                                                            <td style="font-size:12px;color:#888;text-align:right;padding-bottom:8px;">$@totalBaseFare </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-size:12px;color:#888;padding-bottom:8px;">Taxes &amp; Fees</td>
+                                                            <td style="font-size:12px;color:#888;text-align:right;padding-bottom:8px;">$ @totalTax</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" style="border-top:1px dashed #c8e6d4;padding-top:8px;"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-size:13px;font-weight:700;color:#2d6a4f;">Amount Paid</td>
+                                                            <td style="font-size:13px;font-weight:700;color:#2d6a4f;text-align:right;">$@payable</td>
+                                                        </tr>
+                                                    </table>
+                                                    <div style="margin-top:12px;background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:8px 10px;">
+                                                        <span style="font-size:11px;color:#856404;font-weight:600;">
+                                                            <i class="fa-solid fa-circle-exclamation"></i> Refund subject to airline policy. Please contact support for details.
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- ═══ WHAT NEXT ═══ -->
+                    <tr>
+                        <td style="padding:20px 40px 0;">
+                            <h2 style="margin:0 0 14px;font-size:13px;font-weight:700;color:#2d6a4f;text-transform:uppercase;letter-spacing:1.2px;border-bottom:2px solid #e8f5ef;padding-bottom:10px;">
+                                What Happens Next?
+                            </h2>
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding:0 0 12px;">
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                               style="background:#F4F8FF;border-left:3px solid #2782AF;border-radius:0 8px 8px 0;padding:12px 16px;">
+                                            <tr>
+                                                <td width="28" valign="top">
+                                                    <i class="fa-solid fa-credit-card" style="color: #2782AF;"></i>
+                                                </td>
+                                                <td style="padding-left:10px;">
+                                                    <div style="font-size:14px;font-weight:600;color:#2782AF;">Refund Processing</div>
+                                                    <div style="font-size:13px;color:#777;margin-top:5px; line-height: 1.6;">
+                                                        If eligible, refunds are processed to your original payment method (Card ending
+                                                        @{
+                                                            var card = Model?.FlightBooking?.CardNumber;
+
+                                                            string result = (!string.IsNullOrEmpty(card) && card.Length >= 4)
+                                                            ? card.Substring(card.Length - 4)
+                                                            : "XXXX";
+                                                        }
+                                                        •••• @result within 7–10 business days.
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:0 0 12px;">
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                               style="background:#F4FFFC;border-left:3px solid #27AF8F;border-radius:0 8px 8px 0;padding:12px 16px;">
+                                            <tr>
+                                                <td width="28" valign="top">
+                                                    <i class="fa-solid fa-envelope" style="color:#27AF8F;"></i>
+                                                </td>
+                                                <td style="padding-left:10px;">
+                                                    <div style="font-size:14px;font-weight:600;color:#27AF8F;">Confirmation Email</div>
+                                                    <div style="font-size:13px;color:#777;margin-top:5px; line-height: 1.6;">A cancellation confirmation has been sent to your registered email address.</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                               style="background:#FFF7F4;border-left:3px solid #D05E2B;border-radius:0 8px 8px 0;padding:12px 16px;">
+                                            <tr>
+                                                <td width="28" valign="top">
+                                                    <i class="fa-solid fa-plane" style="color:#D05E2B;"></i>
+                                                </td>
+                                                <td style="padding-left:10px;">
+                                                    <div style="font-size:13px;font-weight:600;color:#D05E2B;">Need to Rebook?</div>
+                                                    <div style="font-size:12px;color:#718096;margin-top:5px; line-height: 1.5;">Visit rushmyflight.com to search for new flights or contact our team — we'll find you the best available options.</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- ═══ CTA BUTTON ═══ -->
+                    <tr>
+                        <td style="padding:28px 40px 0;text-align:center;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
+                                <tr>
+                                    <td style="border-radius:8px;background:#30BA7D;box-shadow:0 4px 14px rgba(45,106,79,0.35);">
+                                        <a href="https://rushmyflight.com" target="_blank"
+                                           style="display:inline-block;padding:14px 36px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:0.3px;border-radius:8px;">
+                                            Search New Flights <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p style="margin:14px 0 0;font-size:12px;color:#777;">or call us at <a href="tel:+18002317119" style="color:#2d6a4f; text-decoration: none; font-weight: 600;">+1 800 231 7119</strong></p>
+                        </td>
+                    </tr>
+                    <!-- ═══ DIVIDER ═══ -->
+                    <tr>
+                        <td style="padding:28px 40px 0;">
+                            <div style="height:1px;background:linear-gradient(90deg,transparent,#c8e6d4,transparent);"></div>
+                        </td>
+                    </tr>
+                    <!-- ═══ CONTACT CARD ═══ -->
+                    <tr>
+                        <td style="padding:20px 40px 0;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                                   style="background:#f0f9f4;border:1px solid #c8e6d4;border-radius:10px;">
+                                <tr>
+                                    <td style="padding:18px 20px;">
+                                        <p style="margin:0 0 12px;font-size:13px;font-weight:700;color:#2d6a4f;text-transform:uppercase;letter-spacing:0.8px;">Need Help?</p>
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                                <!-- PHONE CARD -->
+                                                <td width="33%" style="text-align:center;padding:8px;">
+                                                    <a href="tel:+1 8002317119" style="display:block;text-decoration:none;color:inherit;">
+                                                        <div style="font-size:20px; color: orangered;">
+                                                            <img src="https://rushmyflight.com/emailIcons/Frame(1).png" alt="RushMyFlight Phone" />
+                                                        </div>
+                                                        <div style="font-size:11px;color:#777;margin-top:4px;">Phone</div>
+                                                        <div style="font-size:12px;font-weight:600;color:#1a3a2a;margin-top:2px;">
+                                                            +1 800 231 7119
+                                                        </div>
+                                                    </a>
+                                                </td>
+
+                                                <!-- EMAIL CARD -->
+                                                <td width="33%" style="text-align:center;padding:8px;border-left:1px solid #c8e6d4;border-right:1px solid #c8e6d4;">
+                                                    <a href="mailto:reservation@rushmyflight.com" style="display:block;text-decoration:none;color:inherit;">
+                                                        <div style="font-size:20px; color: #1f9561;">
+                                                            <img src="https://rushmyflight.com/emailIcons/Frame(2).png" alt="RushMyFlight Email" />
+                                                        </div>
+                                                        <div style="font-size:11px;color:#777;margin-top:4px;">Email</div>
+                                                        <div style="font-size:12px;font-weight:600;color:#1a3a2a;margin-top:2px;">
+                                                            reservation@rushmyflight.com
+                                                        </div>
+                                                    </a>
+                                                </td>
+
+                                                <!-- WEBSITE CARD -->
+                                                <td width="33%" style="text-align:center;padding:8px;">
+                                                    <a href="https://rushmyflight.com" target="_blank" style="display:block;text-decoration:none;color:inherit;">
+                                                        <div style="font-size:20px; color: rgb(24, 149, 198);">
+                                                            <img src="https://rushmyflight.com/emailIcons/Frame(3).png" alt="RushMyFlight Website" />
+                                                        </div>
+                                                        <div style="font-size:11px;color:#777;margin-top:4px;">Website</div>
+                                                        <div style="font-size:12px;font-weight:600;color:#1a3a2a;margin-top:2px;">
+                                                            rushmyflight.com
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- ═══ FOOTER ═══ -->
+                    <tr>
+                        <td style="padding:24px 40px 32px;text-align:center;">
+                            <p style="margin:0 0 8px;font-size:12px;color:#777;line-height:1.6;">
+                                This email was sent regarding the cancellation of booking reference <strong>@(Model.FlightBooking?.BookingNumber ?? "N/A")</strong>.<br />
+                                © 2026 RushMyFlight. All rights reserved.
+                            </p>
+                            <p style="margin:0;font-size:12px;">
+                                <a href="http://rushmyflight.com/privacy-policy" target="_blank" style="color:#2d6a4f;">Privacy Policy</a>
+                                &nbsp;·&nbsp;
+                                <a href="https://rushmyflight.com/terms-conditions" target="_blank" style="color:#2d6a4f;">Terms &amp; Conditions</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <!-- END Main Container -->
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

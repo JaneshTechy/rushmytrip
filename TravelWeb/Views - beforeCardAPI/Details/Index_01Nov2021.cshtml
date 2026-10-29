@@ -1,0 +1,2057 @@
+﻿@using TravelWeb.Utilities;
+
+@model Flights;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+ <link href="~/css/detailStyle.css?v=1.00000001" rel="stylesheet" />
+
+<style>
+    main_li_summry {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .main_li_summry li {
+        list-style: none;
+        float: left;
+    }
+
+    .top_smy_des {
+        float: left;
+        margin-right: 5px;
+    }
+
+    .navbar-theme-transparent {
+        background: #333;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<style>
+
+
+    .position_absolute {
+        position: absolute
+    }
+</style>
+<style>
+
+    .baggage-row {
+        border: 3px solid #e6e7e8;
+        padding: 12px;
+        width: 100%;
+        float: left;
+        cursor: pointer;
+        margin-top: 6px;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+    }
+
+        .baggage-row:hover {
+            border: rgb(29, 142, 189) 3px solid;
+        }
+
+    .baggage-select {
+        margin-bottom: 15px;
+        border: rgb(29, 142, 189) 3px solid;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        padding: 12px;
+    }
+
+    .baggage-row input {
+        float: left;
+    }
+
+    .baggage-row label {
+        float: left;
+        width: 94%;
+        line-height: 26px;
+        margin-bottom: 0px;
+    }
+
+    .baggage-name {
+        float: left;
+        color: #333;
+        width: 45%;
+        cursor: pointer;
+    }
+
+    .baggage-size {
+        float: left;
+        color: #333;
+        font-weight: normal;
+        cursor: pointer;
+    }
+
+    .baggage-price {
+        float: right;
+        color: #000;
+        text-align: right;
+        cursor: pointer;
+    }
+
+    .chargeOn {
+        float: right;
+        line-height: 24px !important;
+        color: #000 !important;
+        font-weight: bold !important;
+        margin: 20px 0 6px 0;
+    }
+
+    .freeChanges {
+        width: 100%;
+        float: left;
+    }
+
+        .freeChanges p {
+            clear: both;
+            margin: 0px;
+            font-size: 14px;
+        }
+
+    .tolalPrice {
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
+
+<div class="theme-page-section theme-page-section-lg detailPage detail-mob-space">
+    <div class="container">
+        <div class="row row-col-static row-col-mob-gap gap-hide" id="sticky-parent" data-gutter="60">
+            <br />
+
+            @if (Model != null)
+            {
+                <div class="col-md-8 col-xs-12">
+                    <div class="theme-payment-page-sections">
+                        <div class="breadcrumbBox hidephone">
+                            <ul class="breadcrumb">
+                                <li><a href="#">Search</a></li>
+                                <li class="active">Flight details</li>
+                                <li><a href="#">Passenger details</a></li>
+                                <li><a href="#">Billing information</a></li>
+                                <li><a href="#">Payment details</a></li>
+                                <li><a href="#">confirmation</a></li>
+                            </ul>
+                        </div>
+                        <div class="backModifyBox">
+                            <div class="row back-mob">
+                                <div class="col-md-6 col-xs-6"><a href="@(ViewBag.BackToResult)" class=""><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to result</a></div>
+                                <div class="col-md-6 col-xs-6 text-right"><a href="/" class=""><i class="fa fa-pencil" aria-hidden="true"></i> Modify</a></div>
+                            </div>
+                        </div>
+                        @*<div class="theme-payment-page-sections-item">
+            <div class="theme-payment-page-signin">
+                <i class="theme-payment-page-signin-icon fa fa-user-circle-o"></i>
+                <div class="theme-payment-page-signin-body">
+                    <h4 class="theme-payment-page-signin-title">Sign in if you have an account</h4>
+                    <p class="theme-payment-page-signin-subtitle">We will retrieve saved travelers and credit cards for faster checkout</p>
+                </div>
+                <a class="btn theme-payment-page-signin-btn btn-primary" href="#">Sign in</a>
+            </div>
+        </div>*@
+
+                        <div class="theme-payment-page-sections-item">
+                            <div class="theme-search-results-item theme-payment-page-item-thumb">
+                                <div class="row" data-gutter="20">
+                                    <div class="col-md-9 ">
+                                        <p class="theme-search-results-item-flight-payment-airline">You are flying @(Common.GetAirline(Model.Airline.Code).Name) Airways</p>
+                                        <h5 class="theme-search-results-item-title">@(ViewBag.FromName), @(ViewBag.FromCode) &nbsp;&rarr;&nbsp; @(ViewBag.ToName),  @(ViewBag.ToCode)</h5>
+                                        <p class="theme-search-results-item-flight-payment-info">@(ViewBag.Trip)</p>
+                                        <ul class="theme-search-results-item-flight-payment-dates">
+                                            <li>Depart: @(Convert.ToDateTime(ViewBag.Depart).ToString("MMM, dd, yyyy"))</li>
+                                            @if (ViewBag.FlightWay == "RoundTrip")
+                                            {
+                                                <li>Return: @(Convert.ToDateTime(ViewBag.Return).ToString("MMM, dd, yyyy"))</li>
+                                            }
+                                        </ul>
+                                        <a class="theme-search-results-item-flight-payment-details-link" href="#FlightPaymentDetails" data-toggle="collapse" aria-expanded="false" aria-controls="FlightPaymentDetails">
+                                            Flight Details &nbsp;
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <div class="collapse _pt-20" id="FlightPaymentDetails">
+                                            <div class="theme-search-results-item-flight-detail-items">
+                                                <div class="theme-search-results-item-flight-details">
+                                                    <div class="row">
+
+                                                        <div class="col-md-3 ">
+                                                            <div class="theme-search-results-item-flight-details-info">
+                                                                <h5 class="theme-search-results-item-flight-details-info-title">Depart</h5>
+                                                                <p class="theme-search-results-item-flight-details-info-date">@(Convert.ToDateTime(ViewBag.Depart).ToString("MMM, dd, yyyy"))</p>
+                                                                <p class="theme-search-results-item-flight-details-info-cities">@(ViewBag.FromName) &rarr; @(ViewBag.ToName)</p>
+                                                                @{ int depstop = 0; string dephrscalc = "";}
+                                                                @foreach (var onb in Model.Outbound)
+                                                                {
+                                                                    TimeSpan t = TimeSpan.FromMinutes(Convert.ToInt32(onb.TotalTime));
+                                                                    dephrscalc = string.Format("{0:D2}h {1:D2}m", t.Hours, t.Minutes);
+                                                                    depstop++;
+                                                                }
+                                                                <p class="theme-search-results-item-flight-details-info-fly-time">@(dephrscalc)</p>
+                                                                <p class="theme-search-results-item-flight-details-info-stops">@(depstop-1) stop</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-9 ">
+                                                            <div class="theme-search-results-item-flight-details-schedule">
+                                                                <ul class="theme-search-results-item-flight-details-schedule-list">
+                                                                    @{ int otbcnt = 0;
+
+                                                                    }
+                                                                    @foreach (var onb in Model.Outbound)
+                                                                    {
+                                                                        //  TimeSpan calinbt = Convert.ToDateTime(onb.ArrivalDate) - Convert.ToDateTime(onb.DepartureDate);
+                                                                        //  TimeSpan finalcal = TimeSpan.FromMinutes(calinbt.TotalMinutes);
+                                                                        //  string tothrs = string.Format("{0:D2}h {1:D2}m", finalcal.Hours, finalcal.Minutes);
+
+                                                                        <li>
+                                                                            <i class="fa fa-plane outbound theme-search-results-item-flight-details-schedule-icon"></i>
+                                                                            <div class="theme-search-results-item-flight-details-schedule-dots"></div>
+                                                                            <p class="theme-search-results-item-flight-details-schedule-date">
+                                                                                @(Convert.ToDateTime(onb.DepartureDate).ToString("MMM, dd, yyyy"))
+                                                                                @*- @(Convert.ToDateTime(onb.DepartureDate).ToString("MMM, dd, yyyy"))*@
+                                                                            </p>
+                                                                            <div class="theme-search-results-item-flight-details-schedule-time">
+                                                                                <span class="theme-search-results-item-flight-details-schedule-time-item">
+                                                                                    @(Convert.ToDateTime(onb.DepartureDate).ToString("HH:mm"))
+                                                                                    @*<span>@(Convert.ToDateTime(onb.DepartureDate).ToString("tt"))</span>*@
+                                                                                </span>
+                                                                                <span class="theme-search-results-item-flight-details-schedule-time-separator">&mdash;</span>
+                                                                                <span class="theme-search-results-item-flight-details-schedule-time-item">
+                                                                                    @(Convert.ToDateTime(onb.ArrivalDate).ToString("HH:mm"))
+                                                                                    @*<span> @(Convert.ToDateTime(onb.ArrivalDate).ToString("tt"))</span>*@
+                                                                                </span>
+                                                                            </div>
+
+                                                                            @*<p class="theme-search-results-item-flight-details-schedule-fly-time">@(tothrs)</p>*@
+                                                                            <div class="theme-search-results-item-flight-details-schedule-destination">
+                                                                                <div class="theme-search-results-item-flight-details-schedule-destination-item">
+                                                                                    <p class="theme-search-results-item-flight-details-schedule-destination-title">
+                                                                                        <b>@(onb.FromAirport.Code)</b>&nbsp; @(Common.GetAirport(onb.FromAirport.Code).Name)
+                                                                                    </p>
+                                                                                    <p class="theme-search-results-item-flight-details-schedule-destination-city">@(Common.GetAirport(onb.FromAirport.Code).CityName)</p>
+                                                                                </div>
+                                                                                <div class="theme-search-results-item-flight-details-schedule-destination-separator">
+                                                                                    <span>&rarr;</span>
+                                                                                </div>
+                                                                                <div class="theme-search-results-item-flight-details-schedule-destination-item">
+                                                                                    <p class="theme-search-results-item-flight-details-schedule-destination-title">
+                                                                                        <b>@(onb.ToAirport.Code)</b> &nbsp; @(Common.GetAirport(onb.ToAirport.Code).Name)
+                                                                                    </p>
+                                                                                    <p class="theme-search-results-item-flight-details-schedule-destination-city">@(Common.GetAirport(onb.ToAirport.Code).CityName)</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <ul class="theme-search-results-item-flight-details-schedule-features">
+                                                                                @{
+                                                                                    Airline airname = Common.GetAirline(onb.Airline.Code);
+                                                                                }
+                                                                                <li>@(airname.Code)@(onb.FlightNo)</li>
+                                                                                <li><img src="@(Common.WebSitePath)img/airline/icon/@(airname.Code).png"> @(airname.Name.ToLower())</li>
+
+
+
+                                                                            </ul>
+                                                                        </li>
+                                                                        @if (depstop > 1 && otbcnt < (depstop - 1))
+                                                                        {
+                                                                            <li>
+                                                                                <i class="fa fa-exchange theme-search-results-item-flight-details-schedule-icon"></i>
+                                                                                <div class="theme-search-results-item-flight-details-schedule-dots"></div>
+                                                                                <p class="theme-search-results-item-flight-details-schedule-date">@Convert.ToDateTime(Model.Outbound[otbcnt].ArrivalDate).ToString("MMM, dd, yyyy") &nbsp;&mdash;&nbsp;@Convert.ToDateTime(Model.Outbound[otbcnt + 1].DepartureDate).ToString("MMM, dd, yyyy")</p>
+                                                                                <div class="theme-search-results-item-flight-details-schedule-time">
+                                                                                    <span class="theme-search-results-item-flight-details-schedule-time-item">
+                                                                                        @(Convert.ToDateTime(Model.Outbound[otbcnt].ArrivalDate).ToString("HH:mm"))
+                                                                                    </span>
+                                                                                    <span class="theme-search-results-item-flight-details-schedule-time-separator">&mdash;</span>
+                                                                                    @*<p class="theme-search-results-item-flight-details-schedule-date">@Convert.ToDateTime(Model.Outbound[otbcnt + 1].DepartureDate).ToString("MMM, dd, yyyy")</p>*@
+                                                                                    <span class="theme-search-results-item-flight-details-schedule-time-item">
+                                                                                        @(Convert.ToDateTime(Model.Outbound[otbcnt + 1].DepartureDate).ToString("HH:mm"))
+                                                                                    </span>
+                                                                                </div>
+                                                                                @{
+                                                                                    TimeSpan calinbt = Convert.ToDateTime(Model.Outbound[otbcnt + 1].DepartureDate) - Convert.ToDateTime(Model.Outbound[otbcnt].ArrivalDate);
+                                                                                    TimeSpan finalcal = TimeSpan.FromMinutes(calinbt.TotalMinutes);
+                                                                                    string tothrs = string.Format("{0:D2}h {1:D2}m", finalcal.Hours, finalcal.Minutes);
+                                                                                }
+                                                                                <p class="theme-search-results-item-flight-details-schedule-fly-time">@tothrs</p>
+                                                                                <p class="theme-search-results-item-flight-details-schedule-transfer">
+                                                                                    @{
+                                                                                        Airport airpot = Common.GetAirport(Model.Outbound[otbcnt].ToAirport.Code);
+                                                                                    }
+                                                                                    Change planes in @(airpot.CityName)(@(Model.Outbound[otbcnt].ToAirport.Code))
+                                                                                </p>
+                                                                            </li>
+                                                                        }
+                                                                        otbcnt++;
+                                                                    }
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @if (ViewBag.FlightWay == "RoundTrip")
+                                                {
+                                                    <div class="theme-search-results-item-flight-details">
+                                                        <div class="row">
+                                                            <div class="col-md-3 ">
+                                                                <div class="theme-search-results-item-flight-details-info">
+                                                                    <h5 class="theme-search-results-item-flight-details-info-title">Return</h5>
+                                                                    <p class="theme-search-results-item-flight-details-info-date">@(Convert.ToDateTime(ViewBag.Return).ToString("MMM, dd, yyyy"))</p>
+                                                                    <p class="theme-search-results-item-flight-details-info-cities">@(ViewBag.ToName) &rarr; @(ViewBag.FromName)</p>
+                                                                    @{ int arrstop = 0; string arrhrscalc = "";}
+                                                                    @foreach (var inb in Model.Inbound)
+                                                                    {
+                                                                        TimeSpan t = TimeSpan.FromMinutes(Convert.ToInt32(inb.TotalTime));
+                                                                        arrhrscalc = string.Format("{0:D2}h {1:D2}m", t.Hours, t.Minutes);
+                                                                        arrstop++;
+                                                                    }
+                                                                    <p class="theme-search-results-item-flight-details-info-fly-time">@(arrhrscalc)</p>
+                                                                    <p class="theme-search-results-item-flight-details-info-stops">@(arrstop - 1) stop</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-9 ">
+                                                                <div class="theme-search-results-item-flight-details-schedule">
+                                                                    <ul class="theme-search-results-item-flight-details-schedule-list">
+                                                                        @{int inbcnt = 0; }
+                                                                        @foreach (var inb in Model.Inbound)
+                                                                        {
+                                                                            // TimeSpan calinbt = Convert.ToDateTime(inb.ArrivalDate) - Convert.ToDateTime(inb.DepartureDate);
+                                                                            //  TimeSpan finalcal = TimeSpan.FromMinutes(calinbt.TotalMinutes);
+                                                                            //  string tothrs = string.Format("{0:D2}h {1:D2}m", finalcal.Hours, finalcal.Minutes);
+
+                                                                            <li>
+                                                                                @*<i class="fa fa-plane theme-search-results-item-flight-details-schedule-icon"></i>*@
+                                                                                <i class="fa fa-plane outbound theme-search-results-item-flight-details-schedule-icon"></i>
+                                                                                <div class="theme-search-results-item-flight-details-schedule-dots"></div>
+                                                                                <p class="theme-search-results-item-flight-details-schedule-date">
+
+                                                                                    @(Convert.ToDateTime(inb.DepartureDate).ToString("MMM, dd, yyyy"))
+                                                                                    @*- @(Convert.ToDateTime(inb.DepartureDate).ToString("MMM, dd, yyyy"))*@
+
+                                                                                </p>
+                                                                                <div class="theme-search-results-item-flight-details-schedule-time">
+                                                                                    <span class="theme-search-results-item-flight-details-schedule-time-item">
+                                                                                        @(Convert.ToDateTime(inb.DepartureDate).ToString("HH:mm"))
+                                                                                        @*<span>@(Convert.ToDateTime(inb.DepartureDate).ToString("tt"))</span>*@
+                                                                                    </span>
+                                                                                    <span class="theme-search-results-item-flight-details-schedule-time-separator">&mdash;</span>
+                                                                                    <span class="theme-search-results-item-flight-details-schedule-time-item">
+                                                                                        @(Convert.ToDateTime(inb.ArrivalDate).ToString("HH:mm"))
+                                                                                        @*<span> @(Convert.ToDateTime(inb.ArrivalDate).ToString("tt"))</span>*@
+                                                                                    </span>
+                                                                                </div>
+                                                                                @*<p class="theme-search-results-item-flight-details-schedule-fly-time">@(tothrs)</p>*@
+                                                                                <div class="theme-search-results-item-flight-details-schedule-destination">
+                                                                                    <div class="theme-search-results-item-flight-details-schedule-destination-item">
+                                                                                        <p class="theme-search-results-item-flight-details-schedule-destination-title">
+                                                                                            <b>@(inb.FromAirport.Code)</b>&nbsp; @(Common.GetAirport(inb.FromAirport.Code).Name)
+                                                                                        </p>
+                                                                                        <p class="theme-search-results-item-flight-details-schedule-destination-city"> @(Common.GetAirport(inb.FromAirport.Code).CityName)</p>
+                                                                                    </div>
+                                                                                    <div class="theme-search-results-item-flight-details-schedule-destination-separator">
+                                                                                        <span>&rarr;</span>
+                                                                                    </div>
+                                                                                    <div class="theme-search-results-item-flight-details-schedule-destination-item">
+                                                                                        <p class="theme-search-results-item-flight-details-schedule-destination-title">
+                                                                                            <b>@(inb.ToAirport.Code)</b> @(Common.GetAirport(inb.ToAirport.Code).Name)
+                                                                                        </p>
+                                                                                        <p class="theme-search-results-item-flight-details-schedule-destination-city"> @(Common.GetAirport(inb.ToAirport.Code).CityName)</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <ul class="theme-search-results-item-flight-details-schedule-features">
+                                                                                    @{
+                                                                                        Airline airname = Common.GetAirline(inb.Airline.Code);
+                                                                                    }
+                                                                                    <li>@(airname.Code)@(inb.FlightNo)</li>
+                                                                                    <li><img src="@(Common.WebSitePath)img/airline/icon/@(airname.Code).png"> @(airname.Name.ToLower())</li>
+
+
+                                                                                </ul>
+                                                                            </li>
+                                                                            @if (arrstop > 1 && inbcnt < (arrstop - 1))
+                                                                            {
+                                                                                <li>
+                                                                                    <i class="fa fa-exchange theme-search-results-item-flight-details-schedule-icon"></i>
+                                                                                    <div class="theme-search-results-item-flight-details-schedule-dots"></div>
+                                                                                    <p class="theme-search-results-item-flight-details-schedule-date">@Convert.ToDateTime(Model.Inbound[inbcnt].ArrivalDate).ToString("MMM, dd, yyyy") &nbsp;&mdash;&nbsp;@Convert.ToDateTime(Model.Inbound[inbcnt + 1].DepartureDate).ToString("MMM, dd, yyyy")</p>
+                                                                                    <div class="theme-search-results-item-flight-details-schedule-time">
+                                                                                        <span class="theme-search-results-item-flight-details-schedule-time-item">
+                                                                                            @(Convert.ToDateTime(Model.Inbound[inbcnt].ArrivalDate).ToString("HH:mm"))
+                                                                                        </span>
+                                                                                        <span class="theme-search-results-item-flight-details-schedule-time-separator">&mdash;</span>
+                                                                                        @*<p class="theme-search-results-item-flight-details-schedule-date">@Convert.ToDateTime(Model.Inbound[inbcnt + 1].DepartureDate).ToString("MMM, dd, yyyy")</p>*@
+                                                                                        <span class="theme-search-results-item-flight-details-schedule-time-item">
+                                                                                            @(Convert.ToDateTime(Model.Inbound[inbcnt + 1].DepartureDate).ToString("HH:mm"))
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    @{
+                                                                                        TimeSpan calinbt = Convert.ToDateTime(Model.Inbound[inbcnt + 1].DepartureDate) - Convert.ToDateTime(Model.Inbound[inbcnt].ArrivalDate);
+                                                                                        TimeSpan finalcal = TimeSpan.FromMinutes(calinbt.TotalMinutes);
+                                                                                        string tothrs = string.Format("{0:D2}h {1:D2}m", finalcal.Hours, finalcal.Minutes);
+                                                                                    }
+                                                                                    <p class="theme-search-results-item-flight-details-schedule-fly-time">@tothrs</p>
+                                                                                    <p class="theme-search-results-item-flight-details-schedule-transfer">
+                                                                                        @{
+                                                                                            Airport airpot = Common.GetAirport(Model.Inbound[inbcnt].ToAirport.Code);
+                                                                                        }
+                                                                                        Change planes in @(airpot.CityName)(@(Model.Inbound[inbcnt].ToAirport.Code))
+                                                                                    </p>
+                                                                                </li>
+                                                                            }
+                                                                            inbcnt++;
+                                                                        }
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3  img-logo-flight">
+                                        <div class="theme-search-results-item-img-wrap">
+                                            <img class="theme-search-results-item-img _mob-h-img" src="./img/airline/icon/@(Model.Airline.Code).png" alt="Image Alternative text" title="Image Title" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- mobile design -->
+                        <!-- close mobile design -->
+                        <!---Start Cabin Baggage-->
+                        <div style="clear:both"></div>
+                        @if (Model.Provider.ToUpper() == "KIWI")
+                        {<input type="hidden" id="hdnhand_weight" name="hdnhand_weight" value="@(Model.Baglimit.hand_weight)" />
+                            <input type="hidden" id="hdnhold_weight" name="hdnhold_weight" value="@(Model.Baglimit.hold_weight))" />
+
+                            <div class="bk_pggrDtlBx">
+                                <div class="bk_pggrDtl">
+                                    <h5 class="headingNewDetail">
+                                        Cabin Baggage <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" ata-placement="right" title="Cabin Baggage"></i>
+                                    </h5>
+                                    <p style="margin:0px; font-size:14px;">Includes smaller bags that can be taken into the cabin and stored in the overhead locker or under your seat.</p>
+                                    <div class="list_pssBx clearfix">
+                                        <div class="bk_nm_pss">
+                                            <p>Select one option</p>
+                                        </div>
+
+                                        <div class="baggage-row baggage-select cabin">
+                                            <input type="radio" name="" id="baggage-1" class="radio" checked="">
+                                            <label>
+                                                <span class="baggage-name"><i class="fa fa-suitcase" aria-hidden="true"></i> Cabin bag</span>
+                                                <span class="baggage-size">@Model.Baglimit.hand_height × @Model.Baglimit.hand_length × @Model.Baglimit.hand_width cm, @Model.Baglimit.hand_weight kg</span>
+                                                <span class="baggage-price">$0</span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="bk_pggrDtlBx">
+                                <div class="bk_pggrDtl">
+                                    <h5 class="headingNewDetail">
+                                        Checked Baggage <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" ata-placement="right" title="Checked Baggage"></i>
+                                    </h5>
+                                    <p style="margin:0px; font-size:14px;">Includes larger baggage items that you must deposit at the airline check-in counter before going through security at the airport.</p>
+                                    <div class="list_pssBx clearfix">
+                                        <div class="bk_nm_pss">
+                                            <p>Select one option</p>
+                                        </div>
+                                        @if (Model.ListBagsPrice.Count > 0)
+                                        {
+                                            foreach (var item in Model.ListBagsPrice.OrderBy(x => x.BagsPcsPrice))
+                                            {
+                                                if (int.Parse(item.BagsPcs) == 1 && item.BagsPcsPrice == 0.0F)
+                                                {
+                                                    <div class="baggage-row baggage-select baggage" id="bag_@item.BagsPcs" onclick="BaggagePrice('@item.BagsPcs','@item.BagsPcsPrice','@Model.FlightFare.GrandTotal','@Model.Baglimit.hold_weight')">
+                                                        <input type="radio" name="baggage" id="baggage_@item.BagsPcs" value="@(item.BagsPcsPrice)" class="radio" checked>
+                                                        <label for="baggage_@item.BagsPcs">
+                                                            <span class="baggage-name"><i class="fa fa-suitcase" aria-hidden="true"></i> @Model.Baglimit.hold_weight kg Checked bag</span>
+                                                            <span class="baggage-size">@Model.Baglimit.hold_height × @Model.Baglimit.hold_length × @Model.Baglimit.hold_width cm, @Model.Baglimit.hold_weight kg</span>
+                                                            <span class="baggage-price">$<span id="bgPrice_@item.BagsPcs">@item.BagsPcsPrice</span></span>
+                                                        </label>
+                                                    </div>
+                                                }
+                                                if (int.Parse(item.BagsPcs) == 1 && item.BagsPcsPrice > 0.0F)
+                                                {
+                                                    <div class="baggage-row baggage-select baggage" id="bag_0" onclick="BaggagePrice('0','0','@Model.FlightFare.GrandTotal','@Model.Baglimit.hold_weight')">
+                                                        <input type="radio" name="baggage" id="baggage_0" class="radio" checked />
+                                                        <label for="baggage_0">
+                                                            <span class="baggage-name">X No checked baggage</span>
+                                                            <span class="baggage-size"></span>
+                                                            <span class="baggage-price"></span>
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="baggage-row baggage" id="bag_@item.BagsPcs" onclick="BaggagePrice('@item.BagsPcs','@item.BagsPcsPrice','@Model.FlightFare.GrandTotal','@Model.Baglimit.hold_weight')">
+                                                        <input type="radio" name="baggage" id="baggage_@item.BagsPcs" value="@(item.BagsPcsPrice)" class="radio" />
+                                                        <label for="baggage_@item.BagsPcs">
+                                                            <span class="baggage-name"><i class="fa fa-suitcase" aria-hidden="true"></i> @Model.Baglimit.hold_weight kg Checked bag</span>
+                                                            <span class="baggage-size">@Model.Baglimit.hold_height × @Model.Baglimit.hold_length × @Model.Baglimit.hold_width cm, @Model.Baglimit.hold_weight kg</span>
+                                                            <span class="baggage-price">$<span id="bgPrice_@item.BagsPcs">@item.BagsPcsPrice</span></span>
+                                                        </label>
+                                                    </div>
+                                                }
+                                                if (int.Parse(item.BagsPcs) == 2)
+                                                {
+                                                    <div class="baggage-row baggage" id="bag_@item.BagsPcs" onclick="BaggagePrice('@item.BagsPcs','@item.BagsPcsPrice','@Model.FlightFare.GrandTotal','@Model.Baglimit.hold_weight')">
+                                                        <input type="radio" name="baggage" id="baggage_@item.BagsPcs" value="@(item.BagsPcsPrice)" class="radio" />
+                                                        <label for="baggage_@item.BagsPcs">
+                                                            <span class="baggage-name">
+                                                                <i class="fa fa-suitcase" aria-hidden="true"></i>@Model.Baglimit.hold_weight kg Checked bag <br />
+                                                                <i class="fa fa-suitcase" aria-hidden="true"></i> @Model.Baglimit.hold_weight kg Checked bag
+                                                            </span>
+                                                            <span class="baggage-size">
+                                                                @Model.Baglimit.hold_height × @Model.Baglimit.hold_length × @Model.Baglimit.hold_width cm, @Model.Baglimit.hold_weight kg <br />
+                                                                @Model.Baglimit.hold_height × @Model.Baglimit.hold_length × @Model.Baglimit.hold_width cm, @Model.Baglimit.hold_weight kg
+                                                            </span>
+                                                            <span class="baggage-price">$<span id="bgPrice_@item.BagsPcs">@item.BagsPcsPrice</span></span>
+                                                        </label>
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="baggage-row">
+                                                <label for="radio baggage_0">
+                                                    <span class="baggage-name"></span>
+                                                    <span class="baggage-size nobaggage"><span style="color:red;font-size:22px;margin:10px;"><i class="fa fa-times"></i></span> Checked baggage not available.</span>
+                                                    <span class="baggage-price"></span>
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                        <div style="clear:both"></div>
+                        <!---End Cabin Baggage------>
+                        <input type="hidden" id="hdnBaggagePrice" name="hdnBaggagePrice" value="0" />
+                        <input type="hidden" id="hdnBaggagePcs" name="hdnBaggagePcs" value="0" />
+                        <input type="hidden" id="hdnFreeChangeAmt" name="hdnFreeChangeAmt" value="0" />
+                        <script>
+
+
+                            function BaggagePrice(Pcs, BagPrice, GrandTotal, weight) {
+                                $('#spBagname1').text('Check In Luggage');
+                                $('#spBagname1x').text('Check In Luggage');
+                                // alert(BagPrice +" PCS="+ Pcs);
+                                // No checked baggage (Not Included)
+                                // 23 kg Checked bag but price 0 THEN (23 kg INCLUED)
+                                //  23 kg Checked bag but price geater tHEN  0 (23 kg Inclued)
+                                //  23 X 23 kg Checked bag (46 kg Inclued)
+
+                                if (BagPrice === "0") {
+                                    // $("#spBaggagePrice").html("FREE");
+
+                                    $("#hdnBaggagePrice").val(BagPrice);
+                                    $("#hdnBaggagePcs").val(Pcs);
+                                }
+                                else {
+
+                                    $("#hdnBaggagePrice").val(BagPrice);
+                                    $("#hdnBaggagePcs").val(Pcs);
+                                }
+
+                                if ((parseInt(BagPrice) == 0) && parseInt(Pcs) == 0) {
+                                    $("#spBaggagePrice1").html("Not Included");
+                                    $("#spBaggagePrice1x").html("Not Included");
+                                }
+
+                                if ((parseInt(BagPrice) >= 0) && parseInt(Pcs) == 1) {
+                                    $("#spBaggagePrice1").html(weight + " kg Included");
+                                    $("#spBaggagePrice1x").html(weight + " kg Included");
+                                }
+
+                                if ((parseInt(BagPrice) >= 0) && parseInt(Pcs) == 2) {
+                                    $("#spBaggagePrice1").html((parseInt(weight) * 2) + " kg Included");
+                                    $("#spBaggagePrice1x").html((parseInt(weight) * 2) + " kg Included");
+                                }
+                                if ($("#spBaggagePrice1x").text().trim() == '') {
+
+                                    $("#spBaggagePrice1x").html("No Baggage Available");
+                                }
+                                $('#sptotBagPricex').text(BagPrice);
+                                getTotalCost();
+                            }
+                            $(document).ready(function () {
+
+                                $(".baggage").click(function () {
+                                    $(".baggage").removeClass("baggage-select");
+                                    $(this).addClass("baggage-select");
+                                });
+                                if ($("#spBaggagePrice1").text().trim() == '') {
+
+                                    $("#spBaggagePrice1").html("No Baggage Available");
+                                    $("#spBaggagePrice1x").html("No Baggage Available");
+                                }
+                                getTotalCost();
+                            });
+
+                            $(document).ready(function () {
+
+                                $('#spBaggagePrice').text($('#hdnhand_weight').val() + 'kg Per Person');
+                                $('#spBagname').text('Cabin Bag');
+
+                                $('#spBaggagePricex').text($('#hdnhand_weight').val() + 'kg Per Person');
+                                $('#spBagnamex').text('Cabin Bag');
+
+                                if ($('#baggage_0').prop("checked") == true) {
+                                    $('#spBagname1').text('Check In Luggage');
+                                    $("#spBaggagePrice1").html("Not Included");
+                                    $('#sptotBagPrice').text('0');
+
+
+                                    $('#spBagname1x').text('Check In Luggage');
+                                    $("#spBaggagePrice1x").html("Not Included");
+                                    $('#sptotBagPricex').text('0');
+                                }
+                                if ($('#baggage_1').prop("checked") == true) {
+                                    $('#spBagname1').text('Check In Luggage');
+                                    $("#spBaggagePrice1").html($('#hdnhold_weight').val() + " kg Included");
+
+                                    $('#spBagname1x').text('Check In Luggage');
+                                    $("#spBaggagePrice1x").html($('#hdnhold_weight').val() + " kg Included");
+
+                                }
+                                else {
+                                    if ($("#spBaggagePrice1").text().trim() == '') {
+
+                                        $("#spBaggagePrice1").html("No Baggage Available");
+                                        $("#spBaggagePrice1x").html("No Baggage Available");
+                                    }
+
+                                }
+                                if ($("#spBaggagePrice1").text().trim() == '') {
+
+                                    $("#spBaggagePrice1").html("No Baggage Available");
+                                    $("#spBaggagePrice1x").html("No Baggage Available");
+                                }
+                                getTotalCost();
+
+                            });
+
+                            function getTotalCost() {
+
+                                // alert($('#spTotalCostAmount').text().trim());
+                                var MainTotalCost = parseInt($('#hdnspTotalCostAmount').val().trim());
+                                MainTotalCost = MainTotalCost + parseInt($('#sptotBagPrice').text()) + parseInt($('#spsuppurtPlanAmt').text());
+
+                                $('.spMainTotalCost').text(MainTotalCost);
+                            }
+                        </script>
+                        <div class="supportPackag">
+                            <h5 class="headingNewDetail">Support Package</h5>
+                            <div class="dFlexNew">
+
+                                <div class="supportPackagRight full-wdth-support">
+                                    <div class="columns" id="BasicBox">
+                                        <ul class="price min-width-price">
+                                            <li class="headerPrice">Basic</li>
+
+                                            <li><p class="categ-ti">Priority</p><p class="categ-type">Standard</p></li>
+                                            <li><p class="categ-ti">Rescheduling</p><p class="categ-type">Standard</p></li>
+
+                                            <li class="bottom-btn"><a href="javascript:void(0);" class="button" id="btnbasicadd">Add</a></li>
+                                        </ul>
+                                        <input type="hidden" value="0" id="hdnbasic">
+                                    </div>
+
+                                    <div class="columns active" id="PremiumBox">
+
+                                        <ul class="price  min-width-price">
+                                            <li class="headerPrice" style="">Premium</li>
+                                            <li><p class="categ-ti">Priority</p><p class="categ-type">Fast</p></li>
+                                            <li><p class="categ-ti">Rescheduling</p><p class="categ-type">Priority</p></li>
+                                            <li class="grey bac-trap">$ 13.95 </li>
+
+                                            <li class="bottom-btn"><a href="javascript:void(0);" class="button" id="btnpremiumadd">Included</a></li>
+                                        </ul>
+                                        <input type="hidden" value="13.95" id="hdnPremiumBox">
+
+
+                                    </div>
+
+                                    <div class="columns" id="PlatinumBox">
+                                        <ul class="price  min-width-price">
+                                            <li class="headerPrice" style="">Platinum</li>
+                                            <li><p class="categ-ti">Priority</p><p class="categ-type">Fastest</p></li>
+                                            <li><p class="categ-ti">Rescheduling</p><p class="categ-type">Highest Priority</p></li>
+                                            <li class="grey">$ 39.95 </li>
+                                            <li class="bottom-btn"><a href="javascript:void(0);" class="button" id="btnplatinumadd">Add</a></li>
+                                        </ul>
+                                        <input type="hidden" value="39.95" id="hdnPlatinumBox">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                       
+
+                        <input type="hidden" id="hdnSupportPlan" value="Basic" />
+                        <input type="hidden" id="hdnSupportPlanAmt" value="0" />
+                        <script>
+
+                            $(function () {
+                                $('#BasicBox').addClass("active");
+                                $('#PremiumBox').removeClass("active");
+                                $('#PlatinumBox').removeClass("active");
+                                $('#hdnSupportPlan').val('Basic');
+                                $('#hdnSupportPlanAmt').val('0');
+                                $('#spsuppurtPlan').text('Basic'); $('#spsuppurtPlanx').text('Basic');
+                                $('#spsuppurtPlanAmt').text('0'); $('#spsuppurtPlanAmtx').text('0');
+
+                                $('#btnbasicadd').text('Included');
+                                $('#btnpremiumadd').text('Add');
+                                $('#btnplatinumadd').text('Add');
+
+                                $('#BasicBox').click(function () {
+                                    $(this).addClass("active");
+                                    $('#PremiumBox').removeClass("active");
+                                    $('#PlatinumBox').removeClass("active");
+                                    $('#hdnSupportPlan').val('Basic');
+                                    $('#hdnSupportPlanAmt').val('0');
+                                    $('#spsuppurtPlan').text('Basic'); $('#spsuppurtPlanx').text('Basic');
+                                    $('#spsuppurtPlanAmt').text('0'); $('#spsuppurtPlanAmtx').text('0');
+                                    $('#btnbasicadd').text('Included');
+                                    $('#btnpremiumadd').text('Add');
+                                    $('#btnplatinumadd').text('Add');
+
+                                    getTotalCost();
+                                });
+                                $('#PremiumBox').click(function () {
+                                    $('#BasicBox').removeClass("active");
+                                    $('#PremiumBox').addClass("active");
+                                    $('#PlatinumBox').removeClass("active");
+                                    $('#hdnSupportPlan').val('Premium');
+                                    $('#hdnSupportPlanAmt').val('13.95');
+                                    $('#spsuppurtPlan').text('Premium'); $('#spsuppurtPlanx').text('Premium');
+                                    $('#spsuppurtPlanAmt').text('13.95'); $('#spsuppurtPlanAmtx').text('13.95');
+
+                                    $('#btnbasicadd').text('Add');
+                                    $('#btnpremiumadd').text('Included');
+                                    $('#btnplatinumadd').text('Add');
+                                    getTotalCost();
+                                });
+                                $('#PlatinumBox').click(function () {
+                                    $('#BasicBox').removeClass("active");
+                                    $('#PremiumBox').removeClass("active");
+                                    $('#PlatinumBox').addClass("active");
+                                    $('#hdnSupportPlan').val('Platinum');
+                                    $('#hdnSupportPlanAmt').val('39.95');
+                                    $('#spsuppurtPlan').text('Platinum'); $('#spsuppurtPlanx').text('Platinum');
+                                    $('#spsuppurtPlanAmt').text('39.95'); $('#spsuppurtPlanAmtx').text('39.95');
+
+                                    $('#btnbasicadd').text('Add');
+                                    $('#btnpremiumadd').text('Add');
+                                    $('#btnplatinumadd').text('Included');
+                                    getTotalCost();
+                                });
+                            });
+                        </script>
+
+
+                        <!-- Mobile cost Summury --->
+
+                        <div class="theme-sidebar-section _mb-10 mobpadding show-on-phone" style="display:none;">
+                            <h5 class="theme-sidebar-section-title">Charges</h5>
+                            <div class="theme-sidebar-section-charges">
+                                <ul class="theme-sidebar-section-charges-list">
+                                    <li class="theme-sidebar-section-charges-item">
+                                        <h5 class="theme-sidebar-section-charges-item-title">@(Model.FlightFare.Adult) adult <span class="adultPrice"><span class="crossIcon">&times;</span> $@(Convert.ToDouble((Convert.ToDouble(Model.FlightFare.AdultFare) + Convert.ToDouble(Model.FlightFare.AdultMarkup) + Convert.ToDouble(Model.FlightFare.AdultTax))).ToString("f2"))</span><p class="theme-sidebar-section-charges-item-price">$@(Convert.ToDouble((Convert.ToDouble(Model.FlightFare.AdultFare) + Convert.ToDouble(Model.FlightFare.AdultMarkup) + Convert.ToDouble(Model.FlightFare.AdultTax)) * Convert.ToInt32(Model.FlightFare.Adult)).ToString("f2"))</p></h5>
+                                        <p class="theme-sidebar-section-charges-item-subtitle">@(Model.FlightClass)</p>
+
+                                    </li>
+                                    <li>
+                                        <h5 class="theme-sidebar-section-title"><span id="spBagname1xaaaa">Baggage Allowance</span>  </h5>
+
+
+                                        <div class="chk-line">
+                                            <i class="fa fa-suitcase chk-l"></i>&nbsp;
+                                            <span class="chk-l"><span id="spBagnamex"></span></span>
+                                            <span class="chk-r">&nbsp;<span id="spBaggagePricex"></span></span>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="chk-line" id="dvwithpcs">
+                                            <i class="fa fa-suitcase chk-l"></i>&nbsp;
+                                            <span class="chk-l"><span id="spBagname1x"></span></span>
+                                            <span class="chk-r">
+                                                <span id="spBaggagePrice1x"></span>
+                                                <p class="theme-sidebar-section-charges-item-price">$<span id="sptotBagPricex">0</span></p>
+
+                                            </span>
+
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <h5 class="theme-sidebar-section-title"><span>Support Package</span> </h5>
+                                        <div class="row" style="margin-right:0;">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <p class="theme-sidebar-section-charges-item-subtitle amount-up">
+                                                    <span id="spsuppurtPlanx"></span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12  mob-up-amt">
+                                                <p class="theme-sidebar-section-charges-item-price">$<span id="spsuppurtPlanAmtx">0</span></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @if (Convert.ToInt32(Model.FlightFare.Child) > 0)
+                                    {
+                                        <li class="theme-sidebar-section-charges-item">
+                                            <h5 class="theme-sidebar-section-charges-item-title">@(Model.FlightFare.Child) child <span class="adultPrice"><span class="crossIcon">&times;</span> $@(Convert.ToDouble(Convert.ToDouble(Model.FlightFare.ChildFare) + Convert.ToDouble(Model.FlightFare.ChildMarkup) + Convert.ToDouble(Model.FlightFare.ChildTax)).ToString("f2"))</span></h5>
+                                            <p class="theme-sidebar-section-charges-item-subtitle">@(Model.FlightClass)</p>
+                                            <p class="theme-sidebar-section-charges-item-price">$@(Convert.ToDouble((Convert.ToDouble(Model.FlightFare.ChildFare) + Convert.ToDouble(Model.FlightFare.ChildMarkup) + Convert.ToDouble(Model.FlightFare.ChildTax)) * Convert.ToInt32(Model.FlightFare.Child)).ToString("f2"))</p>
+                                        </li>
+                                    }
+                                    @if (Convert.ToInt32(Model.FlightFare.Infant) > 0)
+                                    {
+                                        <li class="theme-sidebar-section-charges-item">
+                                            <h5 class="theme-sidebar-section-charges-item-title">@(Model.FlightFare.Infant) infant <span class="adultPrice"><span class="crossIcon">&times;</span> $@(Convert.ToDouble(Convert.ToDouble(Model.FlightFare.InfantFare) + Convert.ToDouble(Model.FlightFare.InfantMarkup) + Convert.ToDouble(Model.FlightFare.InfantTax)).ToString("f2"))</span></h5>
+                                            <p class="theme-sidebar-section-charges-item-subtitle">@(Model.FlightClass)</p>
+                                            <p class="theme-sidebar-section-charges-item-price">$@(Convert.ToDouble((Convert.ToDouble(Model.FlightFare.InfantFare) + Convert.ToDouble(Model.FlightFare.InfantMarkup) + Convert.ToDouble(Model.FlightFare.InfantTax)) * Convert.ToInt32(Model.FlightFare.Infant)).ToString("f2"))</p>
+                                        </li>
+                                    }
+                                    <li class="theme-sidebar-section-charges-item mob-amtup">
+                                        <h5 class="theme-sidebar-section-charges-item-title">Taxes, Fees & Surcharges</h5>
+                                        <p class="theme-sidebar-section-charges-item-subtitle"></p>
+                                        <p class="theme-sidebar-section-charges-item-price">$@((Convert.ToDouble(Model.FlightFare.AdultTax)+ Convert.ToDouble(Model.FlightFare.ChildTax) + Convert.ToDouble(Model.FlightFare.InfantTax)).ToString("f2"))</p>
+                                    </li>
+                                </ul>
+                                <p class="theme-sidebar-section-charges-total">
+                                    Total
+                                    <span>$<span id="spTotalCostAmount" class="spMainTotalCost">@(Convert.ToInt32(Model.FlightFare.GrandTotal))</span></span>
+
+
+                                    <input type="hidden" id="hdnspTotalCostAmount" value="@(Convert.ToInt32(Model.FlightFare.GrandTotal))" />
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="theme-payment-page-sections-item">
+                            <div class="theme-payment-page-form">
+                                <h3 class="theme-payment-page-sections-item-title"><i class="fa fa-phone-square mr-2" aria-hidden="true"></i> Contact Details</h3>
+                                <div class="row row-col-gap" data-gutter="20" id="contactDetailsBox">
+
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <input class="form-control numeric" type="text" placeholder="Phone No" id="txtphone" maxlength="12" />
+                                            <span class="detailPageIcon phoneIcon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <input class="form-control" type="text" placeholder="Email" id="txtEmail" maxlength="100" />
+                                            <span class="detailPageIcon emailIcon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row btnsMixBox">
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+                                    <a href="javasript:void(0);" class="btn _tt-uc btn-primary-inverse btn-lg btn-block" id="nxtBtnPass">Continue Booking</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="theme-payment-page-sections-item">
+
+                            <h3 class="theme-payment-page-sections-item-title"><i class="fa fa-user" aria-hidden="true"></i> Enter Passenger Details</h3>
+                            <div id="psngrDetails" style="display:none">
+                                <input type="hidden" id="hdnAdultcount" value="@Convert.ToInt32(ViewBag.Adult)" />
+                                <input type="hidden" id="hdnChildcount" value="@Convert.ToInt32(ViewBag.Child)" />
+
+                                <input type="hidden" id="hdnInfantcount" value="@Convert.ToInt32(ViewBag.Infant)" />
+                                @for (int a = 0; a < (Convert.ToInt32(ViewBag.Adult)); a++)
+                                {
+                                    <div class="theme-payment-page-form Adult" style="">
+                                        <div class="theme-payment-page-form">
+                                            <h3 class="theme-payment-page-form-title"><i class="fa fa-user" aria-hidden="true"></i> Adult @(a+1) <i style="font-size: 13px;">(Please ensure below provided information matches passenger's passport.)</i></h3>
+                                            <div class="row row-col-gap" data-gutter="20">
+                                                <div class="col-md-6 ">
+                                                    <div class="theme-payment-page-form-item form-group">
+                                                        <input class="form-control" type="text" placeholder="First Name" maxlength="50" id="adltfrstname@(a+1)" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 ">
+                                                    <div class="theme-payment-page-form-item form-group">
+                                                        <input class="form-control" type="text" placeholder="Last Name" maxlength="50" id="adltlastname@(a+1)" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="theme-payment-page-form" style="margin-bottom:20px;margin-top:20px;">
+
+                                            <div class="row row-col-gap" data-gutter="20">
+                                                <div class="col-md-6 ">
+                                                    <div class="row row-col-gap" data-gutter="10">
+                                                        <div class="col-md-6 ">
+                                                            <div class="theme-payment-page-form-item form-group">
+                                                                <i class="fa fa-angle-down"></i>
+                                                                <select class="form-control paxdropdown" id="adltbrtmonth@(a+1)">
+                                                                    <option value="0">Month</option>
+                                                                    <option>January</option>
+                                                                    <option>February</option>
+                                                                    <option>March</option>
+                                                                    <option>April</option>
+                                                                    <option>May</option>
+                                                                    <option>June</option>
+                                                                    <option>July</option>
+                                                                    <option>August</option>
+                                                                    <option>September</option>
+                                                                    <option>October</option>
+                                                                    <option>November</option>
+                                                                    <option>December</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 ">
+                                                            <div class="theme-payment-page-form-item form-group">
+                                                                <i class="fa fa-angle-down"></i>
+                                                                <select class="form-control" id="adltbrtday@(a+1)">
+                                                                    <option value="0">Day</option>
+                                                                    @for (int ck = 1; ck < 31; ck++)
+                                                                    {
+                                                                        <option value="@ck">@ck</option>
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 ">
+                                                            <div class="theme-payment-page-form-item form-group">
+                                                                <i class="fa fa-angle-down"></i>
+                                                                <select class="form-control" id="adltbrtyear@(a+1)">
+                                                                    <option value="0">Year</option>
+                                                                    @for (int yy = DateTime.Now.Year; yy > DateTime.Now.Year - 100; yy--)
+                                                                    {
+                                                                        <option>@yy</option>
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <i>(Date Of Birth as in Passport)</i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 ">
+                                                    <div class="theme-payment-page-form-item form-group">
+                                                        <i class="fa fa-angle-down"></i>
+                                                        <select class="form-control" id="adltgender@(a+1)">
+                                                            <option value="0">Gender</option>
+                                                            <option>Male</option>
+                                                            <option>Female</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @for (int c = 0; c < (Convert.ToInt32(ViewBag.Child)); c++)
+                                {
+                                    <div class="theme-payment-page-form Child">
+                                        <h3 class="theme-payment-page-form-title">Child @(c+1)</h3>
+                                        <div class="row row-col-gap" data-gutter="20">
+                                            <div class="col-md-6 ">
+                                                <div class="theme-payment-page-form-item form-group">
+                                                    <input class="form-control" type="text" placeholder="First Name" maxlength="50" id="childfirstname@(c+1)" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="theme-payment-page-form-item form-group">
+                                                    <input class="form-control" type="text" placeholder="Last Name" maxlength="50" id="childlastname@(c+1)" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="row row-col-gap" data-gutter="10">
+                                                    <div class="col-md-6 ">
+                                                        <div class="theme-payment-page-form-item form-group">
+                                                            <i class="fa fa-angle-down"></i>
+                                                            <select class="form-control" id="childbrthmonth@(c+1)">
+                                                                <option value="0">Month</option>
+                                                                <option>January</option>
+                                                                <option>February</option>
+                                                                <option>March</option>
+                                                                <option>April</option>
+                                                                <option>May</option>
+                                                                <option>June</option>
+                                                                <option>July</option>
+                                                                <option>August</option>
+                                                                <option>September</option>
+                                                                <option>October</option>
+                                                                <option>November</option>
+                                                                <option>December</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <div class="theme-payment-page-form-item form-group">
+                                                            <i class="fa fa-angle-down"></i>
+                                                            <select class="form-control" id="childbrthday@(c+1)">
+                                                                <option value="0">Day</option>
+                                                                @for (int ck = 1; ck < 31; ck++)
+                                                                {
+                                                                    <option value="@ck">@ck</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <div class="theme-payment-page-form-item form-group">
+                                                            <i class="fa fa-angle-down"></i>
+                                                            <select class="form-control" id="childbrthyear@(c+1)">
+                                                                <option value="0">Year</option>
+                                                                @for (int yy = DateTime.Now.Year; yy > DateTime.Now.Year - 14; yy--)
+                                                                {
+                                                                    <option>@yy</option>
+                                                                }
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="theme-payment-page-form-item form-group">
+                                                    <i class="fa fa-angle-down"></i>
+                                                    <select class="form-control" id="childgender@(c+1)">
+                                                        <option value="0">Gender</option>
+                                                        <option>Male</option>
+                                                        <option>Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                }
+                                @for (int i = 0; i < (Convert.ToInt32(ViewBag.Infant)); i++)
+                                {
+                                    <div class="theme-payment-page-form Infant">
+                                        <h3 class="theme-payment-page-form-title">Infant @(i+1)</h3>
+                                        <div class="row row-col-gap" data-gutter="20">
+                                            <div class="col-md-6 ">
+                                                <div class="theme-payment-page-form-item form-group">
+                                                    <input class="form-control" type="text" placeholder="First Name" maxlength="50" id="infantfirstname@(i+1)" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="theme-payment-page-form-item form-group">
+                                                    <input class="form-control" type="text" placeholder="Last Name" maxlength="50" id="infantlastname@(i+1)" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 ">
+                                                <div class="row row-col-gap" data-gutter="10">
+                                                    <div class="col-md-6 ">
+                                                        <div class="theme-payment-page-form-item form-group">
+                                                            <i class="fa fa-angle-down"></i>
+                                                            <select class="form-control" id="infantbrthmonth@(i+1)">
+                                                                <option value="0">Month</option>
+                                                                <option>January</option>
+                                                                <option>February</option>
+                                                                <option>March</option>
+                                                                <option>April</option>
+                                                                <option>May</option>
+                                                                <option>June</option>
+                                                                <option>July</option>
+                                                                <option>August</option>
+                                                                <option>September</option>
+                                                                <option>October</option>
+                                                                <option>November</option>
+                                                                <option>December</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <div class="theme-payment-page-form-item form-group">
+                                                            <i class="fa fa-angle-down"></i>
+                                                            <select class="form-control" id="infantbrthday@(i+1)">
+                                                                <option value="0">Day</option>
+                                                                @for (int ck = 1; ck < 31; ck++)
+                                                                {
+                                                                    <option value="@ck">@ck</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <div class="theme-payment-page-form-item form-group">
+                                                            <i class="fa fa-angle-down"></i>
+                                                            <select class="form-control" id="infantbrthyear@(i+1)">
+                                                                <option value="0">Year</option>
+                                                                @for (int yy = DateTime.Now.Year; yy > DateTime.Now.Year - 2; yy--)
+                                                                {
+                                                                    <option>@yy</option>
+                                                                }
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="theme-payment-page-form-item form-group">
+                                                    <i class="fa fa-angle-down"></i>
+                                                    <select class="form-control" id="infantgender@(i+1)">
+                                                        <option value="0">Gender</option>
+                                                        <option>Male</option>
+                                                        <option>Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="row btnsMixBox">
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 pull-right">
+                                    <a href="javasript:void(0);" class="btn _tt-uc btn-primary-inverse btn-lg btn-block" id="nxtBtnCnt" style="display:none">Next</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="theme-payment-page-sections-item">
+                            <h3 class="theme-payment-page-sections-item-title"><i class="fa fa-home" aria-hidden="true"></i> Enter Billing Information </h3>
+                            <div class="theme-payment-page-form _mb-20" id="dvbilling" style="display:none">
+                                <h3 class="theme-payment-page-form-title"><i class="fa fa-home" aria-hidden="true"></i> Billing Address <i>(Please provide Billing address of your Credit/Debit Card)</i> </h3>
+                                <div class="row row-col-gap" data-gutter="20">
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <input class="form-control" type="text" placeholder="Street (line 1)" maxlength="50" id="txtAddress1" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <input class="form-control" type="text" placeholder="Street (line 2)" maxlength="50" id="txtAddress2" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <input class="form-control" type="text" placeholder="Postal Code" id="txtpostalcode" maxlength="6" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <input class="form-control" type="text" placeholder="City" id="txtCity" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <i class="fa fa-angle-down"></i>
+                                            <select class="form-control" id="drpState">
+                                                <option value="0">State/Region</option>
+                                                <option>Alabama</option>
+                                                <option>Alaska</option>
+                                                <option>American Samoa</option>
+                                                <option>Arizona</option>
+                                                <option>Arkansas</option>
+                                                <option>California</option>
+                                                <option>Colorado</option>
+                                                <option>Connecticut</option>
+                                                <option>Delaware</option>
+                                                <option>District Of Columbia</option>
+                                                <option>Federated States Of Micronesia</option>
+                                                <option>Florida</option>
+                                                <option>Georgia</option>
+                                                <option>Guam</option>
+                                                <option>Hawaii</option>
+                                                <option>Idaho</option>
+                                                <option>Illinois</option>
+                                                <option>Indiana</option>
+                                                <option>Iowa</option>
+                                                <option>Kansas</option>
+                                                <option>Kentucky</option>
+                                                <option>Louisiana</option>
+                                                <option>Maine</option>
+                                                <option>Marshall Islands</option>
+                                                <option>Maryland</option>
+                                                <option>Massachusetts</option>
+                                                <option>Michigan</option>
+                                                <option>Minnesota</option>
+                                                <option>Mississippi</option>
+                                                <option>Missouri</option>
+                                                <option>Montana</option>
+                                                <option>Nebraska</option>
+                                                <option>Nevada</option>
+                                                <option>New Hampshire</option>
+                                                <option>New Jersey</option>
+                                                <option>New Mexico</option>
+                                                <option>New York</option>
+                                                <option>North Carolina</option>
+                                                <option>North Dakota</option>
+                                                <option>Northern Mariana Islands</option>
+                                                <option>Ohio</option>
+                                                <option>Oklahoma</option>
+                                                <option>Oregon</option>
+                                                <option>Palau</option>
+                                                <option>Pennsylvania</option>
+                                                <option>Puerto Rico</option>
+                                                <option>Rhode Island</option>
+                                                <option>South Carolina</option>
+                                                <option>South Dakota</option>
+                                                <option>Tennessee</option>
+                                                <option>Texas</option>
+                                                <option>Utah</option>
+                                                <option>Vermont</option>
+                                                <option>Virgin Islands</option>
+                                                <option>Virginia</option>
+                                                <option>Washington</option>
+                                                <option>West Virginia</option>
+                                                <option>Wisconsin</option>
+                                                <option>Wyoming</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <i class="fa fa-angle-down"></i>
+                                            <select class="form-control" id="drpCountry">
+                                                <option value="0">Select Country</option>
+                                                <option>Afghanistan</option>
+                                                <option>Albania</option>
+                                                <option>Algeria</option>
+                                                <option>American Samoa</option>
+                                                <option>AndorrA</option>
+                                                <option>Angola</option>
+                                                <option>Anguilla</option>
+                                                <option>Antarctica</option>
+                                                <option>Antigua and Barbuda</option>
+                                                <option>Argentina</option>
+                                                <option>Armenia</option>
+                                                <option>Aruba</option>
+                                                <option>Australia</option>
+                                                <option>Austria</option>
+                                                <option>Azerbaijan</option>
+                                                <option>Bahamas</option>
+                                                <option>Bahrain</option>
+                                                <option>Bangladesh</option>
+                                                <option>Barbados</option>
+                                                <option>Belarus</option>
+                                                <option>Belgium</option>
+                                                <option>Belize</option>
+                                                <option>Benin</option>
+                                                <option>Bermuda</option>
+                                                <option>Bhutan</option>
+                                                <option>Bolivia</option>
+                                                <option>Bosnia and Herzegovina</option>
+                                                <option>Botswana</option>
+                                                <option>Bouvet Island</option>
+                                                <option>Brazil</option>
+                                                <option>British Indian Ocean Territory</option>
+                                                <option>Brunei Darussalam</option>
+                                                <option>Bulgaria</option>
+                                                <option>Burkina Faso</option>
+                                                <option>Burundi</option>
+                                                <option>Cambodia</option>
+                                                <option>Cameroon</option>
+                                                <option>Canada</option>
+                                                <option>Cape Verde</option>
+                                                <option>Cayman Islands</option>
+                                                <option>Central African Republic</option>
+                                                <option>Chad</option>
+                                                <option>Chile</option>
+                                                <option>China</option>
+                                                <option>Christmas Island</option>
+                                                <option>Cocos (Keeling) Islands</option>
+                                                <option>Colombia</option>
+                                                <option>Comoros</option>
+                                                <option>Congo</option>
+                                                <option>Congo, The Democratic Republic of the</option>
+                                                <option>Cook Islands</option>
+                                                <option>Costa Rica</option>
+                                                <option>Cote D"Ivoire</option>
+                                                <option>Croatia</option>
+                                                <option>Cuba</option>
+                                                <option>Cyprus</option>
+                                                <option>Czech Republic</option>
+                                                <option>Denmark</option>
+                                                <option>Djibouti</option>
+                                                <option>Dominica</option>
+                                                <option>Dominican Republic</option>
+                                                <option>Ecuador</option>
+                                                <option>Egypt</option>
+                                                <option>El Salvador</option>
+                                                <option>Equatorial Guinea</option>
+                                                <option>Eritrea</option>
+                                                <option>Estonia</option>
+                                                <option>Ethiopia</option>
+                                                <option>Falkland Islands (Malvinas)</option>
+                                                <option>Faroe Islands</option>
+                                                <option>Fiji</option>
+                                                <option>Finland</option>
+                                                <option>France</option>
+                                                <option>French Guiana</option>
+                                                <option>French Polynesia</option>
+                                                <option>French Southern Territories</option>
+                                                <option>Gabon</option>
+                                                <option>Gambia</option>
+                                                <option>Georgia</option>
+                                                <option>Germany</option>
+                                                <option>Ghana</option>
+                                                <option>Gibraltar</option>
+                                                <option>Greece</option>
+                                                <option>Greenland</option>
+                                                <option>Grenada</option>
+                                                <option>Guadeloupe</option>
+                                                <option>Guam</option>
+                                                <option>Guatemala</option>
+                                                <option>Guernsey</option>
+                                                <option>Guinea</option>
+                                                <option>Guinea-Bissau</option>
+                                                <option>Guyana</option>
+                                                <option>Haiti</option>
+                                                <option>Heard Island and Mcdonald Islands</option>
+                                                <option>Holy See (Vatican City State)</option>
+                                                <option>Honduras</option>
+                                                <option>Hong Kong</option>
+                                                <option>Hungary</option>
+                                                <option>Iceland</option>
+                                                <option>India</option>
+                                                <option>Indonesia</option>
+                                                <option>Iran, Islamic Republic Of</option>
+                                                <option>Iraq</option>
+                                                <option>Ireland</option>
+                                                <option>Isle of Man</option>
+                                                <option>Israel</option>
+                                                <option>Italy</option>
+                                                <option>Jamaica</option>
+                                                <option>Japan</option>
+                                                <option>Jersey</option>
+                                                <option>Jordan</option>
+                                                <option>Kazakhstan</option>
+                                                <option>Kenya</option>
+                                                <option>Kiribati</option>
+                                                <option>Korea, Democratic People"S Republic of</option>
+                                                <option>Korea, Republic of</option>
+                                                <option>Kuwait</option>
+                                                <option>Kyrgyzstan</option>
+                                                <option>Lao People"S Democratic Republic</option>
+                                                <option>Latvia</option>
+                                                <option>Lebanon</option>
+                                                <option>Lesotho</option>
+                                                <option>Liberia</option>
+                                                <option>Libyan Arab Jamahiriya</option>
+                                                <option>Liechtenstein</option>
+                                                <option>Lithuania</option>
+                                                <option>Luxembourg</option>
+                                                <option>Macao</option>
+                                                <option>Macedonia, The Former Yugoslav Republic of</option>
+                                                <option>Madagascar</option>
+                                                <option>Malawi</option>
+                                                <option>Malaysia</option>
+                                                <option>Maldives</option>
+                                                <option>Mali</option>
+                                                <option>Malta</option>
+                                                <option>Marshall Islands</option>
+                                                <option>Martinique</option>
+                                                <option>Mauritania</option>
+                                                <option>Mauritius</option>
+                                                <option>Mayotte</option>
+                                                <option>Mexico</option>
+                                                <option>Micronesia, Federated States of</option>
+                                                <option>Moldova, Republic of</option>
+                                                <option>Monaco</option>
+                                                <option>Mongolia</option>
+                                                <option>Montserrat</option>
+                                                <option>Morocco</option>
+                                                <option>Mozambique</option>
+                                                <option>Myanmar</option>
+                                                <option>Namibia</option>
+                                                <option>Nauru</option>
+                                                <option>Nepal</option>
+                                                <option>Netherlands</option>
+                                                <option>Netherlands Antilles</option>
+                                                <option>New Caledonia</option>
+                                                <option>New Zealand</option>
+                                                <option>Nicaragua</option>
+                                                <option>Niger</option>
+                                                <option>Nigeria</option>
+                                                <option>Niue</option>
+                                                <option>Norfolk Island</option>
+                                                <option>Northern Mariana Islands</option>
+                                                <option>Norway</option>
+                                                <option>Oman</option>
+                                                <option>Pakistan</option>
+                                                <option>Palau</option>
+                                                <option>Palestinian Territory, Occupied</option>
+                                                <option>Panama</option>
+                                                <option>Papua New Guinea</option>
+                                                <option>Paraguay</option>
+                                                <option>Peru</option>
+                                                <option>Philippines</option>
+                                                <option>Pitcairn</option>
+                                                <option>Poland</option>
+                                                <option>Portugal</option>
+                                                <option>Puerto Rico</option>
+                                                <option>Qatar</option>
+                                                <option>Reunion</option>
+                                                <option>Romania</option>
+                                                <option>Russian Federation</option>
+                                                <option>RWANDA</option>
+                                                <option>Saint Helena</option>
+                                                <option>Saint Kitts and Nevis</option>
+                                                <option>Saint Lucia</option>
+                                                <option>Saint Pierre and Miquelon</option>
+                                                <option>Saint Vincent and the Grenadines</option>
+                                                <option>Samoa</option>
+                                                <option>San Marino</option>
+                                                <option>Sao Tome and Principe</option>
+                                                <option>Saudi Arabia</option>
+                                                <option>Senegal</option>
+                                                <option>Serbia and Montenegro</option>
+                                                <option>Seychelles</option>
+                                                <option>Sierra Leone</option>
+                                                <option>Singapore</option>
+                                                <option>Slovakia</option>
+                                                <option>Slovenia</option>
+                                                <option>Solomon Islands</option>
+                                                <option>Somalia</option>
+                                                <option>South Africa</option>
+                                                <option>South Georgia and the South Sandwich Islands</option>
+                                                <option>Spain</option>
+                                                <option>Sri Lanka</option>
+                                                <option>Sudan</option>
+                                                <option>Suriname</option>
+                                                <option>Svalbard and Jan Mayen</option>
+                                                <option>Swaziland</option>
+                                                <option>Sweden</option>
+                                                <option>Switzerland</option>
+                                                <option>Syrian Arab Republic</option>
+                                                <option>Taiwan, Province of China</option>
+                                                <option>Tajikistan</option>
+                                                <option>Tanzania, United Republic of</option>
+                                                <option>Thailand</option>
+                                                <option>Timor-Leste</option>
+                                                <option>Togo</option>
+                                                <option>Tokelau</option>
+                                                <option>Tonga</option>
+                                                <option>Trinidad and Tobago</option>
+                                                <option>Tunisia</option>
+                                                <option>Turkey</option>
+                                                <option>Turkmenistan</option>
+                                                <option>Turks and Caicos Islands</option>
+                                                <option>Tuvalu</option>
+                                                <option>Uganda</option>
+                                                <option>Ukraine</option>
+                                                <option>United Arab Emirates</option>
+                                                <option>United Kingdom</option>
+                                                <option>United States</option>
+                                                <option>United States Minor Outlying Islands</option>
+                                                <option>Uruguay</option>
+                                                <option>Uzbekistan</option>
+                                                <option>Vanuatu</option>
+                                                <option>Venezuela</option>
+                                                <option>Viet Nam</option>
+                                                <option>Virgin Islands, British</option>
+                                                <option>Virgin Islands, U.S.</option>
+                                                <option>Wallis and Futuna</option>
+                                                <option>Western Sahara</option>
+                                                <option>Yemen</option>
+                                                <option>Zambia</option>
+                                                <option>Zimbabwe</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row btnsMixBox">
+                                    @*<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                        <a href="#" class="btn _tt-uc btn-primary btn-lg btn-block" id="backBtnbill" style="display:none">Back</a>
+                    </div>*@
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 pull-right">
+                                        <a href="javasript:void(0);" class="btn _tt-uc btn-primary-inverse btn-lg btn-block" id="nxtBtnbill" style="display:none">Next</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="theme-payment-page-sections-item">
+                            <div class="theme-payment-page-form">
+                                <h3 class="theme-payment-page-sections-item-title"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Payment Details</h3>
+
+                                <div class="row row-col-gap" data-gutter="20" id="dvCardDetails" style="display:none">
+                                    <h3 class="theme-payment-page-form-title"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Card Details <i>(Please select your Card type and fill below details.)</i> </h3>
+
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <input class="form-control" type="text" placeholder="Name on Card" id="txtPaxCardName" maxlength="50" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <i class="fa fa-angle-down"></i>
+                                            <select class="form-control" id="drpcardtype">
+                                                <option value="0">Card Type</option>
+                                                <option>Master Card</option>
+                                                <option>Visa Card</option>
+                                                <option>Visa Electron</option>
+                                                <option>Discover Card</option>
+                                                <option>Maestro Card</option>
+                                                <option>American Express</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-payment-page-form-item form-group">
+                                            <input class="form-control numeric" type="text" placeholder="Credit/Debit Card Number" id="txtCardNumber" maxlength="16" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="row row-col-gap" data-gutter="10">
+                                            <div class="col-md-4 ">
+                                                <div class="theme-payment-page-form-item form-group">
+                                                    <i class="fa fa-angle-down"></i>
+                                                    <select class="form-control" id="cardvldmonth">
+                                                        <option>(1) Jan</option>
+                                                        <option>(2) Feb</option>
+                                                        <option>(3) Mar</option>
+                                                        <option>(4) Apr</option>
+                                                        <option>(5) May</option>
+                                                        <option>(6) Jun</option>
+                                                        <option>(7) Jul</option>
+                                                        <option>(8) Aug</option>
+                                                        <option>(9) Sep</option>
+                                                        <option>(10) Oct</option>
+                                                        <option>(11) Nov</option>
+                                                        <option>(12) Dec</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 ">
+                                                <div class="theme-payment-page-form-item form-group">
+                                                    <i class="fa fa-angle-down"></i>
+                                                    <select class="form-control" id="cardvldyear">
+
+                                                        @{
+                                                            for (int yy = DateTime.Now.Year; yy < DateTime.Now.Year + 20; yy++)
+                                                            {
+                                                                <option>@yy</option>
+                                                            }
+                                                        }
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 ">
+                                                
+                                                    <div class="theme-payment-page-form-item form-group">
+                                                        <input class="form-control numeric" type="text" placeholder="Security Code" id="txtCardSecurity" maxlength="3" />
+                                                    </div>
+                                                
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row btnsMixBox">
+                                @*<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <a href="#" class="btn _tt-uc btn-primary btn-lg btn-block" id="backBtncard" style="display:none">Back</a>
+                </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 pull-right">
+                    <a href="#" class="btn _tt-uc btn-primary-inverse btn-lg btn-block" id="btnbooking" style="display:none">Pay Now</a>
+                </div>*@
+                            </div>
+                        </div>
+
+                        <div class="theme-payment-page-sections-item" id="totalAmountBox" style="">
+                            <div class="theme-payment-page-booking">
+                                <div class="theme-payment-page-booking-header">
+                                    <h3 class="theme-payment-page-booking-title">Total</h3>
+                                    <p class="theme-payment-page-booking-subtitle">By clicking book now button you agree with terms and conditionals and money back gurantee. Thank you for trusting our service.</p>
+                                    <p class="theme-payment-page-booking-price">
+
+                                        <span>$<span id="spTotalCost" class="spMainTotalCost">@(Convert.ToInt32(Model.FlightFare.GrandTotal))</span></span>
+                                    </p>
+                                </div>
+                                <a id="imglading" style="display:none;"> <img src="@(TravelWeb.Utilities.Common.WebSitePath)img/loader.png" /></a>
+                                <a class="btn _tt-uc btn-primary-inverse btn-lg btn-block" id="btnbooking" style="display:none" href="javasript:void(0);">Book Now</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-4 openboxbooking hide-on-phone" >
+                    <div class="sticky-col ">
+                        <div class="theme-sidebar-section _mb-10">
+                            <h5 class="theme-sidebar-section-title">Booking Summary</h5>
+                            <ul class="theme-sidebar-section-summary-list">
+                                <li>@(ViewBag.Trip)</li>
+                                <li>Depart: @(Convert.ToDateTime(ViewBag.Depart).ToString("MMM, dd, yyyy"))</li>
+                                <li>Return: @(Convert.ToDateTime(ViewBag.Return).ToString("MMM, dd, yyyy"))</li>
+                            </ul>
+                        </div>
+
+
+                        <div class="theme-sidebar-section _mb-10 mobpadding">
+                            <h5 class="theme-sidebar-section-title">Charges</h5>
+                            <div class="theme-sidebar-section-charges">
+                                <ul class="theme-sidebar-section-charges-list">
+                                    <li class="theme-sidebar-section-charges-item">
+                                        <h5 class="theme-sidebar-section-charges-item-title">@(Model.FlightFare.Adult) adult <span class="adultPrice"><span class="crossIcon">&times;</span> $@(Convert.ToDouble((Convert.ToDouble(Model.FlightFare.AdultFare) + Convert.ToDouble(Model.FlightFare.AdultMarkup) + Convert.ToDouble(Model.FlightFare.AdultTax))).ToString("f2"))</span><p class="theme-sidebar-section-charges-item-price">$@(Convert.ToDouble((Convert.ToDouble(Model.FlightFare.AdultFare) + Convert.ToDouble(Model.FlightFare.AdultMarkup) + Convert.ToDouble(Model.FlightFare.AdultTax)) * Convert.ToInt32(Model.FlightFare.Adult)).ToString("f2"))</p></h5>
+                                        <p class="theme-sidebar-section-charges-item-subtitle">@(Model.FlightClass)</p>
+
+                                    </li>
+                                    <li>
+                                        <h5 class="theme-sidebar-section-title"><span id="spBagname1aaaa">Baggage Allowance</span>  </h5>
+
+
+                                        <div class="chk-line">
+                                            <i class="fa fa-suitcase chk-l"></i>&nbsp;
+                                            <span class="chk-l"><span id="spBagname"></span></span>
+                                            <span class="chk-r">&nbsp;<span id="spBaggagePrice"></span></span>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="chk-line" id="dvwithpcs">
+                                            <i class="fa fa-suitcase chk-l"></i>&nbsp;
+                                            <span class="chk-l"><span id="spBagname1"></span></span>
+                                            <span class="chk-r">
+                                                <span id="spBaggagePrice1"></span>
+                                                <p class="theme-sidebar-section-charges-item-price">$<span id="sptotBagPrice">0</span></p>
+
+                                            </span>
+
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <h5 class="theme-sidebar-section-title"><span>Support Package</span> </h5>
+                                        <div class="row" style="margin-right:0;">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <p class="theme-sidebar-section-charges-item-subtitle amount-up">
+                                                    <span id="spsuppurtPlan"></span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12  mob-up-amt">
+                                                <p class="theme-sidebar-section-charges-item-price">$<span id="spsuppurtPlanAmt">0</span></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @if (Convert.ToInt32(Model.FlightFare.Child) > 0)
+                                    {
+                                        <li class="theme-sidebar-section-charges-item">
+                                            <h5 class="theme-sidebar-section-charges-item-title">@(Model.FlightFare.Child) child <span class="adultPrice"><span class="crossIcon">&times;</span> $@(Convert.ToDouble(Convert.ToDouble(Model.FlightFare.ChildFare) + Convert.ToDouble(Model.FlightFare.ChildMarkup) + Convert.ToDouble(Model.FlightFare.ChildTax)).ToString("f2"))</span></h5>
+                                            <p class="theme-sidebar-section-charges-item-subtitle">@(Model.FlightClass)</p>
+                                            <p class="theme-sidebar-section-charges-item-price">$@(Convert.ToDouble((Convert.ToDouble(Model.FlightFare.ChildFare) + Convert.ToDouble(Model.FlightFare.ChildMarkup) + Convert.ToDouble(Model.FlightFare.ChildTax)) * Convert.ToInt32(Model.FlightFare.Child)).ToString("f2"))</p>
+                                        </li>
+                                    }
+                                    @if (Convert.ToInt32(Model.FlightFare.Infant) > 0)
+                                    {
+                                        <li class="theme-sidebar-section-charges-item">
+                                            <h5 class="theme-sidebar-section-charges-item-title">@(Model.FlightFare.Infant) infant <span class="adultPrice"><span class="crossIcon">&times;</span> $@(Convert.ToDouble(Convert.ToDouble(Model.FlightFare.InfantFare) + Convert.ToDouble(Model.FlightFare.InfantMarkup) + Convert.ToDouble(Model.FlightFare.InfantTax)).ToString("f2"))</span></h5>
+                                            <p class="theme-sidebar-section-charges-item-subtitle">@(Model.FlightClass)</p>
+                                            <p class="theme-sidebar-section-charges-item-price">$@(Convert.ToDouble((Convert.ToDouble(Model.FlightFare.InfantFare) + Convert.ToDouble(Model.FlightFare.InfantMarkup) + Convert.ToDouble(Model.FlightFare.InfantTax)) * Convert.ToInt32(Model.FlightFare.Infant)).ToString("f2"))</p>
+                                        </li>
+                                    }
+                                    <li class="theme-sidebar-section-charges-item mob-amtup">
+                                        <h5 class="theme-sidebar-section-charges-item-title">Taxes, Fees & Surcharges</h5>
+                                        <p class="theme-sidebar-section-charges-item-subtitle"></p>
+                                        <p class="theme-sidebar-section-charges-item-price">$@((Convert.ToDouble(Model.FlightFare.AdultTax)+ Convert.ToDouble(Model.FlightFare.ChildTax) + Convert.ToDouble(Model.FlightFare.InfantTax)).ToString("f2"))</p>
+                                    </li>
+                                </ul>
+                                <p class="theme-sidebar-section-charges-total">
+                                    Total
+                                    <span>$<span id="spTotalCostAmount" class="spMainTotalCost">@(Convert.ToInt32(Model.FlightFare.GrandTotal))</span></span>
+
+
+                                    <input type="hidden" id="hdnspTotalCostAmount" value="@(Convert.ToInt32(Model.FlightFare.GrandTotal))" />
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="theme-sidebar-section _mb-10 mobpadding">
+                            <ul class="theme-sidebar-section-features-list">
+                                <li>
+                                    <h5 class="theme-sidebar-section-features-list-title">Manage your bookings!</h5>
+                                    <p class="theme-sidebar-section-features-list-body">You're in control of your booking - no registration required.</p>
+                                </li>
+                                <li>
+                                    <h5 class="theme-sidebar-section-features-list-title">Customer support available 24/7 worldwide!</h5>
+                                    <p class="theme-sidebar-section-features-list-body">Website and customer support in English and 41 other languages.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="theme-sidebar-section _mb-10">
+                            <div class="importantFlightInformation">
+                                <h5 class="theme-sidebar-section-features-list-title">Important Flight Information</h5>
+                                <p class="theme-sidebar-section-features-list-body">tickets are <strong>non-refundable</strong> and <strong>non-transferable</strong> and name changes are not allowed. texes and fees are included in the total ticket cost.</p>
+                                <br />
+                                <strong>fare Rules and restrictions</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                @ViewBag.error
+
+                <text>testing</text>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var specialKeys = new Array();
+    specialKeys.push(8); //Backspace
+    $(function () {
+        $(".numeric").bind("keypress", function (e) {
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+            $(".error").css("display", ret ? "none" : "inline");
+            return ret;
+        });
+        $(".numeric").bind("paste", function (e) {
+            return false;
+        });
+        $(".numeric").bind("drop", function (e) {
+            return false;
+        });
+
+
+
+        $("#btnbooking").click(function () {
+            if (!IsValidContactDetails()) {
+                return false;
+            }
+            else if (!IsValidPaxDetails()) {
+                return false;
+            }
+            else if (!IsValidBilling()) {
+                return false;
+            }
+            else if (!IsValidPayment()) {
+                return false;
+            }
+            else {
+
+
+                var paxAdultDetails = [];
+                var paxChildDetails = [];
+                var paxInfantDetails = [];
+                $('div.Adult').each(function () {
+                    var dbmonth = $(this).find('select:eq(0)').val();
+                    var dbmday = $(this).find('select:eq(1)').val();
+                    var dbmyear = $(this).find('select:eq(2)').val();
+                    var gender = $(this).find('select:eq(3)').val();
+                    var firstname = $(this).find('input:eq(0)').val();
+                    var lastname = $(this).find('input:eq(1)').val();
+                    var paxDetails = {
+                        DateOfBirth: dbmonth + '-' + dbmday + '-' + dbmyear,
+                        Gender: gender,
+                        FirstName: firstname,
+                        LastName: lastname
+                    };
+                    paxAdultDetails.push(paxDetails);
+                });
+                $('div.Child').each(function () {
+                    var dbmonth = $(this).find('select:eq(0)').val();
+                    var dbmday = $(this).find('select:eq(1)').val();
+                    var dbmyear = $(this).find('select:eq(2)').val();
+                    var gender = $(this).find('select:eq(3)').val();
+                    var firstname = $(this).find('input:eq(0)').val();
+                    var lastname = $(this).find('input:eq(1)').val();
+                    var paxDetails = {
+                        DateOfBirth: dbmonth + '-' + dbmday + '-' + dbmyear,
+                        Gender: gender,
+                        FirstName: firstname,
+                        LastName: lastname
+                    };
+                    paxChildDetails.push(paxDetails);
+                });
+                $('div.Infant').each(function () {
+                    var dbmonth = $(this).find('select:eq(0)').val();
+                    var dbmday = $(this).find('select:eq(1)').val();
+                    var dbmyear = $(this).find('select:eq(2)').val();
+                    var gender = $(this).find('select:eq(3)').val();
+                    var firstname = $(this).find('input:eq(0)').val();
+                    var lastname = $(this).find('input:eq(1)').val();
+                    var paxDetails = {
+                        DateOfBirth: dbmonth + '-' + dbmday + '-' + dbmyear,
+                        Gender: gender,
+                        FirstName: firstname,
+                        LastName: lastname
+                    };
+                    paxInfantDetails.push(paxDetails);
+                });
+
+                 var phoneNumber = $("#txtphone").val();
+                var Emailval = $("#txtEmail").val();
+                var billAddress1 = $("#txtAddress1").val();
+                var billAddress2 = $("#txtAddress2").val();
+                var billPostalCode = $("#txtpostalcode").val();
+                var billCity = $("#txtCity").val();
+                var billState = $("#drpState").val();
+                var billCountry = $("#drpCountry").val();
+                var billPCardName = $("#txtPaxCardName").val();
+                var CardNumber = $("#txtCardNumber").val();
+                var CardValMonth = $("#cardvldmonth").val();
+                var CardvalYear = $("#cardvldyear").val();
+                var CardSecrutyCode = $("#txtCardSecurity").val();
+                var CardType = $("#drpcardtype").val();
+                var TotalCost = $("#spTotalCostAmount").text();
+                if (luhnCheck($("#txtCardNumber").val())) {
+                    $("#txtCardNumber").css({ "border": "" });
+                }
+                else {
+                    alert('Please Enter Valid Card Number.')
+                    $("#txtCardNumber").css({ "border": "1px solid red" });
+                    return false;
+                }
+                $('#btnbooking').hide();
+                $('#imglading').show();
+
+                 $.ajax({
+                     type: "POST",
+                     url: "@(TravelWeb.Utilities.Common.WebSitePath)Details/SaveData",
+                     data: { "AdultData": JSON.stringify(paxAdultDetails), "ChildtData": JSON.stringify(paxChildDetails), "InfantData": JSON.stringify(paxInfantDetails), "phoneNumber": "" + phoneNumber + "", "Emailval": "" + Emailval + "", "billAddress1": "" + billAddress1 + "", "billAddress2": "" + billAddress2 + "", "billPostalCode": "" + billPostalCode + "", "billCity": "" + billCity + "", "billState": "" + billState + "", "billCountry": "" + billCountry + "", "billPCardName": "" + billPCardName + "", "CardNumber": "" + CardNumber + "", "CardValMonth": "" + CardValMonth + "", "CardvalYear": "" + CardvalYear + "", "CardSecrutyCode": "" + CardSecrutyCode + "", "CardType": "" + CardType + "", "TotalFinalCost": "" +TotalCost+""},
+                     //contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     async: "false",
+                     success: function (response) {
+                         $('#imglading').hide();
+                          //  alert('Thank you for submitting');
+                            window.location.href = "@(TravelWeb.Utilities.Common.WebSitePath)acknowledge";
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                                 }
+                 });
+            }
+
+          });
+
+    });
+   function isEmail(email) {
+      var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email);
+    }
+</script>
+
+<script>
+    function IsValidContactDetails() {
+        var lbool = true;
+        if ($('#txtphone').val().trim() == '') {
+            $('#txtphone').css({ "border": "1px solid red" }); lbool = false;
+        } else {
+            $('#txtphone').css({ "border": "" }); lbool = true;
+        }
+        if ($('#txtEmail').val().trim() == '') {
+            $('#txtEmail').css({ "border": "1px solid red" }); lbool = false;
+        } else {
+            if (!isEmail($("#txtEmail").val())) {
+                $("#txtEmail").css({ "border": "1px solid red" }); lbool = false;
+            }
+            else {
+                $('#txtEmail').css({ "border": "" }); lbool = true;
+            }
+
+        }
+        return lbool;
+    }
+
+    function IsValidPaxDetails() {
+        var lbool = true;
+        for (ck = 1; ck <= parseInt($('#hdnAdultcount').val()); ck++) {
+            if ($('#adltfrstname' + ck).val().trim() == '') { $('#adltfrstname' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#adltfrstname' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#adltlastname' + ck).val().trim() == '') { $('#adltlastname' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#adltlastname' + ck).css({ "border": "" }); lbool = true; }
+
+            if ($('#adltbrtmonth' + ck).val().trim() == '0') { $('#adltbrtmonth' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#adltbrtmonth' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#adltbrtday' + ck).val().trim() == '0') { $('#adltbrtday' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#adltbrtday' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#adltbrtyear' + ck).val().trim() == '0') { $('#adltbrtyear' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#adltbrtyear' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#adltgender' + ck).val().trim() == '0') { $('#adltgender' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#adltgender' + ck).css({ "border": "" }); lbool = true; }
+
+
+
+        }
+
+        for (ck = 1; ck <= parseInt($('#hdnChildcount').val()); ck++) {
+            if ($('#childfirstname' + ck).val().trim() == '') { $('#childfirstname' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#childfirstname' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#childlastname' + ck).val().trim() == '') { $('#childlastname' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#childlastname' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#childbrthmonth' + ck).val().trim() == '0') { $('#childbrthmonth' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#childbrthmonth' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#childbrthday' + ck).val().trim() == '0') { $('#childbrthday' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#childbrthday' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#childbrthyear' + ck).val().trim() == '0') { $('#childbrthyear' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#childbrthyear' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#childgender' + ck).val().trim() == '0') { $('#childgender' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#childgender' + ck).css({ "border": "" }); lbool = true; }
+
+        }
+
+        for (ck = 1; ck <= parseInt($('#hdnInfantcount').val()); ck++) {
+            if ($('#infantfirstname' + ck).val().trim() == '') { $('#infantfirstname' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#infantfirstname' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#infantlastname' + ck).val().trim() == '') { $('#infantlastname' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#infantlastname' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#infantbrthmonth' + ck).val().trim() == '0') { $('#infantbrthmonth' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#infantbrthmonth' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#infantbrthday' + ck).val().trim() == '0') { $('#infantbrthday' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#infantbrthday' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#infantbrthyear' + ck).val().trim() == '0') { $('#infantbrthyear' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#infantbrthyear' + ck).css({ "border": "" }); lbool = true; }
+            if ($('#infantgender' + ck).val().trim() == '0') { $('#infantgender' + ck).css({ "border": "1px solid red" }); lbool = false; } else { $('#infantgender' + ck).css({ "border": "" }); lbool = true; }
+
+        }
+
+        return lbool;
+    }
+
+    function IsValidBilling() {
+        var lbool = true;
+
+        if ($('#txtAddress1').val().trim() == '') { $('#txtAddress1').css({ "border": "1px solid red" }); lbool = false; } else { $('#txtAddress1').css({ "border": "" }); lbool = true; }
+        if ($('#txtAddress2').val().trim() == '') { $('#txtAddress2').css({ "border": "1px solid red" }); lbool = false; } else { $('#txtAddress2').css({ "border": "" }); lbool = true; }
+        if ($('#txtpostalcode').val().trim() == '') { $('#txtpostalcode').css({ "border": "1px solid red" }); lbool = false; } else { $('#txtpostalcode').css({ "border": "" }); lbool = true; }
+        if ($('#txtCity').val().trim() == '') { $('#txtCity').css({ "border": "1px solid red" }); lbool = false; } else { $('#txtCity').css({ "border": "" }); lbool = true; }
+        if ($('#drpState').val().trim() == '0') { $('#drpState').css({ "border": "1px solid red" }); lbool = false; } else { $('#drpState').css({ "border": "" }); lbool = true; }
+        if ($('#drpCountry').val().trim() == '0') { $('#drpCountry').css({ "border": "1px solid red" }); lbool = false; } else { $('#drpCountry').css({ "border": "" }); lbool = true; }
+
+        return lbool;
+    }
+
+    function IsValidPayment() {
+        var lbool = true;
+
+        if ($('#txtPaxCardName').val().trim() == '') { $('#txtPaxCardName').css({ "border": "1px solid red" }); lbool = false; } else { $('#txtPaxCardName').css({ "border": "" }); lbool = true; }
+        if ($('#drpcardtype').val().trim() == '0') { $('#drpcardtype').css({ "border": "1px solid red" }); lbool = false; } else { $('#drpcardtype').css({ "border": "" }); lbool = true; }
+        if ($('#txtCardNumber').val().trim() == '') { $('#txtCardNumber').css({ "border": "1px solid red" }); lbool = false; } else { $('#txtCardNumber').css({ "border": "" }); lbool = true; }
+        if ($('#txtCardSecurity').val().trim() == '') { $('#txtCardSecurity').css({ "border": "1px solid red" }); lbool = false; } else { $('#txtCardSecurity').css({ "border": "" }); lbool = true; }
+
+        return lbool;
+    }
+</script>
+
+<script>
+    $('#nxtBtnPass').click(function (e) {
+        debugger;
+        if (IsValidContactDetails()) {
+            $('#psngrDetails').show();
+            $('#nxtBtnCnt').show();
+            $('#nxtBtnPass').hide();
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    });
+    $('#nxtBtnCnt').click(function () {
+        debugger;
+
+        if (!IsValidContactDetails()) {
+
+            return false;
+        }
+        if (!IsValidPaxDetails()) {
+
+            return false;
+        }
+
+        else {
+            $('#dvbilling').show();
+            $('#nxtBtnbill').show();
+            $('#nxtBtnCnt').hide();
+        }
+
+    });
+
+    $('#nxtBtnbill').click(function () {
+        debugger;
+
+        if (!IsValidContactDetails()) {
+            return false;
+        }
+        else if (!IsValidPaxDetails()) {
+            return false;
+        }
+        else if (!IsValidBilling()) {
+            return false;
+        }
+        else {
+            $('#dvCardDetails').show();
+            $('#btnbooking').show();
+            $('#nxtBtnbill').hide();
+        }
+    });
+
+
+
+    //$('input[type="text"]').blur(function () {
+    //    if ($.trim($(this).val()) == '') {
+    //        $(this).css({ "border": "1px solid red" });
+    //    }
+    //    else {
+    //        $(this).css({ "border": "" });
+    //    }
+    //});
+    //$('select').blur(function () {
+    //    if ($(this).val() == '' || $(this).val() == 0) {
+    //        $(this).focus();
+    //        $(this).css({ "border": "1px solid red" });
+    //    }
+
+    //    else {
+    //        $(this).css({ "border": "" });
+    //    }
+    //});
+</script>
+
+<script>
+
+    //$("#txtCardNumber").blur(function () {
+    //    if (luhnCheck($("#txtCardNumber").val())) {
+
+    //        $(this).css({ "border": "" });
+    //    }
+    //    else {
+    //        $(this).css({ "border": "1px solid red" });
+    //    }
+    //});
+    function luhnCheck(sixteenDigitString) {
+        var numSum = 0;
+        var value;
+        for (var i = 0; i < 16; ++i) {
+            if (i % 2 == 0) {
+                value = 2 * sixteenDigitString[i];
+                if (value >= 10) {
+                    value = (Math.floor(value / 10) + value % 10);
+                }
+            } else {
+                value = +sixteenDigitString[i];
+            }
+            numSum += value;
+        }
+        return (numSum % 10 == 0);
+    }
+
+    //alert(luhnCheck("4111111111111111"));
+
+</script>

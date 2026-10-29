@@ -1,0 +1,230 @@
+/* Choose your ticket — contact detailstes test */
+.choose-ticket-wrap {
+    background: #f3eee6;
+    border-radius: 8px;
+    padding: 18px 16px 20px;
+    margin: 0 0 20px;
+    grid-column: span 2;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px #00000015 !important;
+}
+.choose-ticket-title {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #3b1f6e;
+    margin: 0 0 14px;
+}
+.choose-ticket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+}
+.ticket-card {
+    position: relative;
+    text-align: left;
+    background: #fff;
+    border: 2px solid #e8e4dc;
+    border-radius: 14px;
+    padding: 14px 14px 12px;
+    cursor: pointer;
+    transition: border-color .15s ease, box-shadow .15s ease;
+    font-family: Inter, system-ui, sans-serif;
+    color: #1a1d21;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+.ticket-card:hover { border-color: #c9c2b4; }
+.ticket-card.is-selected {
+    border-color: #2f6fed;
+    box-shadow: 0 0 0 1px #2f6fed;
+}
+.ticket-selected-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 36px 36px 0;
+    border-color: transparent #2f6fed transparent transparent;
+}
+.ticket-selected-badge svg {
+    position: absolute;
+    top: 6px;
+    right: -30px;
+}
+.ticket-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-right: 18px;
+}
+.ticket-fare-name {
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+.ticket-details-link {
+    color: #8b93a0;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.ticket-info-ico {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    border: 1px solid #b0b7c1;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    font-style: italic;
+}
+.ticket-features {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 10px;
+    display: grid;
+    gap: 8px;
+}
+.ticket-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13.5px;
+    color: #2b3038;
+    line-height: 1.35;
+}
+.tf-icon { flex: 0 0 16px; margin-top: 1px; }
+.ticket-card-foot {
+    border-top: 1px solid #ece7df;
+    padding-top: 12px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+}
+.ticket-price {
+    color: #3b1f6e;
+    font-weight: 800;
+    line-height: 1;
+}
+.tp-cur { font-size: 0.75rem; margin-right: 1px; }
+.tp-whole { font-size: 1.35rem; }
+.tp-cents { font-size: 0.78rem; vertical-align: super; }
+.tp-pp {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #3b1f6e;
+}
+.ticket-radio {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 2px solid #6b3fa0;
+    flex-shrink: 0;
+    position: relative;
+}
+.ticket-radio.checked::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 999px;
+    background: #6b3fa0;
+}
+
+/* Price change popup */
+.price-change-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    background: rgba(15, 18, 28, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.price-change-dialog {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 440px;
+    width: 100%;
+    padding: 24px 22px 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    font-family: Inter, system-ui, sans-serif;
+}
+.price-change-dialog h3 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1a1d21;
+}
+.price-change-dialog p {
+    margin: 0 0 8px;
+    color: #4a5160;
+    line-height: 1.5;
+}
+.price-change-compare {
+    display: flex;
+    gap: 12px;
+    margin: 14px 0 18px;
+}
+.price-change-compare div {
+    flex: 1;
+    background: #f6f7f9;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+.price-change-compare .lbl { font-size: 12px; color: #7a8290; display: block; margin-bottom: 4px; }
+.price-change-compare .amt { font-size: 1.2rem; font-weight: 800; color: #3b1f6e; }
+.price-change-compare .amt.new { color: #c2410c; }
+.price-change-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.btn-price-ok, .btn-price-search {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+}
+.btn-price-ok {
+    background: #e2591a;
+    color: #fff;
+}
+.btn-price-search {
+    background: #eef0f4;
+    color: #2b3038;
+}
+.ticket-details-list {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    max-height: 280px;
+    overflow: auto;
+}
+.ticket-details-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #2b3038;
+}
+
+@media (max-width: 640px) {
+    .choose-ticket-grid { grid-template-columns: 1fr; }
+}

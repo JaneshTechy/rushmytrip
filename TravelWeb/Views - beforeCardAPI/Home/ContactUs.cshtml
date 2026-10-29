@@ -1,0 +1,224 @@
+﻿
+<style>
+
+    body {
+        font-family: 'Poppins',sans-serif;
+        background: #f5f6fa;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 30px 15px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .col {
+        flex: 1;
+        min-width: 280px;
+    }
+
+    /* Heading */
+
+    .page-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    /* Address */
+
+    .address {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .phone {
+        margin-top: 10px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    /* Contact Form */
+
+    .form-group {
+        margin-bottom: 12px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+
+    /* Button */
+
+    .btn-primary {
+        background: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+    /* Mobile */
+
+    @@media(max-width:768px) {
+
+        .row {
+            flex-direction: column;
+        }
+    }
+
+</style>
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- LEFT SIDE -->
+        <div class="col">
+
+            <h1 class="page-title">Headquarters</h1>
+
+            <div class="address">
+
+                FlightsHall Hopbug LLC
+                <br>30 N Gould St #4000 Sheridan
+                <br>WY 82801, USA
+
+                <div class="phone">
+                    📞 +1 844 759 0888
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="col">
+
+            <h2 class="page-title">Contact Us</h2>
+
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Name" id="name">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="email" placeholder="Email" id="email">
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control" rows="4" placeholder="Message" id="message"></textarea>
+            </div>
+
+            <button class="btn-primary" id="sendMsg" onclick="sendMessage()">
+                Send Your Message
+            </button>
+
+            <img class="loadingImg" src="/img/loading.gif" id="imgMore" style="display:none;margin-top:10px" />
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script>
+
+    function sendMessage() {
+        var userName = document.getElementById('name').value;
+        var userEmail = document.getElementById('email').value;
+        var userMessage = document.getElementById('message').value;
+        //var userFeedback = document.getElementById('feedback').value;
+        //console.log(userName, userEmail, userMessage);
+
+        if (userName == '') {
+            alert('Please enter the details');
+            return false;
+        }
+
+
+        if (userEmail == '') {
+            alert('Please enter the details');
+            return false;
+
+        }
+
+        if (!validEmail(userEmail) == true) {
+            alert('Please enter a valid email address');
+            return false;
+        }
+
+
+        if (userMessage == '') {
+            alert('Please enter the details');
+            return false;
+        }
+        //if (userFeedback == '') {
+        //    alert('Please enter the details')
+        //    return false;
+        //};
+
+
+
+        contact = {
+            UserName: userName,
+            UserEmail: userEmail,
+            UserMessage: userMessage,
+            //UserFeedback: userFeedback
+
+        }
+        $.ajax({
+            type: "Get",
+            beforeSend: function () { $("#imgMore").show(); },
+            url: "@Url.Action("GetContactDetail","Home")",
+            //data: { harvinder: contact },
+            data: contact,
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                $("#imgMore").hide();
+                alert(response)
+
+                //location.reload();
+                window.location.href = "@Url.Action("index","Home")";
+            },
+            failure: function (response) {
+                alert(response)
+            }
+        });
+    };
+
+    function validEmail(e) {
+    var filter = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+
+    return String(e).search (filter) != -1;
+    }
+
+</script>

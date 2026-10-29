@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="en" x-data="{ sidebarOpen: true }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - RushMyFlight</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/@@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .transition-width {
+            transition: width 0.3s ease-in-out;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #fb923c;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-[#F9FAFB] text-slate-700 font-sans antialiased h-screen overflow-hidden">
+
+    <div class="flex h-full">
+        <aside :class="sidebarOpen ? 'w-64' : 'w-20'"
+               class="bg-white border-r border-slate-200 flex flex-col transition-width duration-300 ease-in-out relative z-20 shadow-xl shadow-slate-200/50">
+
+            <div class="h-16 flex items-center px-6 border-b border-slate-100 overflow-hidden">
+                <div class="min-w-[32px] h-8 w-8 flex items-center justify-center">
+                    <img src="~/img/fav-icon.png" alt="Logo" class="h-full w-full object-contain" />
+                </div>
+                <span x-show="sidebarOpen" x-transition.opacity class="ml-3 font-black text-xl tracking-tight text-slate-800 whitespace-nowrap">
+                    RushMy<span class="text-orange-500">Flight</span>
+                </span>
+            </div>
+
+            <nav class="flex-1 px-3 py-6 space-y-1 overflow-y-auto">
+
+                <a  asp-controller="Admin" asp-action="Dashboard" class="flex items-center gap-4 p-3 rounded-xl text-slate-500 hover:bg-orange-50 hover:text-orange-600 transition-all">
+                    <i class="fas fa-th-large text-lg min-w-[24px] text-center"></i>
+                    <span x-show="sidebarOpen" class="font-bold whitespace-nowrap">Dashboard</span>
+                </a>
+                <div x-data="{ open: false }">
+                    <button @@click="open = !open; if(!sidebarOpen) sidebarOpen = true"
+                            class="w-full flex items-center justify-between p-3 rounded-xl text-slate-500 hover:bg-green-50 hover:text-green-600 transition-all">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-map-marker-alt text-lg min-w-[24px] text-center"></i>
+                            <span x-show="sidebarOpen" class="font-bold whitespace-nowrap">Tracker</span>
+                        </div>
+                        <i x-show="sidebarOpen" class="fas fa-chevron-down text-[10px] transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="DeepLinkTracker" class="block py-2 text-slate-500 hover:text-green-600 transition">User Tracker</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+<a asp-controller="Admin" asp-action="TrackerDetails" class="block py-2 text-slate-500 hover:text-green-600 transition">Tracker Details</a>
+</div>
+                    
+                </div>
+
+
+                <div x-data="{ open: false }">
+                    <button @@click="open = !open; if(!sidebarOpen) sidebarOpen = true"
+                            class="w-full flex items-center justify-between p-3 rounded-xl text-slate-500 hover:bg-green-50 hover:text-green-600 transition-all">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-plane-departure text-lg min-w-[24px] text-center"></i>
+                            <span x-show="sidebarOpen" class="font-bold whitespace-nowrap">Bookings</span>
+                        </div>
+                        <i x-show="sidebarOpen" class="fas fa-chevron-down text-[10px] transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="BookingDeatils" class="block py-2 text-slate-500 hover:text-green-600 transition">Booking Details</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="AssignBookings"  class="block py-2 text-slate-500 hover:text-green-600 transition">Assign Bookings</a>
+                    </div>
+                </div>
+
+                <div x-data="{ open: false }">
+                    <button @@click="open = !open; if(!sidebarOpen) sidebarOpen = true"
+                            class="w-full flex items-center justify-between p-3 rounded-xl text-slate-500 hover:bg-green-50 hover:text-green-600 transition-all">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-user-shield text-lg min-w-[24px] text-center"></i>
+                            <span x-show="sidebarOpen" class="font-bold whitespace-nowrap">Manage Users</span>
+                        </div>
+                        <i x-show="sidebarOpen" class="fas fa-chevron-down text-[10px] transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="CreateUser"  class="block py-2 text-slate-500 hover:text-green-600 transition">Create Users</a>
+                    </div>
+                </div>
+
+                <div x-data="{ open: false }">
+                    <button @@click="open = !open; if(!sidebarOpen) sidebarOpen = true"
+                            class="w-full flex items-center justify-between p-3 rounded-xl text-slate-500 hover:bg-green-50 hover:text-green-600 transition-all">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-users text-lg min-w-[24px] text-center"></i>
+                            <span x-show="sidebarOpen" class="font-bold whitespace-nowrap">Flight Services</span>
+                        </div>
+                        <i x-show="sidebarOpen" class="fas fa-chevron-down text-[10px] transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="APiResponseFlight" class="block py-2 text-slate-500 hover:text-green-600 transition">Flight API Responses</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="MetaSearchResponse" class="block py-2 text-slate-500 hover:text-green-600 transition">Meta API Responses</a>
+                    </div>
+                   @*  <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="BlockRulesView" class="block py-2 text-slate-500 hover:text-green-600 transition">Block Rules</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="AllowRulesView"  class="block py-2 text-slate-500 hover:text-green-600 transition">Allow Routes</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="MarkupRulesView"  class="block py-2 text-slate-500 hover:text-green-600 transition">Markup Rule</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="ManageCampaign" class="block py-2 text-slate-500 hover:text-green-600 transition">Manage Campaign</a>
+                    </div> *@
+                </div>
+                
+                <div x-data="{ open: false }">
+                    <button @@click="open = !open; if(!sidebarOpen) sidebarOpen = true"
+                            class="w-full flex items-center justify-between p-3 rounded-xl text-slate-500 hover:bg-green-50 hover:text-green-600 transition-all">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-users text-lg min-w-[24px] text-center"></i>
+                            <span x-show="sidebarOpen" class="font-bold whitespace-nowrap">Manage Markup</span>
+                        </div>
+                        <i x-show="sidebarOpen" class="fas fa-chevron-down text-[10px] transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="BlockRulesView" class="block py-2 text-slate-500 hover:text-green-600 transition">Block Rules</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="AllowRulesView"  class="block py-2 text-slate-500 hover:text-green-600 transition">Allow Routes</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="MarkupRulesView"  class="block py-2 text-slate-500 hover:text-green-600 transition">Markup Rule</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="ManageCampaign" class="block py-2 text-slate-500 hover:text-green-600 transition">Manage Campaign</a>
+                    </div>
+                </div>
+
+                <div x-data="{ open: false }">
+                    <button @@click="open = !open; if(!sidebarOpen) sidebarOpen = true"
+                            class="w-full flex items-center justify-between p-3 rounded-xl text-slate-500 hover:bg-orange-50 hover:text-orange-600 transition-all">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-globe text-lg min-w-[24px] text-center"></i>
+                            <span x-show="sidebarOpen" class="font-bold whitespace-nowrap">Seo Services</span>
+                        </div>
+                        <i x-show="sidebarOpen" class="fas fa-chevron-down text-[10px] transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a  asp-controller="Admin" asp-action="SeoPages" class="block py-2 text-slate-500 hover:text-orange-600 transition">Manage Pages</a>
+                    </div>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                        <a asp-controller="Admin" asp-action="BlogList" class="block py-2 text-slate-500 hover:text-orange-600 transition">Manage Blog</a>
+                    </div>
+
+
+
+                <div x-data="{ open: false }">
+                    <button @@click="open = !open; if(!sidebarOpen) sidebarOpen = true"
+                            class="w-full flex items-center justify-between p-3 rounded-xl text-slate-500 hover:bg-orange-50 hover:text-orange-600 transition-all">
+                        <div class="flex items-center gap-4">
+                            <i class="fas fa-cog text-lg min-w-[24px] text-center"></i>
+                            <span x-show="sidebarOpen" class="font-bold whitespace-nowrap">Settings</span>
+                        </div>
+                        <i x-show="sidebarOpen" class="fas fa-chevron-down text-[10px] transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="open && sidebarOpen" x-collapse x-cloak class="pl-12 space-y-1 pb-2 text-sm">
+                            <a asp-controller="Admin" asp-action="Settings"  class="block py-2 text-slate-500 hover:text-orange-600 transition">System Configuration</a>
+                    </div>
+                </div>
+               <a asp-controller="GoogleSearchConsole"
+   asp-action="Index"
+   class="flex items-center gap-4 p-3 rounded-xl text-slate-500 hover:bg-orange-50 hover:text-orange-600 transition-all">
+
+    <i class="fab fa-google text-lg min-w-[24px] text-cent%er"></i>
+
+    <span x-show="sidebarOpen"
+          class="font-bold whitespace-nowrap">
+        Google Search Traffic
+    </span>
+</a>
+
+
+<a asp-controller="GoogleSearchConsole"
+   asp-action="GoogleAds"
+   class="flex items-center gap-4 p-3 rounded-xl text-slate-500 hover:bg-orange-50 hover:text-orange-600 transition-all">
+
+    <i class="fab fa-google text-lg min-w-[24px] text-cent%er"></i>
+
+    <span x-show="sidebarOpen"
+          class="font-bold whitespace-nowrap">
+        Google Search Traffic
+    </span>
+</a>
+
+
+            </nav>
+
+            <div class="p-4 border-t border-slate-100">
+                <button @@click="sidebarOpen = !sidebarOpen" class="w-full flex items-center justify-center p-2 rounded-lg bg-slate-50 hover:bg-orange-100 hover:text-orange-600 text-slate-400 transition">
+                    <i class="fas" :class="sidebarOpen ? 'fa-angle-double-left' : 'fa-angle-double-right'"></i>
+                </button>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10">
+                <div class="flex items-center gap-4">
+                    <button @@click="sidebarOpen = !sidebarOpen" class="text-slate-400 hover:text-orange-500 md:hidden">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest">@ViewData["Title"]</h2>
+                </div>
+                <div class="flex items-center gap-4">
+    <div class="text-right hidden lg:block">
+        <p class="text-sm font-bold text-slate-700">
+            @((User.Identity.IsAuthenticated) ? User.Identity.Name : "Guest Admin")
+        </p>
+        
+        <div class="flex items-center justify-end gap-1.5">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <p class="text-[10px] font-bold text-green-500 uppercase tracking-tighter">Online</p>
+        </div>
+    </div>
+
+    <div class="h-10 w-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-black shadow-md border-2 border-white">
+        @if (User.Identity.IsAuthenticated && !string.IsNullOrEmpty(User.Identity.Name))
+        {
+            @User.Identity.Name.Substring(0, 1).ToUpper()
+        }
+        else
+        {
+            <i class="fas fa-user text-xs"></i>
+        }
+    </div>
+    <a asp-action="Logout" asp-controller="Admin" 
+       class="h-10 w-10 flex items-center justify-center rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all duration-300 group"
+       title="Sign Out">
+        <i class="fas fa-power-off text-lg group-hover:scale-110 transition-transform"></i>
+    </a>
+</div>
+            </header>
+
+            <main class="flex-1 overflow-y-auto p-6 lg:p-10">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <div x-data="notificationHandler()"
+         x-show="show"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 transform translate-y-2 scale-95"
+         x-transition:enter-end="opacity-100 transform translate-y-0 scale-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 transform translate-y-0 scale-100"
+         x-transition:leave-end="opacity-0 transform translate-y-2 scale-95"
+         class="fixed bottom-10 right-10 z-[100] px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4 min-w-[320px] border shadow-orange-500/10"
+         :class="{
+        'bg-white border-green-100 text-green-800': type === 'success',
+        'bg-white border-red-100 text-red-800': type === 'error',
+        'bg-white border-orange-100 text-orange-800': type === 'warning'
+     }"
+         x-cloak>
+
+        <div class="h-10 w-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
+             :class="{
+            'bg-green-500 text-white': type === 'success',
+            'bg-red-500 text-white': type === 'error',
+            'bg-orange-500 text-white': type === 'warning'
+         }">
+            <i class="fas"
+               :class="type === 'success'
+                ? 'fa-check'
+                : (type === 'error'
+                    ? 'fa-exclamation-circle'
+                    : 'fa-exclamation-triangle')"></i>
+        </div>
+
+        <div class="flex-1">
+            <p class="text-[10px] font-black uppercase tracking-widest opacity-40 leading-none mb-1" x-text="type"></p>
+            <p class="text-sm font-bold leading-tight text-slate-700" x-text="message"></p>
+        </div>
+
+        <button @@click="show = false" class="text-slate-300 hover:text-slate-500 transition">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        function notificationHandler() {
+            return {
+                show: false,
+                message: '',
+                type: 'success',
+                init() {
+                    @if (TempData["Notification"] != null)
+                    {
+                            var notification = Newtonsoft.Json.JsonConvert
+                                    .DeserializeObject<dynamic>(TempData["Notification"].ToString());
+                        <text>
+                            this.message = '@notification.Message';
+                            this.type = '@notification.Type';
+                            this.show = true;
+                            setTimeout(() => this.show = false, 5000);
+                        </text>
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

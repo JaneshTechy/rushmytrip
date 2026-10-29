@@ -1,0 +1,1050 @@
+﻿@using TravelWeb.Utilities;
+@{
+    ViewData["Title"] = "result";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<link href="@(Common.WebSitePath)css/nouislider.css" rel="stylesheet" />
+<script src="@(Common.WebSitePath)js/nouislider.js"></script>
+@*Done by Aayushi*@
+@*new code*@
+<style>
+
+    body {
+        background-color: #f1f1f1 !important;
+    }
+
+    .backgroundOverlay {
+        display: none !important
+    }
+</style>
+@*<script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#bkgOverlay").fadeIn();
+                $("#delayedPopup").fadeIn();
+            }, 20000);
+        });
+    </script>*@
+@*new code ends*@
+<style>
+    main_li_summry {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .main_li_summry li {
+        list-style: none;
+        float: left;
+    }
+
+    .top_smy_des {
+        float: left;
+        margin-right: 5px;
+    }
+
+    @@media only screen and (max-width: 380px) {
+        .theme-search-results-item-flight-section-meta-time {
+            margin-top: 10px !important
+        }
+    }
+
+    /*#editBtnResult {
+        text-align: right;
+        background: linear-gradient(to right,#e83819,#f3850b);
+        color: #fff;
+        font-size: 16px;
+        border: 0;
+        padding: 6px 20px;
+        border-radius: 20px;
+        focus: none;
+        margin: 6px 0;*/
+    /* float:right*/
+    /*}*/
+</style>
+
+@*<style>
+
+
+        .position_absolute {
+            position: absolute
+        }
+        .matrixSlider-inner p.arilin_stop {
+            margin-bottom: 0;
+            border-bottom: 2px dotted #ccc;
+            padding: 5px 0;
+        }
+    </style>*@
+
+@*Done by Aayushi*@
+<style>
+    p {
+        font-family: 'Montserrat', sans-serif !important;
+        color: #0b1f66 !important;
+    }
+
+    body {
+        background: #f1f1f1 !important;
+    }
+</style>
+
+<style>
+    .SessionTimeOut {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        margin: 0 auto;
+        z-index: 999999;
+        background: rgba(0, 0, 0, 0.61);
+    }
+
+        .SessionTimeOut .sessionbox {
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            position: relative;
+            height: 214px;
+            width: 460px;
+        }
+
+        .SessionTimeOut .BookingProgressBar {
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            position: relative;
+            height: 214px;
+            width: 460px;
+        }
+
+    .BookingProgressBar p {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .session-head {
+        background: #ee6221;
+        font-size: 22px;
+        color: #fff;
+        margin: 0;
+        border-radius: 6px 6px 0 0;
+        padding: 8px;
+    }
+
+    .session_content h3 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+        .session_content h3 i {
+            padding-right: 15px;
+            font-size: 25px;
+            color: #fba406;
+            padding-top: 8px;
+        }
+
+    .session_content {
+        padding: 15px;
+        display: inline-block;
+    }
+
+    .session-exp {
+        width: 100%;
+        box-shadow: 1px 0 5px 0 rgba(0,0,0,0.75);
+        background: #fff;
+        background-color: #fff;
+        border-radius: 5px;
+        z-index: 99999;
+        /*border-top: 28px solid #ee6221;*/
+    }
+
+    .session-logo img {
+        width: 60%;
+    }
+
+    .search-button-01 {
+        color: #fff;
+        background-color: black;
+        border-color: black;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .search-button-02 {
+        color: #fff;
+        background-color: #fba406;
+        border-color: #fba406;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+</style>
+<script src="~/js/bootstrap.js"></script>
+<link href="~/css/bootstrap.css" rel="stylesheet" />
+
+
+<input type="hidden" id="hdntotpax" value="@(Convert.ToInt16(ViewBag.adult)+Convert.ToInt16(ViewBag.child)+Convert.ToInt16(ViewBag.infant))" />
+<input type="hidden" id="hdnADT" value="@(Convert.ToInt16(ViewBag.adult))" />
+<input type="hidden" id="hdnCHD" value="@(Convert.ToInt16(ViewBag.child))" />
+<input type="hidden" id="hdnINF" value="@(Convert.ToInt16(ViewBag.infant))" />
+<input type="hidden" id="hdnFLYCLS" value="@(ViewBag.flightClass)" />
+<input type="hidden" id="hdnFLYCLSCode" value="@(ViewBag.FlyClass)" />
+@*<input type="hidden" id="SearchId" value="@Model.searchid" />*@
+
+<input type="hidden" id="hdntxtToDate" />
+
+<script>
+    $(function () {
+
+        $('#pass_info').val($('#hdntotpax').val() + " Pax, " + $('#hdnFLYCLS').val());
+        $('#flight_adult').val($('#hdnADT').val());
+        $('#flight_child').val($('#hdnCHD').val());
+        $('#flight_infant').val($('#hdnINF').val());
+
+        $('#flight_class_' + $('#hdnFLYCLSCode').val()).prop("checked", true);
+    });
+    $(function () {
+        $('#pass_info').click(function () {
+            $('#FlySearchPassengers').slideToggle();
+
+        });
+
+        $("#prsn_done").click(function () {
+            $("#FlySearchPassengers").slideUp("slow");
+        });
+        $('body').click(function () {
+            $("#FlySearchPassengers").slideUp("slow");
+        });
+        $('.prp_popup').click(function (e) {
+            e.stopPropagation();
+        });
+
+    });
+
+
+</script>
+
+
+@*<script>
+        var jd = $('#txtFromDate').datepicker('getDate');
+        if (jd !== null) {
+            jd instanceof Date;
+            jd.getDate();
+            jd.getMonth();
+            jd.getFullYear();
+        }
+    </script>*@
+
+<style>
+    /*    .navbar-collapse.collapse {
+        display: block !important;
+        height: 62px !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }*/
+    .nav {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        height: 62px !important;
+    }
+</style>
+
+
+
+<div class="theme-hero-area front">
+    <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg theme-hero-area-bg-blur"></div>
+        @*<div class="theme-hero-area-mask theme-hero-area-mask-half"></div>*@
+    </div>
+    <div class="theme-hero-area-body mob-margin-extra">
+        <div class="container-fluid">
+            <div class="_pb-30 _pt-0 _pv-mob-40">
+                <div class="theme-search-area theme-search-area-white">
+                    <div class="theme-search-area-header _mb-20 " style="margin-top:5px;">
+                        @*<h1 class="theme-search-area-title theme-search-area-title-sm"><span id="fltcount"></span> Flights to @(ViewBag.ToCity)</h1>*@
+                        <span class="resultfor" style="color:white;font-size:15px">AirFare Result For @ViewBag.DepCode </span> &nbsp; <span style="color: white; font-size: 15px"> <i class="fa fa-exchange" style="color:white"></i> &nbsp; @ViewBag.DestCode &nbsp;|&nbsp; @(Convert.ToDateTime(ViewBag.DepartDate).ToString("MMM-dd")) → @(Convert.ToDateTime(ViewBag.ReturnDate).ToString("MMM-dd")), @(Convert.ToInt16(ViewBag.adult) + Convert.ToInt16(ViewBag.child) + Convert.ToInt16(ViewBag.infant)) Passenger</span>
+                        <p class="citycode inline-tex" style="display:none;">@ViewBag.DepCode to @ViewBag.DestCode</p>
+                        @*<p class="theme-search-area-inline-details _desk-h inline-tex">@(Convert.ToDateTime(ViewBag.DepartDate).ToString("MMM-dd")) → @(Convert.ToDateTime(ViewBag.ReturnDate).ToString("MMM-dd")), @(Convert.ToInt16(ViewBag.adult) + Convert.ToInt16(ViewBag.child) + Convert.ToInt16(ViewBag.infant)) Passenger</p>*@
+                        <a class="theme-search-area-inline-link magnific-inline _desk-hinline-tex" style=" color: white; border: 1px #e51937 solid; padding: 5px; background-color:#e5193763; border-radius: 5px;" href="#searchEditModal" id="editBtnResult">
+                            <i class="fa fa-pencil"></i>Edit
+                        </a>
+
+                    </div>
+                    @*<button class="button" href="#searchEditModal" id="editBtnResult">MODIFY SEARCH</button>*@
+                    <div class="theme-search-area-form customHideClass" id="hero-search-form">
+                        <div class="row" data-gutter="10">
+                            <div class="container" style="margin-left:-15px;">
+
+                                <div class="switch-field">
+                                    @if (ViewBag.RoundTrip == 2)
+                                    {<input type="radio" id="RoundTrip" name="flight-options" value="RoundTrip" checked />
+                                    <label for="RoundTrip">RoundTrip</label>
+
+                                    <input type="radio" id="OneWay" name="flight-options" value="OneWay" />
+                                    <label for="OneWay">OneWay</label>
+                                    }
+                                    else if (ViewBag.RoundTrip == 1)
+                                    {
+                                    <input type="radio" id="RoundTrip" name="flight-options" onclick="switchingOne()" value="RoundTrip" />
+                                    <label for="RoundTrip">RoundTrip</label>
+
+                                    <input type="radio" id="OneWay" name="flight-options" value="OneWay" checked />
+                                    <label for="OneWay">OneWay</label>
+                                    }
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="row" data-gutter="10">
+                                    <div class="col-md-6 ">
+                                        <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-fade-white theme-search-area-section-no-border">
+                                            <label class="theme-search-area-section-label _op-06">From</label>
+                                            <div class="theme-search-area-section-inner">
+                                                <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                <input id="flight_from" class="theme-search-area-section-input typeahead" value="@(ViewBag.departure)" type="text" placeholder="Departure" data-provide="typeahead" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-fade-white theme-search-area-section-no-border">
+                                            <label class="theme-search-area-section-label _op-06">To</label>
+                                            <div class="theme-search-area-section-inner">
+                                                <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                <input id="flight_to" class="theme-search-area-section-input typeahead" value="@(ViewBag.destination)" type="text" placeholder="Arrival" data-provide="typeahead" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 ">
+                                <div class="row" data-gutter="10">
+                                    <div class="col-md-4 ">
+                                        <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-fade-white theme-search-area-section-no-border">
+                                            <label class="theme-search-area-section-label _op-06">Depart</label>
+                                            <div class="theme-search-area-section-inner">
+                                                <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                <input id="txtFromDate" class="theme-search-area-section-input" value="@(Convert.ToDateTime(ViewBag.DepartDate).ToString("MM-dd-yyyy"))" type="text" placeholder="dd-mm-yyyy" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-fade-white theme-search-area-section-no-border">
+                                            <label class="theme-search-area-section-label _op-06">Return</label>
+                                            <div class="theme-search-area-section-inner">
+                                                <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+
+
+
+                                                @if (ViewBag.ReturnDate == "0001-01-01")
+                                                {
+                                                <input id="txtToDate" class="theme-search-area-section-input" value="+ Add Return" type="text" style="background:#D8d8D8" placeholder="dd-mm-yyyy" disabled />
+                                                <span class="closereturn" style="cursor:pointer; display:none; color:black">X</span>
+                                                }
+                                                else
+                                                {
+                                                <input id="txtToDate" class="theme-search-area-section-input" value="@(Convert.ToDateTime(ViewBag.ReturnDate).ToString("MM-dd-yyyy"))" type="text" placeholder="dd-mm-yyyy" />
+                                                <span class="closereturn" style="cursor:pointer; display:block;color:black">X</span>
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 ">
+                                        <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-fade-white theme-search-area-section-no-border quantity-selector" data-increment="Passengers">
+                                            <label class="theme-search-area-section-label _op-06">Passengers</label>
+                                            <div class="theme-search-area-section-inner prp_popup">
+                                                <i class="theme-search-area-section-icon lin lin-people" id="newcolor"></i>
+                                                <input class="theme-search-area-section-input" readonly name="pass_info" id="pass_info" placeholder="1 Pax, Economy" value="1 Pax, Economy" type="text" />
+                                                <div class="" id="FlySearchPassengers" style="display:none; ">
+                                                    <div class="quantity-selector-inner">
+                                                        <div id="prsn_popup">
+                                                            <ul class="slect_pssngr">
+                                                                <li>
+                                                                    <label>Adult &nbsp;<span>(12+ Years)</span></label>
+                                                                    <div class="count_pssngr">
+                                                                        <a href="javascript:void(0);"><em data-field="adult" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                        <input type="text" readonly value="1" name="flight_adult" id="flight_adult" class="inpt_cout_pssngr" />
+                                                                        <a href="javascript:void(0);"><em data-field="adult" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <label>Children &nbsp;<span>(2-11 Years)</span></label>
+                                                                    <div class="count_pssngr">
+                                                                        <a href="javascript:void(0);"><em data-field="child" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                        <input type="text" readonly value="0" name="flight_child" id="flight_child" class="inpt_cout_pssngr" />
+                                                                        <a href="javascript:void(0);"><em data-field="child" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <label>Infant &nbsp;<span>(0-2 Years)</span></label>
+                                                                    <div class="count_pssngr">
+                                                                        <a href="javascript:void(0);"><em data-field="infant" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                        <input type="text" readonly value="0" name="flight_infant" id="flight_infant" class="inpt_cout_pssngr" />
+                                                                        <a href="javascript:void(0);"><em data-field="infant" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="combin_class">
+                                                                <ul class="in_list_cls">
+                                                                    <li><input type="radio" name="flight_class" id="flight_class_4" value="4" checked /> <label for="flight_class_4">Economy</label></li>
+                                                                    <li><input type="radio" name="flight_class" id="flight_class_3" value="3" /> <label for="flight_class_3">Premimum</label></li>
+                                                                    <li><input type="radio" name="flight_class" id="flight_class_2" value="2" /> <label for="flight_class_2">Business</label></li>
+                                                                    <li><input type="radio" name="flight_class" id="flight_class_1" value="1" /> <label for="flight_class_1">First</label></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="clss_done" id="ind_done">
+                                                                <a href="javascript:void(0);" id="prsn_done">Done</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 ">
+                                <button class="theme-search-area-submit _tt-uc theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border theme-search-area-submit-primary" id="flight_submit">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="theme-search-area-options clearfix _mob-h">
+                            <div class="btn-group theme-search-area-options-list" data-toggle="buttons">
+                                <label class="btn btn-primary active" id="flight_way_2" for="flight_way_2">
+                                    <input type="radio" style="visibility:hidden;" name="flight_way" id="flight_way_2" value="2" />Round Trip
+                                </label>
+                                <label class="btn btn-primary" id="flight_way_1" for="flight_way_1">
+                                    <input type="radio" name="flight_way" id="flight_way_1" value="1" />One Way
+                                </label>
+                            </div>
+                        </div>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="theme-page-section resultPage" id="padZero">
+
+    <div id="dvHeight" style="height:10px;">&nbsp;</div>
+    <div id="dvMainResultView" style="display:show;">
+        <input type="hidden" id="hdncounterlooppaging" />
+
+        <div class="container-fluid">
+            <div class="row row-col-static" id="sticky-parent" data-gutter="20" style="color:#0b1f66;">
+
+
+                <div class="col-md-3-5 " id="divLeftPanel">
+
+
+                </div>
+                <div class="col-md-8-5 " id="flightsBox">
+
+
+                    <!-- matrixSlider start -->
+                    <div class="theme-page-section matrixSlider" style="padding-top:0;padding-bottom:10px;">
+
+                        <div class="matrixSlider-inner">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div id="owl-demo">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- matrixSlider close -->
+                    @*<div class="theme-search-results-sign-in _mob-h bg-grad">
+                            <i class="theme-search-results-sign-in-icon fa fa-unlock-alt"></i>
+                            <h5 class="theme-search-results-sign-in-title">
+                                Sign in to unlock our secret delas. Save up to
+                                <b>50%</b>
+                            </h5>
+                            <a class="btn theme-search-results-sign-in-btn btn-ghost btn-white" href="#">Sign in now</a>
+                        </div>*@
+
+                    <div id="dvSort">
+                        <div class="theme-search-results-sort clearfix _mob-h" style="display:none">
+                            <input type="hidden" id="hdnSorByAirlineName" value="0" />
+                            <input type="hidden" id="hdnSorPrice" value="0" />
+                            <input type="hidden" id="hdnSortDuration" value="0" />
+                            <input type="hidden" id="hdnSortResult" value="price" />
+                            <h5 class="theme-search-results-sort-title">Sort by:</h5>
+
+                            <ul class="theme-search-results-sort-list" id="dvSortPrice">
+                                <li>
+                                    <a href="javascript:void(0);" onclick="SortByPrice(0,0);">
+                                        <span class="spanBlock">Price</span>
+                                        <span class="active">Low</span>
+                                        <span>&rarr;</span>
+                                        <span> High</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" onclick="SortByDuration(0,0);">
+                                        <span class="spanBlock">Duration</span>
+                                        <span> Short</span>
+                                        <span>&rarr;</span>
+                                        <span>Long</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0);" onclick="SortByAirlineName(0,0);">
+                                        <span class="spanBlock">Airline</span>
+                                        <span id="spairasc">A</span>
+                                        <span>&rarr;</span>
+                                        <span id="spairdesc"> Z</span>
+                                    </a>theme-search-results-sort-select _desk-h
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+                    <div class="theme-search-results-sort-select _desk-h">
+                        <p class="text-right text-font onph  hide-mon">
+                            (Sort By)
+                        </p>
+                        <select id="drpSorting">
+                            <option>Price (Low to High)</option>
+                            <option>Price (High to Low)</option>
+                            <option>Duration (Low to High)</option>
+                            <option>Duration (High to Low)</option>
+                            <option>Airline (A-Z)</option>
+                            <option>Airline (Z-A)</option>
+                        </select>
+                    </div>
+
+                    <div class="theme-search-results">
+                        <p class="text-right text-font onph  hide-mon">
+                            AirFare Result
+                        </p>
+                        <div id="dvResult"></div>
+
+                        <div class="theme-search-results-mobile-filters" id="mobileFilters">
+                            <a class="theme-search-results-mobile-filters-btn magnific-inline" href="javascript:void(0);">
+                                <i class="fa fa-filter"></i>Filters
+                            </a>
+
+                        </div>
+                    </div>
+                    <img src="/img/moreload.gif" id="imgMore" style="display:none" />
+                    <a style="display:none;" class="btn _tt-uc _fs-sm btn-dark btn-block btn-lg" id="btnloadmore" href="javascript:void(0);">Load More Results</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal fade modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-4 col-md-4 col-sm-4 col-xs-4">
+                        @*<img src="img/logo.png" alt="logo" class="img-responsive" />*@
+                    </div>
+                    <div class="col-4 col-md-4 col-sm-4 col-xs-12">
+                        <img src="img/Flights Hall (1).png" alt="logo" class="img-responsive center-block" />
+                        @*<img src="img/logo.png" alt="logo" class="img-responsive" />*@
+                    </div>
+                    <div class="col-4 col-md-4 col-sm-4 col-xs-4">
+                        @*<img src="img/logo.png" alt="logo" class="img-responsive" />*@
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <div class="plsWaitCaption">
+                    <p>Please Wait For Your Flights...</p>
+                    <p>Let us search the best Flight Deals For You.</p>
+                </div>
+                <h2>
+                    @(ViewBag.DepCode)&nbsp;
+                    <img src="./img/airline/aeroplane.gif" />&nbsp;
+                    @(ViewBag.DestCode)
+                </h2>
+
+            </div>
+            <div class="modal-footer">
+                <div class="diparCaptionBox">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="diparBox">
+                            <strong>Departure Date</strong>
+                            <p style="color:white">@(Convert.ToDateTime(ViewBag.DepartDate).ToString("dd-MMM-yyyy"))</p>
+                        </div>
+
+                        @if (ViewBag.RoundTrip.ToString() == "2")
+                        {
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="diparBox">
+                            <strong>Return Date</strong>
+                            <p style="color:white">@(Convert.ToDateTime(ViewBag.ReturnDate).ToString("dd-MMM-yyyy"))</p>
+                        </div>
+                        }
+                        else
+                        {
+
+                        <text>One Way</text>
+                        }
+
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="diparBox">
+                            <strong>Class</strong>
+                            <p style="color:white">@(ViewBag.FlightClass)</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" id="diparBox">
+                            <strong>Traveller</strong>
+                            <p style="color:white">@(ViewBag.adult) Adult @(ViewBag.child) Child @(ViewBag.infant) Infant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divSessionOut" class="SessionTimeOut" style="display: none;">
+    <div class="sessionbox">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12"></div>
+                <div class="col-md-12 session-exp nopadding">
+                    @*<h2 class="session-head"> Session expired</h2>*@
+                    <div class="session_content">
+                        <h3 class="text-center t-color2"><i class="fa fa-clock-o"></i>Your Session has expired</h3><br>
+                        <p class="text-center session-color">
+                            Your preferred search session has expired. We regret the inconvenience caused
+                        </p><br>
+                        @*<div class="col-md-6 col-xs-6"><p class="session-2"><a href="/" class="search-button-01 se-05">Go to Home</a></p></div>*@
+                        @*<div class="col-md-6 col-xs-6 pull-right"><p><a class="search-button-02" onclick="SearchAgain();" href="/flight/getFlightResult?sec1=PHL|MIA|2022-02-11&amp;sec2=MIA|PHL|2022-02-17&amp;sec3=&amp;sec4=&amp;adults=1&amp;child=0&amp;infants=0&amp;cabin=1&amp;airline=ALL&amp;siteid=6&amp;campain=1000&amp;currency=USD">Search Again</a></p></div>*@
+                        <div class="text-center"><p><a class="search-button-02" onclick="window.location.href='@ViewBag.BackToResult'">Search Again</a></p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    $(function () {
+        getResultPage();
+
+    });
+    function setPriceLowToHigh() {
+
+        $("#dvSort li span").removeClass("active");
+        $("#dvSort li span:first-child").addClass("active");
+    }
+    $("#dvSort li span").click(function () {
+        $("#dvSort li span").removeClass("active");
+        $(this).addClass("active");
+    })
+    //Edit result btn
+    $('#editBtnResult').click(function () {
+        $('#hero-search-form').toggle();
+    });
+    //Filters result
+    $('#mobileFilters').click(function () {
+        $('#divLeftPanel .sticky-col.customHideClass').toggle();
+    });
+
+
+
+    $("#drpSorting").change(function () {
+        if ($('option:selected', this).text() == "Price (Low to High)") {
+            SortByPrice(0, 1);
+
+        }
+        else if ($('option:selected', this).text() == "Price (High to Low)") {
+            SortByPrice(1, 1);
+        }
+        else if ($('option:selected', this).text() == "Duration (Low to High)") {
+            SortByDuration(0, 1);
+
+        }
+        else if ($('option:selected', this).text() == "Duration (High to Low)") {
+            SortByDuration(1, 1);
+        }
+        else if ($('option:selected', this).text() == "Airline (A-Z)") {
+            SortByAirlineName(0, 1);
+        }
+        else if ($('option:selected', this).text() == "Airline (Z-A)") {
+            SortByAirlineName(1, 1);
+        }
+    });
+
+</script>
+
+<script>
+    function getResultPage() {
+        $('#loadmore').hide();
+        $('#hdnPageIndex').val("0");
+         $.ajax({
+             type: "get",
+             beforeSend: function () {
+                 $("#myModal").modal({
+                     backdrop: 'static',
+                     keyboard: false
+                 });
+             },
+            url: "@(TravelWeb.Utilities.Common.WebSitePath)Result/search",
+             data: {"qs": "@(ViewBag.QS)"},
+            contentType: "application/html; charset=utf-8",
+            accepts: "application/html; charset=utf-8",
+              //dataType: "json",
+            success: function (response) {
+                $('#divLeftPanel').html(response);
+
+                FirstloadResult();
+                $('#myModal').modal('hide');
+                //  $('#dialog').dialog('open');
+            },
+            failure: function (response) {
+                //alert(response.responseText);
+                alert("Sorry! no flight found");
+            },
+            error: function (response) {
+                //alert(response.responseText);
+                alert("Sorry! No flight found");
+             },
+             complete: function () {
+                 $('#myModal').modal('hide');
+             },
+
+        });
+    }
+
+    function SortByAirlineName(vl,chk) {
+
+
+
+        if (parseInt($('#hdnSorByAirlineName').val()) == 0) {
+            $('#hdnSorByAirlineName').val("1");
+        }
+        else {
+            $('#hdnSorByAirlineName').val("0");
+        }
+        if (chk == 1 && vl == 0) {
+
+            $('#hdnSorByAirlineName').val("0");
+
+        }
+        else if (chk == 1 && vl == 1) {
+            $('#hdnSorByAirlineName').val("1");
+        }
+
+        $('#hdnSortResult').val("airline");
+        $('#hdnPageIndex').val("0");
+        filterResult();
+        setPriceLowToHigh();
+    }
+    function SortByPrice(vl,chk) {
+
+        if (parseInt($('#hdnSorPrice').val()) == 0) {
+            $('#hdnSorPrice').val("1");
+            $("#sppricelow").removeClass("active");
+            $("#sppricehigh").addClass("active");
+
+        }
+
+        else {
+            $('#hdnSorPrice').val("0");
+            $("#sppricehigh").removeClass("active");
+            $("#sppricelow").addClass("active");
+        }
+
+
+        if (chk == 1 && vl == 0) {
+
+            $('#hdnSorPrice').val("0");
+
+        }
+        else if (chk == 1 && vl == 1) {
+            $('#hdnSorPrice').val("1");
+        }
+        $('#hdnSortResult').val("price");
+        $('#hdnPageIndex').val("0");
+        filterResult();
+        //setPriceLowToHigh();
+    }
+    function myFunction() {
+        var x = document.getElementById("div2");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+
+    }
+    function SortByDuration(vl,chk) {
+
+        if (parseInt($('#hdnSortDuration').val()) == 0) {
+            $('#hdnSortDuration').val("1");
+        }
+        else {
+            $('#hdnSortDuration').val("0");
+        }
+
+
+        if (chk == 1 && vl == 0) {
+
+            $('#hdnSortDuration').val("0");
+
+        }
+        else if (chk == 1 && vl == 1) {
+            $('#hdnSortDuration').val("1");
+        }
+
+
+        $('#hdnSortResult').val("durarion");
+        $('#hdnPageIndex').val("0");
+        filterResult();
+        setPriceLowToHigh();
+    }
+
+
+
+
+    function FirstloadResult() {
+        loadResult(",", ",");
+        $('.stopscheckbox').click(function () {
+            //if (parseInt($('#hdnSorPrice').val()) == 0) {
+            //    $('#hdnSorPrice').val("1");
+            //}
+            //else {
+            //    $('#hdnSorPrice').val("0");
+            //}
+            $('#hdnSorPrice').val("0");
+            $('#hdnSortResult').val("price");
+            filterResult();
+            setPriceLowToHigh();
+        });
+
+        $('.chkAirlinelist').click(function () {
+           $('#hdnSorPrice').val("0");
+            $('#hdnSortResult').val("price");
+            $('#hdnPageIndex').val("0");
+         filterResult();
+            setPriceLowToHigh();
+        });
+    }
+
+    function filterResult() {
+
+        var stopsx = '';
+        $('.stopscheckbox').each(function (i, items) {
+            if ($(this).prop('checked')) {
+                stopsx += $(items).val() + ',';
+            }
+
+        });
+        //alert(stopsx);
+        var airlinesx = '';
+        $('.chkAirlinelist').each(function (i, items) {
+            if ($(this).prop('checked')) {
+                airlinesx += $(items).val() + ',';
+            }
+
+        });
+        loadResult(stopsx, airlinesx);
+    }
+
+
+   function loadResult(stopsx,airlinesx) {
+
+ if ((typeof (airlinesx) == "undefined" || airlinesx == ''))
+        {
+            airlinesx = ',';
+
+        }
+       if ((typeof (stopsx) == "undefined" || stopsx == ''))
+        {
+            stopsx = ',';
+
+        }
+        $('#hdnstopsx').val(stopsx);
+        $('#hdnairlinesx').val(airlinesx);
+        var cnt = parseInt(parseInt($("#hdnAirlineCnt").val())/3);
+        var pageindex = 0;
+        //var PageSize = 5;
+        var PageSize = 20;
+         $.ajax({
+             type: "get",
+             beforeSend: function () {
+                 //$('#dvResult').html("<center><img src='/img/loading.gif'/></center>");
+             },
+             url: "@(TravelWeb.Utilities.Common.WebSitePath)flightresult/Partial/result",
+             data: { "Stopsx": "" + $('#hdnstopsx').val() + "", "Airlinex": "" + $('#hdnairlinesx').val() + "", "MinPrice": "" + $('#hdnMinPrice').val() + "", "MaxPrice": "" + $('#hdnMaxPrice').val() + "", "SortPrice": "" + $('#hdnSorPrice').val() + "", "SortDuration": "" + $('#hdnSortDuration').val() + "", "SorByAirlineName": "" + $('#hdnSorByAirlineName').val() + "", "SortResult": "" + $('#hdnSortResult').val() + "", "Pageindex": "" + pageindex + "", "PageSize": "" + PageSize + "", "OutDep": "" + $('#hdnoutboundDep').val() + "", "OutArr": "" + $('#hdnoutboundArr').val() + "", "InnDep": "" + $('#hdninboundDep').val() + "", "InnArr": "" + $('#hdninboundArr').val() + "" },
+            contentType: "application/html; charset=utf-8",
+            accepts: "application/html; charset=utf-8",
+              //dataType: "json",
+            success: function (response) {
+                $('#dvResult').html(response);
+                $('#myModal').modal('hide');
+                $('#dvMainResultView').show();
+                $('#dvHeight').hide();
+
+                //var counterlooppaging = parseInt($('#hdnResultCount').val()) / PageSize;
+                //$('#hdncounterlooppaging').val(counterlooppaging);
+                LoadMore(counterlooppaging);
+                //LoadMoreFlight();
+                //  $('#dialog').dialog('open');
+            },
+            failure: function (response) {
+               // alert(response.responseText);
+            },
+            error: function (response) {
+               // alert(response.responseText);
+             },
+
+        });
+       }
+
+
+
+</script>
+
+<script>
+
+    function LoadMore(counterlooppaging) {
+        /*alert(counterlooppaging);*/
+        setInterval(LoadMoreFlight, 3000);
+        document.getElementById('loadmore').style.display = 'none';
+        $("#loadmore").remove();
+        LoadMoreFlight();
+    }
+   var counter = 0;
+    function LoadMoreFlight() {
+        counter++;
+        if (counter <= parseInt($('#hdncounterlooppaging').val())) {
+               //   alert(counter);
+               var  pageindex = parseInt($('#hdnPageIndex').val());
+                  pageindex++;
+                $('#hdnPageIndex').val(pageindex);
+                //var PageSize = 5;
+                var PageSize = 20;
+
+                 $.ajax({
+            type: "get",
+            beforeSend: function () { $("#imgMore").show(); },
+            url: "@(TravelWeb.Utilities.Common.WebSitePath)flightresult/Partial/result",
+             data: { "Stopsx": "" + $('#hdnstopsx').val() + "", "Airlinex": "" + $('#hdnairlinesx').val() + "", "MinPrice": "" + $('#hdnMinPrice').val() + "", "MaxPrice": "" + $('#hdnMaxPrice').val() + "", "SortPrice": "" + $('#hdnSorPrice').val() + "", "SortDuration": "" + $('#hdnSortDuration').val() + "", "SorByAirlineName": "" + $('#hdnSorByAirlineName').val() + "", "SortResult": "" + $('#hdnSortResult').val() + "", "Pageindex": "" + pageindex + "","PageSize":""+PageSize+"" },
+            contentType: "application/html; charset=utf-8",
+            accepts: "application/html; charset=utf-8",
+              //dataType: "json",
+            success: function (response) {
+                $('#dvResult').append(response);
+                $("#imgMore").hide();
+
+            },
+            failure: function (response) {
+                //alert(response.responseText);
+            },
+            error: function (response) {
+                //alert(response.responseText);
+             },
+
+        });
+
+        }
+
+        }
+
+
+</script>
+
+@*<script>
+
+        $(function () {
+            $(window).scroll(function () {
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    // ajax call get data from server and append to the div
+
+        });
+    </script>*@
+<script>
+    window.onload = function () {
+        inactivityTime();
+    }
+</script>
+<script>
+    var inactivityTime = function () {
+        var time;
+        window.onload = resetTimer;
+        // DOM Events
+        document.onmousemove = resetTimer;
+        document.onkeydown = resetTimer;
+        document.onmousedown = resetTimer; // touchscreen presses
+        document.ontouchstart = resetTimer;
+        document.onclick = resetTimer;     // touchpad clicks
+        document.onkeydown = resetTimer;   // onkeypress is deprectaed
+        document.addEventListener('scroll', resetTimer, true);
+        function logout() {
+           // SendEmailtoBusiness();
+            //alert("OOPS! Seems like your session expired please search again.")
+            //if (!alert('OOPS! Seems like your session expired please search again.')) { window.location.href = "@ViewBag.BackToResult"; }
+            $('#divSessionOut').show();
+           // alert("OOPS! Seems like your session expired please search again.")
+            //window.location.href = "@ViewBag.BackToResult";
+
+        }
+
+        function resetTimer() {
+            clearTimeout(time);
+            //time = setTimeout(logout, 2000)
+            time = setTimeout(logout, 120000)
+            // 1000 milliseconds = 1 second
+        }
+    };
+
+
+    function switchingOne() {
+        console.log('clickedOne!');
+        document.getElementById("txtToDate").style.background = "white";
+        document.getElementById("txtToDate").removeAttribute("disabled");
+
+    }
+    //function switchingRound() {
+    //    console.log('clickedRound!');
+    //    document.getelementbyid("txttodate").style.background = "d8d8d8";
+    //    document.getelementbyid("txttodate").setattribute("disabled","");
+
+    //}
+
+
+
+</script>
+<input type="hidden" value="0" id="hdnPageIndex" />
+
+<input type="hidden" value="," id="hdnstopsx" />
+<input type="hidden" value="," id="hdnairlinesx" />

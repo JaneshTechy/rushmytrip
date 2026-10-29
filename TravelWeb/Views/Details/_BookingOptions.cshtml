@@ -1,0 +1,175 @@
+@model TravelWeb.Models.BookingOptionsPartialVM
+@using TravelWeb.Models
+@using System.Globalization
+@{
+    var options = Model?.Options ?? new List<VerifierBookingOption>();
+    var flight = Model?.Flight;
+    var currency = Model?.Currency
+                   ?? flight?.Currency
+                   ?? "USD";
+    var curSymbol = currency?.ToUpperInvariant() switch
+    {
+        "MXN" => "MX$",
+        "INR" => "₹",
+        "EUR" => "€",
+        "GBP" => "£",
+        "USD" => "US$",
+        _ => currency + " "
+    };
+    var pax = Math.Max(1, (flight?.FlightFare?.Adult ?? 1) + (flight?.FlightFare?.Child ?? 0));
+    var markupTrip = TravelWeb.Services.FlightVerifierService.GetMarkupTripTotal(flight?.FlightFare);
+    var atol = flight?.FlightFare?.AtolCharge ?? 0;
+    var extras = markupTrip + atol;
+
+    var defaultIdx = 0; // cheapest by default
+    if (ViewBag.SelectedTicketIndex != null)
+    {
+        try { defaultIdx = Convert.ToInt32(ViewBag.SelectedTicketIndex); } catch { defaultIdx = 0; }
+    }
+    if (defaultIdx < 0 || defaultIdx >= options.Count)
+        defaultIdx = options.Count > 0 ? 0 : -1;
+}
+
+@if (options.Count > 0)
+{
+    <div class="choose-ticket-wrap" id="choose-ticket-wrap"
+         data-markup-total="@markupTrip.ToString("0.##", CultureInfo.InvariantCulture)"
+         data-atol="@atol.ToString("0.##", CultureInfo.InvariantCulture)">
+        <h3 class="choose-ticket-title">Choose your ticket</h3>
+        <div class="choose-ticket-grid">
+            @for (var i = 0; i < options.Count; i++)
+            {
+                var opt = options[i];
+                var selected = i == defaultIdx;
+                // Show option + markup + ATOL (what customer pays)
+                var displayTrip = opt.price + extras;
+                var perPerson = pax > 0 ? displayTrip / pax : displayTrip;
+                var whole = Math.Floor(perPerson);
+                var cents = Math.Abs((perPerson - whole) * 100);
+                var centsStr = cents.ToString("00", CultureInfo.InvariantCulture);
+                var title = opt.DisplayName;
+                <div class="ticket-card @(selected ? "is-selected" : "")"
+                     role="button"
+                     tabindex="0"
+                     data-option-index="@i"
+                     data-price="@opt.price.ToString("0.##", CultureInfo.InvariantCulture)"
+                     data-display-price="@displayTrip.ToString("0.##", CultureInfo.InvariantCulture)"
+                     data-currency="@(opt.currency ?? currency)"
+                     aria-pressed="@(selected ? "true" : "false")">
+                    @if (selected)
+                    {
+                        <span class="ticket-selected-badge" aria-hidden="true">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                    }
+                    <div class="ticket-card-head">
+                        <span class="ticket-fare-name">@title</span>
+                        <a href="javascript:void(0);" class="ticket-details-link" data-option-index="@i" onclick="event.stopPropagation(); showTicketDetails(@i); return false;">
+                            Details <span class="ticket-info-ico" title="Details">i</span>
+                        </a>
+                    </div>
+                    <ul class="ticket-features">
+                        @{
+                            var feats = opt.features?.Where(f => !string.IsNullOrWhiteSpace(f?.text)).ToList()
+                                        ?? new List<VerifierFeature>();
+                            var texts = opt.featureText?.Where(t => !string.IsNullOrWhiteSpace(t)).ToList()
+                                        ?? new List<string>();
+                        }
+                        @if (feats.Count > 0)
+                        {
+                            foreach (var f in feats.Take(6))
+                            {
+                                var status = (f.status ?? "").ToLowerInvariant();
+                                var iconClass = status == "included" ? "ok" : (status == "fee" ? "fee" : "no");
+                                <li class="ticket-feature @iconClass">
+                                    <span class="tf-icon" aria-hidden="true">
+                                        @if (iconClass == "ok")
+                                        {
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        }
+                                        else if (iconClass == "fee")
+                                        {
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f59e0b"/><path d="M12 7v6M12 16.5h.01" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+                                        }
+                                        else
+                                        {
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ef4444"/><path d="M8 8l8 8M16 8l-8 8" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+                                        }
+                                    </span>
+                                    <span>@f.text</span>
+                                </li>
+                            }
+                        }
+                        else if (texts.Count > 0)
+                        {
+                            foreach (var t in texts.Take(6))
+                            {
+                                <li class="ticket-feature ok">
+                                    <span class="tf-icon" aria-hidden="true">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                    <span>@t</span>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="ticket-feature ok">
+                                <span class="tf-icon" aria-hidden="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                                <span>Flight ticket</span>
+                            </li>
+                            @if (markupTrip > 0)
+                            {
+                                <li class="ticket-feature ok">
+                                    <span class="tf-icon" aria-hidden="true">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                    <span>Includes service markup</span>
+                                </li>
+                            }
+                            @if (atol > 0)
+                            {
+                                <li class="ticket-feature ok">
+                                    <span class="tf-icon" aria-hidden="true">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                    <span>Includes ATOL / support fee</span>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(opt.airlineCode))
+                            {
+                                <li class="ticket-feature ok">
+                                    <span class="tf-icon" aria-hidden="true">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </span>
+                                    <span>Airline @opt.airlineCode</span>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <div class="ticket-card-foot">
+                        <div class="ticket-price">
+                            <span class="tp-cur">@curSymbol.ToLowerInvariant()</span><span class="tp-whole">@whole.ToString("0", CultureInfo.InvariantCulture)</span><span class="tp-cents">.@centsStr</span>
+                            <span class="tp-pp">per person</span>
+                        </div>
+                        <span class="ticket-radio @(selected ? "checked" : "")" aria-hidden="true"></span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div id="ticket-details-modal" class="price-change-modal" style="display:none;" aria-hidden="true">
+        <div class="price-change-dialog ticket-details-dialog">
+            <h3 id="ticket-details-title">Fare details</h3>
+            <ul id="ticket-details-list" class="ticket-details-list"></ul>
+            <div class="price-change-actions">
+                <button type="button" class="btn-price-ok" onclick="hideTicketDetails()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="application/json" id="ticket-options-json">@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(options))</script>
+}

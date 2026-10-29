@@ -1,0 +1,1358 @@
+{
+  "Error": null,
+  "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+  "SessionId": null,
+  "MinPrice": 108,
+  "MaxPrice": 1254,
+  "HotelsList": [
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 1,
+      "HotelCode": "ChcIyoWkz_uc64NaGgsvZy8xdzBqM3BodhAB",
+      "HotelName": "Astor Museum Hostel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25rcWFmUXpMM0NXczZDV3JwY09uSkF2cmhRNHlwaml5UVZVUzNHTGprVmdEeGR2OUpfajJydnB0dnAyLXc0N25POGdJbjB5S2ZBSlJJRC02dU1uZFd0cnZTVTVHeFVpekkxelBkUThvN1pRQ1RhMEwteU12OG1PS3poeGZveldEckhUSThLeFE9czE1MC13OTItaDE1MC1uLWstbm8.6n2SbaitNgu08DbDoQUi3i",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "TwoStar",
+      "Currency": "USD",
+      "TotalPrice": 108,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.2",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking",
+        "Airport shuttle",
+        "Smoke-free property"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25rcWFmUXpMM0NXczZDV3JwY09uSkF2cmhRNHlwaml5UVZVUzNHTGprVmdEeGR2OUpfajJydnB0dnAyLXc0N25POGdJbjB5S2ZBSlJJRC02dU1uZFd0cnZTVTVHeFVpekkxelBkUThvN1pRQ1RhMEwteU12OG1PS3poeGZveldEckhUSThLeFE9czE1MC13OTItaDE1MC1uLWstbm8.6n2SbaitNgu08DbDoQUi3i",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25rcWFmUXpMM0NXczZDV3JwY09uSkF2cmhRNHlwaml5UVZVUzNHTGprVmdEeGR2OUpfajJydnB0dnAyLXc0N25POGdJbjB5S2ZBSlJJRC02dU1uZFd0cnZTVTVHeFVpekkxelBkUThvN1pRQ1RhMEwteU12OG1PS3poeGZveldEckhUSThLeFE9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.Qgx831-3t_RWmEl8rYtT-0",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3hjczBkTU9yQjREMVFlS3dTSWxtU2JTallOVV9USzh4ajFXZXZHR3lDeWJWN05KNFA3YlZJOUE2WTNGeU9rVVl5UmNERFBJdnA1MmM5dWIxZXhOSXVKbmY5LWR0VkNmRDNORk95TXN1Q2o1cFdOVVdPbGRaaXlSM2U5OUd3ZDlLOHdrbTU1U2p3bFlmMEdLNnhTMEx5dHVlTEpnakNnPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.YS-A0jyh03yjwKQ3FV_l0E",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L2dYTURLX0ljQWx2VkRPUXFaYTJFR01KMEtVd1VVQUVNRGxKOUlEVVFjWC1QLXcyQVBJV21vMGJyWi1SWWpQazlLZWZqQTJCeWxsRVFQbnM5SE9yMTgzeDQtMzJjTk1FWldvbTlUeTdfTE8xV19qWXlzQlhtQ051VlhKVFVhcEt3czZ0VnREVElsNXFZYU5BUjBJYTlDRHdFd3F5MzhCND1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.7UsOHXCTQnDlRcX3PG9qzl",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1I5VmQxTXZ1MXc4akVPUFVic2VYUHpkTE90LUJCMWk4TGxZYlZncXRaWUVJQ3RpdlRYVFptSG5LYUxJeURxa2o1VC04ZHNFeTJuRFJOWlR5NGc1QWFNUHl5TURjZmJnUzdmaGg4b2ZGX2txWmlwQVRjQ0VjOTItS1Noc25WbzV2SmtfQ0Q0blk4bkxqcmk0NlJEdTBwcEJTTFZRYWxFMD1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.uEuNebepShAX-Udiwq9RFO",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 2,
+      "HotelCode": "ChgI3JybyqnK09BPGgwvZy8xcHYxOWpnZnEQAQ",
+      "HotelName": "Park Grand Heathrow",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tIR2VodTQyUGhnenVvS3BwcDRZZ2lXV2ZhTnV0YmxaV1ZRZkxlU1ZQci1rQWYyWnRxd2hTVkk1ZlhFTV9TWThyOW9HX19ZYnROWTR1Nlp5MVNQTlMtbFZGSU5BdG5kaDdVbDdJOWtXQXRNdEpwRVdydXd3enhWU1RGTnEzVzQwdW5XWmd5Rmc9czE1MC13OTItaDE1MC1uLWstbm8._V62e247IiGy5eldXeudte",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 198,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "3.9",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Air conditioning",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Full-service laundry"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tIR2VodTQyUGhnenVvS3BwcDRZZ2lXV2ZhTnV0YmxaV1ZRZkxlU1ZQci1rQWYyWnRxd2hTVkk1ZlhFTV9TWThyOW9HX19ZYnROWTR1Nlp5MVNQTlMtbFZGSU5BdG5kaDdVbDdJOWtXQXRNdEpwRVdydXd3enhWU1RGTnEzVzQwdW5XWmd5Rmc9czE1MC13OTItaDE1MC1uLWstbm8._V62e247IiGy5eldXeudte",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tIR2VodTQyUGhnenVvS3BwcDRZZ2lXV2ZhTnV0YmxaV1ZRZkxlU1ZQci1rQWYyWnRxd2hTVkk1ZlhFTV9TWThyOW9HX19ZYnROWTR1Nlp5MVNQTlMtbFZGSU5BdG5kaDdVbDdJOWtXQXRNdEpwRVdydXd3enhWU1RGTnEzVzQwdW5XWmd5Rmc9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.JOUsk-yGWlha3hGf5zTPnE",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV251dk5FcjlnV2VfT1BYTEpDMVRQQkdJcXdMMG01Z2pZNUd5YjN1ajFscDJsVnVUT2RZeGluaWFmWkZJR09pMmVfbDNtbFNrTjZkX2VxUUQ3NlhHRHRkaERiTVVsdGtYWW1kTWxZaHdFTHhJNHBJaGdRZ1ZDZG1hYUpuSk9yclNqeXMzTWQwZ1E9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.6bod6ql3zaJ4Ih79JncVZK",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5LzhHVFlXa3phOE5tT2Z0T2FiR25VSm9TSWkyRzZJdl9pcTJ3QWVUbVVSVDVDa3RpZnBiTVU3ZTFaU2J4c2FleldyUk9IVG96VTNMdnVrc0JTUE9WcWFmcEJ6TTgxWTd2ODRIVVowUWh4alVaaldXcVN6Tm44ZTZ1N094X3JDeTNBaUJjVjIwMjM4Z09PQ3NSUzB1NHV2THBvV2d2TXlwST1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.IUOb61c903j2P4QqLY7KLc",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3YxMllvcVVITE9NSl9BSThHblA3bE5xRDdRWU5GSUtVbml5bkh2eTR6Zjc4ck5MQlRXVGRrbTlhYlQ1WEZ1dEJaRFR6bVZEN1ZUeXoxWGJJazRrYWNZRnZYRU4zMlotdWpEMEVvQUxOUXoyOTZIaWRKVmFXNkFhWk5tcWVmcXR3UGpyUDRDeXhSbGFfRHZjaHBQMEtwV19QS2R1Ql9aZz1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.kRwPDeH_mnCt2qj7H2TWY6",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 3,
+      "HotelCode": "ChoIpc2DkMOR2tuVARoNL2cvMTFjNjFra3d0bhAB",
+      "HotelName": "St Christopher\u0027s Liverpool Street",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xHRmN5bVl5ajEyMElralVVck43aXY3NUcwTm13RnFFWURVTG9MWW03Ty1lRldBRE12NGlXZmstcHM5Nm1GTEg1MzFQdm5hRzdEUmZQZzRwNXVNbnExQldUYUoxQVpMR256SHBnR1o3RDREUnJoOFR5OFRrUVVZYmhQSDVOTUhLNFZZLS14PXMxNTAtdzkyLWgxNTAtbi1rLW5v.TKVGoMvy4O7uyEcwiuwcuw",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "TwoStar",
+      "Currency": "USD",
+      "TotalPrice": 208.32,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.2",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast",
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Bar",
+        "Restaurant",
+        "Smoke-free property"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xHRmN5bVl5ajEyMElralVVck43aXY3NUcwTm13RnFFWURVTG9MWW03Ty1lRldBRE12NGlXZmstcHM5Nm1GTEg1MzFQdm5hRzdEUmZQZzRwNXVNbnExQldUYUoxQVpMR256SHBnR1o3RDREUnJoOFR5OFRrUVVZYmhQSDVOTUhLNFZZLS14PXMxNTAtdzkyLWgxNTAtbi1rLW5v.TKVGoMvy4O7uyEcwiuwcuw",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xHRmN5bVl5ajEyMElralVVck43aXY3NUcwTm13RnFFWURVTG9MWW03Ty1lRldBRE12NGlXZmstcHM5Nm1GTEg1MzFQdm5hRzdEUmZQZzRwNXVNbnExQldUYUoxQVpMR256SHBnR1o3RDREUnJoOFR5OFRrUVVZYmhQSDVOTUhLNFZZLS14PXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.UGp384Kvfb7B9fvPlOl9LB",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xFbXdLYjNHVlgxSTNGLUY5QVFScnNQRFZQSlo2Rl9mdnBPY2lVb19KaHZSMEJ2TW5GdGZ5SlNjMjhjMTE1TTd4YVQwVlVWMFVjdzJ5THV1alhPRDdDV09vd3dibzJrSFptZ1JhRkVVR3Z0LVBWWE90bk1zeUhHTFl5VUpVUWJwdFdPY2RjPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.N2S-utC35n2Hp3eCEA3I8r",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5LzIwbFFnZ2xxRF9qTFVodlJlZ2xlV2dXekh2WWpCVDBaWVEtWF8xNkxzb2ZpUnFra2NELUstc0hqbm0wTjYtMWVncUZYYmE5WDdLdUg3alBlVWxvX0xBRVNXSjFob0V4dEd2dDh3aVBnRWc5V01tOHlhY2tXYVZ4WXhTZ05VUkI4M2pPNHlwSXpoRzRibTFqVWxiU1ZTRGVlSXVwUzhWbz1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.pnCpqSXS3sdEOFt6exbR5E",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xXSmJMb0F6LVFtdV9nZmRhTGlDSjJNb1kzN2liRnNTN0ZMQnVtbjFpUWdNOUZwaDUzVWl5RkE4cWJiTGVWS3QwMTVuSDlpMkJrZzJ0V2ZLR2oyTDBOLUtrNnRGVzlTUHpUOGphY2RWcGsyQ1NmRFRST2FOdlpDX0FFa2pWVW50aWVVNHB6TFE9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.bMSDAdjsW_flhx6eI9h9Mc",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 4,
+      "HotelCode": "ChgIopb_xqX1-fyxARoLL2cvMXRmcWt3M2cQAQ",
+      "HotelName": "Colliers Hotel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5Lzcyay1SOUlQRFVHNFBjWEhuSkNuMjBOZXZFTXBpMHEzOUlkZElWaXRKUFVMcFd3VWJaeENZMlc5RXVTdUZjNlBNTWhPMW5sRHNoYXRrS0gwX2U4M3d5bDZhRXlGM2dqWkMtbUNDUjV5dUM5dGdMMUtSUUM1dVN2TkQ0ZzJ0Q0pNcWUxNXlQT3pUZ1FFajEzRTRndTB0NUhqUkN5NmJnWT1zMTUwLXc5Mi1oMTUwLW4tay1ubw.Xgg9zRdIQMrMe-AG0f7ABt",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "TwoStar",
+      "Currency": "USD",
+      "TotalPrice": 258,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "3",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Wi-Fi ($)",
+        "Breakfast",
+        "Parking",
+        "Kid-friendly"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5Lzcyay1SOUlQRFVHNFBjWEhuSkNuMjBOZXZFTXBpMHEzOUlkZElWaXRKUFVMcFd3VWJaeENZMlc5RXVTdUZjNlBNTWhPMW5sRHNoYXRrS0gwX2U4M3d5bDZhRXlGM2dqWkMtbUNDUjV5dUM5dGdMMUtSUUM1dVN2TkQ0ZzJ0Q0pNcWUxNXlQT3pUZ1FFajEzRTRndTB0NUhqUkN5NmJnWT1zMTUwLXc5Mi1oMTUwLW4tay1ubw.Xgg9zRdIQMrMe-AG0f7ABt",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5Lzcyay1SOUlQRFVHNFBjWEhuSkNuMjBOZXZFTXBpMHEzOUlkZElWaXRKUFVMcFd3VWJaeENZMlc5RXVTdUZjNlBNTWhPMW5sRHNoYXRrS0gwX2U4M3d5bDZhRXlGM2dqWkMtbUNDUjV5dUM5dGdMMUtSUUM1dVN2TkQ0ZzJ0Q0pNcWUxNXlQT3pUZ1FFajEzRTRndTB0NUhqUkN5NmJnWT1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.xL2jAL95SfhTdW6HsqOK7f",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1ZZTHc4aHdKU2N1Q1UyREtFZHVYdEJBUk1uODFBcWw3SVRmRE50VVZUb2t1RTEwSDlUXzRib3lwX1Z5VjN4bWZ0dkF2MnJIX2xQQ0VYdzBxdzZQbmRUbUk2emVpTzE5dVlZMHBCUmdXV3M5UXdVRGNyaU1aUWJKek9zNHp2QzJiWFIxd05Rd01jRVF0U3pBNWhhdkFfS1RjVGdFbnk4RT1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.ELCCFUFws82MdLLEH3qsmS",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xoMEs4NXdkMGxrS1VJMm5VOVFUZ3B2VTVnejZiRjU5MUVBVlpLZkl5UEJMUmM0RURhdlIzazFPNkt2UDg4alFDQ1hUWkdaLVlicWZ4MVdCTGJzVmpuNWQzZ2txb1VuZmgydVNGYTVuZUpYbGJEU3I0S0MzUEpWN1ZQT1ZMdExxOExUSnFpckljbGR6eWU9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx._jDq2O1fOYC0B-5i7VvTZw",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3RkR2VBVFZfRGVZdFI0SGNuM1F1UmxFSW1OdGt0OGhpaDNmY1pWODd4dERoVER4OUU4OTM0MWE3UTg5Z0RYaW9oMDVWLXk1dFlPNURGQ2hWOGR4bURPeWdRZVotTmxOZV9jZ0F3eWxmcmY5WkhMOXFYTUcySnNIVXVZb19uX203NXRmR0NrR3o0aTVqTEpDWlc1Y25kWlV6dEFUQkQ3RT1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.Tm5wdkyJA_fk1XQc08EI92",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 5,
+      "HotelCode": "CgsI7sKY5Znns8L9ARAB",
+      "HotelName": "Prince Regent Hotel London Excel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5LzBNY3N2ME9qTHRQUS1hQWFiamVuMFNteDZ4U2dZV2xOcU9rWUlHaHpCMDl6TGJkOXl6cGl4NTZYeVpLUWUxWDZKR25RbjdFZjN2YjRaMmw2Uk44ekpGMVI4WlNlTHhteUdMYW9vMzdhczVzNUcwWkVNLXJfR0JSbmtXZWtLSmV5Y0FBZThia3lYNGIzYm0tZW1pRFE2WHFEUGxtSGt4WT13MjI1LWgxNTAtay1ubw.tqdevLKzxkmURHaXROG9I7",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "ThreeStar",
+      "Currency": "USD",
+      "TotalPrice": 285,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.1",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Beach access",
+        "Free parking",
+        "Free Wi-Fi",
+        "Pool"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5LzBNY3N2ME9qTHRQUS1hQWFiamVuMFNteDZ4U2dZV2xOcU9rWUlHaHpCMDl6TGJkOXl6cGl4NTZYeVpLUWUxWDZKR25RbjdFZjN2YjRaMmw2Uk44ekpGMVI4WlNlTHhteUdMYW9vMzdhczVzNUcwWkVNLXJfR0JSbmtXZWtLSmV5Y0FBZThia3lYNGIzYm0tZW1pRFE2WHFEUGxtSGt4WT13MjI1LWgxNTAtay1ubw.tqdevLKzxkmURHaXROG9I7",
+          "Alt": "thumbnail"
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 6,
+      "HotelCode": "ChgIxYOs07XPvcGAARoLL2cvMXRkZDRybXgQAQ",
+      "HotelName": "Arriva Hotel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1hpbnM0MTY3TkNHMHkxdjVMTlpaTC0zU29KTS14VHlmOV9WcVBBY21CME5mN2U1bWZvcktNOVFvcDN0Yjg0NEVLVUdYWFpaOFB1QzVTeVlJZGRfQmNEalJXNkJyRFhWS2VrZVlteDQ5WnVYa05CbUNkdXRLbUVvZ2FDM0EybTFOZDJuSXRSNmc5TmhraGEzM1RSWGJGU2hfYzRpMUxPWFpyWEpzem9zdlR3PXMxNTAtdzkyLWgxNTAtbi1rLW5v.ucfH9Q-9nUO-WUCxhFI-dk",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "TwoStar",
+      "Currency": "USD",
+      "TotalPrice": 309,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "3.5",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free Wi-Fi",
+        "Restaurant",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1hpbnM0MTY3TkNHMHkxdjVMTlpaTC0zU29KTS14VHlmOV9WcVBBY21CME5mN2U1bWZvcktNOVFvcDN0Yjg0NEVLVUdYWFpaOFB1QzVTeVlJZGRfQmNEalJXNkJyRFhWS2VrZVlteDQ5WnVYa05CbUNkdXRLbUVvZ2FDM0EybTFOZDJuSXRSNmc5TmhraGEzM1RSWGJGU2hfYzRpMUxPWFpyWEpzem9zdlR3PXMxNTAtdzkyLWgxNTAtbi1rLW5v.ucfH9Q-9nUO-WUCxhFI-dk",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1hpbnM0MTY3TkNHMHkxdjVMTlpaTC0zU29KTS14VHlmOV9WcVBBY21CME5mN2U1bWZvcktNOVFvcDN0Yjg0NEVLVUdYWFpaOFB1QzVTeVlJZGRfQmNEalJXNkJyRFhWS2VrZVlteDQ5WnVYa05CbUNkdXRLbUVvZ2FDM0EybTFOZDJuSXRSNmc5TmhraGEzM1RSWGJGU2hfYzRpMUxPWFpyWEpzem9zdlR3PXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.eocRb5wzKZT4k-UwkmrhIY",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1FfWk9TWFgzc0tmSXRFUjg5NFFSNTEtMVc4SVlmazRLbUpNMlN1dHNvNlVMeGhDVnJoNWZlYUd4bFoyMjQzQnp3UFZoeGRqeXBYa1U5Nzg3TEdZei1FbHliRlpfYjR1ZXEtR0hOT2oyRGNrMlVJUzh0cm9UUFF0UFI0d0VvckF6NWhWUHgwNnNXUFJvVkJ5UXpOeDdkS3pvNlMwTFNuVT1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.-yFvOHrja1SJEKQbxpe49o",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3BNMFVaODl6aHRQejktdl9kbjI5RDlHZkZ3c3ZkRnBkd190VHRJZEpkQVdYUERBNTRfYUVxaWx6RUlJV0gyZnYxdU5aR19MZTdSbllSeUNWMFdOdEk0d3UwXzd1MHdza05ILUZpcHF0YVU1Vk1hbGRpOWh4MEV3ZWdJcF81VmhCdHJmVG1GaExLbGRBZ0N1QVpxbDU3c3NhZGFTemlRPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.I-alsJKXLvWbBSu8pAWOpJ",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2txX0VnbVdMLUF0SXV6WTJGMXdOQnRYeXdlS3RZU3VVdXB6cEUxUE1pMElLTUFwVllNSDBXNm9HUTNMbmxyLTdKUmhYajZUZ2NramdEOXBsRTBUUWlybXN2YzRpTTlObXFoQUs1Qlc5QkJ5RGNHR2RsRXh3VzNKYTRnamlKTklIMk5sWmNSMjhOUTl0VG89czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.XHlJbMrHXjNvga3OzepjIH",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 7,
+      "HotelCode": "ChgI84bWy9a76fIFGgwvZy8xcHAydGs0czMQAQ",
+      "HotelName": "The Corner | London City",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tkajRxS2tRU2NWWHR2b3JVR040YjVYcHByUElxR3lzOVZkeHVMVDZpZUdoT25VREFVU3V6RlpzN3UwakM5X1d1MU5mSVQ0RlpsUTNCMXRnZ1B1SXBhSFppSHdFeGxaNGZiYUo0WHJIbm5Pbmk5UlI0a1Mxb3p2RjVoNnpWSjVaUHV4UWs5PXMxNTAtdzkyLWgxNTAtbi1rLW5v._M8VHFQo5tchxqV9mcVYiS",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "ThreeStar",
+      "Currency": "USD",
+      "TotalPrice": 324,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.4",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Air conditioning",
+        "Pet-friendly",
+        "Bar",
+        "Restaurant",
+        "Room service"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tkajRxS2tRU2NWWHR2b3JVR040YjVYcHByUElxR3lzOVZkeHVMVDZpZUdoT25VREFVU3V6RlpzN3UwakM5X1d1MU5mSVQ0RlpsUTNCMXRnZ1B1SXBhSFppSHdFeGxaNGZiYUo0WHJIbm5Pbmk5UlI0a1Mxb3p2RjVoNnpWSjVaUHV4UWs5PXMxNTAtdzkyLWgxNTAtbi1rLW5v._M8VHFQo5tchxqV9mcVYiS",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tkajRxS2tRU2NWWHR2b3JVR040YjVYcHByUElxR3lzOVZkeHVMVDZpZUdoT25VREFVU3V6RlpzN3UwakM5X1d1MU5mSVQ0RlpsUTNCMXRnZ1B1SXBhSFppSHdFeGxaNGZiYUo0WHJIbm5Pbmk5UlI0a1Mxb3p2RjVoNnpWSjVaUHV4UWs5PXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.dcy6Zb6ZCsKuOdVwxTWj-m",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV241OWhNQ3M0Y3BucW9Yd1F0a1dfNEVhMHNWWjFnY1pHUldaQ0syMWhERTlaNVFnWUpfZE9LZzJmdmtVdDhMVGhmVG52WmV0b3FBX3NrdU9ySmhZQjhmLVNpTTJXQ3FubzFPS3NCN1pVMzBNRmo3UWtTbl9SdVAwZlphVzhwTUFpR2txTm5RTFdBb2wzQT1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.rciYMxONjBV7Vd1UUbLylo",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25DRXFqaWtFWFRKTkp6Z0hBOV9IU2xUc1ZsRTdMeGdVQ1pIdThobV9CMVF5MWcyaWdnY3JGUWV6bFlYYnVlbFhmUHFzeE1CMm04N2RBc3QwczJJbFZuRzVQZkpoZHBiTXZQWGdYa3Jxbk96LW5PVmJ2dkdvbzM4SDVycnBLODhJT3RRcFBEPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.c0653083rkcoSfWVNTxuNY",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xfWkNiemZfOFFKS2lrNVBoLVA3dTltdGUwN0REVTBQSDc5VE0tV2RDUXp6b0ZHTnRSZmR2MUJOcjdzandoM3pONjdld1kyLXJ2SnAxM0UwQkZVMkl5blJKV3QzM1pqMGhrSmJWU2poT2IyMmY2NmZPUXg5TmU5Y2pwZ2lEYkFwcEpEVzA9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.ghx-ziAjR3JyGHkn-XYdGn",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 9,
+      "HotelCode": "ChoIsemFieT7-auZARoNL2cvMTFmc18xd20wYxAB",
+      "HotelName": "Hampton by Hilton London Park Royal",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21raEhZMTdEdmJUTUNMcExDMXpLakVHWGJ0R2Q0SmFiVWZ0UWp4OGFzVFQxTlFmZ0xaRFNvNmxybmJWaGtRVmFxMFV2OHFNYWxiN0gtNGtnSXRGMU91X2N6M1hGcFNDcmFsYnBHVHRWa3pvdG8zSXo1V1hRMmltNFlNSjVLdlZoR29BN00tPXMxNTAtdzkyLWgxNTAtbi1rLW5v.xpZI9ShdobMk5wweNChZc_",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 372,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.3",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Bar",
+        "Restaurant"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21raEhZMTdEdmJUTUNMcExDMXpLakVHWGJ0R2Q0SmFiVWZ0UWp4OGFzVFQxTlFmZ0xaRFNvNmxybmJWaGtRVmFxMFV2OHFNYWxiN0gtNGtnSXRGMU91X2N6M1hGcFNDcmFsYnBHVHRWa3pvdG8zSXo1V1hRMmltNFlNSjVLdlZoR29BN00tPXMxNTAtdzkyLWgxNTAtbi1rLW5v.xpZI9ShdobMk5wweNChZc_",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21raEhZMTdEdmJUTUNMcExDMXpLakVHWGJ0R2Q0SmFiVWZ0UWp4OGFzVFQxTlFmZ0xaRFNvNmxybmJWaGtRVmFxMFV2OHFNYWxiN0gtNGtnSXRGMU91X2N6M1hGcFNDcmFsYnBHVHRWa3pvdG8zSXo1V1hRMmltNFlNSjVLdlZoR29BN00tPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.qhM-b6_RFKFpZIEY2dcoDm",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25fbU5PRUxrUkpOc3FkRW1vaktCRFdYazVuVDRlNnpSdGwwOV9nVnBLX19MZ2MtUDdCamRrenhrbFV3LVlMV0ZZV1JUVHVkbE9qcVdwNllfT1Jjalp5blg3VTFJekRUMUpPc2xrZHQ2ZTQzaUl2Vk03T3g5WnVoRmF2S2prY0VYUWR2VXktOWN1aG1pQlg9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.Dylhus7Cna2Pd80MvhwE_s",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t4SFE3UlVhT291Tk9vM1lpU1FvZlg1VVJqd1Z1TzE0ZElfYzNTelJYQUZjNjVhcThobk52eUVtd0twWVFVbFdPd3RoenZLRlIxRVF5ZHY5ZXc5OWZIYmhKQ1hZT1ZMcmdrWksxSlpBbUFQRE1lZm5nYXVZbHhmcW5KTkxnd1dCOHY5bm5OPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.heoKS_-imHtQJojtSJl7QQ",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2thRVZFR3Rva1h1eDZBSDB1dXZWUHktUEJ4RTZjSTR3eVFrRGdrdkpHWGUzSXMzT0tLY3AxUUdzaUtQUlg4VzlnZERRZWlmYk80aWl1X2E5MGxEdFJXN3B2a0h3S21rS1dGc2prYUpPZ3FSVlNfaG9hanMxbDF2VFpVQ2htb3JTa1ZiaXc9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.f7GOfj36M2n89acxe1FYuC",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 10,
+      "HotelCode": "ChoI9MrR18nY_ZneARoNL2cvMTFzbW56bWhrcBAB",
+      "HotelName": "The Prime London Hotel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1wcm94eS9BTGQ0RGhHa0xDSnRNcXZJTVZDbkNsV0FJUGZRMXFkUTdZMlhvNl9nZVhhRDNwQURuMnU4N2QzM2d6M3l6S0Z6UFVoTUl0ZTR5Z05HbWpzam1jb0xDS25CcmJfRWFVem9SdFhGQlZqYlY1dTFLTkRXajhvVjFGVGx3WTVpQlpGZWh5b0tYT1AwbUhXbEVnY0VaamZoWmZOTkhLTEFZajN3WkNKaG15TzVpWnd5THBSSXhkYzVjQ0VjcEhXeHp3PXMxNTAtdzkyLWgxNTAtbi1rLW5v.xnou4jz2EerZYE_2l-AuT6",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "All",
+      "Currency": "USD",
+      "TotalPrice": 375,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.4",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free Wi-Fi",
+        "Restaurant",
+        "Smoke-free property"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1wcm94eS9BTGQ0RGhHa0xDSnRNcXZJTVZDbkNsV0FJUGZRMXFkUTdZMlhvNl9nZVhhRDNwQURuMnU4N2QzM2d6M3l6S0Z6UFVoTUl0ZTR5Z05HbWpzam1jb0xDS25CcmJfRWFVem9SdFhGQlZqYlY1dTFLTkRXajhvVjFGVGx3WTVpQlpGZWh5b0tYT1AwbUhXbEVnY0VaamZoWmZOTkhLTEFZajN3WkNKaG15TzVpWnd5THBSSXhkYzVjQ0VjcEhXeHp3PXMxNTAtdzkyLWgxNTAtbi1rLW5v.xnou4jz2EerZYE_2l-AuT6",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1wcm94eS9BTGQ0RGhHa0xDSnRNcXZJTVZDbkNsV0FJUGZRMXFkUTdZMlhvNl9nZVhhRDNwQURuMnU4N2QzM2d6M3l6S0Z6UFVoTUl0ZTR5Z05HbWpzam1jb0xDS25CcmJfRWFVem9SdFhGQlZqYlY1dTFLTkRXajhvVjFGVGx3WTVpQlpGZWh5b0tYT1AwbUhXbEVnY0VaamZoWmZOTkhLTEFZajN3WkNKaG15TzVpWnd5THBSSXhkYzVjQ0VjcEhXeHp3PXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.Qqxh2sxYqizT4XGqPVn1wg",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1wcm94eS9BTGQ0RGhGelBsUzlRR0FhMHlYV3hZZ18wekY3VlJuVjhMQmIwRi15SlNfcndwaU1XZS1SNldzZFBmUndNYnlYOEx4bHRpU2lQU3p3UXZRcy1VVlJ2M0JLcUw3SVRwSUVDT09HdnJEY2dYWFlSdEx4MDVpQ0JNTWNBb1VBU2dHNmJySDFza3RuZTdzRnNoLUNSTzd5WDNETGM0b2RSeEtlVXpWZ0xMeHB3ZGxRMHBBRXVoOXJhREoyQXR1Y01BPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.NHlUkaUjxnXNW6wCB-y3rE",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2x2WEwxc2NEWkxDdXdXTi1MTnZ2dk5DVUZJbkstRVA3XzM3Z2pKSnBqaEhzNFRQQ3NTR3lHLW9GX2czakV3M3VnbkljR1RoN0RNNHlkODJTRmZSbVlKRUpLRnhpb2xaZjQ3QndCSEM5ZVBjZlhDNjVuSnctVFRFTXdBZWlVc1I3am9ta1ZpPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.WWupb639Pr41joCkhWQGBD",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1wcm94eS9BTGQ0RGhFbE9YanVubVJydE8yYUY4b3ZITFBmc0pRT1gxUlI5cDFtenlmYXZ1VEdfU21DWUxpdFRzTWlKX25SZ19pbnQxYVBhd04za2R6VXpZQjVkN1ZRV1U5YXczdHdNTjd5c04wZGxHeXhTRlBGQllCcTYzQ21rNXIzeGhDN2c0N2Ftelc1bGE2bDlIbk1UaUFubkZTMTlKcEc5TldIaENkNHB2aDhaU1kzaUJjZ2tIczNrSkRNZHMxUFlnPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.s4MQ9VPeu12XO1UyDuNh0v",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 11,
+      "HotelCode": "ChkIlZz6zeG1lrbxARoML2cvMTIzNTlzNHFfEAE",
+      "HotelName": "Royal National Hotel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1F2enAtUjVmRlVONmNzaGVnb1pNM19iRnJRNmRFc01MSTBEbi1VeVdadS1XNm5WWDl5NEpqTmJCcFhIYzRpZFUwYmNvbW1TUGo2ZF9qV0lRT1hfd29ZcTZVc2lhZ3JQRVNXR1F1MkpTWEU0VWMtMWFDbXpOc0JuMU12NmVxTl83Sy0td0Rrc0VMWFFrRFJWckc4R212b1FkazVhMUMyQnpQYUc3RHlhM3BnPXMxNTAtdzkyLWgxNTAtbi1rLW5v.BwTIlnOOTy_345Or3Fa-9Y",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "ThreeStar",
+      "Currency": "USD",
+      "TotalPrice": 441,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "3.6",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Bar",
+        "Restaurant",
+        "Full-service laundry",
+        "Accessible",
+        "Kid-friendly"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1F2enAtUjVmRlVONmNzaGVnb1pNM19iRnJRNmRFc01MSTBEbi1VeVdadS1XNm5WWDl5NEpqTmJCcFhIYzRpZFUwYmNvbW1TUGo2ZF9qV0lRT1hfd29ZcTZVc2lhZ3JQRVNXR1F1MkpTWEU0VWMtMWFDbXpOc0JuMU12NmVxTl83Sy0td0Rrc0VMWFFrRFJWckc4R212b1FkazVhMUMyQnpQYUc3RHlhM3BnPXMxNTAtdzkyLWgxNTAtbi1rLW5v.BwTIlnOOTy_345Or3Fa-9Y",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1F2enAtUjVmRlVONmNzaGVnb1pNM19iRnJRNmRFc01MSTBEbi1VeVdadS1XNm5WWDl5NEpqTmJCcFhIYzRpZFUwYmNvbW1TUGo2ZF9qV0lRT1hfd29ZcTZVc2lhZ3JQRVNXR1F1MkpTWEU0VWMtMWFDbXpOc0JuMU12NmVxTl83Sy0td0Rrc0VMWFFrRFJWckc4R212b1FkazVhMUMyQnpQYUc3RHlhM3BnPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.vnLWSTGYLXhoM7MC_nTRB9",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xXdVQwRWZ5T1ptZHN4RkJUS2JYTmFxWmJvMTBzd0NhTFNxclF3RG5aRS1zdG1aZFpsSEhGSFJRMGpIUGVFLW9FQndvNFp1S2d6Q2dMelQ4d294ZXlTTWpGTXVKNnFkOWFNLWdKT0hMWHozNTY3c1JsWWxKVHZmQkZYclBpSlBaQkVGTmZ3QXc9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.KDxXBSIhiqAoBI3V2fM30M",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21XcTQ5U19xbEtHZ0VhbGp3WEMyMkxCX0RydHdWS0tMSGRjeEJ3MXA1OS1tTzk4NDNRay13NXRRaXk5VWwtTDdiNVVpQmVuSWxNaDhHc2lwSzJkX2hWV1RWbGg5NldiMFo4SHZhNFUyTU41d295V1FSVDAzMGQ3S3dZMTJfd0NqNnNXMkREPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.fIZTg9TUBrOaraCS-e45dF",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2w5dGpDSWlYV0hWRW80VU1fUkxob2N6Y2UtR2hZWDV5bF9CZFVXSWxtelUwYzFZeTQ2a0E3V3h4M2EtUXdvZS1ZaTlESVVEYUJXaEdmMVRwZlBKRkROaFJNbWxmRlJONTNaWmViQU00RUc5MG1Qdy1TdXB5NUNuY1FINXpPV3U0X1paeEQ2MEE9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.rVHVwwdb9hmNF2m_SNKCO5",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 12,
+      "HotelCode": "ChoIhauu1N-pgf_7ARoNL2cvMTF3cWNjM3hwcRAB",
+      "HotelName": "Zedwell Knightsbridge",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1wcm94eS9BTGQ0RGhHUHhQR2t1cktsa1BMRm5pdkswckhmRUlzMzAyYkROcE85R3BnN1lsbW54eGRTazRIYko5SXRFUXZ1QVdWNF9DZXk2ZWFyanJOZFN6Ukxld1RueHAyeHg1N2s1bHVrNVVsOVNHc2tJTWhIYUV0WEdmQTlmZ2ZBQlpvLVFtWEpjdlZhdjlBQnpFOGMybHVhVk82bXBpR3dPam5EVk15Rks2NlBzT3o0ZDlYbjJzVm5za2Q0d1UwXz1zMTUwLXc5Mi1oMTUwLW4tay1ubw.JjS1YVrJoS8toMj_df-YDI",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "ThreeStar",
+      "Currency": "USD",
+      "TotalPrice": 447,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.4",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Breakfast",
+        "Parking",
+        "Accessible",
+        "Smoke-free property"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1wcm94eS9BTGQ0RGhHUHhQR2t1cktsa1BMRm5pdkswckhmRUlzMzAyYkROcE85R3BnN1lsbW54eGRTazRIYko5SXRFUXZ1QVdWNF9DZXk2ZWFyanJOZFN6Ukxld1RueHAyeHg1N2s1bHVrNVVsOVNHc2tJTWhIYUV0WEdmQTlmZ2ZBQlpvLVFtWEpjdlZhdjlBQnpFOGMybHVhVk82bXBpR3dPam5EVk15Rks2NlBzT3o0ZDlYbjJzVm5za2Q0d1UwXz1zMTUwLXc5Mi1oMTUwLW4tay1ubw.JjS1YVrJoS8toMj_df-YDI",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1wcm94eS9BTGQ0RGhHUHhQR2t1cktsa1BMRm5pdkswckhmRUlzMzAyYkROcE85R3BnN1lsbW54eGRTazRIYko5SXRFUXZ1QVdWNF9DZXk2ZWFyanJOZFN6Ukxld1RueHAyeHg1N2s1bHVrNVVsOVNHc2tJTWhIYUV0WEdmQTlmZ2ZBQlpvLVFtWEpjdlZhdjlBQnpFOGMybHVhVk82bXBpR3dPam5EVk15Rks2NlBzT3o0ZDlYbjJzVm5za2Q0d1UwXz1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.nKf_bRWPjI_HcKef-OYIou",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21kWDRrOXNNRVhkT2Myd2dQTkFPM21Uc2tzalZSSGZ6eG5LYjU0TkxUZ18yWWhiOGNPb1Z2SG1NS0laSXh2cnMyNEgwZkFoUGFHcEVmWXFoOU5BTS1hZllPWkItSDcyUDdqVXJ1dXJHc1h6bmdOekdKNzdGU21ER3FEMi15TDJlTVVkNUdZPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.Yfq0unEBRp3vE6F4YARqjs",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV243c3EwdEhCRHhBY3hsNExIMW5sVjltSW0zNTlLWkI0WmlSWW9GV0NsOC1KRjNXcDlncDBuYWcxVTdVN0ltc1Z6bDNxZ3FxNng2YTNhS2pJVmFoaTZOa0l1YlZWTkY5SldlakFTZDJkU2JQZHpvNkFKbzltQnpFNnY1b05lWjA5WEw1ajlucmc9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.gQd7VaWxU79_AsDfcoAGVg",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2s0QWcya2Z6WVZWWFhUVXdiUjNDOVFFZGhQU1FaRVlPd0RfVTlZUHV2YVdMUHc5cWdZS2gxTmw2NlNKNjZLcWUzR0ptYklHMjJ3QlB1aXI2Q29SZmtpWWs2MzFKRmJZTzZVYWJXUktsb19UZnlaOFZyck5GX3o1aTRhc3BtZXdWNkpCT1E9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.VYF0EkwkAW21WXBVz8oJHB",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 13,
+      "HotelCode": "ChkIpsmBsKvd-adpGg0vZy8xMWR4OG1teDZkEAE",
+      "HotelName": "The Wesley Euston",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tWTkx2ZXN3MDJaTFJDd2puVlpjQ2ZqUk1lYVBveUNyT092VEQtQmlHMGFNdXRVdXNsSUdUZV9LaDQzUF9QRTYwTjJfUjJNVmpxOXB0MkNTUmVpUFIyVXRZSGVXeWhiYzl6dGN3XzhsTDBrblBlaVdmQkZ1ZDg1T3dLeHZ0MlJOY2F6dW9jUGpjNVU5TW89czE1MC13OTItaDE1MC1uLWstbm8.Z4sklfwo17Dfz2y3jX3VPF",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 492,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "3.9",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Fitness center",
+        "Parking",
+        "Bar",
+        "Restaurant",
+        "Room service"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tWTkx2ZXN3MDJaTFJDd2puVlpjQ2ZqUk1lYVBveUNyT092VEQtQmlHMGFNdXRVdXNsSUdUZV9LaDQzUF9QRTYwTjJfUjJNVmpxOXB0MkNTUmVpUFIyVXRZSGVXeWhiYzl6dGN3XzhsTDBrblBlaVdmQkZ1ZDg1T3dLeHZ0MlJOY2F6dW9jUGpjNVU5TW89czE1MC13OTItaDE1MC1uLWstbm8.Z4sklfwo17Dfz2y3jX3VPF",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tWTkx2ZXN3MDJaTFJDd2puVlpjQ2ZqUk1lYVBveUNyT092VEQtQmlHMGFNdXRVdXNsSUdUZV9LaDQzUF9QRTYwTjJfUjJNVmpxOXB0MkNTUmVpUFIyVXRZSGVXeWhiYzl6dGN3XzhsTDBrblBlaVdmQkZ1ZDg1T3dLeHZ0MlJOY2F6dW9jUGpjNVU5TW89czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.oiUa54oI2w5fgRHKFeNRXr",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21FMExXdWVlNUQ4Y29tVTZ0VVFDaVFnNl8wZlVTaHZEVVRhTGJpbHFCR2VCMG94VTYySEFrV2trWU1jSGdDSHZSelNkSEpoSVhhOXdpMHFJQlRLY1VuU2JMVjFaRk1rM2t3amdHeGhPMWN4aVFqWDNTRG5WeVVUVjdhWWl2Z1U1N0F4ZHQ1QWhsdEhQOD1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.m4R_P_JkfsyOlnd4VrKq9r",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21UTXg5Y21kM0Z0WXBGWkh4SmZSME5yTER2ck1yXy1INVhodlFCMWRZQ05ZRWhYSDljMWlid2tLd1AxVURyc2Y5MXBRZENDZzV6UVQwcFIxMGZOR2lwQTlKM0xFWC1YSE1WNVJSVkd0QjllVzI0dWJFQVNHMVBtUC1MaFdoX1h6Rzg9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.qBFwc-qB623P-AmCHfEXH4",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xncV8tUEdsNmNsby1WdlNpWGJ0Yzc3SkVyNUtDdHFpcHJDYVcybm1HcVlqajFyVjNPOTJkRGl3RGR3QXJSaldmYmtvcE8zWDU1Y1pxM0d3RkM4OEtXYU53a1FVa19TMXZWOG4zdE80M2ExZld2VVNwY1VBLWZraTJZbHRIclBQemhQVkJySU5HR21MQ2s9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.GcFlVXq085z_iR-qqAVSRG",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 14,
+      "HotelCode": "CgsI_ufxi8Hf49iJARAB",
+      "HotelName": "Aloft by Marriott London Excel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0JMNHhHaUk1Y0pYOVo5OGtNMks4bjVRb0FiR2lQYmFvOHl5MC1PVnNleERXb0RoVG5kTFRBejl2SVNiYXBxS2dOLTBhWWZEUFMxY192dHlpWm02Tm55NmtXRGNPSVlxSXN5M2pOdW9zQUJ3VHRvZXJNbTZ2TEt2V3hBTFU5LS1qSGhGeG9wRV96c3R3amUxOXZWM0ZGWnVyVEs1czJnPXcyMjUtaDE1MC1rLW5v.Ka7W1UhTFxt1QxVwt3AR4U",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 501,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.3",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Pet-friendly",
+        "Kitchen",
+        "Beach access",
+        "Free parking",
+        "Bar",
+        "Restaurant",
+        "Free Wi-Fi"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0JMNHhHaUk1Y0pYOVo5OGtNMks4bjVRb0FiR2lQYmFvOHl5MC1PVnNleERXb0RoVG5kTFRBejl2SVNiYXBxS2dOLTBhWWZEUFMxY192dHlpWm02Tm55NmtXRGNPSVlxSXN5M2pOdW9zQUJ3VHRvZXJNbTZ2TEt2V3hBTFU5LS1qSGhGeG9wRV96c3R3amUxOXZWM0ZGWnVyVEs1czJnPXcyMjUtaDE1MC1rLW5v.Ka7W1UhTFxt1QxVwt3AR4U",
+          "Alt": "thumbnail"
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 8,
+      "HotelCode": "ChoI6_CV8o_qxuCrARoNL2cvMTFiYnJoNHN3MRAB",
+      "HotelName": "President Hotel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L211STFVdU94YzNkdTNld0VFSkRlZVNLb3hla1VqbFpVM0dLOV9teHhXUDAwMkFNQ0F4TkdHQ1hRUVhDLXR6V1JhSFc3MXhiaS1kNTdtZTloM3I0SHZHYjRDRXBFYTI3MHI4cDlkOEQ4MEdmYzd0aU95NWNhMTJqWmZNQjBqYjJubkZvYUVwNkVZSFlSYlVlSXdxY241SzNQSzZYTTZnPXMxNTAtdzkyLWgxNTAtbi1rLW5v.P1rS68JBgB10NuzLPVzA__",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "ThreeStar",
+      "Currency": "USD",
+      "TotalPrice": 528,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "3.9",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Bar",
+        "Restaurant",
+        "Full-service laundry",
+        "Accessible",
+        "Kid-friendly"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L211STFVdU94YzNkdTNld0VFSkRlZVNLb3hla1VqbFpVM0dLOV9teHhXUDAwMkFNQ0F4TkdHQ1hRUVhDLXR6V1JhSFc3MXhiaS1kNTdtZTloM3I0SHZHYjRDRXBFYTI3MHI4cDlkOEQ4MEdmYzd0aU95NWNhMTJqWmZNQjBqYjJubkZvYUVwNkVZSFlSYlVlSXdxY241SzNQSzZYTTZnPXMxNTAtdzkyLWgxNTAtbi1rLW5v.P1rS68JBgB10NuzLPVzA__",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L211STFVdU94YzNkdTNld0VFSkRlZVNLb3hla1VqbFpVM0dLOV9teHhXUDAwMkFNQ0F4TkdHQ1hRUVhDLXR6V1JhSFc3MXhiaS1kNTdtZTloM3I0SHZHYjRDRXBFYTI3MHI4cDlkOEQ4MEdmYzd0aU95NWNhMTJqWmZNQjBqYjJubkZvYUVwNkVZSFlSYlVlSXdxY241SzNQSzZYTTZnPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.5fV6yVICrehuXtK_mYh4xi",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2s0cm12MjVQc004WmR5R2pucmZTLUoyVDUxajcxTlpVZlhXRGtUeDJmUVl4N28yQ05pWllLbE9jX3QtdWlPZXV0TVpYcnlQMlZjNTl1V2NzbnZZb2RFOGhyMUlfcmZRbDZUS0NETVRrSURTbllpNVhHUnZyY1RFN3hnQmIxaDVwdEhkX1U9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.8p_f5UOLfpCsWoCCdRfcy_",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xvVEdQRFotdVJtSGxGdXhHZUhTclNPa1FMVmFVdmxhMkI5TkJubWZVZXd5VGpXNFg5Z3FtQ2kxSGxFVmVsdnllazBqN1BraURXc3RCYjFQaUdCczRQZTVVWDA0OFFTcXAwSl9JbjhNbVUweEVMSHp5LXE1eEVMeEdXQVJUWjRiWW1Rb2ZKVEE9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.2NrVWK_5TvYYOVFHSWKpKl",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0xVSkg2NVFoVkhVLWxEZlhsNTViampUVi1ES2s2ME42N0NGWDA5UFcwT1kzMUdUUnhNZXJfSnFBQWJNQnpiYzdubEdkRk1zV0dFb1czcTY5WWZla0lzTWZWVWxHdHdXeTQ1YXBmTkpra21GQ20zek5zbFo1a3dPTDItSVM1WW05X191amJPU1JrV0JrYUF6YzZNV3B0d0hKTXllZjNRPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.Y_HjRZQc6jxi6I-b0pJOHB",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 18,
+      "HotelCode": "ChkI_rW-wafy_admGg0vZy8xMWRfZDBiMng3EAE",
+      "HotelName": "hub by Premier Inn London Westminster Abbey hotel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21nazRIY0p6VEpLWFdKTnpNRkxoTmxqbkdFTzdpWTFrOFRKc0xsYmEzOE54QnhjcUktaU0wVnVFMmQ4UWhFWjlJRktlbThJRkFUczhjRzBJWHFzS3M4d0NzOVV4aU9zcVNwaWhkZ2FrYzlYRVlvdUhNZ1VwTHFjU3VYNDhGNC1GRVNxRW1pPXMxNTAtdzkyLWgxNTAtbi1rLW5v.WxzfFKJQz22Z1jRo4uYhn9",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "ThreeStar",
+      "Currency": "USD",
+      "TotalPrice": 594,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.5",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking",
+        "Air conditioning",
+        "Bar",
+        "Restaurant",
+        "Accessible",
+        "Kid-friendly"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21nazRIY0p6VEpLWFdKTnpNRkxoTmxqbkdFTzdpWTFrOFRKc0xsYmEzOE54QnhjcUktaU0wVnVFMmQ4UWhFWjlJRktlbThJRkFUczhjRzBJWHFzS3M4d0NzOVV4aU9zcVNwaWhkZ2FrYzlYRVlvdUhNZ1VwTHFjU3VYNDhGNC1GRVNxRW1pPXMxNTAtdzkyLWgxNTAtbi1rLW5v.WxzfFKJQz22Z1jRo4uYhn9",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21nazRIY0p6VEpLWFdKTnpNRkxoTmxqbkdFTzdpWTFrOFRKc0xsYmEzOE54QnhjcUktaU0wVnVFMmQ4UWhFWjlJRktlbThJRkFUczhjRzBJWHFzS3M4d0NzOVV4aU9zcVNwaWhkZ2FrYzlYRVlvdUhNZ1VwTHFjU3VYNDhGNC1GRVNxRW1pPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.WhGQiBot1bR9011XTZZCb-",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xxbVVHVXpmV2J4YVVlaGRTVnE3WVM0S1VzT3JoRVdyY1FzM0ttVzRXMVJQS2Z0cG16YXZWZWlmVC1WWFAtdHlubWZ6Rk9BNDYxVjNHVVBFQjBxSHZDMHRwQ3BWS2JYTkVZN05vNGJLaHl6R1RKdUZnVEc3VDdYeGg1V2ZtZ3VQODlENUJJPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.Jnw2My0ti4edaHe5GatknH",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xpaG83LXl4WVJ1Vk1mR1djVFk1V1N1ZDVfS1JqYkFkS3o3QWVpNkoyc0VVcXRvcnFxYU9QSzBtNkE4NTVNYmplbFBqMXpTMHhNTEhrMTlrU0Y2ZGp2Sm42cEpNT2hMeDA4SW9GaFpYTFNFTFk3M2VNNjdEcVBhYldreUo0TFZ6eDc3YmpFX3c9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.c2bRECW65W7rmPR8zh-vlo",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25UOGJyeFJfRHdIeTdwVjBBN09KMktwcy1oQjJjZ2dhTm9DUTl1TDIwVEwxSmlyNmhTY3lWS1VsVVBUdTg2bllxVDhGRjZvRXQtdmJZRVZxQnZ2TWJTNG9TTjJTT1hFZFZvNm5TTXhfZ0tOcWQ0T1VFMnVhVjZFUk9Mc2pjTmxKVGs4RTQ1T0E9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.AHzrKl4QXogXoLqH9s49vp",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 15,
+      "HotelCode": "ChoIzI_OlcjkyPLPARoNL2cvMTFmcDMzN3g1MBAB",
+      "HotelName": "The Z Hotel Trafalgar",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV213MEgxOTdFbDNRM1Eta2N2SzFqNS1Db012NlBTVWJMZ3hsZ2syakt6ZXF1VldiZElJdGdaR3dLQ3Z6Y21vcWY1cjB6eGt5Y2JNSTZyR1FqLWl0OUxWQzBvRUp0T1NzQzJiYjZUNWRQYUVCT2ZGVExSWng4a0dIX0ExZHdxVTB2eGFZd2gzPXMxNTAtdzkyLWgxNTAtbi1rLW5v.TgobCE2sT8aaLvx65EwARG",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 597,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.5",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Parking",
+        "Bar",
+        "Restaurant",
+        "Accessible",
+        "Smoke-free property"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV213MEgxOTdFbDNRM1Eta2N2SzFqNS1Db012NlBTVWJMZ3hsZ2syakt6ZXF1VldiZElJdGdaR3dLQ3Z6Y21vcWY1cjB6eGt5Y2JNSTZyR1FqLWl0OUxWQzBvRUp0T1NzQzJiYjZUNWRQYUVCT2ZGVExSWng4a0dIX0ExZHdxVTB2eGFZd2gzPXMxNTAtdzkyLWgxNTAtbi1rLW5v.TgobCE2sT8aaLvx65EwARG",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV213MEgxOTdFbDNRM1Eta2N2SzFqNS1Db012NlBTVWJMZ3hsZ2syakt6ZXF1VldiZElJdGdaR3dLQ3Z6Y21vcWY1cjB6eGt5Y2JNSTZyR1FqLWl0OUxWQzBvRUp0T1NzQzJiYjZUNWRQYUVCT2ZGVExSWng4a0dIX0ExZHdxVTB2eGFZd2gzPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.m5mU-g2I_dmTGh-bX23KlE",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1N4UnVocjRxa0hNNUlyREE5X1ZYZWlaN1VhTXZFMk5BZ0JHSkdYYnBUUXlaOWQ4R19ybkQxYzBBTW9xNDZMa3RYTmJ2d0RReTNwZVc3b3hDQkRya2lRaURBZzlnMktTSUp3WUo2bk1rRVMzRWJqUmRESVNqV01vU2hNWFlwNDNHVTNzY2stZjhDVFlUSkdTLWtfX1NURTE2RXpJMVZRPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.X_RiLU3GJK_R7_RwBmlpfD",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0kzdFloeXdhcmxBWHVIUVRNb241U0FHTng5aWp6UTVQMW5uTVFlVGhwTng0TGZKMDR2LVhvUUdZakhKVEVLMzJOY1dWNkcyOGF3TjlsanV2NHJyNm5kalhFcThWSS1CSDY2SGs5WDdPN2hmSFY3YlhtUm9tZEktdHZ1T2RlRmpWZERiSW9laThSY3pjOHd0SHVhUnVqLUtRMTRjdm1BPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.Uy4CVnUEK0ZTkZ4t7jCqn-",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21qcmV3MFpHZVZFZ25jZ3NJUkNKVXo4RGJia1Z4MjBSOGFNVUl5cU85MDR6U2RDM05ZQm01Qk1veURTUmVLS0QtSEtsLUVZTnJCWGh2Y3NGMFc0RDUtUlV0MmlOTXc1Ukx0Vy1OcURYbmpkaGpEUC1QaDlWX3RYVV9JVTFqbHo3SXNtU1Q1RG9iRTVZST1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.rO6DJbXXZYui8mDkWniG0q",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 16,
+      "HotelCode": "ChkI8IWuv-Gss5hZGg0vZy8xMXJxZ2d5NDh3EAE",
+      "HotelName": "Hatton Garden Hotel | Crown Group of Hotels | Hotel in Farringdon | Hotel on Hatton Garden",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t5eUF0YVV0WFZFamg2UElCeTdMeGQ2aU5qMHVUVC1VeWljbkNtak5fTEI4aG1kWVIyNDhPWHNLMU9zT2kyQVFQS0lGaGdEd1Rvekk5TWM5NjJDUXJSR1JWZVFRQVhKN1VQMFFYdlBaX2FzWVZhcXQxbFk5Skp4N0xyQl82c3NSbUYwdGpSPXMxNTAtdzkyLWgxNTAtbi1rLW5v.l5NObQ51pkD0mPnHHXxWrH",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 639,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.2",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Smoke-free property"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t5eUF0YVV0WFZFamg2UElCeTdMeGQ2aU5qMHVUVC1VeWljbkNtak5fTEI4aG1kWVIyNDhPWHNLMU9zT2kyQVFQS0lGaGdEd1Rvekk5TWM5NjJDUXJSR1JWZVFRQVhKN1VQMFFYdlBaX2FzWVZhcXQxbFk5Skp4N0xyQl82c3NSbUYwdGpSPXMxNTAtdzkyLWgxNTAtbi1rLW5v.l5NObQ51pkD0mPnHHXxWrH",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t5eUF0YVV0WFZFamg2UElCeTdMeGQ2aU5qMHVUVC1VeWljbkNtak5fTEI4aG1kWVIyNDhPWHNLMU9zT2kyQVFQS0lGaGdEd1Rvekk5TWM5NjJDUXJSR1JWZVFRQVhKN1VQMFFYdlBaX2FzWVZhcXQxbFk5Skp4N0xyQl82c3NSbUYwdGpSPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.yXbrnngq1tzcQHka-dqzXk",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tMRHBjakwtNzEwVEdpMWlucUtiRGxUS25qdE13dGUyS2xmVldFZ2piVkdBZ1UweGJPMVF3enlnVy1kSUpmaUdFRzByc2t2RERlRzlUVFh3QU9kemRKUGxOOWVEa3ROTjJxLXRpZVhSdVEwZTRhd1hza2hmamkzMFhqbjlXUi1OZ0hDZmhBPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.I-j0epSokSqt8d1h9cH1Ti",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21wSWZiN3J6SzBndXV2SXdkcElMMXlVSFZxMHUzenhVWC1FN1NBUzcxZ3EyU3E5Z3R5ZHVNRjJxcWUyajVoVEVZZ0gxT3p5QUo4dHlFLVV0TXZyVFhOa1o5a2ZaaVY4MTctWFlsR2dHNnNSVk42NVJ6cGtSdW5Kck9TTUd1VjVrUXE4LU5xR0NFZGdtWTg9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.zcs9Dj_0TsUbo4uWHWVqR_",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25wOFhYRVdkSHFzYjFaaDBrZ21MRnRRNVVMblkzX3NzOUJXZ2d6QlhkQ3N6V3I1UUFiaDRlSGRGVjRQUnhibUlURmxob2VYRUJTR2hud0MxRzlPUjNUSWdfemx4eWVmQ3kxZlBEUmwxQm1oMXVjbjhJUWhmTldPV1NqR1hUUEZZT2pVenFpPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.uoCmwz5B2i6yQCwkEzhUzb",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 17,
+      "HotelCode": "ChcI2Nr1qvj-vPoGGgsvZy8xdGZ2NGx5axAB",
+      "HotelName": "The Grand hotel trafalgar",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0pWMDB6eS1hVHdfdm5oNWY3VHlWTmd0X3VwaDZaZ1VYYkM2S3RaSHJYdnJQYnVhN0ltRExzTzZkWkNYaERXUUVjR0V1eXBEYS13eWhmZGQzYlJ2MHVKR2U4QXFDN3FDNFdCWm9aU196cV80VnNNLW05ZGVOOUE2MW42MEdRV2YybmtxS05aRFVVclBnbkduWTBxSU43UlFyalY5cjh3ND1zMTUwLXc5Mi1oMTUwLW4tay1ubw.Bgr82v2Y4Ma8t2LvcNaGup",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 672,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.4",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Air conditioning",
+        "Fitness center",
+        "Bar",
+        "Restaurant",
+        "Room service"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0pWMDB6eS1hVHdfdm5oNWY3VHlWTmd0X3VwaDZaZ1VYYkM2S3RaSHJYdnJQYnVhN0ltRExzTzZkWkNYaERXUUVjR0V1eXBEYS13eWhmZGQzYlJ2MHVKR2U4QXFDN3FDNFdCWm9aU196cV80VnNNLW05ZGVOOUE2MW42MEdRV2YybmtxS05aRFVVclBnbkduWTBxSU43UlFyalY5cjh3ND1zMTUwLXc5Mi1oMTUwLW4tay1ubw.Bgr82v2Y4Ma8t2LvcNaGup",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0pWMDB6eS1hVHdfdm5oNWY3VHlWTmd0X3VwaDZaZ1VYYkM2S3RaSHJYdnJQYnVhN0ltRExzTzZkWkNYaERXUUVjR0V1eXBEYS13eWhmZGQzYlJ2MHVKR2U4QXFDN3FDNFdCWm9aU196cV80VnNNLW05ZGVOOUE2MW42MEdRV2YybmtxS05aRFVVclBnbkduWTBxSU43UlFyalY5cjh3ND1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.XnvrG31zQoQCtQdDWH4quu",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3VhWXJYUHllRGdQNFlzLXlVTUNMYTd4RGxlcFdFUHVFeTRpa3NLRF9mY29mZFJNYklMc090Z2ZodlpyWDdlOFJNQTUyTmpzdHl3YVhRTU1zbjUwQTl4U2M4TC1ya2l4MnFVTHJUUDZ5d0JuN2d6QTBPaWRlQU5ocHRSc0wydjJCZHVqbzRYNzRLcmhIbW5LN2tXNURNS1YteW1HazRBPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.EtVuyhIWg-lvgB7XKu5h2z",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xkeHNtVDRFWUMwWk1lSzA5SzRYWERzOHBLQ1laZ1NtX3ZLMjVWOUNJc3pzMDFURTI2d0RMRy02bnBjVDhqLTM5bmpMNkUwekZLWVQ4NU12RklTR2xnTkt6M1lnWUMzTVJFM3c2SXR6UHJ2Z0dFUVd1ZEpsU21wOU92UXhDQnpqdHhPV1poSnc9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.fEqSh_ajy8y_a4Kg2FSk1b",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tDeFkzakh3by1XZXE5NkRVNjhYdnI0cEYzVWlmY0piSHFndGZtTllOZnRnNzdPanhaV1paWi1GdHV6TXVtZGRPYVlNV3BKNFhwU3EwaXJwTW8wRVhGVENZVmh3SUZfYjRRdkEzMU1Ob29fX1dWVTBldGZDZU9JM2pHUFAxb3d6SW9YVWxKPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.Ks5SaosjQrugzym5odAFQ0",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 19,
+      "HotelCode": "CgoIqvb76vWznfhwEAE",
+      "HotelName": "Radisson Blu Hotel, London Canary Wharf East",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L2lsa0oyNEJCekItZ3FZNmpUS29mUEl2RnBTd2ZSc1FTZmVsV040cUlwc1dVNzFNazlzbERPXzFjUDZhYVREOXY0bjQtSkIyMVZ4OHVDWGVKN2NiWlp2WkhGMVRwUVFUaW1lTGltV1Y0LXY1QmhSTGtnYS1rck9CNkpNTDdCZTVLUVdpSXN5d0lLUXMtYWNBSllKUHUybElfcWdubUtnPXcyMjUtaDE1MC1rLW5v.6TyTooqtQrVtRxoYqDRAGu",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 681,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.4",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Beach access",
+        "Free parking",
+        "Bar",
+        "Indoor pool",
+        "Kitchen",
+        "Restaurant",
+        "Free Wi-Fi"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L2lsa0oyNEJCekItZ3FZNmpUS29mUEl2RnBTd2ZSc1FTZmVsV040cUlwc1dVNzFNazlzbERPXzFjUDZhYVREOXY0bjQtSkIyMVZ4OHVDWGVKN2NiWlp2WkhGMVRwUVFUaW1lTGltV1Y0LXY1QmhSTGtnYS1rck9CNkpNTDdCZTVLUVdpSXN5d0lLUXMtYWNBSllKUHUybElfcWdubUtnPXcyMjUtaDE1MC1rLW5v.6TyTooqtQrVtRxoYqDRAGu",
+          "Alt": "thumbnail"
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 20,
+      "HotelCode": "ChYIrIK1s_Hf-arLARoJL20vMDkxZGNfEAE",
+      "HotelName": "The Tower Hotel, by Thistle",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2s4RWpuU1lfN0NtUzAwSlFWSWR5dVphZUV5OHl2WHQzY0ozcEZwQW1zbTQ1WEkzSDliVGtNZEl5V0REVXZPSmUyQnFDTjZLNk9PWW5TX21SdlVrZ3NubmxfLWdPeXBxZk9KVmQ2M0VBb2wzNkVtWGx6Q2JnNHA0YXJZLXdDSXRsaGlQMkR5PXMxNTAtdzkyLWgxNTAtbi1rLW5v.12DRhixI92lCJXZn7HaaYb",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 717,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.1",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free Wi-Fi",
+        "Airport shuttle",
+        "Restaurant",
+        "Indoor pool",
+        "Free parking",
+        "Kitchen",
+        "Business center",
+        "Beach access",
+        "Fireplace"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2s4RWpuU1lfN0NtUzAwSlFWSWR5dVphZUV5OHl2WHQzY0ozcEZwQW1zbTQ1WEkzSDliVGtNZEl5V0REVXZPSmUyQnFDTjZLNk9PWW5TX21SdlVrZ3NubmxfLWdPeXBxZk9KVmQ2M0VBb2wzNkVtWGx6Q2JnNHA0YXJZLXdDSXRsaGlQMkR5PXMxNTAtdzkyLWgxNTAtbi1rLW5v.12DRhixI92lCJXZn7HaaYb",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2s4RWpuU1lfN0NtUzAwSlFWSWR5dVphZUV5OHl2WHQzY0ozcEZwQW1zbTQ1WEkzSDliVGtNZEl5V0REVXZPSmUyQnFDTjZLNk9PWW5TX21SdlVrZ3NubmxfLWdPeXBxZk9KVmQ2M0VBb2wzNkVtWGx6Q2JnNHA0YXJZLXdDSXRsaGlQMkR5PXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.zyeIwCu4jxSTFaIKTZYNPa",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25KaDJOWW1IQ3QwRDMxb1lRLUtYdzNYdnhhRkZNVmtpTVNuR2lxRjNObmZIMlVLYU82b0M5MzFBd0RIWnFmSmZiVy1Pb2t1MDg4QUpCQXZrQW92emhKYWVoSkplN3k3OG0ySkJkSEdPYlhiSEh1UU02UkxGUkZEQWU4N2dNdXVNejEzRXB2VHc9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.4qUbKmcM7LrunlaDKJzCGi",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xUZUVoVS00RTBucXFpMkF5NVJzTUx0UmltdVhsWURBS2JudkhoOU1PVmREaUtkejY0YmVzdE9McmZfZlcxZ0RDdl9QWjR1ZDN6c1M0S1dQX2FoYVE0RFo5eEhIXzdrMGxZNXZobjZkV1VjQTVPTTY2alMtZ2N0M1BCOXdEWUREUHhDOUpDPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.4iWf2ZPmbgdqvdzXw0qRVf",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3Z0RVNhTXN2M0ZOc1F0eXpSeWkycTVNNXo4YTEyMHFDV0xXRDdpTmZGVjVZMU10ZzJ4ZlBsREZQeF92OTdsSzBqNGgxUUVpZHdKSkhkMlpvazVJMHZTRnlHWVVZSTIwQnFJMFJ0Q1dLdFZoX0F0c0NHQmNXZVczdFVNamxHLWMxVDFWMmhTX1V0Z0diOXB5UEQ4dU5BclJjTWRHdmlBPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.zRVb_oHL8hwqEfgD7D-Y3_",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 21,
+      "HotelCode": "ChoI4-3Q6rqpl9rRARoNL2cvMTFmOXpzOHNsZBAB",
+      "HotelName": "Hyatt Regency London Albert Embankment",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21JdDgtaTlpSTFQUXBIZGwzbzN2TEY3M2FaemZaZm5Kalo5TFRlUzRwNU1UM19HVHQwSVdpQVhrTGJnMDRJRmlJZGFjNGNaRzRHaTJsVFhjbnR2SlpFV2lDMlB2dkJLclh6TlpVTHg1Q2tJRDJaV0dZeDB2aTNBU3VJMWI4eFBnd2JRbmxFPXMxNTAtdzkyLWgxNTAtbi1rLW5v.CkZOVH3fPIcl-2BI3WcPfT",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 777,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.5",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Pool",
+        "Air conditioning",
+        "Fitness center",
+        "Bar",
+        "Restaurant"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21JdDgtaTlpSTFQUXBIZGwzbzN2TEY3M2FaemZaZm5Kalo5TFRlUzRwNU1UM19HVHQwSVdpQVhrTGJnMDRJRmlJZGFjNGNaRzRHaTJsVFhjbnR2SlpFV2lDMlB2dkJLclh6TlpVTHg1Q2tJRDJaV0dZeDB2aTNBU3VJMWI4eFBnd2JRbmxFPXMxNTAtdzkyLWgxNTAtbi1rLW5v.CkZOVH3fPIcl-2BI3WcPfT",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21JdDgtaTlpSTFQUXBIZGwzbzN2TEY3M2FaemZaZm5Kalo5TFRlUzRwNU1UM19HVHQwSVdpQVhrTGJnMDRJRmlJZGFjNGNaRzRHaTJsVFhjbnR2SlpFV2lDMlB2dkJLclh6TlpVTHg1Q2tJRDJaV0dZeDB2aTNBU3VJMWI4eFBnd2JRbmxFPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.q2NW2jEritgxP6ehjXY767",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t2Q0RxWGF5NTJKVFZ3M2IxMTJNLXVVcnBxNlFtSWdjR1ZlWG1TTkdJOV93QU4xTFZNNUQ1bW1LOVktM3hmQVJfRGhfa1NBSmtjdy1YRXBHaWNhSEZDMkpfSkp0andvUG85R2VaVjgtUjA2ZFo4cFdqbDhXS2x0dHdPRnl3c2lLT0Rhb1JpPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.IBOVdi18BhHNRM8EtN1_OJ",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t1VmgwUjFXaFdEN2VheEJOUllKWDZJLTNEMlhvZV9EblZGc0dCdV9NVHFRVF9peTNEaTd3QUxESDJkbVlMX1QzV3RzUVNmVUZiVVowTUM1dlhOckZ1RlJSLURLWnM3dktHa2RuRHN6VHRRdDZuQ0ZqSkhQalRRMXM1VktVd0xjTDgxUDM0PXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.5Cwc6vEQD9LcyowNyvOTNW",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tJZ0hLNmFwaGsxMGp5eEhRakk0OWd6Snc4ZHYwSTJxVkdYYkpLNV9haWdyWlh1NFVUNlpVeUhfcjJRQ3FDSGNTN0hEWWRBUm9HaTE1WjhCZHJpdmE3Q3hsUnNfX0F4eGlvbW9ibWtSdW02UlpGNlJLRW92d1BHNkVQZ3cyZFpHZnV5VVlqQk5hbUh2Tks9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.4TgOyfms6lG0P3opw9kTS7",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 22,
+      "HotelCode": "ChcIwK3l2_TsgOErGgsvZy8xdGRmYmxubhAB",
+      "HotelName": "The Goodenough Hotel London",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0tqNmFqNG83dERlZnM1NS13WXVPY1VoOFIxU3RkUDRnSDVSUlhtREZtUGZwZ0FVc1JrVFBqajc1NEprV0tfbk43Y3ZKUUVFQkFPYXhNZXJsZ0pTUEFuNkowdnhraldZVVdjbU9ucC14WS11VXdtdS0tWHhxVlh0M1hOc2pFanFDWnROeTZ3NnFweFZac1dQR29UWWxycnB4bDBMLU85az1zMTUwLXc5Mi1oMTUwLW4tay1ubw.71a10Vwj6ysn5P702UQHr6",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 780,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.1",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Parking",
+        "Bar",
+        "Restaurant",
+        "Kid-friendly",
+        "Smoke-free property"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0tqNmFqNG83dERlZnM1NS13WXVPY1VoOFIxU3RkUDRnSDVSUlhtREZtUGZwZ0FVc1JrVFBqajc1NEprV0tfbk43Y3ZKUUVFQkFPYXhNZXJsZ0pTUEFuNkowdnhraldZVVdjbU9ucC14WS11VXdtdS0tWHhxVlh0M1hOc2pFanFDWnROeTZ3NnFweFZac1dQR29UWWxycnB4bDBMLU85az1zMTUwLXc5Mi1oMTUwLW4tay1ubw.71a10Vwj6ysn5P702UQHr6",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0tqNmFqNG83dERlZnM1NS13WXVPY1VoOFIxU3RkUDRnSDVSUlhtREZtUGZwZ0FVc1JrVFBqajc1NEprV0tfbk43Y3ZKUUVFQkFPYXhNZXJsZ0pTUEFuNkowdnhraldZVVdjbU9ucC14WS11VXdtdS0tWHhxVlh0M1hOc2pFanFDWnROeTZ3NnFweFZac1dQR29UWWxycnB4bDBMLU85az1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.TP7nEhA_QkTtwhptoUYboS",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tNR0N4ZWFkb19LMlp2bHQ0RXE5TUIxM1VJSmgtb1B5YWpVendvRlNaMWVxeUZPZjJoLTM1elljNFpVNVNvdW8zWDYzc243SC1ZQ01qOTZJVmhwVTk3dVY5UGFQOHl2eUVoZDRCaElwYWhCelpYWk5kdWtnc0FDLWkwelBZZm9namlQUVhMUmZvdDBCSEM9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.clr63UBLygj-6BcqglKOO3",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3hPWHFTWTdRbjVjT3h6VzFUNnJFMFI2a2NlZF9MSC1WRGVJemlOMVdwTE5pV1QyWXlGdnpoUDllRUpuOTcxeWVpSXBZdGpSVk9vS2JPeldxT0o5dUhLaEEzZVFsRVVweXhjNURLdnFFM2R3QWltcE1Ja3FBRXRvV09acGhwMUVnQWR2b3cwZG1EOTRuLXNNWnllNGZhOU1qWGNUUDdIST1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.Wvn9wxTDaOBcB4t3gOinVz",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1BSNTBUcndUUy04VGs2UEJ2SHYzWl9SQnVFNTZNNGhsbFg3aktqV0xjWTNhNmNOT292eGtLNjNfWGNKaVd0clpLU1ZVTjRJMXVVQ29nbTZTNGpGeFB4QXlURjJBLWs5d0VPZjdtTzZtSnhFbldTYnlCbURfVnI2ckgwWUZIX2ZrZ1ViaTBBSHFiT2d3LTNDRU94ekdfWWpINVlfeUpnPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.fAAGXHtK_9fxx63mef_4_q",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 23,
+      "HotelCode": "ChkIrLiUkuPL-_RZGg0vZy8xMWdkNjdoX3BwEAE",
+      "HotelName": "Wilde Aparthotels, London, Covent Garden",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25WaDBsNDFwNXV4WGlFb0NXSU0xMERDWlpnSGVmVEpUU1pHSU9ENm9YNHROU19mY2x6WG04TDE0Y19seTBDd05ZQ3ZyZFZFX1RYWVhVM1FkNWEzT3dVZlQteG5CRDFxV2ZfWDhtZE5rbV93ekpOb2QzRnM5eW83QVc2cE1iZlJvZm1YOVZsPXMxNTAtdzkyLWgxNTAtbi1rLW5v.dMVtpiaVw-NA_Lrym19MYz",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 837,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.9",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free Wi-Fi",
+        "Kitchen",
+        "Child-friendly",
+        "Business center",
+        "Beach access",
+        "Fireplace"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25WaDBsNDFwNXV4WGlFb0NXSU0xMERDWlpnSGVmVEpUU1pHSU9ENm9YNHROU19mY2x6WG04TDE0Y19seTBDd05ZQ3ZyZFZFX1RYWVhVM1FkNWEzT3dVZlQteG5CRDFxV2ZfWDhtZE5rbV93ekpOb2QzRnM5eW83QVc2cE1iZlJvZm1YOVZsPXMxNTAtdzkyLWgxNTAtbi1rLW5v.dMVtpiaVw-NA_Lrym19MYz",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25WaDBsNDFwNXV4WGlFb0NXSU0xMERDWlpnSGVmVEpUU1pHSU9ENm9YNHROU19mY2x6WG04TDE0Y19seTBDd05ZQ3ZyZFZFX1RYWVhVM1FkNWEzT3dVZlQteG5CRDFxV2ZfWDhtZE5rbV93ekpOb2QzRnM5eW83QVc2cE1iZlJvZm1YOVZsPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.wYHrBI6rk2iFZjAAtbZqPG",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xhemlOSUpMaS1ZNVFWSVo4ZTdUQWJNa1RCVXdXWHhURTFWZ0ZjSWpoai1aOEI0VFpZbUhzcGJVVEdzd1FMWmxmT3g0amdqWGdGcE55M2JWbUF2Nmkyd2NjenByQWNkRHZTZHlWNTIzdUNrdHhzQlczeTBHMGFGdG5WUlBqVndvVjNlTG9ENGc9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.2VNfuLHiGR0N9P8YkmyDi8",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2w5YTdpR0duZ1NHcUJLUHppTFZFZ1RLWlFOeHdFNGZmTmdLSFZST0JoQUlCX1ZySGd4SE1xdWxYYTd2SWVlczhLSUJlVG9FVEhoNWtYN0o3am01WFk1ZXNMbmhKV3YxZFNHTnVTQ183U21DcFBLeGZQTnF2ZFhRUFBtX1dTZ1d3TzJyODZaaUJyVk1hQT1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.KxH4B2h-gdpvoCztN4BBP7",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tlTDZlYnN1Q2VTeFA4MzZOUXI5djJsN2E2NTNqWEM1UGlBaE1tenBqMXZkTU5GR09IOTNQZDRpemVIMG5IYnQ3RUZldlF5NDNfVTd2V2p0Z3VfRDZVamlsRlRJbjN2VlEzVkdSeXU1YXNTZHZyUlBUUjM3MHNBVVBoQWdwNEtvbV9Nd2ZWTExGc1cxazc9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.HhErOKywxuCWkhIQ1W6BtK",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 24,
+      "HotelCode": "CgsIi_DjmsXPvNWPARAB",
+      "HotelName": "Hotel nhow London",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L2VpZVRtWFdmRmI0YWRPTnNXNnU1cTVHTW03T2IxekhCSmpWbmVlTzFMcXFzWjFHR1h1ckh6WXJhbXdsOGE2SEszUkkyUEZRMVdwZ0FsWkZTaVd3NjhZSlctbnh5WVVTaS1vQXlueFBKQnNOSHJiVFE1a25SX2oxZTZRLXpHbldyZmhydUtEd2p1NWV6b3ZQTEtUT3VWaVlTTWtWY2lnPXcyMjUtaDE1MC1rLW5v.8zI1wl10mIt7AFbN6npbbV",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 843,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.7",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Kitchen",
+        "Beach access",
+        "Free parking",
+        "Bar",
+        "Indoor pool",
+        "Restaurant",
+        "Free Wi-Fi"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L2VpZVRtWFdmRmI0YWRPTnNXNnU1cTVHTW03T2IxekhCSmpWbmVlTzFMcXFzWjFHR1h1ckh6WXJhbXdsOGE2SEszUkkyUEZRMVdwZ0FsWkZTaVd3NjhZSlctbnh5WVVTaS1vQXlueFBKQnNOSHJiVFE1a25SX2oxZTZRLXpHbldyZmhydUtEd2p1NWV6b3ZQTEtUT3VWaVlTTWtWY2lnPXcyMjUtaDE1MC1rLW5v.8zI1wl10mIt7AFbN6npbbV",
+          "Alt": "thumbnail"
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 25,
+      "HotelCode": "ChgInoqQlfTa0JyBARoLL2cvMXRmajJuMWQQAQ",
+      "HotelName": "DoubleTree by Hilton London - Tower of London",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tCU3dtREFObUphdEJ4MDhObUpQZTdEbUZ1VWFUS0pLalQxOTdrN3VFWTUwdDhYOFhfdE1HQUt2cUYxYUhoZjk5bDlEdXpHakpvVzROTENzMjUtbXpqQmpSUks1d3c1akxkT19WdGRBM29JcGN0UW8zSUZxMDhueG5pQUZqSGZZc1F5MDlsPXMxNTAtdzkyLWgxNTAtbi1rLW5v.eyYI8nWjhbpudpCmiaCqD_",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 858,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.2",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Bar",
+        "Restaurant"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tCU3dtREFObUphdEJ4MDhObUpQZTdEbUZ1VWFUS0pLalQxOTdrN3VFWTUwdDhYOFhfdE1HQUt2cUYxYUhoZjk5bDlEdXpHakpvVzROTENzMjUtbXpqQmpSUks1d3c1akxkT19WdGRBM29JcGN0UW8zSUZxMDhueG5pQUZqSGZZc1F5MDlsPXMxNTAtdzkyLWgxNTAtbi1rLW5v.eyYI8nWjhbpudpCmiaCqD_",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tCU3dtREFObUphdEJ4MDhObUpQZTdEbUZ1VWFUS0pLalQxOTdrN3VFWTUwdDhYOFhfdE1HQUt2cUYxYUhoZjk5bDlEdXpHakpvVzROTENzMjUtbXpqQmpSUks1d3c1akxkT19WdGRBM29JcGN0UW8zSUZxMDhueG5pQUZqSGZZc1F5MDlsPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.scVx3juBWIm2n--2YWBpnO",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21jNURacnBJLWo2N0NKQWc3bC1mVEJyRzVtZGdIRDlDdmFxSjYtNklmT09GWXlId3hDdDVaZXhMOEZrS1dCd2xSTTNwZXZuODJpanR2SGx3eUxla3RINDE0SG5QenZNbExIWWw2OFBXWXZXRnFpZWxyU0J2U1VBSS11Nmc0bXJXeXZKWHNPUlUxaGVDdGg9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.o72CVNSL4yWebmEnkCPRgm",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV21zZGo5Y041bExaaHM2ZHZiMkJCZTZST053ZGNmYjh4bzFCWjJ6LUgxYWotSGphUWpxLXZxVUJpVVV0cE9odzNvd1RRQmE2VTN5ME5LNXJBU0dYS21zbzREeE44NkdNTkM0b1JzZ2VfSDIwUnFKOUVtYTdwd21kbDlwdjRXbElFaXhMT25yaUJyWkxtN089czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.1kQ09XuVmSiSYEP3_g4Kp_",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2tGXzVkajhRNTBoeGdyUFBVM3kyMlRGWmFqWW84Y1RBX1I0NEpjaWY2ekdDZWtrMm5uWlF0bVRWTGdFNHFBbHREUzVxUW1BYnp4ZmMtN21wMnNxNzVxYUxVckxycDhnUDNwVFR3b1ZfdEhGNHF5M25GZkNtaVEtTW1rQkJhOWJzRmhZUV9IanlIWktBLWg9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.J5xq-Ktet6TFhl9stfZCmV",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 26,
+      "HotelCode": "CgoIu73w4L7crv0HEAE",
+      "HotelName": "Hilton London Paddington",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1NzWWg4RFZCS1FHcF9QTGZEaGxLT2tSejkyaWk0RjE3b3dPTTdUNHBjWnpjYm5hVGJGbkRSZk13ems2S2hQVVA0ZVlKbU9QSnpDNWJiaXlNakxucTlVdzlsTTRCaXBUYTBucVZjU3pzaUVINmVYZUlFQUZpbUVTTGJSX3VabzdkcUk0QUphcEZEVVpCR0J0dzJZaFpRaHZkWUtDVThqND13MjIzLWgxNTAtay1ubw.D8UFM1zUH-BdZQbBTTWwDC",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 1005,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Beach access",
+        "Free parking",
+        "Indoor pool",
+        "Kitchen",
+        "Restaurant",
+        "Free Wi-Fi"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDUuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L1NzWWg4RFZCS1FHcF9QTGZEaGxLT2tSejkyaWk0RjE3b3dPTTdUNHBjWnpjYm5hVGJGbkRSZk13ems2S2hQVVA0ZVlKbU9QSnpDNWJiaXlNakxucTlVdzlsTTRCaXBUYTBucVZjU3pzaUVINmVYZUlFQUZpbUVTTGJSX3VabzdkcUk0QUphcEZEVVpCR0J0dzJZaFpRaHZkWUtDVThqND13MjIzLWgxNTAtay1ubw.D8UFM1zUH-BdZQbBTTWwDC",
+          "Alt": "thumbnail"
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 27,
+      "HotelCode": "ChkI4K7cn_D4pq0UGg0vZy8xMWZrMXNjMDh5EAE",
+      "HotelName": "Virgin Hotels London-Shoreditch",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t4eW51T2YtT3laZWk4aS0xU3ZWMmVTZDJTajNFem9nZjBYVXJrOGJVazVsLWZkZDhxcnRyVXNyR2k4dVZGVlVFa3lSZXFjQlp6VXdMX3JOZUhtczJqVG5TZWp0SlNsX2c1WDR0Wi1jemswWGI3WGpWNzhMemg0UGtDM0pXMHplX0dZSGowVlE9czE1MC13OTItaDE1MC1uLWstbm8.c8OZOFlsuF9WSWFxWIN-tI",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FiveStar",
+      "Currency": "USD",
+      "TotalPrice": 1035,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.2",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Pool",
+        "Air conditioning",
+        "Pet-friendly",
+        "Fitness center",
+        "Spa",
+        "Parking"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t4eW51T2YtT3laZWk4aS0xU3ZWMmVTZDJTajNFem9nZjBYVXJrOGJVazVsLWZkZDhxcnRyVXNyR2k4dVZGVlVFa3lSZXFjQlp6VXdMX3JOZUhtczJqVG5TZWp0SlNsX2c1WDR0Wi1jemswWGI3WGpWNzhMemg0UGtDM0pXMHplX0dZSGowVlE9czE1MC13OTItaDE1MC1uLWstbm8.c8OZOFlsuF9WSWFxWIN-tI",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t4eW51T2YtT3laZWk4aS0xU3ZWMmVTZDJTajNFem9nZjBYVXJrOGJVazVsLWZkZDhxcnRyVXNyR2k4dVZGVlVFa3lSZXFjQlp6VXdMX3JOZUhtczJqVG5TZWp0SlNsX2c1WDR0Wi1jemswWGI3WGpWNzhMemg0UGtDM0pXMHplX0dZSGowVlE9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.xqx3I0wuO8iO0ohbun6YZu",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV210UDZpRGdhMUNXM3dDbnowaTRMWERHTkp2a1JYU001Y0J6alRCZ1pUYndwOHJ0d3M1Q1lrYnRNNDNfRnVaV25sTTZkUEJaY2N2Sy0yVzZDem9CcFZNV2M2VXZlZ21mczhEeVVha0pXa2R4bVBsNDR3elZCcy1tYXo5UDFPdVRYRmtaMzJENUt5WXhQND1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.kHDWL5-JwQlBhbdoRrTjwQ",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV203S0QtWlltX2lNNlJHVzRBZnFDRWFQc183ZlV3TkstWHYwNHBIQm93S2JmeTBBeGFwYnVXWmxfc3RYUEZ1bnZTbjV6dWdBc1VPcE5MajAtblQwVjFKazJTRElXcVZhU2JKaWFiVGxpbW1USm9GSVJHRS1IZ0RrSTMtdnBfcjktd0pRN0pRTkw1SGRVRFI9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.QDrd0KAExKYoSbSi4shrQE",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2x2VXRzTGpiUmpiazRITFI5Wl9ZNWZ2X0prVW5fUC1CYWd5M1dQdDJEdUd2QXpFTTVwampBakZOTkZ4VFZ3ZWQxX2NlZGYxU1pnY0JTM1I4Zy0xaHZzcFNNUXN2VTktc3JoUzJPUHdrTm1VR1RidnFCTnZuSjI1N3FKSzMxaHlNUHVoNW5RPXMyODctdzI4Ny1oMTkyLW4tay1uby12MQ.5upqQceEsZtwsw_iRFvlRG",
+          "Alt": null
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 28,
+      "HotelCode": "CgoI-uihi6HJ9oUfEAE",
+      "HotelName": "Holiday Inn London - Regent\u0027s Park by IHG",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3l3dmkteUZLSzZud2xScnlxdWZvWE9GVFE1Ty1CQzdOYjgtWm9Tc1pLM1hfd3FMcHZDX2dYZWZYT2hybDVpNkdFS2tBNU1ZY0JHZFVMNEtpVHZhSFFwc3BGemkwTGhyOHVuTlhzdzZwQktDSWhiOV9RbHFFZlA5ZVRrcThzd0xWdzU5Y2FzRkdZWUUtSHFiSVZHTjM2Vmd1X2dpeUhBPXcyNjctaDE1MC1rLW5v.RZaWYhO5NSE3fyFDbux11G",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 1164,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.1",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Beach access",
+        "Free parking",
+        "Indoor pool",
+        "Kitchen",
+        "Free Wi-Fi"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDYuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L3l3dmkteUZLSzZud2xScnlxdWZvWE9GVFE1Ty1CQzdOYjgtWm9Tc1pLM1hfd3FMcHZDX2dYZWZYT2hybDVpNkdFS2tBNU1ZY0JHZFVMNEtpVHZhSFFwc3BGemkwTGhyOHVuTlhzdzZwQktDSWhiOV9RbHFFZlA5ZVRrcThzd0xWdzU5Y2FzRkdZWUUtSHFiSVZHTjM2Vmd1X2dpeUhBPXcyNjctaDE1MC1rLW5v.RZaWYhO5NSE3fyFDbux11G",
+          "Alt": "thumbnail"
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 30,
+      "HotelCode": "CgsIjczxmvbin7jZARAB",
+      "HotelName": "DoubleTree by Hilton London - West End",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0FOX1pkUEU4VmtHdEt2N0FHLTRtZXBGeUVtaHc3WUEzdEhwckhyOFRieWdtOU5kdU1pR1lGeE1JcHBuajczRWRTUkJPU2VGWk1kczZ2N29tMWxmSklTaFZSU3Y2aUNNUXZONGttQWJ6M0NJbXdtaDVMeTZ0blFjenV2S2NRb2JGR0VZMGFobDM5ZUNjZVg5ekZOYmJOSi1IMW0yQ3NBPXcyMjUtaDE1MC1rLW5v.F-KyfGR8GY9W192M6FSdBJ",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FourStar",
+      "Currency": "USD",
+      "TotalPrice": 1245,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "3.9",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Beach access",
+        "Free parking",
+        "Indoor pool",
+        "Kitchen",
+        "Restaurant",
+        "Free Wi-Fi"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL3Byb3h5L0FOX1pkUEU4VmtHdEt2N0FHLTRtZXBGeUVtaHc3WUEzdEhwckhyOFRieWdtOU5kdU1pR1lGeE1JcHBuajczRWRTUkJPU2VGWk1kczZ2N29tMWxmSklTaFZSU3Y2aUNNUXZONGttQWJ6M0NJbXdtaDVMeTZ0blFjenV2S2NRb2JGR0VZMGFobDM5ZUNjZVg5ekZOYmJOSi1IMW0yQ3NBPXcyMjUtaDE1MC1rLW5v.F-KyfGR8GY9W192M6FSdBJ",
+          "Alt": "thumbnail"
+        }
+      ]
+    },
+    {
+      "Provider": "WIKI",
+      "ResultIndex": 29,
+      "HotelCode": "ChkIxIavhuvJ2q_9ARoML2cvMTJxZnA0Ynl4EAE",
+      "HotelName": "St Martins Lane London, a Morgans Originals hotel",
+      "HotelPicture": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xPZTVLX1YtOXBhVHBRdllXb3pMRVJTZGEydW50T3EzeFNGeTFmYjNYMlVVcFRHanlGblJVYVpkRkJEcXlyY29jVU1ubGxSaDNZc1hYbncyNDdIMV9PZktDZGQ5T0RCaGpmakdQbHFNTENYcHRnUmZmWWR6TE1zZjVvaWh3aTdkX0JCS009czE1MC13OTItaDE1MC1uLWstbm8.PpN-uju_VguYHLUnjJ77Pb",
+      "HotelDescription": "",
+      "HotelAddress": "",
+      "Rating": "FiveStar",
+      "Currency": "USD",
+      "TotalPrice": 1254,
+      "Latitude": 0,
+      "Longitude": 0,
+      "TripAdvisorRating": "4.6",
+      "TripAdvisorReviewUrl": null,
+      "SearchId": "96a24ef3-bd75-43d5-8388-69f8da2255f2",
+      "SessionId": null,
+      "Amenities": [
+        "Free Wi-Fi",
+        "Airport shuttle",
+        "Kitchen",
+        "Restaurant",
+        "Indoor pool",
+        "Free parking",
+        "Business center",
+        "Fitness center",
+        "Beach access",
+        "Fireplace"
+      ],
+      "Images": [
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xPZTVLX1YtOXBhVHBRdllXb3pMRVJTZGEydW50T3EzeFNGeTFmYjNYMlVVcFRHanlGblJVYVpkRkJEcXlyY29jVU1ubGxSaDNZc1hYbncyNDdIMV9PZktDZGQ5T0RCaGpmakdQbHFNTENYcHRnUmZmWWR6TE1zZjVvaWh3aTdkX0JCS009czE1MC13OTItaDE1MC1uLWstbm8.PpN-uju_VguYHLUnjJ77Pb",
+          "Alt": "thumbnail"
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2xPZTVLX1YtOXBhVHBRdllXb3pMRVJTZGEydW50T3EzeFNGeTFmYjNYMlVVcFRHanlGblJVYVpkRkJEcXlyY29jVU1ubGxSaDNZc1hYbncyNDdIMV9PZktDZGQ5T0RCaGpmakdQbHFNTENYcHRnUmZmWWR6TE1zZjVvaWh3aTdkX0JCS009czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.YHN6EKHlKae9onw5ksQapM",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25FQlptNlhXVUg2dUxmMmE1SE9xc24xcW1hSk1KQlFJSVNGTlROTmdhdDdFMW1nSmtITjBPSTlJZ0twcHBnd1daRnFhNG50NEZHcDAtMWhxN0pDd2J1VUgxcnBvWHMzNTBzaEcwTzJVRDV1M3lERGtrbEhfckxVRFdidUV1RXBjNV9jSmZfTlhKNWwxZz1zMjg3LXcyODctaDE5Mi1uLWstbm8tdjE.kombp0d4hyWKUqLmoQAueP",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV25IQnFIeVZlV3E0LVJQa0c3NkJWTkp2MWlBaUptYWJZNmZLZWdkMXhpNk5JTHhXbkdVNUs1dkNZRzVzWU41ZTJwRU1xdk5HOGxoc01FOEUxUV93MW9lUk1QeERXT0M1Unk1MzA3MUNJUi15QjItejFKc3k2a1BsaXpMT0xweFJCWTctNWFybGJ0Vk9lMEY9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.VEh9eLCNwyd5BvepeY1dUb",
+          "Alt": null
+        },
+        {
+          "Url": "https://platform.wikisoft.in/api/hotels/img/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2dwcy1jcy1zL0FIUlBUV2t0bnJ5TEhGNGNnbjRGVGZqV1FlbWItcU1nUjRKbXJFbVRDdk5YMi1ETlBVQmtHXzQtQVVVVXFsUTlUUnBuZ3dEVl9CcGJmbTlhd3Y4NWlRTU9kdnBPZG91azlaeWE3THl3bFpHLU00dlozeF9EanFIQWQ0NUZ0SGtFaFVyenVfc0luN25fbzQydHF5aDE9czI4Ny13Mjg3LWgxOTItbi1rLW5vLXYx.0YHEhv2TRweXqgXfqM52mC",
+          "Alt": null
+        }
+      ]
+    }
+  ]
+}

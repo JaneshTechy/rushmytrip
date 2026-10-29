@@ -1,0 +1,272 @@
+﻿@model List<TravelWeb.Datamodel.BlogPost>
+
+@{
+    ViewData["Title"] = "Blog List";
+}
+
+<style>
+
+    body {
+        font-family: 'Inter';
+        background: #f3f4f6;
+    }
+
+    .blog-container {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 30px;
+        padding: 20px 15px 0;
+        margin: 2rem auto;
+        max-width: 1230px;
+    }
+
+    @@media(max-width:992px) {
+        .blog-container {
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+        }
+    }
+
+    @@media(max-width:576px) {
+        .blog-container {
+            grid-template-columns: repeat(1,1fr);
+        }
+    }
+
+
+        .blog-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 40px;
+    }
+
+    .page-btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        background: #0033A0;
+        color: white;
+        text-decoration: none;
+    }
+
+        .page-btn.gray {
+            background: #6b7280;
+        }
+
+        .page-btn:hover {
+            opacity: 0.9;
+        }
+
+    .loader {
+        text-align: center;
+        padding: 30px;
+        display: none;
+        font-size: 18px;
+        color: #0033A0;
+        font-weight: 500;
+    }
+
+    .blog-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 360px; /* Fixed height */
+    }
+
+        .blog-card img {
+            width: 100%;
+            height: 180px; /* Fixed image height */
+            object-fit: cover;
+        }
+
+    .blog-content {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blog-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Max 2 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .blog-desc {
+        font-size: 14px;
+        color: #6b7280;
+        line-height: 1.6;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Max 3 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .page-banner {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(115deg, #FF8A50 0%, #FF6B35 45%, #D9481C 100%);
+        padding: 46px 32px 52px;
+        text-align: center;
+    }
+        .banner-glow {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,255,255,0.18), transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(11,17,32,0.16), transparent 45%);
+            pointer-events: none;
+        }
+
+    .banner-container {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .breadcrumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13.5px;
+        font-weight: 500;
+        margin-bottom: 14px;
+    }
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: #FFFFFF;
+        }
+        .crumb-sep {
+            color: rgba(255,255,255,0.55);
+        }
+        .crumb-current {
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+    .page-banner h1 {
+        margin: 0 0 8px;
+        font-size: 38px;
+        font-weight: 800;
+        color: #FFFFFF;
+        letter-spacing: -0.01em;
+    }
+
+    .page-banner p {
+        margin: 0;
+        font-size: 15.5px;
+        color: rgba(255,255,255,0.88);
+    }
+
+    @@media (max-width: 900px) {
+        .page-banner {
+            padding: 36px 20px 42px;
+        }
+        .page-banner h1 {
+            font-size: 28px;
+        }
+    }
+
+</style>
+
+<div class="page-banner">
+    <div class="banner-glow"></div>
+    <div class="banner-container">
+        <h1>Our Blogs</h1>
+        <p>Flight deals, travel tips, and stories worth reading before you fly</p>
+    </div>
+</div>
+
+<div class="blog-container">
+
+    @foreach (var blog in Model)
+    {
+        string slug = blog.Slug.ToLower().Replace(" ", "-");
+
+        <a href="/blog/@slug" style="text-decoration:none;">
+            <div class="blog-card">
+
+                <img src="@blog.FeatureImageUrl" alt="@blog.Title" />
+
+                <div class="blog-content">
+
+                    <div class="blog-title">
+                        @blog.Title
+                    </div>
+
+                    <div class="blog-desc">
+                        @(Html.Raw(
+                            blog.Content != null
+                            ? System.Text.RegularExpressions.Regex.Replace(blog.Content, "<.*?>", "").Length > 100
+                            ? System.Text.RegularExpressions.Regex.Replace(blog.Content, "<.*?>", "").Substring(0, 100) + "..."
+                            : System.Text.RegularExpressions.Regex.Replace(blog.Content, "<.*?>", "")
+                            : ""
+                            ))
+                    </div>
+
+                </div>
+
+            </div>
+        </a>
+    }
+
+</div>
+
+
+
+@if (ViewBag.TotalPages > 1)
+{
+    <div class="pagination">
+
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <a href="@Url.Action("Blog", new { page = ViewBag.CurrentPage - 1 })"
+               class="page-btn">Previous</a>
+        }
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            if (i == ViewBag.CurrentPage)
+            {
+                <span class="page-btn active">@i</span>
+            }
+            else
+            {
+                <a href="@Url.Action("Blog", new { page = i })"
+                   class="page-btn">@i</a>
+            }
+        }
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <a href="@Url.Action("Blog", new { page = ViewBag.CurrentPage + 1 })"
+               class="page-btn">Next</a>
+        }
+
+    </div>
+}
+
+<Br />
+
+<div id="loader" class="loader">
+    Loading More Blogs...
+</div>

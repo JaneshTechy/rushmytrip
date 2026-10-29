@@ -1,0 +1,653 @@
+﻿@using TravelWeb.Models;
+@model FlightsResult;
+
+
+@if (ViewBag.IsAvailable == false)
+{
+    <style>
+
+        @@media(max-width:990px) {
+            .middle-search_no {
+                margin: 0px auto !important;
+            }
+        }
+
+        @@media (max-width: 780px) {
+            select#drpSorting {
+                font-size: 18px !important;
+                display: none;
+            }
+        }
+
+
+
+        .search-main-div {
+            width: 100%;
+            background: #eee;
+            float: left;
+        }
+
+        .middle-search_no {
+            width: 100%;
+            text-align: center;
+            float: left;
+            margin: 40px 450px 0px 450px;
+            display: none
+        }
+
+        .no_result {
+            width: 100%;
+            display: inline-block;
+            padding: 10px;
+            margin: 0 auto;
+            border: 1px dashed #ccc;
+            background: #fff;
+        }
+
+        .no_result_left h3 {
+            color: #143c68;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+            padding: 0;
+            line-height: 40px;
+        }
+
+        .no_result_left h5 {
+            color: #e83819;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            line-height: 25px;
+        }
+
+        .mobile-calling {
+            display: none;
+        }
+    </style>
+
+
+
+    <div class="middle-search_no" style="display:none">
+        <div class="no_result">
+            <div class="no_result_left">
+                <div class=""><img src="~/img/img/call_center.jpg" alt="call-center"></div>
+                <h1>Sorry! No Result Found</h1>
+                <p>We have Searched more than million Flights Combination. We didn't find any Flights for Your Search. </p>
+                <h3>Let Our Agents Help You Find The Best Flight Option!</h3>
+                <h5> Call Now Toll Free</h5>
+                <a href="tel:+1 844 759 0888"><dfn></dfn> +1 844 759 0888</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="mobile-calling">
+        <div class="mobile_left"><img src="/img/telephone.png" class="dep-ai-img"> </div>
+        <div class="mobile_mid">
+            <h3>Call us for phone only </h3>
+            <span>unpublished fares</span>
+            <div class="deal-code">Deal Code: A2258512</div>
+        </div>
+        <div class="mobile_last">
+            <a href="tel:+1 844 759 0888" class="btn  float-right" aria-hidden="true" style="background-color: #0b4a80 !important; color:#fff; "> <i class="fa fa-phone"></i> CALL </a>
+        </div>
+
+    </div>
+
+
+}
+else
+{
+    <div class="sticky-col customHideClass">
+        <div class="theme-search-results-sidebar leftsideBar" id="link">
+            <button class="results-sidebar-close" type="button" id="results-sidebar-close">×</button>
+            <div class="theme-search-results-sidebar-sections _mb-20 _br-2">
+                <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Stops</h5>
+                    <div class="theme-search-results-sidebar-section-checkbox-list">
+                        <div class="theme-search-results-sidebar-section-checkbox-list-items">
+
+                            <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                                <label class="icheck-label">
+
+                                    @if ((Model.StopExtra[0].TotalCost == 0))
+                                    {
+                                        <input class="stopscheckbox" type="checkbox" disabled="disabled" name="stop_0" id="stop_0" value="0" />
+
+                                    }
+                                    else
+
+                                    {
+                                        <input class="stopscheckbox" type="checkbox" name="stop_0" id="stop_0" value="0" />
+
+                                    }
+
+
+
+                                    <span class="icheck-title">Non Stop</span>
+                                </label>
+                                <span class="theme-search-results-sidebar-section-checkbox-list-amount">@((Model.StopExtra[0].TotalCost == 0) ? "No Flight" : ViewBag.Currency + "" + Math.Floor(Model.StopExtra[0].TotalCost))</span>
+                            </div>
+                            <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                                <label class="icheck-label">
+                                    <input class="stopscheckbox" type="checkbox" name="stop_1" id="stop_1" value="1" />
+
+                                    @if ((Model.StopExtra[1].TotalCost == 0))
+                                    {
+                                        <input class="stopscheckbox" type="checkbox" disabled="disabled" name="stop_1" id="stop_1" value="1" />
+
+                                    }
+                                    else
+
+                                    {
+                                        <input class="stopscheckbox" type="checkbox" name="stop_1" id="stop_1" value="1" />
+
+                                    }
+
+
+
+
+                                    <span class="icheck-title">1 Stop</span>
+                                </label>
+                                <span class="theme-search-results-sidebar-section-checkbox-list-amount">@((Model.StopExtra[1].TotalCost == 0) ? "No Flight" : ViewBag.Currency + "" + Math.Floor(Model.StopExtra[1].TotalCost))</span>
+                            </div>
+                            <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                                <label class="icheck-label">
+
+
+                                    @if ((Model.StopExtra[2].TotalCost == 0))
+                                    {
+                                        <input class="stopscheckbox" type="checkbox" disabled="disabled" name="stop_2" id="stop_2" value="2" />
+
+                                    }
+                                    else
+
+                                    {
+                                        <input class="stopscheckbox" type="checkbox" name="stop_2" id="stop_2" value="2" />
+
+
+                                    }
+
+
+
+
+                                    <span class="icheck-title">2 Stops</span>
+                                </label>
+                                <span class="theme-search-results-sidebar-section-checkbox-list-amount">@((Model.StopExtra[2].TotalCost == 0) ? "No Flight" : ViewBag.Currency + "" + Math.Floor(Model.StopExtra[2].TotalCost))</span>
+                            </div>
+                            <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                                <label class="icheck-label">
+                                    <input class="stopscheckbox" type="checkbox" name="stop_3" id="stop_3" value="3" />
+
+                                    @if ((Model.StopExtra[3].TotalCost == 0))
+                                    {
+                                        <input class="stopscheckbox myDissbleIf" type="checkbox" disabled="disabled" name="stop_3" id="stop_3" value="3" />
+
+                                    }
+                                    else
+
+                                    {
+                                        <input class="stopscheckbox myDissbleElse" type="checkbox" name="stop_3" id="stop_3" value="3" />
+
+
+                                    }
+
+
+
+                                    <span class="icheck-title">3 Stops</span>
+                                </label>
+                                <span class="theme-search-results-sidebar-section-checkbox-list-amount">@((Model.StopExtra[3].TotalCost == 0) ? "No Flight" : ViewBag.Currency + "" + Math.Floor(Model.StopExtra[3].TotalCost))</span>
+                            </div>
+
+                        </div>
+                        <div class="text-right">
+                            <a onclick="javascript:ResetStops()" style="" class="resetBtn">Reset</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">
+                        <label for="amount" style="font-weight:bold;">Price range:</label>
+                        @*<div class="priceMinMax">
+                                <span id="amountMin">$0 </span><span id="amountMax">$0</span>
+                            </div>*@
+
+
+
+
+                        <input type="text" id="amount" readonly style="border:0; color:#0b1f66 !important; font-weight:bold;" />
+                        <div id="slider-range"></div>
+                    </h5>
+
+                    <div class="text-right">
+                        <a onclick="javascript:ResetPriceSlider()" class="resetBtn">Reset</a>
+                    </div>
+
+                </div>
+
+                <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Airlines</h5>
+                    <div class="theme-search-results-sidebar-section-checkbox-list">
+                        <div class="theme-search-results-sidebar-section-checkbox-list-items">
+
+                            @{ int cnt = 0;
+                                string AirCode = ""; string ArrAirlineDetails = "";
+                            }
+                            @foreach (var airlineItem in Model.ListAirline)
+                            {
+                                if (airlineItem == null)
+                                {
+                                    break;
+                                }
+                                ArrAirlineDetails += (airlineItem.Code) + "~" + (airlineItem.Name) + "~" + (airlineItem.TotalCost) + "~" + airlineItem.Stops + "|";
+
+                                <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+
+
+
+                                    <label class="icheck-label" for="airline_@(airlineItem.Code)">
+                                        <input class="chkAirlinelist" type="checkbox" name="airline_@(airlineItem.Code)" id="airline_@(airlineItem.Code)" value="@(airlineItem.Code)" />
+                                        <span class="icheck-title">@(airlineItem.Name)</span>
+                                    </label>
+                                    @if (Model.FlightsSearch.SourceMedia.ToUpper() == "HOME")
+                                    {
+                                        <span class="theme-search-results-sidebar-section-checkbox-list-amount">$@((airlineItem.TotalCost))</span>
+
+
+                                    }
+                                    else
+                                    {
+                                        <span class="theme-search-results-sidebar-section-checkbox-list-amount">$@((airlineItem.TotalCost))</span>
+
+                                    }
+                                </div>
+                            }
+                            <input type="hidden" value="@ArrAirlineDetails" id="hdnAirlineDetails" />
+                            <div class="text-right">
+                                <a onclick="javascript:ResetAirline()" class="resetBtn">Reset</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">
+                        <label for="amount">Outbound Depature</label>
+                        @*<div class="priceMinMax">
+                                <span id="outboundDepature-amountMin">00:00 AM </span><span id="outboundDepature-amountMax">23:59 PM</span>
+                            </div>*@
+                        <input type="text" id="outboundDepature-amount" readonly style="border:0; color:#0b1f66 !important; font-weight:bold;" />
+                        <div id="outboundDepature-slider-range"></div>
+                    </h5>
+                    <div class="text-right">
+                        <a onclick="javascript:ResetOutDep()" class="resetBtn">Reset</a>
+                    </div>
+                </div>
+
+                <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">
+                        <label for="amount">Outbound Arrival</label>
+                        @*<div class="priceMinMax">
+                                <span id="outboundArrival-amountMin">00:00 AM </span><span id="outboundArrival-amountMax">23:59 PM</span>
+                            </div>*@
+                        <input type="text" id="outboundArrival-amount" readonly style="border:0; color:#0b1f66 !important; font-weight:bold;" />
+                        <div id="outboundArrival-slider-range"></div>
+                    </h5>
+                    <div class="text-right">
+                        <a onclick="javascript:ResetOutArr()" class="resetBtn">Reset</a>
+                    </div>
+                </div>
+
+                <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">
+                        <label for="amount">Inbound Departure</label>
+                        @*<div class="priceMinMax">
+                                <span id="inboundDeparture-amountMin">00:00 AM </span><span id="inboundDeparture-amountMax">23:00 PM</span>
+                            </div>*@
+                        <input type="text" id="inboundDeparture-amount" readonly style="border:0; color:#0b1f66 !important; font-weight:bold;" />
+                        <div id="inboundDeparture-slider-range"></div>
+                    </h5>
+                    <div class="text-right">
+                        <a onclick="javascript:ResetInDep()" class="resetBtn">Reset</a>
+                    </div>
+                </div>
+
+                <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">
+                        <label for="amount">Inbound Arrival</label>
+                        @*<div class="priceMinMax">
+                                <span id="inboundArrival-amountMin">00:00 AM </span><span id="inboundArrival-amountMax">23:00 PM</span>
+                            </div>*@
+                        <input type="text" id="inboundArrival-amount" readonly style="border:0; color:#0b1f66 !important; font-weight:bold;" />
+                        <div id="inboundArrival-slider-range"></div>
+                    </h5>
+                    <div class="text-right">
+                        <a onclick="javascript:ResetInArr()" class="resetBtn">Reset</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        @*<div class="theme-ad">
+                <a class="theme-ad-link" href="#"></a>
+                <p class="theme-ad-sign">Advertisement</p>
+                <img class="theme-ad-img" src="./img/300x500.png" alt="Image Alternative text" title="Image Title" />
+            </div>*@
+    </div>
+    <input type="hidden" id="hdnMinPrice" value="@(Model.MinPrice)" />
+    <input type="hidden" id="hdnMaxPrice" value="@(Model.MaxPrice)" />
+    <input type="hidden" id="hdnAirlineCnt" value="@(Model.ListAirline.Count())" />
+
+    <input type="hidden" id="hdnoutboundDep" value="@(Model.OutBoundDep)" />
+    <input type="hidden" id="hdnoutboundArr" value="@(Model.OutBoundArr)" />
+    <input type="hidden" id="hdninboundDep" value="@(Model.InBoundDep)" />
+    <input type="hidden" id="hdninboundArr" value="@(Model.InBoundArr)" />
+    <input type="hidden" id="hdnResultCount" value="@Model.FlightsList.Count" />
+    <script>
+
+    $(function () {
+
+        var DetailAirline = $('#hdnAirlineDetails').val();
+
+        var ArrDetailairline = DetailAirline.split('|');
+
+
+       var matrixHtml = "";
+
+        for (c = 0; c < ArrDetailairline.length-1; c++)
+        {
+           // alert(ArrDetailairline[c]);
+            var acode = ArrDetailairline[c].split('~')[0];
+            var aname = ArrDetailairline[c].split('~')[1];
+            var aPrice = ArrDetailairline[c].split('~')[2];
+            var aStops = ArrDetailairline[c].split('~')[3];
+            matrixHtml += "";
+
+            matrixHtml += ' <div class="item" style="cursor:pointer;" onClick="CheckMatrix(\'' + acode + '\')">';
+            matrixHtml += ' <div class="arilin_logo">';
+            matrixHtml += '  <img class="img-responsive" src="@(TravelWeb.Utilities.Common.WebSitePath)img/airline/icon/' + acode+'.png" alt="Image Alternative text" />';
+            matrixHtml += '</div>';
+            matrixHtml += '  <p class="arilin_name">' + aname+'</p>';
+            matrixHtml += '<p class="arilin_price">$' + aPrice+'</p>';
+            if (0 == parseInt(aStops)) { aStops = 'Non ';}
+            matrixHtml += '<p class="arilin_stop">(' + aStops + ' stop)</p>';
+
+            matrixHtml += ' </div>';
+        }
+        $('#owl-demo').html(matrixHtml);
+        $("#owl-demo").owlCarousel({
+
+            autoPlay: false, //Set AutoPlay to 3 seconds
+            pagination: false,
+            //dots: false,
+            navigation: true,
+            navigationText: [
+                "<i class='fa fa-chevron-left'></i>",
+                "<i class='fa fa-chevron-right'></i>"
+            ],
+            items: 6,
+            itemsDesktop: [1199, 6],
+            itemsDesktopSmall: [979, 5],
+            itemsTablet: [600, 4],
+            itemsMobile: [500, 3],
+
+        });
+       // alert(matrixHtml);
+
+
+    });
+    function CheckMatrix(acode) {
+
+        $('#hdnSorPrice').val("0");
+        $('#hdnSortResult').val("price");
+        $('#hdnPageIndex').val("0");
+        $('.stopscheckbox').each(function (i, items) {
+            $(this).prop('checked', false);
+            // alert($(this).id);
+        });
+        $('.chkAirlinelist').each(function (i, items) {
+           $(this).prop('checked',false);
+           // alert($(this).id);
+        });
+        $('#airline_' + acode).prop('checked', true);
+        filterResult();
+        setPriceLowToHigh();
+
+    }
+    </script>
+
+    <script>
+     $(function () {
+         $("#fltcount").html(@Model.FlightsList.Count());
+
+         //$('.checkbox theme-search-results-sidebar-section-checkbox-list-item').each(function (i, items) {
+
+
+         //    if ($(this).html() == "$No Flight") {
+         //        $(this).attr("disabled", "disabled");
+         //    }
+         //});
+         // reset Filters result
+         $('#results-sidebar-close').click(function () {
+             // alert('btn');
+             $('#divLeftPanel .sticky-col.customHideClass').hide();
+         });
+
+         $("#amount").val("$" + $("#hdnMinPrice").val() + " - $" + $("#hdnMaxPrice").val());
+         jQuery('#outboundDepature-amount').val(setSliderTime($("#hdnoutboundDep").val()));
+         jQuery('#outboundArrival-amount').val(setSliderTime($("#hdnoutboundArr").val()));
+         jQuery('#inboundDeparture-amount').val(setSliderTime($("#hdninboundDep").val()));
+         jQuery('#inboundArrival-amount').val(setSliderTime($("#hdninboundArr").val()));
+         SetPriceRange();
+         SetOutBoundDep();
+         SetOutBoundArr();
+         SetInBoundDep();
+         SetInBoundArr();
+
+     });
+
+
+
+    function setSliderTime(jurtime) {
+        var jurval = jurtime.split(":")
+        var hours1 = Math.floor(jurval[0] / 60);
+        var minutes1 = jurval[0] - (hours1 * 60);
+
+        if (hours1 < 10) hours1 = '0' + hours1;
+        if (minutes1 < 10) minutes1 = '0' + minutes1;
+
+        if (minutes1 == 0) minutes1 = '00';
+
+        var hours2 = Math.floor(jurval[1] / 60);
+        var minutes2 = jurval[1] - (hours2 * 60);
+
+        if (hours2 < 10) hours2 = '0' + hours2;
+        if (minutes2 < 10) minutes2 = '0' + minutes2;
+
+        if (minutes2 == 0) minutes2 = '00';
+        var rvalue = hours1 + ':' + minutes1 + '-' + hours2 + ':' + minutes2;
+        return rvalue;
+    }
+
+    function ResetPriceSlider() {
+        var minprice = '@(Model.MinPrice)';
+        var maxprice = '@(Model.MaxPrice)';
+        var slider_range = document.getElementById('slider-range');
+        slider_range.noUiSlider.set([parseInt(minprice), parseInt(maxprice)]);
+        filterResult();
+    }
+
+    function ResetOutDep() {
+        var outboundDepature_slider_range = document.getElementById('outboundDepature-slider-range');
+        var outDepVal = '@(Model.OutBoundDep)';
+        outboundDepature_slider_range.noUiSlider.set([parseInt(outDepVal.split(':')[0]), parseInt(outDepVal.split(':')[1])]);
+        filterResult();
+    }
+    function ResetOutArr() {
+        var outboundArrival_slider_range = document.getElementById('outboundArrival-slider-range');
+        var outArrVal = '@(Model.OutBoundArr)';
+        outboundArrival_slider_range.noUiSlider.set([parseInt(outArrVal.split(':')[0]), parseInt(outArrVal.split(':')[1])]);
+        filterResult();
+    }
+    function ResetInDep() {
+        var inboundDeparture_slider_range = document.getElementById('inboundDeparture-slider-range');
+        var InDepVal = '@(Model.InBoundDep)';
+        inboundDeparture_slider_range.noUiSlider.set([parseInt(InDepVal.split(':')[0]), parseInt(InDepVal.split(':')[1])]);
+        filterResult();
+    }
+    function ResetInArr() {
+        var inboundArrival_slider_range = document.getElementById('inboundArrival-slider-range');
+        var InArrVal = '@(Model.InBoundArr)';
+        inboundArrival_slider_range.noUiSlider.set([parseInt(InArrVal.split(':')[0]), parseInt(InArrVal.split(':')[1])]);
+        filterResult();
+    }
+
+    function ResetAirline() {
+        $('.chkAirlinelist').each(function (i, items) {
+            if ($(this).prop('checked')) {
+                this.checked = false;
+            }
+        });
+        filterResult();
+    }
+
+    function ResetStops() {
+        $('.stopscheckbox').each(function (i, items) {
+            if ($(this).prop('checked')) {
+                this.checked = false;
+            }
+        });
+        filterResult();
+    }
+
+    function SetPriceRange() {
+        var slider_range = document.getElementById('slider-range');
+        noUiSlider.create(slider_range, {
+            start: [parseInt($("#hdnMinPrice").val()), parseInt($("#hdnMaxPrice").val())],
+            connect: true,
+            range: {
+                'min': parseInt($("#hdnMinPrice").val()),
+                'max': parseInt($("#hdnMaxPrice").val())
+            }
+
+        });
+        slider_range.noUiSlider.on('change', function (values, handle) {
+            jQuery('#amount').val("$" + parseInt(values[0]) + " - $" + parseInt(values[1]));
+            $("#hdnMinPrice").val(parseInt(values[0]));
+            $("#hdnMaxPrice").val(parseInt(values[1]));
+            filterResult();
+        });
+    }
+    function SetOutBoundDep() {
+        var outboundDepature_slider_range = document.getElementById('outboundDepature-slider-range');
+        var outDepVal = '@(Model.OutBoundDep)';
+         var outDepVal1 = outDepVal;
+        if (outDepVal.split(':')[0] == outDepVal.split(':')[1]) {
+            outDepVal = outDepVal.split(':')[0] + ":" + parseInt(outDepVal.split(':')[0]) + 1;
+        }
+            var outdep = outDepVal.split(':');
+        noUiSlider.create(outboundDepature_slider_range, {
+            start: [parseInt(outdep[0]), parseInt(outdep[1])],
+            connect: true,
+            range: {
+                'min': parseInt(outdep[0]),
+                'max': parseInt(outdep[1])
+            }
+
+        });
+        outboundDepature_slider_range.noUiSlider.on('change', function (values, handle) {
+            var d =  parseInt(values[0]) + ":" + parseInt(values[1]);
+            $("#hdnoutboundDep").val(setSliderTime(d));
+            $('#outboundDepature-amount').val(setSliderTime(d));
+            filterResult();
+        });
+        if (outDepVal1.split(':')[0] == outDepVal1.split(':')[1]) {
+            outboundDepature_slider_range.setAttribute('disabled', true);
+        }
+    }
+    function SetOutBoundArr() {
+        var outboundArrival_slider_range = document.getElementById('outboundArrival-slider-range');
+        var outArrVal = '@(Model.OutBoundArr)';
+         var outArrVal1 = outArrVal;
+        if (outArrVal.split(':')[0] == outArrVal.split(':')[1]) {
+            outArrVal = outArrVal.split(':')[0] + ":" + parseInt(outArrVal.split(':')[0]) + 1;
+        }
+        var outarr = outArrVal.split(':');
+        noUiSlider.create(outboundArrival_slider_range, {
+            start: [parseInt(outarr[0]), parseInt(outarr[1])],
+            connect: true,
+            range: {
+                'min': parseInt(outarr[0]),
+                'max': parseInt(outarr[1])
+            }
+
+        });
+        outboundArrival_slider_range.noUiSlider.on('change', function (values, handle) {
+            var d =  parseInt(values[0]) + ":" + parseInt(values[1]);
+            $("#hdnoutboundArr").val(setSliderTime(d));
+            $('#outboundArrival-amount').val(setSliderTime(d));
+            filterResult();
+        });
+        if (outArrVal1.split(':')[0] == outArrVal1.split(':')[1]) {
+            outboundArrival_slider_range.setAttribute('disabled', true);
+        }
+    }
+    function SetInBoundDep() {
+        var inboundDeparture_slider_range = document.getElementById('inboundDeparture-slider-range');
+        var InDepVal = '@(Model.InBoundDep)';
+         var InDepVal1 = InDepVal;
+        if (InDepVal.split(':')[0] == InDepVal.split(':')[1]) {
+            InDepVal = InDepVal.split(':')[0] + ":" + parseInt(InDepVal.split(':')[0]) + 1;
+        }
+             var Indep = InDepVal.split(':');
+        noUiSlider.create(inboundDeparture_slider_range, {
+            start: [parseInt(Indep[0]), parseInt(Indep[1])],
+            connect: true,
+            range: {
+                'min': parseInt(Indep[0]),
+                'max': parseInt(Indep[1])
+            }
+
+        });
+        inboundDeparture_slider_range.noUiSlider.on('change', function (values, handle) {
+            var d =  parseInt(values[0]) + ":" + parseInt(values[1]);
+            $("#hdninboundDep").val(setSliderTime(d));
+            $('#inboundDeparture-amount').val(setSliderTime(d));
+            filterResult();
+        });
+        if (InDepVal1.split(':')[0] == InDepVal1.split(':')[1]) {
+            inboundDeparture_slider_range.setAttribute('disabled', true);
+        }
+    }
+    function SetInBoundArr() {
+        var inboundArrival_slider_range = document.getElementById('inboundArrival-slider-range');
+        var InArrVal = '@(Model.InBoundArr)';
+          var InArrVal1 = InArrVal;
+        if (InArrVal.split(':')[0] == InArrVal.split(':')[1]) {
+            InArrVal = InArrVal.split(':')[0] + ":" + parseInt(InArrVal.split(':')[0]) + 1;
+        }
+             var InArr = InArrVal.split(':');
+        noUiSlider.create(inboundArrival_slider_range, {
+            start: [parseInt(InArr[0]), parseInt(InArr[1])],
+            connect: true,
+            range: {
+                'min': parseInt(InArr[0]),
+                'max': parseInt(InArr[1])
+            }
+
+        });
+        inboundArrival_slider_range.noUiSlider.on('change', function (values, handle) {
+            var d =  parseInt(values[0]) + ":" + parseInt(values[1]);
+            $("#hdninboundArr").val(setSliderTime(d));
+            $('#inboundArrival-amount').val(setSliderTime(d));
+            filterResult();
+        });
+        if (InArrVal1.split(':')[0] == InArrVal1.split(':')[1]) {
+            inboundArrival_slider_range.setAttribute('disabled', true);
+        }
+    }
+    </script>
+}

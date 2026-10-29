@@ -1,0 +1,371 @@
+﻿@model PageModel
+
+@{
+    var seo = ViewBag.Seo as SeoEntities;
+
+    ViewData["Title"] = Html.Raw(seo?.MetaTitle ?? "").ToString();
+    ViewData["Description"] = Html.Raw(seo?.MetaDescription ?? "").ToString();
+}
+
+@section Metatags {
+    <title>@Html.Raw(seo?.MetaTitle ?? "RushMyFlight")</title>
+    <meta name="description" content="@Html.Raw(seo?.MetaDescription ?? "")" />
+    <meta name="keywords" content="@Html.Raw(seo?.MetaKeywords ?? "")" />
+}
+ 
+<style>
+    /* Unified Section Background */
+	.contact_page_wrapper {
+		background-color: #f9f9f9;
+		font-family: 'Segoe UI', Tahoma, sans-serif;
+		width: 100%;
+		overflow-x: hidden;
+		.container {
+			max-width: 1200px;
+		}
+	}
+
+	.contact_us {
+		padding: 75px 15px;
+	}
+
+	.map_sec {
+		padding: 0 15px 75px;
+	}
+
+	.contact_inner {
+		background-color: #fff;
+		position: relative;
+		box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+		border-radius: 20px;
+		display: flex;
+		overflow: hidden;
+		min-height: 550px;
+		width: 100%;
+	}
+
+	.contact_field {
+		padding: 60px;
+		flex: 1;
+	}
+
+	.contact_field h3 {
+		color: #000;
+		font-size: 48px;
+		font-weight: 600;
+		margin-bottom: 5px;
+	}
+
+	.contact_field p {
+		color: #444;
+		font-size: 14px;
+		margin-bottom: 40px;
+		line-height: 1.4;
+	}
+
+	.contact_field .form-control {
+		border-radius: 0;
+		border: none;
+		border-bottom: 1px solid #ddd;
+		padding: 12px 0;
+		margin-bottom: 25px;
+		font-size: 14px;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.contact_field .form-control:focus {
+		box-shadow: none;
+		border-bottom: 1px solid #4d18e1;
+	}
+
+	.contact_form_submit {
+		background: #ED4214;
+		border: none;
+		color: #fff;
+		padding: 12px 0;
+		width: 240px;
+		border-radius: 50px;
+		cursor: pointer;
+		font-weight: 500;
+		margin-top: 20px;
+		text-align: center;
+	}
+
+	.info_wrapper {
+		width: 350px;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+
+	.contact_info_sec {
+		background-color: #2b2b2b;
+		color: #fff;
+		padding: 50px 40px;
+		border-radius: 30px 0 0 30px;
+		margin-top: 100px;
+		flex-grow: 0;
+		z-index: 2;
+		box-shadow: -10px 0 20px rgba(0,0,0,0.1);
+		a:hover {
+			color: white;
+		}
+	}
+
+	.contact_info_sec h4 {
+		font-size: 24px;
+		font-weight: 500;
+		margin-bottom: 30px;
+	}
+
+	.info_detail {
+		display: flex;
+		align-items: flex-start;
+		margin-bottom: 25px;
+		font-size: 14px;
+		font-weight: 300;
+		color: #e0e0e0;
+	}
+
+	.info_detail i {
+		margin-top: 4px;
+		margin-right: 15px;
+		font-size: 16px;
+	}
+
+	.gradient_accent_bar {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 100px;
+		background: #ED4214;
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		padding-bottom: 30px;
+	}
+
+	.social_horizontal {
+		display: flex;
+		gap: 15px;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.social_horizontal a {
+		color: #fff;
+		font-size: 16px;
+		opacity: 0.9;
+	}
+
+	.map_header_text {
+		margin-bottom: 40px;
+	}
+
+	.map_header_text h2 {
+		font-weight: 600 !important;
+		font-size: 32px;
+		color: #222;
+	}
+
+	.map_container_box {
+		overflow: hidden;
+		border-radius: 20px;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+		border: 1px solid #fff;
+	}
+ 
+	/* Responsive */
+	@@media (max-width: 991px) {
+		.contact_inner {
+			flex-direction: column;
+		}
+
+		.info_wrapper {
+			width: 100%;
+		}
+
+		.contact_info_sec {
+			border-radius: 0;
+			margin-top: 0;
+		}
+
+		.gradient_accent_bar {
+			position: relative;
+			width: 100%;
+			height: 60px;
+			align-items: center;
+			padding-bottom: 0;
+		}
+
+		.contact_us {
+			padding: 30px 0 50px;
+		}
+
+		.contact_field h3 {
+			font-size: 30px;
+		}
+		.contact_field {
+			padding: 35px;
+		}
+		.map_sec {
+			padding: 0 0 50px;
+		}
+		.contact_field p {
+			margin-bottom: 20px;
+		}
+		.contact_form_submit {
+			margin-top: 0;
+		}
+		.map_header_text h2 {
+			font-size: 25px;
+		}
+	}
+
+	.error-msg {
+		color: #dc3545;
+		font-size: 12px;
+		display: none;
+		margin-top: -20px;
+		margin-bottom: 15px;
+	}
+</style>
+ 
+<div class="contact_page_wrapper">
+<section class="contact_us">
+<div class="container">
+<!-- Added justify-content-center to ensure the col-11 is in the middle -->
+<div class="row justify-content-center">
+<div class="col-lg-12">
+<div class="contact_inner">
+<div class="contact_field">
+<form id="contactForm">
+                                @Html.AntiForgeryToken()
+<h3>Contact Us</h3>
+<p>For any queries, feel free to connect with RushMyFlight. Our team will get back to you shortly.</p>
+ 
+                                <input type="text" id="userName" class="form-control" placeholder="Name" required />
+<div id="nameError" class="error-msg">Please enter your name</div>
+ 
+                                <input type="email" id="userEmail" class="form-control" placeholder="Email" required />
+<div id="emailError" class="error-msg">Please enter a valid email</div>
+ 
+                                <input type="tel" id="userPhone" class="form-control" placeholder="Phone" />
+ 
+                                <textarea id="userMessage" class="form-control" placeholder="Message" required></textarea>
+<div id="messageError" class="error-msg">Please enter your message</div>
+ 
+                                <button type="submit" class="contact_form_submit" id="btnSubmit">
+<span id="btnText">Send Message</span>
+<span id="btnLoader" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+</button>
+</form>
+</div>
+<div class="info_wrapper">
+<div class="contact_info_sec">
+	<h4>Contact Info</h4>
+	<div class="info_detail">
+		<i class="fas fa-headphones"></i>
+		<a href="tel:+18555104060">+1-855-510-4060</a>
+	</div>
+	<div class="info_detail">
+		<i class="fas fa-envelope"></i>
+		<a href="mailto:care@rushmytrip.com">care@rushmyTrip.com</a>
+	</div>
+	<div class="info_detail">
+		<i class="fas fa-map-marker-alt"></i>
+		<span>971 US HIGHWAY 202N STE N<br>BRANCHBURG, NJ 08876</span>
+	</div>
+</div>
+ 
+                            <div class="gradient_accent_bar">
+<ul class="social_horizontal">
+<li><a href="https://www.facebook.com/Rushmyflight/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+<li><a href="https://www.instagram.com/rushmyflight/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+<li><a href="https://x.com/rmf_com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+ 
+    <section class="map_sec">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-12">
+<div class="map_header_text text-center">
+<h2>Find Us on Google Maps</h2>
+<p style="font-size: 15px; color: #666; max-width: 800px; margin: 15px auto 0;">
+                            Our office address is available on Google Maps. Navigate and reach out to us easily.
+</p>
+</div>
+<div class="map_container_box">
+<iframe src="https://www.google.com/maps?q=971+US+HIGHWAY+202N+STE+N+Branchburg+New+Jersey+08876&output=embed"
+                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+ 
+<script>
+    $(document).ready(function () {
+        $('#contactForm').on('submit', function(e) {
+            e.preventDefault();
+            if (validateForm()) { sendMessage(); }
+        });
+ 
+        function validateForm() {
+            let isValid = true;
+            const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+            $('.error-msg').hide();
+            if ($('#userName').val().trim() === "") { $('#nameError').show(); isValid = false; }
+            if (!emailRegex.test($('#userEmail').val())) { $('#emailError').show(); isValid = false; }
+            if ($('#userMessage').val().trim() === "") { $('#messageError').show(); isValid = false; }
+            return isValid;
+        }
+ 
+        function sendMessage() {
+            // FIX: Match properties exactly to your C# 'Contact' Class
+            const contactData = {
+                UserName: $('#userName').val(),
+                UserEmail: $('#userEmail').val(),
+                ContactNo: $('#userPhone').val(), // Use ContactNo instead of UserPhone
+                UserMessage: $('#userMessage').val()
+            };
+ 
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("GetContactDetail", "Home")",
+                // FIX: Send raw object (Form Data) instead of JSON string
+                data: contactData,
+                // FIX: Removed contentType: "application/json" to allow default binding
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                beforeSend: function () {
+                    $('#btnSubmit').prop('disabled', true);
+                    $('#btnText').hide();
+                    $('#btnLoader').show();
+                },
+                success: function (response) {
+                    // response will be the string from your Json("Thank you...") method
+                    alert(response);
+                    window.location.href = "@Url.Action("Index", "Home")";
+                },
+                error: function (err) {
+                    alert("Something went wrong. Please try again later.");
+                    $('#btnSubmit').prop('disabled', false);
+                    $('#btnText').show();
+                    $('#btnLoader').hide();
+                }
+            });
+        }
+    });
+</script>

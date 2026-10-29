@@ -1,0 +1,198 @@
+﻿@model AssignBookingPageVM
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Assign Bookings";
+}
+
+<div class="space-y-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-black text-slate-800 uppercase tracking-tight">📌 Assign Bookings</h1>
+            <p class="text-sm text-slate-500">Distribute flight reservations to specific agents or administrators.</p>
+        </div>
+        @* <div class="flex items-center gap-2">
+            <span class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-500 shadow-sm">
+                Unassigned: @Model.Bookings.Count(x => string.IsNullOrEmpty(x.AgentName))
+            </span>
+        </div> *@
+    </div>
+
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[1000px]">
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100">
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Booking Info</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Route</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest text-center">Current Status</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest">Assigned To</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase tracking-widest text-right">Assignment Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                    @foreach (var b in Model.Bookings)
+                    {
+                        <tr class="hover:bg-slate-50/30 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="font-bold text-slate-800 text-sm">@b.BookingNumber</div>
+                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter mt-0.5">
+                                    @(b.BookingDate.HasValue? b.BookingDate.Value.ToString("dd MMM yyyy") : "-")
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="font-bold text-slate-800">@b.FromDeparture</span>
+                                    <i class="fas fa-long-arrow-alt-right text-orange-400"></i>
+                                    <span class="font-bold text-slate-800">@b.ToDestination</span>
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-black uppercase tracking-widest ring-1 ring-slate-200">
+                                    @b.Status
+                                </span>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                @if (!string.IsNullOrEmpty(b.AgentName))
+                                {
+                                    <div class="flex items-center gap-2">
+                                        <div class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+                                        <span class="text-sm font-bold text-green-600">@b.AgentName</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="text-xs font-bold text-slate-400 italic">Not Assigned</span>
+                                }
+                            </td>
+
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex items-center justify-end gap-2">
+                                    <select class="px-3 py-1.5 rounded-lg border border-slate-200 text-[11px] font-bold text-slate-600 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all bg-white"
+                                            onchange="loadUsers(@b.BookingId, this.value)">
+                                        <option value="">Role</option>
+                                        @foreach (var r in Model.Roles)
+                                        {
+                                            <option value="@r.RoleId">@r.RoleName</option>
+                                        }
+                                    </select>
+
+                                    <select id="user-@b.BookingId" class="px-3 py-1.5 rounded-lg border border-slate-200 text-[11px] font-bold text-slate-600 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all bg-white min-w-[140px]">
+                                        <option value="">Select User</option>
+                                    </select>
+
+                                    <button onclick="assignBooking(@b.BookingId)"
+                                            class="px-4 py-1.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-black uppercase tracking-widest shadow-md shadow-orange-200 transition-all">
+                                        Assign
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="flex items-center justify-center gap-2 py-4">
+       @*  @for (int i = 1; i <= Math.Ceiling((double)Model.TotalRecords / Model.PageSize); i++)
+        {
+            <a href="/Admin/AssignBookings?pageNumber=@i"
+               class="h-10 w-10 flex items-center justify-center rounded-xl font-bold text-sm transition-all @(i == Model.PageNumber ? "bg-orange-500 text-white shadow-lg shadow-orange-200" : "bg-white border border-slate-200 text-slate-500 hover:bg-slate-50")">
+                @i
+            </a>
+        } *@
+
+        @{
+            int totalPages = (int)Math.Ceiling((double)Model.TotalRecords / Model.PageSize);
+            int currentPage = Model.PageNumber;
+            int startPage = Math.Max(1, currentPage - 1);
+            int endPage = Math.Min(totalPages, startPage + 2);
+
+            if (endPage - startPage < 2)
+            {
+                startPage = Math.Max(1, endPage - 2);
+            }
+        }
+
+        <div class="flex items-center justify-center gap-2 py-4">
+
+            @* Prev *@
+            @if (currentPage > 1)
+            {
+                <a href="/Admin/AssignBookings?pageNumber=@(currentPage - 1)"
+                   class="px-4 h-10 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold">
+                    Prev
+                </a>
+            }
+
+            @for (int i = startPage; i <= endPage; i++)
+            {
+                <a href="/Admin/AssignBookings?pageNumber=@i"
+                   class="h-10 w-10 flex items-center justify-center rounded-xl font-bold text-sm transition-all
+           @(i == currentPage
+                ? "bg-orange-500 text-white shadow-lg shadow-orange-200"
+                : "bg-white border border-slate-200 text-slate-500 hover:bg-slate-50")">
+                    @i
+                </a>
+            }
+
+            @* Next *@
+            @if (currentPage < totalPages)
+            {
+                <a href="/Admin/AssignBookings?pageNumber=@(currentPage + 1)"
+                   class="px-4 h-10 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold">
+                    Next
+                </a>
+            }
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // Load users by role
+    function loadUsers(bookingId, roleId) {
+        if (!roleId) return;
+
+        $.get("/Admin/GetAssignableUsers", { roleId: roleId }, function (data) {
+            let ddl = $("#user-" + bookingId);
+            ddl.empty();
+            ddl.append(`<option value="">Select User</option>`);
+
+            data.forEach(x => {
+                ddl.append(`<option value="${x.userId}">
+                    ${x.userName}
+                </option>`);
+            });
+        });
+    }
+
+    // Assign booking
+    function assignBooking(bookingId) {
+        let userId = $("#user-" + bookingId).val();
+
+        if (!userId) {
+            // Using your Notify logic via a custom trigger if available, otherwise native alert
+            alert("Please select a user first");
+            return;
+        }
+
+        $.post("/Admin/AssignBooking",
+            {
+                bookingId: bookingId,
+                userId: userId
+            },
+            function (res) {
+                if (res.success) {
+                    location.reload();
+                } else {
+                    alert("Error: " + res.message);
+                }
+            });
+    }
+</script>

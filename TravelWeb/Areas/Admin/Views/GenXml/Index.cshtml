@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+<h2>Genrate XML</h2>
+<div style="min-height:1000px">
+
+    <section class="forms">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="card">
+
+                        <div class="card-close">
+
+                            <div class="dropdown">
+
+                                <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+
+                                <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-header d-flex align-items-center">
+
+                            <h3 class="h4">File Upload</h3>
+
+                        </div>
+
+                        <div class="card-body">
+
+                           
+                            <div class="form-group">
+
+                                <input id="FileUpload1" type="file" name="FileUpload1" class="form-control-file">
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <input type="button" value="Upload" id="btnUpload"  class="btn btn-primary">
+
+                            </div>
+
+                            <div id="divloader" style="display:none">
+                                Loading....
+                                <img src="@(TravelWeb.Utilities.Common.WebSitePath)img/loader.png" />
+
+                            </div>
+
+                            <br />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<br />
+<br />
+
+
+<h2>Generate Destination XML</h2>
+
+<input type="file" id="FileUpload1" />
+<input type="button" id="btnUpload" value="Upload Files" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+<script>
+
+    $(document).ready(function () {
+        $('#btnUpload').click(function () {
+            $('#divloader').show();
+            // Checking whether FormData is available in browser
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $("#FileUpload1").get(0);
+                var files = fileUpload.files;
+
+                // Create FormData object
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+
+                // Adding one more key to FormData object
+                fileData.append('username', 'Manas');
+
+                $.ajax({
+                    url: '/office/genxml/UploadFiles',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result) {
+                        alert(result);
+                        $('#divloader').hide();
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                        $('#divloader').hide();
+                    }
+                });
+            } else {
+                alert("FormData is not supported.");
+            }
+        });
+    });
+</script>  

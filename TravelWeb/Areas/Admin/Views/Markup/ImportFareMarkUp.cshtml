@@ -1,0 +1,86 @@
+﻿@model TravelWeb.Admin.Models.FareMarkUp
+@using TravelWeb.Admin.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ImportFareMarkUp</title>
+</head>
+<body>
+    <h2>Import Fare Markup</h2>
+    <div class="x_content">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <input type="file" id="FileUpload1" name="FileUpload1" />
+            </div>
+            <div class="col-md-12">
+                <span id="spmsg" style="display:none;"> Uploading ... </span>
+            </div>
+        </div>
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div id="submit_btn" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                <input type="button" id="btnUpload" value="Upload Files" />
+
+                <div id="divloader" style="display:none">
+                    Loading....
+                </div>
+            </div>
+
+    </div>
+
+   
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#btnUpload').click(function () {
+                $('#divloader').show();
+                // Checking whether FormData is available in browser
+                if (window.FormData !== undefined) {
+
+                    var fileUpload = $("#FileUpload1").get(0);
+                    var files = fileUpload.files;
+
+                    // Create FormData object
+                    var fileData = new FormData();
+
+                    // Looping over all files and add it to FormData object
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    }
+
+                    // Adding one more key to FormData object
+                    fileData.append('username', 'Manas');
+
+                    $.ajax({
+                        url: '/markup/UploadImportFareMarkUp',
+                        type: "POST",
+                        contentType: false, // Not to set any content header
+                        processData: false, // Not to process data
+                        data: fileData,
+                        success: function (result) {
+                            alert(result);
+                            $('#divloader').hide();
+                        },
+                        error: function (err) {
+                            alert(err.statusText);
+                            $('#divloader').hide();
+                        }
+                    });
+                } else {
+                    alert("FormData is not supported.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

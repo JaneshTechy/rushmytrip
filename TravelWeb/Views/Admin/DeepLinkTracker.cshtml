@@ -1,0 +1,229 @@
+﻿@model TravelWeb.Models.DeepLinkTrackerListVM
+ 
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+ 
+<div class="space-y-8">
+ 
+    <!-- HEADER -->
+<div class="flex justify-between items-center">
+<h1 class="text-2xl font-black text-slate-800">Deep Link Tracker</h1>
+ 
+        <div class="flex gap-3">
+<div class="px-4 py-2 bg-slate-100 rounded-xl text-sm font-bold">
+                Total: @Model.TotalRecords
+</div>
+ 
+            <!-- ⭐ FS COUNT -->
+<div class="px-4 py-2 bg-green-100 text-green-700 rounded-xl text-sm font-bold">
+                FS (Last 3 Days): @Model.Last3DaysFSCount
+</div>
+</div>
+</div>
+ 
+    <!-- FILTER + PAGE SIZE -->
+<form method="get" class="flex flex-wrap gap-3 items-center">
+ 
+        @* <input type="text" name="searchId" value="@Model.SearchId"
+               placeholder="SearchId"
+               class="px-4 py-2 border rounded-xl text-sm" />
+ 
+        <input type="text" name="source" value="@Model.Source"
+               placeholder="Source"
+               class="px-4 py-2 border rounded-xl text-sm" />
+*@
+<!-- PAGE SIZE -->
+<select name="pageSize" onchange="this.form.submit()"
+                class="px-4 py-2 border rounded-xl text-sm">
+            @foreach (var size in new[] { 50, 100, 200, 300, 500 })
+            {
+<option value="@size" selected="@(Model.PageSize == size)">
+                    Show @size
+</option>
+            }
+</select>
+ 
+        <button class="px-6 py-2 bg-orange-500 text-white rounded-xl text-sm font-bold">
+            Apply
+</button>
+</form>
+ 
+    <!-- TABLE -->
+<div class="bg-white rounded-2xl border overflow-x-auto">
+<table class="w-full text-sm min-w-[1100px]">
+<thead class="bg-slate-50">
+<tr>
+<th class="p-3">Search</th>
+<th class="p-3">Route</th>
+<th class="p-3">Date</th>
+<th class="p-3">Pax</th>
+<th class="p-3">Flight</th>
+<th class="p-3">Amount</th>
+<th class="p-3">Stage</th>
+<th class="p-3">Action</th> <!-- ⭐ NEW -->
+</tr>
+</thead>
+ 
+            <tbody>
+                @foreach (var x in Model.Records)
+                {
+<tr class="border-t hover:bg-slate-50">
+<td class="p-3">
+<div class="font-bold">@x.SearchId</div>
+<div class="text-xs text-gray-400">@x.Source</div>
+</td>
+ 
+                        <td class="p-3">@x.FromLocation → @x.ToLocation</td>
+ 
+                        <td class="p-3">
+                            @x.DepartureDate?.ToString("dd MMM yyyy")
+</td>
+ 
+                        <td class="p-3 text-xs">
+                            A:@x.Adults C:@x.Children I:@x.Infants
+</td>
+ 
+                        <td class="p-3 text-xs">
+                            @x.Airline (Stops: @(x.Stops ?? 0))
+</td>
+ 
+                        <td class="p-3 text-green-600 font-bold">
+                            ₹@x.TotalAmount
+</td>
+ 
+                        <td class="p-3">
+<span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">
+                                @x.Stage
+</span>
+</td>
+ 
+                        <!-- ⭐ VIEW BUTTON -->
+<td class="p-3">
+<button onclick="openDetail(@x.Id)"
+                                    class="px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-xs shadow">
+                                View
+</button>
+</td>
+</tr>
+                }
+</tbody>
+</table>
+</div>
+ 
+    <!-- PAGINATION -->
+<div class="flex flex-wrap justify-between items-center gap-4">
+ 
+        <!-- PREV -->
+<div>
+            @if (Model.CurrentPage > 1)
+            {
+<a href="?page=@(Model.CurrentPage - 1)&pageSize=@Model.PageSize"
+                   class="px-4 py-2 bg-slate-200 rounded-xl text-sm">
+                    Prev
+</a>
+            }
+</div>
+ 
+        <!-- PAGE NUMBERS -->
+<div class="flex gap-2 flex-wrap">
+            @{
+                int start = Math.Max(1, Model.CurrentPage - 2);
+                int end = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
+ 
+                for (int i = start; i <= end; i++)
+                {
+<a href="?page=@i&pageSize=@Model.PageSize"
+                       class="px-3 py-2 rounded-xl text-sm @(i == Model.CurrentPage ? "bg-orange-500 text-white" : "bg-slate-200")">
+                        @i
+</a>
+                }
+            }
+</div>
+ 
+        <!-- NEXT -->
+<div>
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+<a href="?page=@(Model.CurrentPage + 1)&pageSize=@Model.PageSize"
+                   class="px-4 py-2 bg-slate-200 rounded-xl text-sm">
+                    Next
+</a>
+            }
+</div>
+ 
+        <!-- JUMP -->
+<form method="get" class="flex items-center gap-2">
+<input type="number" name="page" min="1" max="@Model.TotalPages"
+                   placeholder="Page"
+                   class="w-20 px-3 py-2 border rounded-xl text-sm" />
+ 
+            <input type="hidden" name="pageSize" value="@Model.PageSize" />
+ 
+            <button class="px-4 py-2 bg-orange-500 text-white rounded-xl text-sm">
+                Go
+</button>
+</form>
+ 
+    </div>
+ 
+</div>
+ 
+<!-- ⭐ MODAL -->
+<div id="detailModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+<div class="bg-white w-[95%] max-w-5xl rounded-2xl shadow-xl p-6 relative">
+ 
+        <button onclick="closeModal()"
+                class="absolute top-3 right-4 text-gray-500 text-xl">
+            ✕
+</button>
+ 
+        <h2 class="text-xl font-bold mb-4">Deep Link Details</h2>
+ 
+        <div id="modalContent"
+             class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm max-h-[70vh] overflow-y-auto">
+</div>
+ 
+    </div>
+</div>
+ 
+<!-- ⭐ SCRIPT -->
+<script>
+    function openDetail(id) {
+        fetch('/Admin/GetDetail?id=' + id)
+            .then(res => res.json())
+            .then(data => {
+ 
+                let html = '';
+ 
+                for (const key in data) {
+ 
+                    let value = data[key];
+ 
+                    if (value === null || value === "")
+                        value = "-";
+ 
+                    // format dates
+                    if (key.toLowerCase().includes("date") && value !== "-") {
+                        value = new Date(value).toLocaleString();
+                    }
+ 
+                    html += `
+<div class="border border-slate-200 p-3 rounded-xl bg-slate-50">
+<div class="text-xs text-slate-400 uppercase">${key}</div>
+<div class="font-bold text-slate-700 break-words">${value}</div>
+</div>
+                    `;
+                }
+ 
+                document.getElementById('modalContent').innerHTML = html;
+ 
+                document.getElementById('detailModal').classList.remove('hidden');
+                document.getElementById('detailModal').classList.add('flex');
+            });
+    }
+ 
+    function closeModal() {
+        document.getElementById('detailModal').classList.add('hidden');
+    }
+</script>

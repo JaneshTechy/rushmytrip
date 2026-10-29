@@ -1,0 +1,971 @@
+﻿.breadcrumb {
+    padding: 8px 0px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+    .breadcrumb > .active {
+        color: #1b1a1a;
+        font-weight: 600;
+    }
+
+    .breadcrumb > li a {
+        color: rgba(0,0,0,0.3);
+    }
+
+.backModifyBox {
+    margin-bottom: 20px;
+}
+
+    .backModifyBox a {
+        color: #1b1a1a;
+        text-decoration: underline;
+    }
+
+.detailPage .theme-payment-page-sections-item {
+    border-bottom: 3px solid #2e80a2;
+}
+
+.supportPackag .columns {
+    float: left;
+    width: 33.3%;
+    padding: 0px;
+}
+
+.supportPackagLeft .columns {
+    width: 100%;
+    float: none;
+}
+
+    .supportPackagLeft .columns .price {
+        padding: 52px 0;
+        border-right: 0;
+    }
+
+.supportPackag .supportPackagLeft .price li {
+    text-align: left;
+    font-size: 14px;
+}
+
+    .supportPackag .supportPackagLeft .price li:last-child {
+        background: transparent;
+    }
+
+.supportPackagLeft {
+    width: 25%;
+}
+
+.columns .price {
+    list-style-type: none;
+    border: 1px solid #e8e8e8;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    min-height: 263px;
+    position: relative;
+}
+
+.supportPackag {
+    margin: 20px 0;
+    float: left;
+    width: 100%;
+}
+
+    .supportPackag .supportPackagRight {
+        width: 75%;
+    }
+
+    .supportPackag .price:hover {
+        box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+    }
+
+    .supportPackag .price .header {
+        background-color: #111;
+        color: white;
+        font-size: 25px;
+    }
+
+    .supportPackag .price li {
+        padding: 10px 10px;
+        text-align: center;
+        background: #eff0f1;
+        margin: 5px 0;
+    }
+
+    .supportPackag .price .bottom-btn {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: transparent;
+    }
+
+    .supportPackag .price li.headerPrice {
+        font-size: 18px;
+        font-weight: 600;
+        background: transparent;
+    }
+
+#PremiumBox .price li, .columns.active .price li {
+    background: #eff0f1;
+    margin: 5px 0;
+}
+
+#PremiumBox .price .bottom-btn, .columns.active .price .bottom-btn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+}
+
+#PremiumBox .price li.headerPrice, .columns.active .price li.headerPrice {
+    font-size: 18px;
+    font-weight: 600;
+    background: transparent;
+}
+
+.columns.active .price .grey {
+    color: #fba406;
+    background: transparent;
+}
+
+.supportPackag .price .grey {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1d8ebd;
+    background: transparent;
+}
+
+.theme-sidebar-section-charges-list > li .chk-line {
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+#PremiumBox, .columns.active {
+    position: relative;
+}
+
+    .columns.active ul {
+        border: 1px solid #fba406;
+    }
+
+    #PremiumBox span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: -12px;
+        background: #fff;
+        display: inline-block;
+        text-align: center;
+        border: 1px solid #fba406;
+        width: 60%;
+        font-weight: 600;
+        z-index: 9;
+    }
+
+    .columns.active .bottom-btn .button {
+        background: #fba406;
+    }
+
+.columns .button {
+    background-color: #1d8ebd;
+    border: none;
+    color: white;
+    display: inline-block;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+.detailPage .theme-payment-page-sections-item {
+    border-bottom: 3px solid #2e80a2;
+}
+
+.importantFlightInformation h5 {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid #ccc;
+    line-height: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    color: #1d8ebd;
+}
+
+h5.headingNewDetail {
+    margin-bottom: 15px;
+    font-size: 18px;
+    padding-bottom: 0;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.supportPackag .supportPackagLeft h5 {
+    font-size: 16px;
+}
+
+.EmptyBaggage {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgb(37, 42, 49);
+}
+
+.selectOptionBoxRight {
+    width: 100%;
+}
+
+.selectOptionBox .selectOptionBoxRight span.selectOptionBoxRightPrice {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 600;
+}
+
+.baggage-row input[type="radio"], .baggage-row input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    margin-top: 2px;
+}
+
+.selectOptionBox {
+    margin-bottom: 15px;
+    border: rgb(29, 142, 189) 3px solid;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding: 12px;
+    justify-content: left;
+}
+
+.list_pssBx {
+    margin-top: 5px;
+}
+
+.resultBaggageInfo {
+    margin: 10px 0;
+}
+
+.theme-search-results #dvResult .theme-search-results-item-flight-sections .oddResultList:last-child {
+    padding-bottom: 0;
+}
+
+p.theme-search-results-item-flight-section-meta-duration {
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+p.theme-search-results-item-flight-section-meta-durationTime {
+    padding: 3px 5px;
+    background: #e6f6fd;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.detailPageIcon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #ada7a7;
+    font-size: 18px;
+}
+
+.detailPage .theme-payment-page-form-title .fa {
+    padding-right: 5px;
+    color: #777879;
+    font-size: 35px;
+}
+
+.theme-sidebar-section-charges-list > li .chk-line#dvwithpcs .chk-r .theme-sidebar-section-charges-item-price {
+    position: inherit;
+    float: right;
+    padding-top: 3px;
+}
+
+.resultPage {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.theme-payment-page-form-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+}
+
+.theme-payment-page-form-item {
+    position: relative;
+    margin-bottom: 0;
+}
+
+    .theme-payment-page-form-item select.form-control {
+        padding-right: 30px;
+    }
+
+    .theme-payment-page-form-item .form-control {
+        border-radius: 2px;
+        height: 45px;
+        outline: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-appearance: none;
+    }
+
+        .theme-payment-page-form-item .form-control:before {
+            content: 'foo';
+        }
+
+        .theme-payment-page-form-item .form-control:focus {
+            border-color: #0093d2;
+        }
+
+    .theme-payment-page-form-item > .fa {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        content: '\f107';
+        font-family: 'FontAwesome';
+        height: 45px;
+        line-height: 45px;
+        display: block;
+        pointer-events: none;
+    }
+
+.theme-payment-page-booking-header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.theme-payment-page-booking-price {
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 1em;
+}
+.theme-payment-page-sections-item {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.theme-payment-page-sections-item-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.theme-payment-page-sections-item-new-link {
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none !important;
+}
+
+.theme-payment-page-sections-item-new-extend {
+    padding-top: 20px;
+}
+
+.btnsMixBox {
+    margin-top: 20px;
+}
+
+    .btnsMixBox .btn {
+        padding: 10px 0;
+    }
+
+
+.theme-payment-page-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+    margin-top: 10px;
+}
+
+    .theme-payment-page-card-list > li {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+        .theme-payment-page-card-list > li img {
+            opacity: 0.75;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+            filter: alpha(opacity=75);
+            display: block;
+            height: 25px;
+        }
+
+.theme-payment-page-sections .theme-payment-page-sections-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.theme-payment-page-sections-item {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.theme-payment-page-sections-item-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.theme-payment-page-sections-item-new-link {
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none !important;
+}
+
+.theme-payment-page-sections-item-new-extend {
+    padding-top: 20px;
+}
+
+.theme-payment-page-signin {
+    overflow: hidden;
+    position: relative;
+    opacity: 0.85;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+    filter: alpha(opacity=85);
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s;
+}
+
+    .theme-payment-page-signin:hover {
+        opacity: 1;
+        -ms-filter: none;
+        filter: none;
+    }
+
+@media (max-width: 992px) {
+    .theme-payment-page-signin {
+        text-align: center;
+        opacity: 1;
+        -ms-filter: none;
+        filter: none;
+    }
+}
+
+.theme-payment-page-signin-icon {
+    font-size: 40px;
+    display: block;
+    float: left;
+    margin-right: 12px;
+    color: #0093d2;
+}
+
+@media (max-width: 992px) {
+    .theme-payment-page-signin-icon {
+        float: none;
+        font-size: 64px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+.theme-sidebar-section {
+    background: #fff;
+    padding: 25px 30px;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+}
+
+.theme-sidebar-section-title {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.theme-sidebar-section-weather-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+
+    .theme-sidebar-section-weather-list > li {
+        position: relative;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #ededed;
+    }
+
+.theme-sidebar-section-weather-date,
+.theme-sidebar-section-weather-temp {
+    margin-bottom: 0;
+}
+
+.theme-sidebar-section-weather-date {
+    opacity: 0.85;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+    filter: alpha(opacity=85);
+}
+
+.theme-sidebar-section-weather-temp {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.theme-sidebar-section-weather-icon {
+    margin-right: 7px;
+}
+
+.theme-sidebar-section-weather-forecast {
+    margin-bottom: 0;
+    text-align: right;
+    font-size: 12px;
+}
+
+    .theme-sidebar-section-weather-forecast > a {
+        color: #7a7a7a;
+    }
+
+        .theme-sidebar-section-weather-forecast > a:hover,
+        .theme-sidebar-section-weather-forecast > a:active,
+        .theme-sidebar-section-weather-forecast > a:focus {
+            color: #595959;
+            text-decoration: none;
+        }
+
+.theme-sidebar-section-summary-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    /*Done By Aayushi*/
+    /* color: #808080;*/
+    color: #0b1f66 !important;
+}
+
+    .theme-sidebar-section-summary-list > li {
+        margin-bottom: 5px;
+    }
+
+        .theme-sidebar-section-summary-list > li:last-child {
+            margin-bottom: 0;
+        }
+
+.theme-sidebar-section-features-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .theme-sidebar-section-features-list > li {
+        margin-bottom: 22px;
+        position: relative;
+        padding-left: 20px;
+    }
+
+        .theme-sidebar-section-features-list > li:before {
+            line-height: 1.4em;
+            font-size: 13px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '\f00c';
+            font-family: 'FontAwesome';
+            color: #fba406;
+        }
+
+        .theme-sidebar-section-features-list > li:last-child {
+            margin-bottom: 0;
+        }
+
+.theme-sidebar-section-features-list-title {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #4c4c4c;
+    margin-top: 0;
+    line-height: 1.4em;
+}
+
+.theme-sidebar-section-features-list-body {
+    font-size: 12px;
+    margin: 0;
+    opacity: 0.75;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+    filter: alpha(opacity=75);
+}
+
+.theme-sidebar-section-hotel-thumbnail-img {
+    float: left;
+    margin-right: 15px;
+}
+
+.theme-sidebar-section-hotel-thumbnail-caption {
+    display: table;
+}
+
+.theme-sidebar-section-hotel-thumbnail-rating {
+    line-height: 1em;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.theme-sidebar-section-hotel-thumbnail-address {
+    font-size: 12px;
+    opacity: 0.65;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+    filter: alpha(opacity=65);
+    margin-bottom: 0;
+}
+
+.theme-sidebar-section-charges-total {
+    margin-bottom: 0;
+    position: relative;
+    padding-top: 10px;
+    border-top: 1px solid #d9d9d9;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+    .theme-sidebar-section-charges-total > span {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-weight: bold;
+        padding: 0;
+    }
+
+.theme-sidebar-section-charges-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+    .theme-sidebar-section-charges-list > li {
+        position: relative;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed #e6e6e6;
+    }
+
+        .theme-sidebar-section-charges-list > li:first-child {
+            border-top: none;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+.theme-sidebar-section-charges-item-title {
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-weight: normal;
+    letter-spacing: 0;
+    font-size: 13px;
+    position: relative;
+}
+
+.theme-sidebar-section-charges-item-subtitle {
+    margin-bottom: 0;
+    font-size: 11px;
+    opacity: 0.65;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+    filter: alpha(opacity=65);
+}
+
+.theme-sidebar-section-charges-item-price {
+    top: 2px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    right: 0;
+}
+li.grey.bac-trap {
+    background: transparent !important;
+}
+.theme-search-results-item-flight-details-schedule-features{
+    opacity:1!important;
+}
+.theme-payment-page-sections-item.mt-2 {
+    position: relative;
+    margin-top: 460px;
+}
+.backModifyBox .back-mob a {
+    color: #868686;
+    font-size: 13px;
+}
+.theme-search-results-item-flight-payment-airline {
+    font-size: 14px;
+}
+    ul .theme-search-results-item-flight-details-schedule-features li img {
+    width: 25px !important;
+    height: 25px !important;
+    position: relative;
+    bottom: 5px;
+    margin-right: 8px;
+}
+@media(max-width:1024px) {
+    ul .nav.navbar-nav.pull-right {
+        display: none;
+    }
+
+    .baggage-row input[type="radio"], .baggage-row input[type="checkbox"] {
+        margin-right: 0;
+    }
+
+    .baggage-row label {
+        float: right;
+    }
+}
+@media(max-width:991px) {
+    .theme-payment-page-item-thumb .theme-search-results-item-img {
+        float: right;
+        width: 10%;
+        max-height: none;
+        position: absolute;
+        top: -184px;
+        right: 50px;
+    }
+
+    .theme-search-results-item {
+        background: transparent;
+    }
+
+    .theme-payment-page-sections-item {
+        margin-bottom: 10px;
+    }
+    .theme-payment-page-sections {
+        padding: 20px;
+    }
+    .theme-page-section-lg {
+        padding: 0;
+    }
+    a.navbar-brand {
+        padding-left: 40px !important;
+    }
+    .theme-page-section.theme-page-section-lg.detailPage.detail-mob-space .container {
+        width: 96%;
+        margin: 0 auto;
+    }
+    p.theme-payment-page-booking-subtitle {
+        float: left;
+        width: 50%;
+    }
+    h3.theme-payment-page-booking-title {
+        width: 60%;
+        float: left;
+        font-size: 26px;
+        font-weight: 600;
+    }
+    p.theme-payment-page-booking-price {
+        width: 40%;
+        text-align: right;
+        position: absolute;
+        right: 10px;
+    }
+
+}
+@media(max-width:768px){
+    .theme-sidebar-section {
+        border: 1px solid #e6e6e6;
+    }
+}
+@media(max-width:480px){
+    .mob-up-amt p {
+        position: absolute !important;
+        top: 14px;
+        !important;
+    }
+
+    h5.theme-sidebar-section-charges-item-title {
+        text-transform: capitalize !important;
+        font-size: 14px !important;
+        color: #000 !important;
+    }
+
+    .show-on-phone {
+        display: block !important;
+    }
+
+    .hide-on-phone {
+        display: none !important;
+    }
+
+    .theme-sidebar-section._mb-10.mobpadding.show-on-phone {
+        padding: 0px;
+    }
+
+    .theme-sidebar-section-charges-list > li .chk-line#dvwithpcs .chk-r .theme-sidebar-section-charges-item-price {
+        margin-right: 15px;
+    }
+
+    .theme-sidebar-section._mb-10.mobpadding.show-on-phone {
+        padding: 0px;
+        margin-bottom: 40px !important;
+    }
+
+    .baggage-select {
+        border: rgb(29, 142, 189) 1px solid !important;
+    }
+
+    .theme-sidebar-section-charges-item-price {
+        font-size: 18px !important;
+    }
+
+    .theme-sidebar-section._mb-10.mobpadding.show-on-phone h5 {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .theme-sidebar-section-charges-total {
+        font-size: 19px;
+    }
+
+    .theme-payment-page-item-thumb .theme-search-results-item-img {
+        top: -170px;
+        right: 0px;
+    }
+    .baggage-row input[type="radio"], .baggage-row input[type="checkbox"] {
+        margin-right: 16px;
+    }
+    .baggage-size {
+        display: none;
+    }
+    .baggage-price {
+        right: 72px;
+    }
+    p.categ-type {
+        font-size: 14px;
+    }
+    .theme-sidebar-section {
+        padding: 25px 20px;
+    }
+    .theme-sidebar-section-title {
+        font-size: 18px;
+    }
+    .theme-sidebar-section-charges-item-subtitle {
+        font-size: 16px;
+    }
+
+    .col-md-6.col-sm-6.col-xs-12.mob-up-amt {
+        position: absolute;
+        top: 38px;
+    }
+    .mob-amtup .theme-sidebar-section-charges-item-price {
+        position: absolute;
+        top: 15px;
+    }
+    .theme-sidebar-section {
+        border: 0px solid #e6e6e6;
+    }
+    .theme-sidebar-section._mb-10.mobpadding {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    a.navbar-brand {
+        padding-left: 0px !important;
+    }
+    .detailPage.detail-mob-space {
+        padding-top: 0;
+    }
+    p.theme-payment-page-booking-subtitle {
+        width: 100%;
+    }
+    .breadcrumbBox.hidephone {
+        display: none;
+    }
+    }
+@media(max-width:425px) {
+    .theme-payment-page-sections {
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 3px;
+    }
+    .bk_pggrDtl p {
+        display: none;
+    }
+    h5.headingNewDetail {
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    .baggage-name {
+        font-weight: 500;
+    }
+    .baggage-price {
+        font-weight: 500;
+    }
+    .detailPage .theme-payment-page-sections-item {
+        border-bottom: 1px solid #2e80a2;
+    }
+    .baggage-select {
+        border: rgb(29, 142, 189) 1px solid!important;
+    }
+    p.categ-ti {
+        font-weight: 700;
+        font-size: 13px;
+    }
+    .supportPackag .price li {
+        padding: 10px 0px;
+    }
+    p.theme-payment-page-booking-subtitle {
+        width: 100%;
+    }
+    .theme-payment-page-booking-price {
+        font-size: 26px;
+    }
+    h3.theme-payment-page-booking-title {
+        font-size: 23px;
+    }
+    .theme-sidebar-section._mb-10.mobpadding {
+        padding-bottom: 20px;
+    }
+    .baggage-row label {
+        width: 84%!important;
+    }
+    .baggage-name {
+        width: 80%!important;
+    }
+    h5.headingNewDetail {
+        padding-left: 0px;
+    }
+    }
+@media(max-width:375px) {
+    .backModifyBox {
+        margin-bottom: 0px;
+    }
+
+    .theme-payment-page-sections {
+        padding: 0px;
+        margin-bottom: 0px !important;
+        padding-bottom: 0px;
+    }
+
+    .theme-sidebar-section {
+        padding: 25px 0px;
+    }
+
+    .theme-payment-page-booking-price {
+        font-size: 25px;
+    }
+    h3.theme-payment-page-booking-title {
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+    }
+@media(max-width:320px){
+    .baggage-price {
+        right: 32px;
+    }
+}
+h3.theme-payment-page-sections-item-title i {
+    margin-right: 10px;
+}

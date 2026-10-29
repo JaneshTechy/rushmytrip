@@ -1,0 +1,561 @@
+﻿@using TravelWeb.Models;
+@model FlightsResult;
+
+<style>
+    .search-main-div {
+        width: 100%;
+        background: #eee;
+        float: left;
+    }
+
+    .middle-search_no {
+        width: 100%;
+        text-align: center;
+        float: left;
+        margin: 15px 0 20px 0;
+        display:none;
+    }
+
+    .no_result {
+        width: 40%;
+        display: inline-block;
+        padding: 10px;
+        margin: 0 auto;
+        border: 1px dashed #ccc;
+        background: #fff;
+    }
+
+    .no_result_left h3 {
+        color: #143c68;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+        line-height: 40px;
+    }
+
+    .no_result_left h5 {
+        color: #e83819;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        line-height: 25px;
+    }
+
+    .mobile-calling {
+        display: none;
+    }
+</style>
+@{ int k = 0; int summurycount = 0;}
+@*@if (ViewBag.IsAvailable == true)
+{*@
+    @foreach (var items in @Model.FlightsList)
+    {
+        int i = 0, j = 0, m = 0, n = 0;
+        k++;
+        TempData["summurycount"] = Convert.ToInt32(TempData["summurycount"]) + 1;
+
+        <form method="post" name="flight_frm_@(k)" id="flight_frm_@(k)" action="@Url.Content("~/flights/booking/")">
+            <input type="hidden" name="flight_id_@(k)" id="flight_id_@(k)" value="@(items.FlightId)" />
+
+            <div class="theme-search-results-item _mb-10 theme-search-results-item-rounded theme-search-results-item-">
+                <div class="theme-search-results-item-preview">
+                    <a class="theme-search-results-item-mask-link" href="#searchResultsItem-1" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="searchResultsItem-1"></a>
+                    <div class="row dFlexNew" data-gutter="20">
+                        <div class="col-md-10 ">
+                            <div class="theme-search-results-item-flight-sections">
+                                @*<div class="panel-heading panel-heading-custom">
+                        <h3 class="panel-title">Outbound</h3>
+                    </div>*@
+                                @foreach (var itemOB in items.OutboundList)
+                                {
+                                    <div class="theme-search-results-item-flight-section 2222 oddResultList">
+                                        <div class="row row-no-gutter row-eq-height">
+                                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                                <div class="theme-search-results-item-flight-section-airline-logo-wrap">
+                                                    <input type="radio" id="radio_out_@(k)_@(i)" name="radio_out_@(k)" value="@(itemOB[0].SagementRef)" @(i == 1 ? "checked" : "") style="display:none;" />
+                                                    <img class="theme-search-results-item-flight-section-airline-logo" src="./img/airline/icon/@(itemOB[0].Airline.Code).png" alt="Image Alternative text" title="Image Title" />
+                                                    <p id="flightsName">@(TravelWeb.Utilities.Common.GetAirline(itemOB[0].Airline.Code).Name)</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                                <div class="theme-search-results-item-flight-section-item">
+                                                    <div class="row">
+                                                        <div class="col-md-1 col-sm-1 col-xs-2 mobile-code-city" style="padding-left:0; padding-right:0;">
+                                                            <div class="theme-search-results-item-flight-section-meta text-center">
+
+                                                                <p class="theme-search-results-item-flight-section-meta-city">@itemOB[0].FromAirport.CityName</p>
+                                                                <div class="theme-search-results-item-flight-section-path-line-title codeCity"><strong>@(itemOB[0].FromAirport.Code)</strong></div>
+                                                                <p class="theme-search-results-item-flight-section-meta-date">@itemOB[0].DepartureDate.ToString("dd MMM")</p>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-1 col-sm-1 col-xs-2" style="padding-left:0; padding-right:0;">
+                                                            <p class="theme-search-results-item-flight-section-meta-time">
+                                                                @itemOB[0].DepartureDate.ToString("HH:mm").ToLower()
+
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-8">
+                                                            <div class="theme-search-results-item-flight-section-path">
+                                                                <div class="theme-search-results-item-flight-section-path-fly-time">
+
+
+                                                                    <p>
+                                                                        @*@(Math.Floor(double.Parse(itemOB[itemOB.Count - 1].TotalTime) / 60))h @(double.Parse(itemOB[itemOB.Count - 1].TotalTime) % 60)m*@
+
+                                                                    </p>
+                                                                    <strong id="stopText">@((itemOB.Count == 1) ? "NON" : (itemOB.Count - 1) + "") STOP</strong>
+                                                                </div>
+                                                                <div class="theme-search-results-item-flight-section-path-line"></div>
+                                                                <div class="theme-search-results-item-flight-section-path-line-start">
+                                                                    <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                    <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+
+                                                                </div>
+
+                                                                @if (((itemOB.Count == 1) ? "NON" : (itemOB.Count - 1) + "") == "1")
+                                                                {
+                                                                    <div class="theme-search-results-item-flight-section-path-line-middle-1">
+                                                                        <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[1].FromAirport.Code)</div>
+                                                                    </div>
+                                                                }
+                                                                else if (((itemOB.Count == 1) ? "NON" : (itemOB.Count - 1) + "") == "2")
+                                                                {
+                                                                    <div class="theme-search-results-item-flight-section-path-line-middle-1">
+                                                                        <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[1].FromAirport.Code)</div>
+                                                                    </div>
+                                                                    <div class="theme-search-results-item-flight-section-path-line-middle-2">
+                                                                        <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[2].FromAirport.Code)</div>
+                                                                    </div>
+                                                                }
+                                                                else if (((itemOB.Count == 1) ? "NON" : (itemOB.Count - 1) + "") == "3")
+                                                                {
+                                                                    <div class="theme-search-results-item-flight-section-path-line-middle-1">
+                                                                        <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[1].FromAirport.Code)</div>
+                                                                    </div>
+                                                                    <div class="theme-search-results-item-flight-section-path-line-middle-2">
+                                                                        <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[2].FromAirport.Code)</div>
+                                                                    </div>
+                                                                    <div class="theme-search-results-item-flight-section-path-line-middle-3">
+                                                                        <i class="fa theme-search-results-item-flight-section-path-icon"></i>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                        <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[3].FromAirport.Code)</div>
+                                                                    </div>
+                                                                }
+
+                                                                <div class="theme-search-results-item-flight-section-path-line-end">
+                                                                    <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                    <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-1 col-sm-1 col-xs-2" style="padding-left:0; padding-right:0;">
+                                                            <p class="theme-search-results-item-flight-section-meta-time">
+                                                                @(itemOB[itemOB.Count - 1].ArrivalDate.ToString("HH:mm").ToLower())
+
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-1 col-sm-1 col-xs-1 mobile-code-city-right" style="padding-left:0; padding-right:0;">
+                                                            <div class="theme-search-results-item-flight-section-meta text-center">
+
+                                                                <p class="theme-search-results-item-flight-section-meta-city">
+                                                                <p class="theme-search-results-item-flight-section-meta-city">@itemOB[itemOB.Count - 1].ToAirport.CityName</p>
+                                                                <div class="theme-search-results-item-flight-section-path-line-title codeCity"><strong>@(itemOB[itemOB.Count - 1].ToAirport.Code)</strong></div>
+                                                                <p class="theme-search-results-item-flight-section-meta-date">@(itemOB[itemOB.Count - 1].ArrivalDate.ToString("dd MMM"))</p>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-xs-2 _mob-h show-mob" style="">
+                                                            <div class="theme-search-results-item-flight-section-meta text-center durationRight">
+                                                                <p class="theme-search-results-item-flight-section-meta-duration">Duration</p>
+                                                                <p class="theme-search-results-item-flight-section-meta-durationTime">@(Math.Floor(double.Parse(itemOB[itemOB.Count - 1].TotalTime) / 60))h @(double.Parse(itemOB[itemOB.Count - 1].TotalTime) % 60)m</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<h5 class="theme-search-results-item-flight-section-airline-title">Operated by Virgin Atlantic Airways</h5>*@
+                                    </div>
+                                    break;
+                                }
+                                @*<div class="panel-heading panel-heading-custom">
+                        <h3 class="panel-title">Inbound</h3>
+                    </div>*@
+                                @if (items.InboundList.Count > 0)
+                                {
+                                    @foreach (var itemOB in items.InboundList)
+                                    {
+                                        j++;
+                            <div class="theme-search-results-item-flight-section 1111 oddResultList">
+                                <input type="hidden" name="name" value="@items.FlightFare.MarkupType" id="hiddenType" />
+                                <input type="hidden" name="name" value="@items.FlightFare.MarkupValue" id="hiddenValue" />
+
+                                <input type="hidden" name="name" value="@items.Outbound" id="hiddenOut" />
+                                <input type="hidden" name="name" value="@items.Inbound" id="hiddenIn" />
+                                <div class="row row-no-gutter row-eq-height">
+                                    <div class="col-md-2 col-sm-2 col-xs-12">
+                                        <div class="theme-search-results-item-flight-section-airline-logo-wrap">
+                                            <input type="radio" id="radio_in_@(k)_@(j)" name="radio_in_@(k)" value="@(itemOB[0].SagementRef)" @(j == 1 ? "checked" : "") style="display:none;" />
+
+                                            <img class="theme-search-results-item-flight-section-airline-logo" src="./img/airline/icon/@(itemOB[0].Airline.Code).png" />
+                                            <p id="flightsName">@(TravelWeb.Utilities.Common.GetAirline(itemOB[0].Airline.Code).Name)</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 col-sm-10 col-xs-12">
+                                        <div class="theme-search-results-item-flight-section-item">
+                                            <div class="row">
+                                                <div class="col-md-1 col-sm-1 col-xs-2 mobile-code-city" style="padding-left:0; padding-right:0;">
+                                                    <div class="theme-search-results-item-flight-section-meta text-center">
+
+                                                        <p class="theme-search-results-item-flight-section-meta-city">@itemOB[0].FromAirport.CityName</p>
+                                                        <div class="theme-search-results-item-flight-section-path-line-title codeCity"><strong>@(itemOB[0].FromAirport.Code)</strong></div>
+                                                        <p class="theme-search-results-item-flight-section-meta-date">@itemOB[0].DepartureDate.ToString("dd MMM")</p>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1 col-sm-1 col-xs-2" style="padding-left:0; padding-right:0;">
+                                                    <p class="theme-search-results-item-flight-section-meta-time">
+                                                        @itemOB[0].DepartureDate.ToString("HH:mm").ToLower()
+
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-8">
+                                                    <div class="theme-search-results-item-flight-section-path">
+                                                        <div class="theme-search-results-item-flight-section-path-fly-time">
+
+
+                                                            <p>
+                                                                @*@(Math.Floor(double.Parse(itemOB[itemOB.Count - 1].TotalTime) / 60))h @(double.Parse(itemOB[itemOB.Count - 1].TotalTime) % 60)m*@
+
+                                                            </p>
+                                                            <strong id="stopText">@((itemOB.Count == 1) ? "NON" : (itemOB.Count - 1) + "") STOP</strong>
+                                                        </div>
+                                                        <div class="theme-search-results-item-flight-section-path-line"></div>
+                                                        @if (((itemOB.Count == 1) ? "NON" : (itemOB.Count - 1) + "") == "1")
+                                                        {
+                                                            <div class="theme-search-results-item-flight-section-path-line-middle-1">
+                                                                <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[1].FromAirport.Code)</div>
+                                                            </div>
+                                                        }
+                                                        else if (((itemOB.Count == 1) ? "NON" : (itemOB.Count - 1) + "") == "2")
+                                                        {
+                                                            <div class="theme-search-results-item-flight-section-path-line-middle-1">
+                                                                <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[1].FromAirport.Code)</div>
+                                                            </div>
+                                                            <div class="theme-search-results-item-flight-section-path-line-middle-2">
+                                                                <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[2].FromAirport.Code)</div>
+                                                            </div>
+                                                        }
+                                                        else if (((itemOB.Count == 1) ? "NON" : (itemOB.Count - 1) + "") == "3")
+                                                        {
+                                                            <div class="theme-search-results-item-flight-section-path-line-middle-1">
+                                                                <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[1].FromAirport.Code)</div>
+                                                            </div>
+                                                            <div class="theme-search-results-item-flight-section-path-line-middle-2">
+                                                                <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                                <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[2].FromAirport.Code)</div>
+                                                            </div>
+                                                            <div class="theme-search-results-item-flight-section-path-line-middle-3">
+                                                                <i class="fa theme-search-results-item-flight-section-path-icon"></i>
+                                                                <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+                                                                <div class="theme-search-results-item-flight-section-path-line-title">@(itemOB[3].FromAirport.Code)</div>
+                                                            </div>
+                                                        }
+
+                                                        <div class="theme-search-results-item-flight-section-path-line-start">
+                                                            <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                            <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+
+                                                        </div>
+
+
+
+                                                        <div class="theme-search-results-item-flight-section-path-line-end">
+                                                            <i class="fa fa-plane theme-search-results-item-flight-section-path-icon"></i>
+                                                            <div class="theme-search-results-item-flight-section-path-line-dot"></div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1 col-sm-1 col-xs-2" style="padding-left:0; padding-right:0;">
+                                                    <p class="theme-search-results-item-flight-section-meta-time">
+                                                        @(itemOB[itemOB.Count - 1].ArrivalDate.ToString("HH:mm").ToLower())
+                                                        <span class="daysLate">+1</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-1 col-sm-1 col-xs-1 mobile-code-city-right" style="padding-left:0; padding-right:0;">
+                                                    <div class="theme-search-results-item-flight-section-meta text-center">
+
+                                                        <p class="theme-search-results-item-flight-section-meta-city">
+                                                        <p class="theme-search-results-item-flight-section-meta-city">@itemOB[itemOB.Count - 1].ToAirport.CityName</p>
+                                                        <div class="theme-search-results-item-flight-section-path-line-title codeCity"><strong>@(itemOB[itemOB.Count - 1].ToAirport.Code)</strong> </div>
+                                                        <p class="theme-search-results-item-flight-section-meta-date">@(itemOB[itemOB.Count - 1].ArrivalDate.ToString("dd MMM")) </p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-2 col-xs-2 _mob-h show-mob" style="">
+                                                    <div class="theme-search-results-item-flight-section-meta text-center durationRight">
+                                                        <p class="theme-search-results-item-flight-section-meta-duration">Duration</p>
+                                                        <p class="theme-search-results-item-flight-section-meta-durationTime">@(Math.Floor(double.Parse(itemOB[itemOB.Count - 1].TotalTime) / 60))h @(double.Parse(itemOB[itemOB.Count - 1].TotalTime) % 60)m</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<h5 class="theme-search-results-item-flight-section-airline-title">Operated by Virgin Atlantic Airways</h5>*@
+                            </div>
+                                        //break;
+                                    }
+
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-md-2 " id="bottomDiv">
+                            <div class="theme-search-results-item-book" id="btnWidescreen">
+                                <div class="theme-search-results-item-price">
+                                    <p class="theme-search-results-item-price-tag"><strong>$@Convert.ToInt32(items.FlightFare.AvgCost)</strong></p>
+                                    <p class="theme-search-results-item-price-sign">@(items.FlightClass.ToString())</p>
+                                </div>
+
+                                <a class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" href="javascript:void(0);" data-id="@(items.FlightId.ToString())">Select</a>
+
+                            </div>
+
+                            <div class="theme-search-results-item-book" id="btnMobilescreen">
+                                @*<div class="theme-search-results-item-price">
+                <p class="theme-search-results-item-price-tag"><strong>$@Convert.ToInt32(items.FlightFare.AvgCost)</strong></p>
+                <p class="theme-search-results-item-price-sign">@(items.FlightClass.ToString())</p>
+            </div>*@
+
+                                <a class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" href="javascript:void(0);" data-id="@(items.FlightId.ToString())">Book Now <strong>$@Convert.ToInt32(items.FlightFare.AvgCost)</strong> @(items.FlightClass.ToString())</a>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="flight-description-btn text-center" id="fl-des-btn">
+                        <span class="active txt-green">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i><span>24 HOURS FREE CANCELLATION</span>
+                        </span>
+                    </div>
+                    
+                        @*<div class="row">
+                <span class="clock"><i class="fa fa-clock-o" aria-hidden="true"></i>24 HOURS FREE CANCELLATION</span>
+            </div>*@
+                        @*<div class="row text-right resultBottomIconsMsg">
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="resultBottomIconsMsgInner">
+                        <img class="" style="" src="./img/flexibleticket.png" />
+                        <span>Flexible ticket</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="resultBottomIconsMsgInner">
+                        <img class="" style="" src="./img/nonrefundable.png" />
+                        <span>Non refundable</span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                    <div class="resultBottomIconsMsgInner">
+                        <img class="" style="" src="./img/cabinBag.png" />
+                        <span>10 kg</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="resultBottomIconsMsgInner">
+                        <img class="" style="" src="./img/noncheck.png" />
+                        <span>non check bag itinerary</span>
+                    </div>
+                </div>
+
+            </div>*@
+                    </div>
+                    <style>
+                        .ViewSummury table {
+                            border-collapse: collapse;
+                        }
+
+                        .ViewSummury table, td, th {
+                            border: 1px solid black;
+                        }
+                    </style>
+                    @{
+
+                        string str = TempData.Peek("summurycount").ToString();
+                    }
+                    @*<sapn style="cursor:pointer;color:#fff" onclick="ViewSummury(@(str));"> view</sapn>*@
+                    @{TempData.Keep("summurycount");}
+                    <div class="ViewSummury" id="dvView@(str)" style="display:none;">
+                        <table width="300px" style="text-align:center;">
+                            <tr>
+                                <th colspan="2"><b> Outbound : </b> @items.Outbound[0].FareClasses</th>
+                                <th colspan="3">
+                                    <b> Inbound : </b>
+                                    @if (@items.Inbound.Count > 0)
+                                    {
+                                        @items.Inbound[0].FareClasses
+                                    }
+
+                                </th>
+                        <th colspan="2">RuleName:@(Convert.ToString(items.FlightFare.MarkupRuleName))</th>
+                            </tr>
+                            <tr>
+                                <th style="text-align:center;">Type</th>
+                                <th style="text-align:center;">Value</th>
+                                
+                                <th>Pax</th>
+                                <th style="text-align:center;"> Fare</th>
+                                <th style="text-align:center;">Tax</th>
+                                <th style="text-align:center;">Markup</th>
+                                <th style="text-align:center;">Total</th>
+
+                            </tr>
+                            @{ int sum = 0;}
+                            @if (items.FlightFare.Adult > 0)
+                            {
+                                sum = sum + Convert.ToInt32(items.FlightFare.Adult * ((items.FlightFare.AdultFare) + (items.FlightFare.AdultTax) + (items.FlightFare.AdultMarkup)));
+                                <tr>
+                                    <td style="text-align:center;">@(Convert.ToString(items.FlightFare.MarkupType))</td>
+                                    <td style="text-align:center;">@(Convert.ToString(items.FlightFare.MarkupValue))</td>
+                                    <td style="text-align:left;">@items.FlightFare.Adult  Adult </td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.AdultFare))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.AdultTax))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.AdultMarkup))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.Adult*((items.FlightFare.AdultFare)+ (items.FlightFare.AdultTax)+ (items.FlightFare.AdultMarkup)))) </td>
+                                </tr>
+                            }
+
+
+                            @if (items.FlightFare.Child > 0)
+                            {
+                                sum = sum + Convert.ToInt32(items.FlightFare.Child * ((items.FlightFare.ChildFare) + (items.FlightFare.ChildTax) + (items.FlightFare.ChildMarkup)));
+                                <tr>
+                                    <td style="text-align:center;">@(Convert.ToString(items.FlightFare.MarkupType))</td>
+                                    <td style="text-align:center;">@(Convert.ToString(items.FlightFare.MarkupValue))</td>
+                                    <td style="text-align:left;">   @Convert.ToInt32(items.FlightFare.Child) Child </td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.ChildFare))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.ChildTax))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.ChildMarkup))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.Child * ((items.FlightFare.ChildFare) + (items.FlightFare.ChildTax) + (items.FlightFare.ChildMarkup)))) </td>
+                                </tr>
+                            }
+
+                            @if (items.FlightFare.Infant > 0)
+                            {
+                                sum = sum + Convert.ToInt32(items.FlightFare.Infant * ((items.FlightFare.InfantFare) + (items.FlightFare.InfantTax) + (items.FlightFare.InfantMarkup)));
+
+                                <tr>
+                                    <td style="text-align:center;">@(Convert.ToString(items.FlightFare.MarkupType))</td>
+                                    <td style="text-align:center;">@(Convert.ToString(items.FlightFare.MarkupValue))</td>
+                                    <td style="text-align:left;">   @Convert.ToInt32(items.FlightFare.Infant)  Infant </td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.InfantFare))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.InfantTax))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.InfantMarkup))</td>
+                                    <td style="text-align:center;">@(Convert.ToInt32(items.FlightFare.Infant * ((items.FlightFare.InfantFare) + (items.FlightFare.InfantTax) + (items.FlightFare.InfantMarkup)))) </td>
+                                </tr>
+                            }
+
+                            <tr>
+                                <td colspan="4" style="text-align:right;">Total : </td>
+                                <td style="text-align:center;">@(sum) </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+        </form>
+    }
+
+<div class="load-more" style="cursor:pointer;" id="loadmore" onclick="LoadMore(1);">
+    More Result
+</div>
+@*}*@
+@*else
+{
+    <div class="middle-search_no">
+        <div class="no_result">
+            <div class="no_result_left">
+                <div class=""><img src="~/img/img/call_center.jpg" alt="call-center"></div>
+                <h1>Sorry! No Result Found</h1>
+                <p>We have Searched more than million Flights Combination. We didn't find any Flights for Your Search. </p>
+                <h3>Let Our Agents Help You Find The Best Flight Option!</h3>
+                <h5> Call Now Toll Free</h5>
+                <a href="tel:+1-844-736-1666"><dfn></dfn> +1-844-736-1666</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="mobile-calling">
+        <div class="mobile_left"><img src="/img/telephone.png" class="dep-ai-img"> </div>
+        <div class="mobile_mid">
+            <h3>Call us for phone only </h3>
+            <span>unpublished fares</span>
+            <div class="deal-code">Deal Code: A2258512</div>
+        </div>
+        <div class="mobile_last">
+            <a href="tel:+1-844-736-1666" class="btn  float-right" aria-hidden="true" style="background-color: #0b4a80 !important; color:#fff; "> <i class="fa fa-phone"></i> CALL </a>
+        </div>
+
+    </div>
+}*@
+<script>
+    function ViewSummury(cnt) {
+        // alert($('#dvView' + cnt).html());
+        $('#dvView' + cnt).slideToggle();
+        //alert(cnt);
+    }
+</script>
+
+<script>
+    $(function () {
+        $(".btn-primary-inverse").click(function () {
+
+            var qsval = getUrlVars()["qs"];
+        var flight_id = $(this).data("id");
+            var str = "@(TravelWeb.Utilities.Common.WebSitePath + "details?qs=")" + qsval + "&flightId="+flight_id;
+
+                window.location = str;
+    });
+    });
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+</script>

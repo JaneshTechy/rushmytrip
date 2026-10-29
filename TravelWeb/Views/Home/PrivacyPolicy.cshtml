@@ -1,0 +1,61 @@
+﻿@model PageModel
+@{
+    var seo = ViewBag.Seo as SeoEntities;
+
+    ViewData["Title"] = Html.Raw(seo?.MetaTitle ?? "").ToString();
+    ViewData["Description"] = Html.Raw(seo?.MetaDescription ?? "").ToString();
+}
+
+@section Metatags {
+    <title>@Html.Raw(seo?.MetaTitle ?? "RushMyFlight")</title>
+    <meta name="description" content="@Html.Raw(seo?.MetaDescription ?? "")" />
+    <meta name="keywords" content="@Html.Raw(seo?.MetaKeywords ?? "")" />
+   
+}
+
+
+
+
+<div class="about-bg">
+
+    <div class="container">
+
+        <div class="page-title">
+            <h1>@Model.Title</h1>
+
+            <p>
+                Get to know the policies and guidelines that ensure
+                a safe and transparent experience on our platform.
+            </p>
+        </div>
+
+        <div class="about-card">
+              @if (Model?.UpdatedOn != null)
+                {
+                    <div class="updated-strip">
+                        <svg class="updated-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="9" stroke="#E8541F" stroke-width="1.8"/>
+                            <path d="M12 7V12L15.5 14" stroke="#E8541F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span><strong>Last Updated:</strong> @Model.UpdatedOn.Value.ToString("MMMM dd, yyyy")</span>
+                    </div>
+                }
+            <div class="about-content">
+                @Html.Raw(Model.Content)
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#bkgOverlay").fadeIn();
+            $("#delayedPopup").fadeIn();
+        }, 20000);
+    });
+</script>

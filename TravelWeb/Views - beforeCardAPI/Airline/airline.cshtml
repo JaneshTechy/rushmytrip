@@ -1,0 +1,244 @@
+﻿@model System.Data.DataTable;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@*Done by Aayushi*@
+@*new code of popup*@
+<script>
+    $(document).ready(function () {
+            setTimeout(function () {
+                $("#bkgOverlay").fadeIn();
+                $("#delayedPopup").fadeIn();
+            }, 20000);
+});
+    </script>
+
+
+
+<div class="theme-hero-area" style="height:600px;">
+    <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url(@(TravelWeb.Utilities.Common.WebSitePath)img/hero-banenr.jpg);"></div>
+        <div class="theme-hero-area-mask"></div>
+    </div>
+    <div class="theme-hero-area-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="theme-search-area _pt-150 _pb-100 _pv-mob-60 theme-search-area-stacked">
+                        <div class="theme-search-area-header _c-w _ta-c">
+                            <h1 class="theme-search-area-title">Search for Flights</h1>
+                            <p class="theme-search-area-subtitle">Compare 200 flight providers at once</p>
+                        </div>
+                        <div class="theme-search-area-form" id="hero-search-form">
+                            <div class="row" data-gutter="none">
+                                <div class="container" style="margin-left:-15px;">
+
+                                    <div class="switch-field">
+                                        <input type="radio" id="RoundTrip" name="flight-options" value="RoundTrip" checked />
+                                        <label for="RoundTrip">RoundTrip</label>
+                                        <input type="radio" id="OneWay" name="flight-options" value="OneWay" />
+                                        <label for="OneWay">OneWay</label>
+                                        @* <input type="radio" id="Multiselect" name="flight-options" value="Multiselect" />
+                                        <label for="OneWay">Multiselect</label> *@
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5 ">
+                                    <div class="row" data-gutter="none">
+                                        <div class="col-md-6 ">
+                                            <div class="theme-search-area-section first theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_from" class="theme-search-area-section-input typeahead" value="" type="text" placeholder="Departure" data-provide="typeahead" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-location-pin" id="newcolor"></i>
+                                                    <input id="flight_to" class="theme-search-area-section-input typeahead" value="" type="text" placeholder="Arrival" data-provide="typeahead" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="row" data-gutter="none">
+                                        <div class="col-md-4 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                    <input id="txtFromDate" class="theme-search-area-section-input" value="dd-mm-yyyy" type="text" placeholder="Check-in" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-calendar" id="newcolor"></i>
+                                                    <input id="txtToDate" class="theme-search-area-section-input" value="dd-mm-yyyy" type="text" placeholder="Check-out" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="theme-search-area-section theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr theme-search-area-section-curved quantity-selector" data-increment="Passengers">
+                                                <div class="theme-search-area-section-inner">
+                                                    <i class="theme-search-area-section-icon lin lin-people" id="newcolor"></i>
+                                                    <input class="theme-search-area-section-input" readonly name="pass_info" id="pass_info" placeholder="1 Pax, Economy" value="1 Pax, Economy" type="text" />
+                                                    <div class="" id="FlySearchPassengers" style="display:none; background-color:#fff;">
+                                                        <div class="quantity-selector-inner">
+                                                            <div id="prsn_popup">
+                                                                <ul class="slect_pssngr">
+                                                                    <li>
+                                                                        <label>Adult &nbsp;<span>(12+ Years)</span></label>
+                                                                        <div class="count_pssngr">
+                                                                            <a href="javascript:void(0);"><em data-field="adult" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                            <input type="text" readonly value="1" name="flight_adult" id="flight_adult" class="inpt_cout_pssngr" />
+                                                                            <a href="javascript:void(0);"><em data-field="adult" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>Children &nbsp;<span>(2-11 Years)</span></label>
+                                                                        <div class="count_pssngr">
+                                                                            <a href="javascript:void(0);"><em data-field="child" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                            <input type="text" readonly value="0" name="flight_child" id="flight_child" class="inpt_cout_pssngr" />
+                                                                            <a href="javascript:void(0);"><em data-field="child" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>Infant &nbsp;<span>(0-2 Years)</span></label>
+                                                                        <div class="count_pssngr">
+                                                                            <a href="javascript:void(0);"><em data-field="infant" data-opt="-" class="fa fa-minus inc_der"></em></a>
+                                                                            <input type="text" readonly value="0" name="flight_infant" id="flight_infant" class="inpt_cout_pssngr" />
+                                                                            <a href="javascript:void(0);"><em data-field="infant" data-opt="+" class="fa fa-plus inc_der"></em></a>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="combin_class">
+                                                                    <ul class="in_list_cls">
+                                                                        <li><input type="radio" name="flight_class" id="flight_class_4" value="4" checked /> <label for="flight_class_4">Economy</label></li>
+                                                                        <li><input type="radio" name="flight_class" id="flight_class_3" value="3" /> <label for="flight_class_3">Premimum</label></li>
+                                                                        <li><input type="radio" name="flight_class" id="flight_class_2" value="2" /> <label for="flight_class_2">Business</label></li>
+                                                                        <li><input type="radio" name="flight_class" id="flight_class_1" value="1" /> <label for="flight_class_1">First</label></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="clss_done" id="ind_done">
+                                                                    <a href="javascript:void(0);" id="prsn_done">Done</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <button class="theme-search-area-submit _mt-0 theme-search-area-submit-glow theme-search-area-submit-no-border theme-search-area-submit-curved" id="flight_submit">Go!</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theme-search-area-options theme-search-area-options-white theme-search-area-options-center theme-search-area-options-dot-primary-inverse clearfix">
+                            <div class="btn-group theme-search-area-options-list" data-toggle="buttons">
+                                <label class="btn btn-primary active">
+                                    <input type="radio" name="flight-options" id="flight-option-1" checked />Round Trip
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="flight-options" id="flight-option-2" />One Way
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- city page grid start -->
+<div class="container" id="city-page">
+    <div class="row">
+        <div class="col-12 _pt-20 _pb-50 _pv-mob-20">
+            @foreach (System.Data.DataRow items in @Model.Rows)
+            {
+                <h2><span>@(TravelWeb.Utilities.Common.GetAirline(items["ACode"].ToString()).Name) </span> Deals From $@items["TotalFare"].ToString()</h2>
+
+                <p>*All fares above were last found on: <span class="orangColorText"> @Convert.ToDateTime(items["CreatedDate"]).ToString("dd,MMM HH:MM")</span> <a href="">including taxes & fees</a> and our <a href="">service fees</a> Displayed fares are based on historical data, are subject to change and cannot be guaranteed at the time of booking <a href="">See all booking terms and conditions</a> </p>
+                break;
+            }
+
+            <div class="table-responsive _pt-20 _pv-mob-10">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>From </th>
+                            <th>To</th>
+                            <th>Airlines</th>
+                            <th>Depart</th>
+                            <th>Return</th>
+                            <th>Class</th>
+                            <th colspan="2">Fares*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (System.Data.DataRow items in @Model.Rows)
+                        {
+                            try
+                            {
+                                <tr>
+                                    <td>@(TravelWeb.Utilities.Common.GetAirport(items["DCode"].ToString()).CityName) </td>
+                                    <td>@(TravelWeb.Utilities.Common.GetAirport(items["GCode"].ToString()).CityName) </td>
+                                    <td><img class="cityAirlineLogo" src="@(TravelWeb.Utilities.Common.WebSitePath)/img/airline/icon/@(items["ACode"].ToString()).png" alt="@(TravelWeb.Utilities.Common.GetAirline(items["ACode"].ToString()).Name)" title="@(TravelWeb.Utilities.Common.GetAirline(items["ACode"].ToString()).Name)">@(TravelWeb.Utilities.Common.GetAirline(items["ACode"].ToString()).Name)</td>
+                                    <td>@Convert.ToDateTime(items["DepartDate"].ToString()).ToString("MMM,dd,yyyy")</td>
+                                    <td>@Convert.ToDateTime(items["ReturnDate"].ToString()).ToString("MMM,dd,yyyy") </td>
+                                    <td>@items["FClass"].ToString()</td>
+                                    <td>$@items["TotalFare"].ToString()</td>
+                                    <td style="text-align:center"><a href='@(TravelWeb.Utilities.Common.WebSitePath)result?qs=HOME|Home|@items["DCode"].ToString()|@items["GCode"].ToString()|@Convert.ToDateTime(items["DepartDate"].ToString()).ToString("yyyy-MM-dd")|@Convert.ToDateTime(items["ReturnDate"].ToString()).ToString("yyyy-MM-dd")|1|0|0|2|4|false'> <button class="morePrice">BOOK </button></a></td>
+
+                                </tr>
+
+                                @*<tr>
+                                        <td>Washington </td>
+                                        <td>Chicago </td>
+                                        <td><img class="cityAirlineLogo" src="http://www.FlightsHall.com//img/airline/icon/NK.png" alt="SPIRIT AIRLINES" title="SPIRIT AIRLINES">SPIRIT AIRLINES</td>
+                                        <td>Aug,10,2020</td>
+                                        <td>Aug,18,2020 </td>
+                                        <td>Economy</td>
+                                        <td>$33</td>
+                                        <td style="text-align:center"><a href="http://www.FlightsHall.com/result?qs=HOME|Home|BWI|ord|2020-08-10|2020-08-18|1|0|0|2|4|false"> <button class="morePrice">BOOK </button></a></td>
+
+                                    </tr>*@
+
+                            }
+                            catch
+                            {
+
+
+                            }
+
+
+                            @*<tr id="morePriceList" style="display:none;">
+                                    <td>New York City</td>
+                                    <td>Orlando</td>
+                                    <td><img class="cityAirlineLogo" src="./img/airline/icon/LX.png" alt="Image Alternative text" title="Image Title"> American Airlines</td>
+                                    <td>June,16, 2020</td>
+                                    <td>June,16, 2020</td>
+                                    <td>Economy</td>
+                                    <td colspan="2"><span class="dollerSign">&#36;</span>35<span>57</span></td>
+                                </tr>*@
+                            //onclick = "javascript:Booknow('@items["DCode"].ToString()','@items["GCode"].ToString()','@Convert.ToDateTime(items["DepartDate"].ToString()).ToString("yyyy - MM - dd")','@Convert.ToDateTime(items["ReturnDate"].ToString()).ToString("yyyy - MM - dd")','4');"
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- city page grid close -->

@@ -1,0 +1,559 @@
+@using TravelWeb.Utilities
+@using System.Xml
+@model Flights
+@{
+    bool isMulticity = ViewBag.IsMulticity == true
+        || (Model?.OutboundList != null
+            && Model.OutboundList.Count > 1
+            && (Model.Inbound == null || Model.Inbound.Count == 0)
+            && Model.OutboundList.SelectMany(x => x ?? new List<FlightsSegment>()).Count() == (Model.Outbound?.Count ?? 0));
+}
+
+@if (isMulticity && Model?.OutboundList != null)
+{
+    int legIndex = 0;
+    foreach (var legSegments in Model.OutboundList)
+    {
+        if (legSegments == null || !legSegments.Any()) { continue; }
+        legIndex++;
+        var obFirst = legSegments.FirstOrDefault();
+        var obLast = legSegments.LastOrDefault();
+        if (obFirst == null || obLast == null) { continue; }
+
+        TimeSpan outTotal = TimeSpan.Zero;
+        foreach (var seg in legSegments)
+        {
+            if (!string.IsNullOrEmpty(seg.ElapsedTime))
+            {
+                try { outTotal += XmlConvert.ToTimeSpan(seg.ElapsedTime); } catch { }
+            }
+        }
+        string outtotalTime = $"{(int)outTotal.TotalHours}h {outTotal.Minutes}m";
+        string obdepTime = obFirst.DepartureDate != default
+            ? obFirst.DepartureDate.ToString("HH:mm")
+            : (DateTime.TryParse(obFirst.DepDate, out var dtp) ? dtp.ToString("HH:mm") : "");
+        string obArrTime = obLast.ArrivalDate != default
+            ? obLast.ArrivalDate.ToString("HH:mm")
+            : (DateTime.TryParse(obLast.ArrDate, out var atp) ? atp.ToString("HH:mm") : "");
+        string obArrDate = obLast.ArrivalDate != default
+            ? obLast.ArrivalDate.ToString("ddd MMM dd")
+            : (DateTime.TryParse(obLast.ArrDate, out var adp) ? adp.ToString("ddd MMM dd") : "");
+        string obDepDateLabel = DateTime.TryParse(obFirst.DepDate, out var depLbl) ? depLbl.ToString("ddd, MMM dd") : "";
+        string obArrDateLabel = DateTime.TryParse(obLast.ArrDate, out var arrLbl) ? arrLbl.ToString("ddd, MMM dd") : "";
+        int outBoundStop = Math.Max(0, legSegments.Count - 1);
+        var stopCodes = legSegments.Skip(1).Select(x => x.FromAirport?.Code).Where(x => !string.IsNullOrEmpty(x)).ToList();
+        string cabinFullName = obFirst.CabinClass switch
+        {
+            "F" => "First",
+            "B" => "Business",
+            "Y" => "Economy",
+            "P" => "Premium",
+            _ => "Unknown"
+        };
+        string detailsPanelId = "details-mc-" + legIndex;
+        var outSegmentsList = legSegments.ToList();
+        var fromCity = obFirst.FromAirport?.CityName ?? obFirst.FromAirport?.Code ?? "";
+        var toCity = obLast.ToAirport?.CityName ?? obLast.ToAirport?.Code ?? "";
+        int o = 0;
+
+        <div class="card-result">
+            <div class="card-title-featured d-flex space-between">
+                <h3 class="d-flex">
+                    <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_mc_@legIndex)">
+                            <path d="M6 14.6666H7.5L11.25 8.99992H15.375C15.9975 8.99992 16.5 8.55325 16.5 7.99992C16.5 7.44659 15.9975 6.99992 15.375 6.99992H11.25L7.5 1.33325H6L7.875 6.99992H3.75L2.625 5.33325H1.5L2.25 7.99992L1.5 10.6666H2.625L3.75 8.99992H7.875L6 14.6666Z" fill="#1B2A4A" fill-opacity="0.5" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_mc_@legIndex">
+                                <rect width="16" height="18" fill="white" transform="matrix(0 1 -1 0 18 0)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <strong>Flight @legIndex</strong>
+                    <span>@obDepDateLabel — @obArrDateLabel</span>
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="info-flight">
+                    <div class="row-flight">
+                        <div class="title-flight d-flex">
+                            <div class="short-name d-flex" style="@(legIndex > 1 ? "background-color: #AF663E;" : "")">@(obFirst.Airline?.Code)</div>
+                            <h5>@(obFirst.Airline?.Name)</h5>
+                            <h6>@cabinFullName</h6>
+                        </div>
+                        <div class="detailed-flight d-flex space-between">
+                            <div class="flight">
+                                <div class="time">@obdepTime</div>
+                                <div class="country-block">@(obFirst.FromAirport?.Code)</div>
+                                <div class="date">@obDepDateLabel</div>
+                            </div>
+                            <div class="range">
+                                <div class="time-total">@outtotalTime</div>
+                                <div class="bar-flight">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.66665 12.8332H5.83331L8.74998 7.87484H11.9583C12.4425 7.87484 12.8333 7.484 12.8333 6.99984C12.8333 6.51567 12.4425 6.12484 11.9583 6.12484H8.74998L5.83331 1.1665H4.66665L6.12498 6.12484H2.91665L2.04165 4.6665H1.16665L1.74998 6.99984L1.16665 9.33317H2.04165L2.91665 7.87484H6.12498L4.66665 12.8332Z" fill="#D05E2B" />
+                                    </svg>
+                                </div>
+                                <div class="badge-stops">
+                                    @if (outBoundStop == 0)
+                                    {
+                                        <span data-i18n="result.nonStop">Non-stop</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@outBoundStop stop@(outBoundStop > 1 ? "s" : "") : @string.Join("·", stopCodes)</span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="flight">
+                                <div class="time">@obArrTime</div>
+                                <div class="country-block">@(obLast.ToAirport?.Code)</div>
+                                <div class="date">@obArrDate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-end">
+                <button type="button" class="btn-details" onclick="toggleDetails('@detailsPanelId', this)">
+                    <span data-i18n="details.showDetails">Show Details</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9" stroke-width="2.5"></polyline></svg>
+                </button>
+            </div>
+            <div class="details-panel" id="@detailsPanelId">
+                <div class="tab-content active">
+                    <div class="journey-wrap">
+                        <h3><span>Flight @legIndex · @obDepDateLabel — @fromCity → @toCity</span></h3>
+                        @foreach (var items in legSegments)
+                        {
+                            TimeSpan time = TimeSpan.Zero;
+                            if (!string.IsNullOrEmpty(items.ElapsedTime))
+                            {
+                                try { time = XmlConvert.ToTimeSpan(items.ElapsedTime); } catch { }
+                            }
+                            string outjourneyTime = $"{(int)time.TotalHours}h {time.Minutes}m";
+                            string cabinFullNameout = items.CabinClass switch
+                            {
+                                "F" => "First",
+                                "B" => "Business",
+                                "Y" => "Economy",
+                                "P" => "Premium",
+                                _ => "Unknown"
+                            };
+                            <div class="flight-journey">
+                                <div class="name-flignt d-flex gap-10">
+                                    <div class="d-flex gap-5">
+                                        <div class="name-circle d-flex" style="@(legIndex > 1 ? "background-color: #AF663E;" : "")">@(items.Airline?.Code)</div>
+                                        <h4>@(items.Airline?.Name) · Flight @items.FlightNo</h4>
+                                    </div>
+                                    <div class="tags">
+                                        <span>@cabinFullNameout</span>
+                                        <span data-i18n="details.onTime">On time</span>
+                                    </div>
+                                </div>
+                                <div class="journey-details d-flex space-between">
+                                    <div class="flight">
+                                        <h3>@(DateTime.TryParse(items.DepDate, out var segDep) ? segDep.ToString("HH:mm") : "")</h3>
+                                        <div class="country">@(Common.GetAirport(items.FromAirport?.Code)?.Name ?? items.FromAirport?.Code) (@(items.FromAirport?.Code))</div>
+                                        <div class="date">@(DateTime.TryParse(items.DepDate, out var segDepD) ? segDepD.ToString("ddd, MMM dd, yyyy") : "")</div>
+                                    </div>
+                                    <div class="total-timing">@outjourneyTime</div>
+                                    <div class="flight text-end">
+                                        <h3>@(DateTime.TryParse(items.ArrDate, out var segArr) ? segArr.ToString("HH:mm") : "")</h3>
+                                        <div class="country-block">@(Common.GetAirport(items.ToAirport?.Code)?.Name ?? items.ToAirport?.Code) (@(items.ToAirport?.Code))</div>
+                                        <div class="date">@(DateTime.TryParse(items.ArrDate, out var segArrD) ? segArrD.ToString("ddd, MMM dd, yyyy") : "")</div>
+                                    </div>
+                                </div>
+                            </div>
+                            if (o < outSegmentsList.Count - 1)
+                            {
+                                var nextSeg = outSegmentsList[o + 1];
+                                if (DateTime.TryParse(items.ArrDate, out var arrT) && DateTime.TryParse(nextSeg.DepDate, out var depT))
+                                {
+                                    var layoverTime = depT - arrT;
+                                    string layoverFormatted = $"{(int)layoverTime.TotalHours}h {layoverTime.Minutes}m";
+                                    <div class="layover">
+                                        Layover: @layoverFormatted in @(Common.GetAirport(items.ToAirport?.Code)?.Name ?? items.ToAirport?.Code) (@items.ToAirport?.Code)
+                                    </div>
+                                }
+                            }
+                            o++;
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    @* Normal one-way / round-trip — same markup as before *@
+    <div class="card-result">
+        <div class="card-title-featured d-flex space-between">
+            <h3 class="d-flex">
+                <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_446_2885)">
+                        <path d="M6 14.6666H7.5L11.25 8.99992H15.375C15.9975 8.99992 16.5 8.55325 16.5 7.99992C16.5 7.44659 15.9975 6.99992 15.375 6.99992H11.25L7.5 1.33325H6L7.875 6.99992H3.75L2.625 5.33325H1.5L2.25 7.99992L1.5 10.6666H2.625L3.75 8.99992H7.875L6 14.6666Z" fill="#1B2A4A" fill-opacity="0.5" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_446_2885">
+                            <rect width="16" height="18" fill="white" transform="matrix(0 1 -1 0 18 0)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                <strong data-i18n="details.depart">Depart</strong>
+                <span>
+                    @(Convert.ToDateTime(Model.Outbound.FirstOrDefault().DepDate).ToString("ddd, MMM dd"))
+                    —
+                    @(Convert.ToDateTime(Model.Outbound.LastOrDefault().ArrDate).ToString("ddd, MMM dd"))
+                </span>
+            </h3>
+        </div>
+        <div class="card-body">
+            @{
+                var obFirst = Model.Outbound.FirstOrDefault();
+                var obLast = Model.Outbound.LastOrDefault();
+                var outSegments = Model.Outbound;
+                TimeSpan outTotal = TimeSpan.Zero;
+
+                foreach (var seg in outSegments)
+                {
+                    if (!string.IsNullOrEmpty(seg.ElapsedTime))
+                    {
+                        try { outTotal += XmlConvert.ToTimeSpan(seg.ElapsedTime); } catch { }
+                    }
+                }
+                string outtotalTime = $"{(int)outTotal.TotalHours}h {outTotal.Minutes}m";
+                string obdepTime = obFirst.DepartureDate != default
+                    ? obFirst.DepartureDate.ToString("HH:mm")
+                    : (DateTime.TryParse(obFirst.DepDate, out var odt) ? odt.ToString("HH:mm") : "");
+                int outBoundStop = Model.Outbound.Count - 1;
+                string obArrTime = obLast.ArrivalDate != default
+                    ? obLast.ArrivalDate.ToString("HH:mm")
+                    : (DateTime.TryParse(obLast.ArrDate, out var oat) ? oat.ToString("HH:mm") : "");
+                string obArrDate = obLast.ArrivalDate != default
+                    ? obLast.ArrivalDate.ToString("ddd MMM dd")
+                    : (DateTime.TryParse(obLast.ArrDate, out var oad) ? oad.ToString("ddd MMM dd") : "");
+
+                var stopCodes = Model.Outbound
+                    .Skip(1)
+                    .Select(x => x.FromAirport?.Code)
+                    .Where(x => !string.IsNullOrEmpty(x))
+                    .ToList();
+                string cabinFullName = obFirst.CabinClass switch
+                {
+                    "F" => "First",
+                    "B" => "Business",
+                    "Y" => "Economy",
+                    "P" => "Premium",
+                    _ => "Unknown"
+                };
+            }
+            <div class="info-flight">
+                <div class="row-flight">
+                    <div class="title-flight d-flex">
+                        <div class="short-name d-flex">@obFirst.Airline.Code</div>
+                        <h5>@obFirst.Airline.Name</h5>
+                        <h6>@cabinFullName</h6>
+                    </div>
+                    <div class="detailed-flight d-flex space-between">
+                        <div class="flight">
+                            <div class="time">@obdepTime</div>
+                            <div class="country-block">@obFirst.FromAirport.Code</div>
+                            <div class="date">@(DateTime.Parse(obFirst.DepDate).ToString("ddd, MMM dd"))</div>
+                        </div>
+                        <div class="range">
+                            <div class="time-total">@outtotalTime</div>
+                            <div class="bar-flight">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.66665 12.8332H5.83331L8.74998 7.87484H11.9583C12.4425 7.87484 12.8333 7.484 12.8333 6.99984C12.8333 6.51567 12.4425 6.12484 11.9583 6.12484H8.74998L5.83331 1.1665H4.66665L6.12498 6.12484H2.91665L2.04165 4.6665H1.16665L1.74998 6.99984L1.16665 9.33317H2.04165L2.91665 7.87484H6.12498L4.66665 12.8332Z" fill="#D05E2B" />
+                                </svg>
+                            </div>
+                            <div class="badge-stops">
+                                @if (outBoundStop == 0)
+                                {
+                                    <span data-i18n="result.nonStop">Non-stop</span>
+                                }
+                                else
+                                {
+                                    <span>
+                                        @outBoundStop stop@(outBoundStop > 1 ? "s" : "") :
+                                        @string.Join("·", stopCodes)
+                                    </span>
+                                }
+                            </div>
+                        </div>
+                        <div class="flight">
+                            <div class="time">@obArrTime</div>
+                            <div class="country-block">@obLast.ToAirport.Code</div>
+                            <div class="date">@obArrDate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-end">
+            <button class="btn-details btn-1" onclick="toggleDetails('details1', this)">
+                <span data-i18n="details.showDetails">Show Details</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9" stroke-width="2.5"></polyline></svg>
+            </button>
+        </div>
+
+        <div class="details-panel" id="details1">
+            <div class="details-wrap-flight">
+                <button class="btn-close" id="btnClose1">X</button>
+                @{
+                    var outSegmentsList = Model.Outbound.ToList();
+                    int o = 0;
+                }
+                @foreach (var items in Model.Outbound)
+                {
+                    <div class="tab-content active" id="itinerary1">
+                        <div class="journey-wrap">
+                            <h3><span>Outbound · @(Convert.ToDateTime(items.DepDate).ToString("ddd, MMM dd")) — @items.FromAirport.CityName → @items.ToAirport.CityName</span></h3>
+                            <div class="flight-journey">
+                                <div class="name-flignt d-flex gap-10">
+                                    <div class="d-flex gap-5">
+                                        <div class="name-circle d-flex">@items.Airline.Code</div>
+                                        <h4>@items.Airline.Name · Flight @items.FlightNo</h4>
+                                    </div>
+                                    <div class="tags">
+                                        @{
+                                            string cabinFullNameout = items.CabinClass switch
+                                            {
+                                                "F" => "First",
+                                                "B" => "Business",
+                                                "Y" => "Economy",
+                                                "P" => "Premium",
+                                                _ => "Unknown"
+                                            };
+                                            TimeSpan time = TimeSpan.Zero;
+                                            if (!string.IsNullOrEmpty(items.ElapsedTime))
+                                            {
+                                                try { time = XmlConvert.ToTimeSpan(items.ElapsedTime); } catch { }
+                                            }
+                                            string outjourneyTime = $"{(int)time.TotalHours}h {time.Minutes}m";
+                                        }
+                                        <span>@cabinFullNameout</span>
+                                        <span data-i18n="details.onTime">On time</span>
+                                    </div>
+                                </div>
+                                <div class="journey-details d-flex space-between">
+                                    <div class="flight">
+                                        <h3>@DateTime.Parse(items.DepDate).ToString("HH:mm")</h3>
+                                        <div class="country"> @(Common.GetAirport(items.FromAirport.Code).Name) (@(items.FromAirport.Code))</div>
+                                        <div class="date">
+                                            @DateTime.Parse(items.DepDate).ToString("ddd, MMM dd, yyyy")
+                                        </div>
+                                    </div>
+                                    <div class="total-timing">@outjourneyTime</div>
+                                    <div class="flight text-end">
+                                        <h3>@DateTime.Parse(items.ArrDate).ToString("HH:mm")</h3>
+                                        <div class="country-block">
+                                            @(Common.GetAirport(items.ToAirport.Code).Name) (@(items.ToAirport.Code))
+                                        </div>
+                                        <div class="date">@DateTime.Parse(items.ArrDate).ToString("ddd, MMM dd, yyyy")</div>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (o < outSegmentsList.Count - 1)
+                            {
+                                var nextSeg = outSegmentsList[o + 1];
+                                var layoverTime = DateTime.Parse(nextSeg.DepDate) - DateTime.Parse(items.ArrDate);
+                                string layoverFormatted = $"{(int)layoverTime.TotalHours}h {layoverTime.Minutes}m";
+
+                                <div class="layover">
+                                    Layover: @layoverFormatted in @(Common.GetAirport(items.ToAirport.Code).Name) (@items.ToAirport.Code)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    o++;
+                }
+            </div>
+        </div>
+    </div>
+    @if (Model.Inbound != null && Model.Inbound.Count > 0)
+    {
+        <div class="card-result">
+            <div class="card-title-featured d-flex space-between">
+                <h3 class="d-flex">
+                    <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_447_3305)">
+                            <path d="M12 1.33317H10.5L6.75 6.99984H2.625C2.0025 6.99984 1.5 7.4465 1.5 7.99984C1.5 8.55317 2.0025 8.99984 2.625 8.99984H6.75L10.5 14.6665H12L10.125 8.99984H14.25L15.375 10.6665H16.5L15.75 7.99984L16.5 5.33317H15.375L14.25 6.99984H10.125L12 1.33317Z" fill="#1B2A4A" fill-opacity="0.5" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_447_3305">
+                                <rect width="16" height="18" fill="white" transform="matrix(0 -1 1 0 0 16)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    @{
+                        var inFirst = Model.Inbound.FirstOrDefault();
+                        var inLast = Model.Inbound.LastOrDefault();
+                        var inSegments = Model.Inbound;
+                        TimeSpan inTotal = TimeSpan.Zero;
+
+                        foreach (var seg in inSegments)
+                        {
+                            if (!string.IsNullOrEmpty(seg.ElapsedTime))
+                            {
+                                try { inTotal += XmlConvert.ToTimeSpan(seg.ElapsedTime); } catch { }
+                            }
+                        }
+                        string intotalTime = $"{(int)inTotal.TotalHours}h {inTotal.Minutes}m";
+                        string indepTime = DateTime.TryParse(inFirst.DepDate, out var indt)
+                            ? indt.ToString("HH:mm") : "";
+                        int inBoundStop = Math.Max(0, Model.Inbound.Count - 1);
+                        string inArrTime = DateTime.TryParse(inLast.ArrDate, out var indat)
+                            ? indat.ToString("HH:mm") : "";
+                        string inArrDate = DateTime.Parse(inLast.ArrDate).ToString("ddd MMM dd");
+
+                        var instopCodes = Model.Inbound
+                            .Skip(1)
+                            .Select(x => x.FromAirport?.Code)
+                            .Where(x => !string.IsNullOrEmpty(x))
+                            .ToList();
+                        string incabinFullName = inFirst.CabinClass switch
+                        {
+                            "F" => "First",
+                            "B" => "Business",
+                            "Y" => "Economy",
+                            "P" => "Premium",
+                            _ => "Unknown"
+                        };
+                    }
+                    <strong data-i18n="details.return">Return</strong>
+                    @(Convert.ToDateTime(inFirst.DepDate).ToString("ddd, MMM dd"))
+                    —
+                    @(Convert.ToDateTime(inLast.ArrDate).ToString("ddd, MMM dd"))
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="info-flight">
+                    <div class="row-flight">
+                        <div class="title-flight d-flex">
+                            <div class="short-name d-flex">@inFirst.Airline.Code</div>
+                            <h5>@inFirst.Airline.Name</h5>
+                            <h6>@incabinFullName</h6>
+                        </div>
+                        <div class="detailed-flight d-flex space-between">
+                            <div class="flight">
+                                <div class="time">@indepTime</div>
+                                <div class="country-block">@inFirst.FromAirport.Code</div>
+                                <div class="date">@(DateTime.Parse(inFirst.DepDate).ToString("ddd, MMM dd"))</div>
+                            </div>
+                            <div class="range">
+                                <div class="time-total">@intotalTime</div>
+                                <div class="bar-flight">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.66665 12.8332H5.83331L8.74998 7.87484H11.9583C12.4425 7.87484 12.8333 7.484 12.8333 6.99984C12.8333 6.51567 12.4425 6.12484 11.9583 6.12484H8.74998L5.83331 1.1665H4.66665L6.12498 6.12484H2.91665L2.04165 4.6665H1.16665L1.74998 6.99984L1.16665 9.33317H2.04165L2.91665 7.87484H6.12498L4.66665 12.8332Z" fill="#D05E2B" />
+                                    </svg>
+                                </div>
+                                <div class="badge-stops">
+                                    @if (inBoundStop == 0)
+                                    {
+                                        <span data-i18n="result.nonStop">Non-stop</span>
+                                    }
+                                    else
+                                    {
+                                        <span>
+                                            @inBoundStop stop@(inBoundStop > 1 ? "s" : "") :
+                                            @string.Join("·", instopCodes)
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="flight">
+                                <div class="time">@inArrTime</div>
+                                <div class="country-block">@inLast.ToAirport.Code</div>
+                                <div class="date">@inArrDate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-end">
+                <button class="btn-details btn-2" onclick="toggleDetails('details2', this)">
+                    <span data-i18n="details.showDetails">Show Details</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9" stroke-width="2.5"></polyline></svg>
+                </button>
+            </div>
+
+            <div class="details-panel" id="details2">
+                <div class="details-wrap-flight">
+                    <button class="btn-close" id="btnClose2">X</button>
+                    @{
+                        var inSegmentsList = Model.Inbound.ToList();
+                        int i = 0;
+                    }
+                    @foreach (var items in Model.Inbound)
+                    {
+                        <div class="tab-content active" id="itinerary2">
+                            <div class="journey-wrap">
+                                <h3><span>Return · @(Convert.ToDateTime(items.DepDate).ToString("ddd, MMM dd")) — @items.FromAirport.CityName → @items.ToAirport.CityName</span></h3>
+
+                                <div class="flight-journey">
+                                    <div class="name-flignt d-flex gap-10">
+                                        <div class="d-flex gap-5">
+                                            <div class="name-circle d-flex">@items.Airline.Code</div>
+                                            <h4>@items.Airline.Name · Flight @items.FlightNo</h4>
+                                        </div>
+                                        <div class="tags">
+                                            @{
+                                                string cabinFullNameout = items.CabinClass switch
+                                                {
+                                                    "F" => "First",
+                                                    "B" => "Business",
+                                                    "Y" => "Economy",
+                                                    "P" => "Premium",
+                                                    _ => "Unknown"
+                                                };
+                                                TimeSpan time = TimeSpan.Zero;
+                                                if (!string.IsNullOrEmpty(items.ElapsedTime))
+                                                {
+                                                    try { time = XmlConvert.ToTimeSpan(items.ElapsedTime); } catch { }
+                                                }
+                                                string injourneyTime = $"{(int)time.TotalHours}h {time.Minutes}m";
+                                            }
+                                            <span>@cabinFullNameout</span>
+                                            <span data-i18n="details.onTime">On time</span>
+                                        </div>
+                                    </div>
+                                    <div class="journey-details d-flex space-between">
+                                        <div class="flight">
+                                            <h3>@DateTime.Parse(items.DepDate).ToString("HH:mm")</h3>
+                                            <div class="country"> @(Common.GetAirport(items.FromAirport.Code).Name) (@(items.FromAirport.Code))</div>
+                                            <div class="date">
+                                                @DateTime.Parse(items.DepDate).ToString("ddd, MMM dd, yyyy")
+                                            </div>
+                                        </div>
+                                        <div class="total-timing">@injourneyTime</div>
+                                        <div class="flight text-end">
+                                            <h3>@DateTime.Parse(items.ArrDate).ToString("HH:mm")</h3>
+                                            <div class="country-block">
+                                                @(Common.GetAirport(items.ToAirport.Code).Name) (@(items.ToAirport.Code))
+                                            </div>
+                                            <div class="date">@DateTime.Parse(items.ArrDate).ToString("ddd, MMM dd, yyyy")</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (i < inSegmentsList.Count - 1)
+                                {
+                                    var nextSeg = inSegmentsList[i + 1];
+                                    var layoverTime = DateTime.Parse(nextSeg.DepDate) - DateTime.Parse(items.ArrDate);
+                                    string layoverFormatted = $"{(int)layoverTime.TotalHours}h {layoverTime.Minutes}m";
+
+                                    <div class="layover">
+                                        Layover: @layoverFormatted in @(Common.GetAirport(items.ToAirport.Code).Name) (@items.ToAirport.Code)
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        i++;
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,406 @@
+﻿@model TravelWeb.Models.BookingEmail
+@{ 
+    Layout = null;
+}
+<p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:14px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'>Dear Customer,</span></p>
+<p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:14px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'><br></span></p>
+@*<p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:14px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'>Thanks for making booking with Galaxy Escapes.</span></p>*@
+<p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:14px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'>Thank you for your online order with FlightsHall.</span></p>
+@*<p><span style='font-size:14px;line-height: 16.1px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'><span style='font-size:14px;line-height: 16.1px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'><br></span>We have received your booking request and currently it&rsquo;s under process with the Airlines . Once Reservation will be Confirmed we will send you E tickets via email.&nbsp;</span></p>*@
+<p><span style='font-size:14px;line-height: 16.1px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'><span style='font-size:14px;line-height: 16.1px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'><br></span>We will review your online order and one of the sales consultant will get back to you shortly. Please find your booking summary below. Please note these are not the electronic tickets your electronic tickets will be emailed to you in due course once all the necessary confirmations are obtained from the Airline.&nbsp;</span></p>
+<p><span style='font-size:14px;line-height: 16.1px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'>In the meanwhile if you have any&nbsp;</span><span style='font-size:14px;line-height: 16.1px;font-family: "Times New Roman", serif;color: rgb(88, 93, 106);'>Queries please get in touch  with customer service help desk at &nbsp;<strong>+1 844 759 0888</strong> or you can email us at&nbsp;<a href="mailto:support@FlightsHall.com" style="color: rgb(17, 85, 204);" target="_blank">support@FlightsHall.com</a>.</span></p>
+<p><br></p>
+<p>&nbsp; &nbsp;</p>
+<table border="1" cellpadding="0" cellspacing="0" style="width: 920px;border-collapse: collapse;border: none;" width="100%">
+    <tbody>
+        <tr>
+            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: 1pt solid rgb(241, 241, 241);border-right: 1pt solid rgb(241, 241, 241);border-left: 1pt solid rgb(241, 241, 241);border-bottom: none;padding: 7.5pt;height: 7.5pt;">
+                <p style="margin: 0in 0in 10pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;color: black;'>YOUR ITINERARY</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-left: 1pt solid rgb(241, 241, 241);border-bottom: none;border-right: 1pt solid rgb(241, 241, 241);padding: 7.5pt;">
+                <table border="1" cellpadding="0" cellspacing="0" style="width: 897.333px;border-collapse: collapse;border: none;" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: 1pt solid rgb(204, 204, 204);border-left: 1pt solid rgb(204, 204, 204);border-bottom: none;border-right: none;background: rgb(241, 241, 241);padding: 0in 0in 0in 7.5pt;">
+                                <p style="margin: 0in 0in 10pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;color: black;'>@Model.FromLocation.CityName (@Model.FromLocation.CityCode) - @Model.ToLocation.CityName (@Model.ToLocation.Code)</span></strong></p>
+                            </td>
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: 1pt solid rgb(204, 204, 204);border-left: none;border-bottom: none;border-right: 1pt solid rgb(204, 204, 204);background: rgb(241, 241, 241);padding: 0in 7.5pt 0in 0in;">
+                                <p style="margin: 0in 0in 10pt;text-align: right;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;color: black;'>Travel Time: @Model.FromTime hrs</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-left: 1pt solid rgb(204, 204, 204);border-bottom: none;border-right: 1pt solid rgb(204, 204, 204);padding: 0in;">
+                                <table border="0" cellpadding="0" cellspacing="0" style="width: 894.667px;border-collapse: collapse;" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in 0in 0in 7.5pt;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;color: black;'>Airline</span></strong></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;color: black;'>Departing</span></strong></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;color: black;'>Arriving</span></strong></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in 7.5pt 0in 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;text-align: right;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;color: black;'>Cabin Class</span></strong></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in;height: 7.5pt;"><br></td>
+                                        </tr>
+                                        @foreach (var items in Model.OutBoundFlights)
+                                        {
+                                        <tr>
+
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in 0in 0in 7.5pt;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@items.Airline.Name<br>@items.Airline.Code</span></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@items.DepDate<br>@items.FromAirport.Name (<strong>@items.FromAirport.Code</strong>)</span></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@items.ArrDate<br>@items.ToAirport.Name (<strong>@items.ToAirport.Code</strong>)</span></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in 7.5pt 0in 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;text-align: right;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.FlightClass</span></p>
+                                            </td>
+                                        </tr>
+                                        <br/>
+                                        }
+                                        <tr>
+                                            <td colspan="4" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in;height: 7.5pt;"><br></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-left: 1pt solid rgb(204, 204, 204);border-bottom: 4.5pt solid rgb(204, 204, 204);border-right: 1pt solid rgb(204, 204, 204);padding: 0in;">
+                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-left: 1pt solid rgb(241, 241, 241);border-bottom: none;border-right: 1pt solid rgb(241, 241, 241);padding: 7.5pt;">
+                <table border="1" cellpadding="0" cellspacing="0" style="width: 897.333px;border-collapse: collapse;border: none;" width="100%">
+                    <tbody>
+                        
+                        <tr>
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: 1pt solid rgb(204, 204, 204);border-left: 1pt solid rgb(204, 204, 204);border-bottom: none;border-right: none;background: rgb(241, 241, 241);padding: 0in 0in 0in 7.5pt;">
+                                <p style="margin: 0in 0in 10pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;color: black;'>@Model.ToLocation.CityName (@Model.ToLocation.Code) - @Model.FromLocation.CityName (@Model.FromLocation.Code)</span></strong></p>
+                            </td>
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: 1pt solid rgb(204, 204, 204);border-left: none;border-bottom: none;border-right: 1pt solid rgb(204, 204, 204);background: rgb(241, 241, 241);padding: 0in 7.5pt 0in 0in;">
+                                <p style="margin: 0in 0in 10pt;text-align: right;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;color: black;'>Travel Time: @Model.ToTime hrs</span></strong></p>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-left: 1pt solid rgb(204, 204, 204);border-bottom: none;border-right: 1pt solid rgb(204, 204, 204);padding: 0in;">
+                                <table border="0" cellpadding="0" cellspacing="0" style="width: 894.667px;border-collapse: collapse;" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in 0in 0in 7.5pt;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;color: black;'>Airline</span></strong></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;color: black;'>Departing</span></strong></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;color: black;'>Arriving</span></strong></p>
+                                            </td>
+                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in 7.5pt 0in 0in;">
+                                                <p style="margin: 0in 0in 0.0001pt;text-align: right;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;color: black;'>Cabin Class</span></strong></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in;height: 7.5pt;"><br></td>
+                                        </tr>
+                                        @foreach (var item in Model.InBoundFlights)
+                                        {
+                                    <tr>
+
+
+
+                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in 0in 0in 7.5pt;">
+                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@item.Airline.Name<br>@item.Airline.Code</span></p>
+                                        </td>
+                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;">
+                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@item.DepDate<br>@item.FromAirport.Name (<strong>@item.FromAirport.Code</strong>)</span></p>
+                                        </td>
+                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;">
+                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@item.ArrDate<br>@item.ToAirport.Name (<strong>@item.ToAirport.Code</strong>)</span></p>
+                                        </td>
+                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in 7.5pt 0in 0in;">
+                                            <p style="margin: 0in 0in 0.0001pt;text-align: right;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.FlightClass</span></p>
+                                        </td>
+
+                                    </tr>
+                                                    <br />
+                                                    }
+
+                                        <tr>
+                                            <td colspan="4" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;background: rgb(241, 241, 241);padding: 0in;height: 7.5pt;"><br></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-left: 1pt solid rgb(204, 204, 204);border-bottom: 4.5pt solid rgb(204, 204, 204);border-right: 1pt solid rgb(204, 204, 204);padding: 0in;">
+                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>&nbsp;</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-left: 1pt solid rgb(241, 241, 241);border-bottom: none;border-right: 1pt solid rgb(241, 241, 241);padding: 7.5pt;">
+                <p style="margin: 0in 0in 10pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:24px;font-family: "Times New Roman", serif;color: black;'>Passenger Information</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-left: 1pt solid rgb(241, 241, 241);border-bottom: none;border-right: 1pt solid rgb(241, 241, 241);padding: 7.5pt;">
+                <table border="1" cellpadding="0" cellspacing="0" style="width: 897.333px;border-collapse: collapse;border: none;" width="100%">
+                    <tbody>
+                        <tr>
+                            @*<td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: 1pt solid rgb(241, 241, 241);border-left: 1pt solid rgb(241, 241, 241);border-bottom: none;border-right: none;background: rgb(241, 241, 241);padding: 7.5pt;">
+                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>First Name</span></strong></p>
+                            </td>*@
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: 1pt solid rgb(241, 241, 241);border-left: 1pt solid rgb(241, 241, 241);border-bottom: none;border-right: none;background: rgb(241, 241, 241);padding: 7.5pt;">
+                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>Name</span></strong></p>
+                            </td>
+                            @*<td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-right: none;border-bottom: none;border-left: none;border-top: 1pt solid rgb(241, 241, 241);background: rgb(241, 241, 241);">
+                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>Middle Name</span></strong></p>
+                            </td>
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-right: none;border-bottom: none;border-left: none;border-top: 1pt solid rgb(241, 241, 241);background: rgb(241, 241, 241);padding: 0in 0in 0in 7.5pt;">
+                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>Last Name</span></strong></p>
+                            </td>*@
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-right: none;border-bottom: none;border-left: none;border-top: 1pt solid rgb(241, 241, 241);background: rgb(241, 241, 241);padding: 7.5pt;">
+                                <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>Pax Type</span></strong></p>
+                            </td>
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: 1pt solid rgb(241, 241, 241);border-left: none;border-bottom: none;border-right: 1pt solid rgb(241, 241, 241);background: rgb(241, 241, 241);padding:0pt;">
+                                <p style="margin: 0in 0in 0.0001pt;text-align: right;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>Date of Birth</span></strong></p>
+                            </td>
+                        </tr>
+                        @foreach (var item in Model.BookingPaxDetail)
+                        {
+                    <tr>
+
+
+                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-right: none;border-bottom: none;border-left: 1pt solid rgb(241, 241, 241);padding: 0in 0in 0in 7.5pt;">
+                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@(item.FirstName+" "+item.MiddleName+" "+item.LastName)</span></p>
+                        </td>
+                        @*<td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border: none;">
+                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@item.MiddleName</span></p>
+                        </td>
+                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border: none;padding: 0in 0in 0in 7.5pt;">
+                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@item.LastName</span></p>
+                        </td>*@
+                        @*<td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border: none;padding: 0in;">*@
+                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border: none;padding: 0in 0in 0in 7.5pt;">
+                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@item.PaxType</span></p>
+                        </td>
+                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-bottom: none;border-left: none;border-right: 1pt solid rgb(241, 241, 241);padding: 0in;">
+                            <p style="margin: 0in 0in 0.0001pt;text-align: right;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@item.Dob</span></p>
+                        </td>
+
+                    </tr>
+                        }
+                                    <tr>
+                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-right: none;border-bottom: none;border-left: 1pt solid rgb(241, 241, 241);padding: 0in;">
+                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>&nbsp;</span></p>
+                                        </td>
+                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border: none;padding: 0in;"><br></td>
+                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border: none;padding: 0in;"><br></td>
+                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-top: none;border-bottom: none;border-left: none;border-right: 1pt solid rgb(241, 241, 241);padding: 0in;"><br></td>
+                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 506.25pt;border-right: 1pt solid rgb(241, 241, 241);border-bottom: 1pt solid rgb(241, 241, 241);border-left: 1pt solid rgb(241, 241, 241);border-top: none;padding: 6pt;" width="100%">
+                                                            <table border="0" cellpadding="0" cellspacing="0" style="width: 878.667px;border-collapse: collapse;" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 147.75pt;padding: 0.75pt;">
+                                                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>Contact No:</span></strong></p>
+                                                                        </td>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0.75pt;">
+                                                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.ContactPerson</span></p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 147.75pt;padding: 0.75pt;">
+                                                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>Alternate Phone No:</span></strong></p>
+                                                                        </td>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0.75pt;">
+                                                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.ContactPerson</span></p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 147.75pt;padding: 0.75pt;">
+                                                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:16px;font-family: "Times New Roman", serif;'>Email Address:</span></strong></p>
+                                                                        </td>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0.75pt;">
+                                                                            <p style="margin: 0in 0in 0.0001pt;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'><a href="mailto:neroyi5942@vhoff.com" style="color: rgb(17, 85, 204);" target="_blank">@Model.FlightBooking.ContactEmail</a></span></p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                                </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;border-right: 1pt solid rgb(241, 241, 241);border-bottom: 1pt solid rgb(241, 241, 241);border-left: 1pt solid rgb(241, 241, 241);border-top: none;padding: 7.5pt;">
+                <table border="0" cellpadding="0" cellspacing="0" style="width: 897.333px;background: rgb(241, 241, 241);border-collapse: collapse;" width="100%">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 7.5pt;">
+                                <div style="border-top: none;border-right: none;border-left: none;border-bottom: 1pt solid rgb(204, 204, 204);padding: 0in;">
+                                    <p style="margin: 0in 0in 10pt;line-height: normal;border: none;padding: 0in;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:24px;font-family: "Times New Roman", serif;color: black;'>Billing Information</span></strong></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 7.5pt;">
+                                <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.Adult × Adult Fare :<strong> $@(Model.FlightBooking.AdultFare * Model.FlightBooking.Adult ) </strong></p>
+                                @*<p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;'> Fare: $@Model.FlightBooking.Nett</span></strong></p>*@
+                                <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.Adult × Taxes and fees:<strong> $@(Model.FlightBooking.AdutlTax * Model.FlightBooking.Adult) </strong></span></p><br />
+                                @if (Convert.ToInt32(Model.FlightBooking.Child) > 0)
+                                {
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.Child × Child Fare:<strong> $@(Model.FlightBooking.ChildFare * Model.FlightBooking.Child)</strong></span></p>
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.Child × Taxes and fees:<strong> $@(Model.FlightBooking.ChildTax * Model.FlightBooking.Child)</strong></span></p><br />
+                                }
+                                @if (Convert.ToInt32(Model.FlightBooking.Infant) > 0)
+                                {
+
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.Infant × Infant Fare:<strong> $@(Model.FlightBooking.InfantFare * Model.FlightBooking.Infant)</strong></span></p>
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>@Model.FlightBooking.Infant × Taxes and fees:<strong> $@(Model.FlightBooking.InfantTax * Model.FlightBooking.Infant)</strong></span></p><br>
+
+                                }
+
+                                    @*<p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;'> Taxes and fees: $0.00<br></span></strong></p>*@
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'>Assistance fees:<strong> $0.00</strong></span></p><br/>
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><span style='font-size:16px;font-family: "Times New Roman", serif;'><strong>Total Fare: $@Model.FlightBooking.Nett</strong></span></p><br/>
+                                    <div align="center" style="color: rgb(34, 34, 34);font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;font-size: small;font-style: normal;font-weight: 400;text-indent: 0px;background-color: rgb(241, 241, 241);">
+                                        <table border="0" cellpadding="0" cellspacing="0" style="width: 6.25in;background: white;border-collapse: collapse;" width="600">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;">
+                                                        <div align="center">
+                                                            <table border="0" cellpadding="0" cellspacing="0" style="width: 600px;border-collapse: collapse;" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;height: 39pt;">
+                                                                            <p style="margin: 0in 0in 10pt;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;"><span style="font-size:14px;line-height: 16.1px;color: rgb(116, 3, 21);">Your Booking is important for us !!</span></p>
+                                                                        </td>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;height: 39pt;"><br></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;">
+                                                                            <p style="margin: 0in 0in 7.5pt;line-height: 15pt;font-size:15px;font-family: Calibri, sans-serif;">
+                                                                                <strong><span style='font-size:15px;font-family: "Times New Roman", serif;color: rgb(102, 102, 102);'>Booking Policy :</span></strong><span style='font-size:14px;font-family: "Times New Roman", serif;color: rgb(102, 102, 102);'>
+                                                                                    <br>Above itinerary and agency reference number is for information only. Your credit card has not been charged yet.<br>You would receive your Etickets and airlines confirmation in a separate email.<br>Your tickets would be issued once the payment  is charged.<br>The payment  would be processed after billing verification and authentication done by our verification team.<br>If there is a problem with processing the payment, you would be notified instantly.<br>In case you do not receive an an email or call within 24 hours of making this reservation. Then please call us on the number mentioned on the https://www.FlightsHall.com <strong>(+1 844 759 0888)</strong>
+                                                                                    We strongly recommend all travelers to confirm the status of their flight atleast 24-48 hours before departure.
+                                                                                </span>
+                                                                            </p>
+                                                                            <p style="margin: 0in 0in 7.5pt;line-height: 15pt;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:15px;font-family: "Times New Roman", serif;color: rgb(102, 102, 102);'>Change Rules :</span></strong><span style='font-size:14px;font-family: "Times New Roman", serif;color: rgb(102, 102, 102);'><br>Changes (travel dates): All Changes will incur an administrative fee from the airline and agency in addition to the fare change..<br>Changes (name): All tickets are nontransferable. All  Changes will incur an administrative fee from the  airline and agency in  addition to the  fare change.<br>Cancel / Refund: Not allowed.</span></p>
+                                                                            <p style="margin: 0in 0in 7.5pt;line-height: 15pt;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:15px;font-family: "Times New Roman", serif;color: rgb(102, 102, 102);'>Flight Rules  and Restrictions  :</span></strong><span style='font-size:14px;font-family: "Times New Roman", serif;color: rgb(102, 102, 102);'><br>FlightsHall advises all passengers to ensure to have  all travel documents including  Passports, and required visas issued and presented at  the time of travel.<br>FlightsHall  advises all passengers to review your tickets and itinerary upon receipt. All  times shown in the itinerary are local times.<br>All passengers are recommended to be present at the airport  3 hours prior to departure for international  departures, and 2 prior to domestic travel.<br>All International flights must be confirmed 72 hours prior to  departure.<br>All tickets returned for refund or reissue in addition  to  any applicable airline charges.<br>FlightsHall  does not assume responsibility for  and will not compensate passengers for travel interruptions caused by matters beyond our control including those caused by Acts of God and Nature, overbooking and or changes made by carriers/hotels/car rental companies/tour operators, etc.<br>FlightsHall  has made passenger completely aware of the importance of  travel insurance  and the conditions that apply to tickets.<br>FlightsHall  will not be responsible for any expense incurred as a result of the refusal to purchase travel insurance.<br>Please make a note of  this number  or print this email  for your records. This is a confirmation of your booking request. We will send you the eTicket Receipt shortly.</span></p>
+                                                                        </td>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;"><br></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 5.7in;border: 1pt dashed rgb(192, 186, 186);padding: 11.25pt 18.75pt;">
+                                                                            <p style="margin: 0in 0in 10pt;text-align: center;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style="font-size:15px;line-height: 17.6333px;color: rgb(14, 57, 93);">Thank you for Booking with</span></strong><br><br><strong><span style="color: rgb(116, 3, 21);"><a data-saferedirecturl="https://www.google.com/url?q=https://www.FlightsHall.com&source=gmail&ust=1606033467674000&usg=AOvVaw3-GsPThaK2y1-jr5BN4LPU" href="https://www.FlightsHall.com" style="color: rgb(17, 85, 204);" target="_blank">https://www.FlightsHall.com</a></span></strong></p>
+                                                                            <p style="margin: 0in 0in 10pt;text-align: center;line-height: 15pt;font-size:15px;font-family: Calibri, sans-serif;">Book cheap air tickets and get best deals on flight ticket booking to your favorite destinations around the world at<a data-saferedirecturl="https://www.google.com/url?q=https://www.FlightsHall.com/&source=gmail&ust=1606033467674000&usg=AOvVaw0imOgNHOW23yd4C7MFaMve" href="https://www.FlightsHall.com" style="color: rgb(17, 85, 204);" target="_blank"><span style="color: rgb(0, 123, 255);">&nbsp;https://www.FlightsHall.com</span></a></p>
+                                                                        </td>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;"><br></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 451.1pt;padding: 0in;">
+                                                                            <p style="margin: 15pt 0in 10pt;text-align: center;line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style="font-size:15px;color: rgb(14, 57, 93);">Contact and Support</span></strong></p>
+                                                                            <p style="margin: 15pt 0in 10pt;text-align: center;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;">
+                                                                                <strong>Address:</strong> 11324 Fountaingrove Dr,Charlotte NC-28262 US.<br><br><strong>Toll Free:</strong> <strong>+1 844 759 0888</strong><br><br><strong>Email:</strong> support@flightshall.com<br><br><strong>Site:</strong> <a data-saferedirecturl="https://www.google.com/url?q=https://www.FlightsHall.com/&source=gmail&ust=1606033467674000&usg=AOvVaw0imOgNHOW23yd4C7MFaMve" href="https://www.FlightsHall.com/" style="color: rgb(17, 85, 204);" target="_blank"><span style="color: rgb(13, 14, 14);">https://www.FlightsHall.com</span></a>
+                                                                                @*<strong>Address:</strong> 7260 W. Azure Dr Ste 140-212 Las Vegas, NV 89130.<br><br><strong>Toll Free:</strong> <strong>+1 844 608 0050</strong><br><br><strong>Email:</strong> support@FlightsHall.com<br><br><strong>Site:</strong> <a data-saferedirecturl="https://www.google.com/url?q=https://www.FlightsHall.com/&source=gmail&ust=1606033467674000&usg=AOvVaw0imOgNHOW23yd4C7MFaMve" href="https://www.FlightsHall.com/" style="color: rgb(17, 85, 204);" target="_blank"><span style="color: rgb(13, 14, 14);">https://www.FlightsHall.com</span></a>*@
+                                                                            </p>
+                                                                            @*<p style="margin: 15pt 0in 10pt;text-align: center;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;"><strong>Address:</strong> 2093 PHILADELPHIA, PIKE #5379, CLAYMONT,DE19703<br><br><strong>Toll Free:</strong> <strong>+1 800 315 9001</strong><br><br><strong>Email:</strong> FlightsHallFlightsHall.com<br><br><strong>Site:</strong> <a data-saferedirecturl="https://www.google.com/url?q=https://www.FlightsHall.com/&source=gmail&ust=1606033467674000&usg=AOvVaw0imOgNHOW23yd4C7MFaMve" href="https://www.FlightsHall.com/" style="color: rgb(17, 85, 204);" target="_blank"><span style="color: rgb(13, 14, 14);">https://www.FlightsHall.com</span></a></p>*@
+                                                                        </td>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;"><br></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 451.1pt;padding: 11.25pt 0in;">
+                                                                            <div align="center">
+                                                                                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 15pt;padding: 0in;" width="12.345679012345679%">
+                                                                                                <p style="margin: 0in 0in 10pt;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;"><a data-saferedirecturl="https://www.google.com/url?q=https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b&source=gmail&ust=1606033467674000&usg=AOvVaw3I1FqWusYdntUr3QNa7-IO" href="https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b" style="color: rgb(17, 85, 204);" target="_blank"><span style="font-size:1px;line-height: 1.53333px;color: rgb(25, 54, 231);"><strong>Error! Filename *** specified.</strong></span></a></p>
+                                                                                            </td>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 9.75pt;padding: 0in;" width="8.024691358024691%"><br></td>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 18.75pt;padding: 0in;" width="15.432098765432098%">
+                                                                                                <p style="margin: 0in 0in 10pt;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;"><a data-saferedirecturl="https://www.google.com/url?q=https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b&source=gmail&ust=1606033467674000&usg=AOvVaw3I1FqWusYdntUr3QNa7-IO" href="https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b" style="color: rgb(17, 85, 204);" target="_blank"><span style="font-size:1px;line-height: 1.53333px;color: rgb(25, 54, 231);"><strong>Error! Filename not specified.</strong></span></a></p>
+                                                                                            </td>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 10.5pt;padding: 0in;" width="8.641975308641975%"><br></td>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 14.25pt;padding: 0in;" width="11.728395061728396%">
+                                                                                                <p style="margin: 0in 0in 10pt;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;"><a data-saferedirecturl="https://www.google.com/url?q=https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b&source=gmail&ust=1606033467674000&usg=AOvVaw3I1FqWusYdntUr3QNa7-IO" href="https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b" style="color: rgb(17, 85, 204);" target="_blank"><strong><span style="font-size:1px;line-height: 1.53333px;color: rgb(25, 54, 231);">Error! Filename not specified.</span></strong></a></p>
+                                                                                            </td>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 9.75pt;padding: 0in;" width="8.024691358024691%"><br></td>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 20.25pt;padding: 0in;" width="16.666666666666668%">
+                                                                                                <p style="margin: 0in 0in 10pt;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;"><a data-saferedirecturl="https://www.google.com/url?q=https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b&source=gmail&ust=1606033467674000&usg=AOvVaw3I1FqWusYdntUr3QNa7-IO" href="https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b" style="color: rgb(17, 85, 204);" target="_blank"><span style="font-size:1px;line-height: 1.53333px;color: rgb(25, 54, 231);"><strong>Error! Filename not specified.</strong></span></a></p>
+                                                                                            </td>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 9.75pt;padding: 0in;" width="8.024691358024691%"><br></td>
+                                                                                            <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;width: 13.5pt;padding: 0in;" width="11.11111111111111%">
+                                                                                                <p style="margin: 0in 0in 10pt;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;"><a data-saferedirecturl="https://www.google.com/url?q=https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b&source=gmail&ust=1606033467674000&usg=AOvVaw3I1FqWusYdntUr3QNa7-IO" href="https://temp-mail.org/en/view/53accf7764bd6a60d6f43e8f45b80a9b" style="color: rgb(17, 85, 204);" target="_blank"><span style="font-size:1px;line-height: 1.53333px;color: rgb(25, 54, 231);"><strong>Error! Filename not specified.</strong></span></a></p>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;"><br></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p style="margin: 0in 0in 10pt;line-height: 16.8667px;font-size:15px;font-family: Calibri, sans-serif;">&nbsp;</p>
+                                        <table border="0" cellpadding="0" cellspacing="0" style="width: 6.25in;background: white;border-collapse: collapse;" width="600">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;">
+                                                        <div align="center">
+                                                            <table border="0" cellpadding="0" cellspacing="0" style="width: 600px;border-collapse: collapse;" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;margin: 0px;padding: 0in;"><br></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><br></p>
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;'><br></span></strong></p>
+                                    <p style="margin: 0in 0in 0.0001pt;color: rgb(34, 34, 34);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background-color: rgb(241, 241, 241);line-height: normal;font-size:15px;font-family: Calibri, sans-serif;"><strong><span style='font-size:18px;font-family: "Times New Roman", serif;'><br></span></strong></p>
+                                </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

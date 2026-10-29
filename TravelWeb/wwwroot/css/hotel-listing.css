@@ -1,0 +1,278 @@
+/* =========================================================
+   hotel-listing.css — overrides only
+   Design CSS comes from hotel-common.css (copied from
+   Flight-Hotel-Listing/common.css). These rules fix Bootstrap
+   clashes with Tailwind utilities used by listing-hotels.html.
+   ========================================================= */
+
+.hotel-listing-page {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--ink-900);
+  background: #fff;
+}
+
+/* Bootstrap .hidden { display:none !important } breaks Tailwind toggles */
+.hotel-listing-page .hidden {
+  display: none !important;
+}
+
+/* Do not force display on paged/filtered-out cards */
+.hotel-listing-page .flex:not(.is-hidden-by-filter):not(.is-hidden-by-page) {
+  display: flex !important;
+}
+
+.hotel-listing-page .hotel-card.is-hidden-by-filter,
+.hotel-listing-page .hotel-card.is-hidden-by-page {
+  display: none !important;
+}
+
+.hotel-listing-page #hotel-list.hidden {
+  display: none !important;
+}
+
+.hotel-listing-page #chips-row:not(.hidden) {
+  display: flex !important;
+}
+
+.hotel-listing-page #pagination-row.hidden {
+  display: none !important;
+}
+
+.hotel-listing-page #pagination-row:not(.hidden) {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.hotel-listing-page #pagination-row button {
+    cursor: pointer;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    padding: 14px;
+    width: auto;
+        
+    &:not(.btn-primary):hover {
+        color: #333 !important;
+    }
+}
+
+.hotel-listing-page #mobile-filter-count:not(.hidden) {
+  display: inline-flex !important;
+}
+
+.hotel-listing-page #empty-state:not(.hidden) {
+  display: block !important;
+}
+
+.hotel-listing-page #guest-panel.hidden,
+.hotel-listing-page #listing-guest-panel.hidden,
+.hotel-listing-page .guest-panel.hidden {
+  display: none !important;
+}
+
+.hotel-listing-page #guest-panel:not(.hidden),
+.hotel-listing-page #listing-guest-panel:not(.hidden),
+.hotel-listing-page .guest-panel:not(.hidden) {
+  display: block !important;
+}
+
+/* listing-hotels.html: aside.hidden.lg:block */
+.hotel-listing-page aside.hl-filters-aside {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .hotel-listing-page aside.hl-filters-aside {
+    display: block !important;
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 92px;
+    align-self: flex-start;
+  }
+
+  .hotel-listing-page .hotel-mobile-filter-btn {
+    display: none !important;
+  }
+}
+
+.hotel-listing-page .hotel-results-main {
+  flex: 1 1 0%;
+  min-width: 0;
+
+}
+
+.hotel-listing-page .hl-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Star toggle: design uses .hidden on checkbox input */
+.hotel-listing-page .star-toggle input.hidden,
+.hotel-listing-page .star-toggle input.hl-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  display: block !important;
+}
+
+.hotel-listing-page .hotel-sort-label {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hotel-listing-page .hotel-sort-label {
+    display: block;
+  }
+}
+
+/* Loading overlay (app-specific; not in design HTML) */
+.hotel-loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(4px);
+}
+
+.hotel-loading-overlay.is-active {
+  display: flex;
+}
+
+.hotel-loading-spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 3px solid var(--line, #f0f0f0);
+  border-top-color: var(--orange-600, #e2591a);
+  animation: hotel-spin 0.8s linear infinite;
+}
+
+.hotel-loading-title {
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: var(--ink-900, #1a1d21);
+}
+
+.hotel-loading-sub {
+  font-size: 0.875rem;
+  color: var(--ink-500, #646a72);
+}
+
+.is-loading-blur {
+  filter: blur(1px);
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+@keyframes hotel-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Ensure list + cards are visible when not explicitly hidden */
+.hotel-listing-page #hotel-list:not(.hidden) {
+  display: flex !important;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hotel-listing-page .hotel-card.fade-up,
+.hotel-listing-page .hotel-card.fade-up.in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ===== Hotel card box height (driven by image box) ===== */
+.hotel-listing-page .hotel-card {
+  --hotel-media-w: 18rem;              /* sm:w-72 */
+  --hotel-media-h: calc(var(--hotel-media-w) * 0.64); /* height = 64% of width */
+  overflow: hidden;
+  min-height: 0;
+}
+
+.hotel-listing-page .hotel-card .btn-primary {
+  text-decoration: none !important;
+}
+
+/* Mobile: image box sets top height; content stacks below */
+.hotel-listing-page .hotel-card > .relative {
+  position: relative;
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: 100 / 64;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.hotel-listing-page .hotel-card > .relative img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 640px) {
+  /* Desktop: whole card height = image box height */
+  .hotel-listing-page .hotel-card {
+    flex-direction: row !important;
+    align-items: stretch !important;
+    height: var(--hotel-media-h);
+  }
+
+  .hotel-listing-page .hotel-card > .relative {
+    width: var(--hotel-media-w) !important;
+    flex: 0 0 var(--hotel-media-w) !important;
+    height: 100% !important;
+    aspect-ratio: auto;
+    align-self: stretch !important;
+  }
+
+  .hotel-listing-page .hotel-card > .relative img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hotel-listing-page .hotel-card > .flex-1 {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+}
+
+/* Mobile filter drawer open state (JS toggles .is-open / .hidden) */
+#mobile-filter-drawer.is-open {
+  display: block !important;
+}
+
+@media (min-width: 1024px) {
+  #mobile-filter-drawer,
+  #mobile-filter-drawer.is-open {
+    display: none !important;
+  }
+}

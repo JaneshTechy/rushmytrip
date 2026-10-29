@@ -1,0 +1,602 @@
+﻿@model MarkupRulesPageVM
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var form = Model?.FormRule ?? new MarkupRuleDto();
+    var rules = Model?.Rules ?? new List<MarkupRuleDto>();
+     var cabin = form.CabinClass?.Trim().ToUpper();
+      string company = "";
+
+    switch (form.CampId)
+    {
+        case "Rush_FS":
+            company = "FareScrapper";
+            break;
+
+        case "Rush_Trabber":
+            company = "Trabber";
+            break;
+
+        case "Rush_FC":
+            company = "FareCompare";
+            break;
+
+        case "Rush":
+            company = "RushMyFlight Website";
+            break;
+
+        case "Rush_ES":
+            company = "Es.RushMyFlight";
+            break;
+    }
+}
+<!-- CampId: @form.CampId | Company: @company -->
+
+<div class="space-y-8">
+
+    <div>
+        <h1 class="text-2xl font-black text-slate-800 uppercase">
+            Markup Rule Details
+        </h1>
+        <p class="text-sm text-slate-500">
+            Everything must be comma separated where multiple values are allowed.
+        </p>
+    </div>
+
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200">
+
+        <form asp-action="SaveMarkupRule" method="post" enctype="multipart/form-data" class="p-8">
+
+            <input type="hidden" name="FormRule.RuleId" value="@form.RuleId" />
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+                <div>
+                    <label class="label">Rule Name</label>
+                    <input name="FormRule.RuleName" value="@form.RuleName" class="input" />
+                </div>
+
+                <div>
+                    <label class="label">Origin</label>
+                    <textarea name="OriginsText" class="input">@(form.Origins != null ? string.Join(",", form.Origins) : "")</textarea>
+                </div>
+
+                <div>
+                    <label class="label">Destination</label>
+                    <textarea name="DestinationsText" class="input">@(form.Destinations != null ? string.Join(",", form.Destinations) : "")</textarea>
+                </div>
+
+                <div>
+                    <label class="label">Airline</label>
+                    <input name="AirlinesText" value="@(form.Airlines != null ? string.Join(",", form.Airlines) : "")" class="input" />
+                </div>
+
+                @* <div>
+                    <label class="label">Cabin Class</label>
+                    <input name="CabinText" value="@(form.CabinClasses != null ? string.Join(",", form.CabinClasses) : "")" class="input" />
+                </div> *@
+                <div>
+    <label class="label">Cabin Class</label>
+   <select name="CabinText" class="input">
+        <option value="">All</option>
+        <option value="F" selected="@(form.CabinClass == "F")">First</option>
+        <option value="B" selected="@(form.CabinClass == "B")">Business</option>
+        <option value="Y" selected="@(form.CabinClass == "Y")">Economy</option>
+        <option value="S" selected="@(form.CabinClass == "S")">Premium Economy</option>
+    </select>
+</div>
+                <div>
+                    <label class="label">Journey Type</label>
+                   <select name="FormRule.JourneyType" class="input">
+    <option value="">Any</option>
+    <option value="O" selected="@(form.JourneyType == "O")">OneWay</option>
+    <option value="R" selected="@(form.JourneyType == "R")">RoundTrip</option>
+</select>
+                </div>
+
+                <div>
+                    <label class="label">Class OB</label>
+                    <input name="FormRule.ClassOb" value="@form.ClassOb" class="input" />
+                </div>
+
+                <div>
+                    <label class="label">Class IB</label>
+                    <input name="FormRule.ClassIb" value="@form.ClassIb" class="input" />
+                </div>
+
+                <div>
+                    <label class="label">Markup Type</label>
+                    <select name="FormRule.MarkType" class="input">
+                        <option value="P" selected="@(form.MarkType=="P")">Percentage</option>
+                        <option value="F" selected="@(form.MarkType=="F")">Fixed</option>
+                        <option value="A" selected="@(form.MarkType=="A")">Absolute</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="label">Markup Amount</label>
+                   @*  <input name="FormRule.MarkUp" value="@form.MarkUp" class="input" /> *@
+                  <input name="FormRule.MarkUp"
+       value="@form.MarkUp"
+       class="input"
+       type="text"
+       oninput="limitDecimal(this)" />
+                </div>
+
+                <div>
+                    <label class="label">Status</label>
+                    <select name="FormRule.Status" class="input">
+                        <option value="true" selected="@(form.Status)">Active</option>
+                        <option value="false" selected="@(!form.Status)">Inactive</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="label">Advance Days</label>
+                    <input name="FormRule.AdvanceDays" value="@form.AdvanceDays" class="input" />
+                </div>
+
+                @* <div>
+                    <label class="label">Stops</label>
+                    <input name="FormRule.Stops" value="@form.Stops" class="input" />
+                </div> *@
+                <div>
+    <label class="label">Stops</label>
+    <select name="FormRule.Stops" class="input">
+        <option value="-1" selected="@(form.Stops == null || form.Stops == -1)">All</option>
+        <option value="0" selected="@(form.Stops == 0)">Direct</option>
+        <option value="1" selected="@(form.Stops == 1)">One Stop</option>
+    </select>
+</div>
+
+                <div>
+                    <label class="label">Minimum Amount</label>
+                    <input name="AmountText"
+                           class="input"
+                           value="@(form.MinimumAmountRange.min != null && form.MinimumAmountRange.max != null
+                    ? $"{form.MinimumAmountRange.min}-{form.MinimumAmountRange.max}"
+                    : "")"
+                           placeholder="200-400" />
+                </div>
+
+                <div>
+                    <label class="label">Pax Count</label>
+                    <input name="FormRule.PaxCount" value="@form.PaxCount" class="input" />
+                </div>
+
+                @* <div>
+                    <label class="label">Pax Type</label>
+                    <input name="FormRule.PaxType" value="@form.PaxType" class="input" />
+                </div> *@
+                <div>
+    <label class="label">Pax Type</label>
+    <select name="FormRule.PaxType" class="input">
+        <option value="Any" selected="@(string.IsNullOrEmpty(form.PaxType) || form.PaxType=="Any")">All</option>
+        <option value="A" selected="@(form.PaxType=="A")">Adult</option>
+        <option value="C" selected="@(form.PaxType=="C")">Child</option>
+        <option value="I" selected="@(form.PaxType=="I")">Infant</option>
+    </select>
+</div>
+
+                <div>
+                    <label class="label">Travel Date From</label>
+                    <input type="date" name="FormRule.TravelDateFrom"
+                           value="@(form.TravelDateFrom?.ToString("yyyy-MM-dd"))"
+                           class="input" />
+                </div>
+
+                <div>
+                    <label class="label">Travel Date To</label>
+                    <input type="date" name="FormRule.TravelDateTo"
+                           value="@(form.TravelDateTo?.ToString("yyyy-MM-dd"))"
+                           class="input" />
+                </div>
+                 <div>
+                    <label class="label">Sale Date From</label>
+                    <input type="date" name="FormRule.SaleDateFrom"
+                           value="@(form.SaleDateFrom?.ToString("yyyy-MM-dd"))"
+                           class="input" />
+                </div>
+
+                <div>
+                    <label class="label">Sale Date To</label>
+                    <input type="date" name="FormRule.SaleDateTo"
+                           value="@(form.SaleDateTo?.ToString("yyyy-MM-dd"))"
+                           class="input" />
+                </div>
+                @* <div>
+                    <label class="label">Company</label>
+                    <input name="FormRule.Company" value="@form.Company" class="input" />
+                </div> *@
+
+                <div>
+    <label class="label">Company</label>
+
+    <select name="FormRule.Company"
+        id="companyDropdown"
+        class="input"
+        onchange="setCampaignId(this.value)">
+
+    <option value="">Select Company</option>
+
+    <option value="FareScrapper"
+            selected="@(company == "FareScrapper")">
+        FareScrapper
+    </option>
+
+    <option value="Trabber"
+            selected="@(company == "Trabber")">
+        Trabber
+    </option>
+
+    <option value="FareCompare"
+            selected="@(company == "FareCompare")">
+        FareCompare
+    </option>
+
+    <option value="RushMyFlight Website"
+            selected="@(company == "RushMyFlight Website")">
+        RushMyFlight Website
+    </option>
+
+    <option value="Es.RushMyFlight"
+            selected="@(company == "Es.RushMyFlight")">
+        Es.RushMyFlight
+    </option>
+
+</select>
+</div>
+
+<div>
+    <label class="label">Campaign ID</label>
+
+   <select name="FormRule.CampId"
+        id="campaignDropdown"
+        class="input">
+
+    <option value="">Select Campaign</option>
+
+    <option value="Rush_FS" selected="@(form.CampId == "Rush_FS")">
+        Rush_FS
+    </option>
+
+    <option value="Rush_Trabber" selected="@(form.CampId == "Rush_Trabber")">
+        Rush_Trabber
+    </option>
+
+    <option value="Rush_FC" selected="@(form.CampId == "Rush_FC")">
+        Rush_FC
+    </option>
+
+    <option value="Rush" selected="@(form.CampId == "Rush")">
+        Rush
+    </option>
+
+    <option value="Rush_ES" selected="@(form.CampId == "Rush_ES")">
+        Rush_ES
+    </option>
+</select>
+</div>
+
+                @* <div>
+                    <label class="label">Campaign ID</label>
+                    <input name="FormRule.CampId" value="@form.CampId" class="input" />
+                </div> *@
+
+
+
+                <div>
+                    <label class="label">Updated By</label>
+                    <input name="FormRule.UpdatedBy" value="@form.UpdatedBy" class="input" />
+                </div>
+                <div>
+                    <label class="label">Replace Ailine</label>
+                    <input name="FormRule.ReplaceAirline" value="@form.ReplaceAirline" class="input" />
+                </div>
+                <div>
+    <label class="label">Outbound Time</label>
+    <input name="FormRule.OutboundTime" value="@form.OutboundTime" class="input" type="text" />
+</div>
+               <div>
+    <label class="label">Inbound Time</label>
+    <input name="FormRule.InboundTime" value="@form.InboundTime" class="input" type="text" />
+</div>
+
+
+
+            </div>
+
+            <div class="mt-6 flex justify-between">
+
+                <div class="flex gap-3">
+                    <input type="file" name="excelFile" class="input" />
+                    <a asp-action="DownloadMarkupExcel" class="btn-dark">
+                        Download Excel Format
+                    </a>
+                </div>
+                <button type="submit"
+        formaction="@Url.Action("MarkupRulesView")"
+        formmethod="get"
+        class="btn-dark">
+    Search
+</button>
+                <button type="submit" class="btn-primary">
+                    Save Rule
+                </button>
+
+            </div>
+
+        </form>
+    </section>
+
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100 text-xs text-slate-400 uppercase">
+
+                        <th class="px-6 py-4">Rule Name</th>
+                        <th class="px-6 py-4">Origin</th>
+                        <th class="px-6 py-4">Destination</th>
+                        <th class="px-6 py-4">Airline</th>
+                        <th class="px-6 py-4">Cabin Class</th>
+                        <th class="px-6 py-4">Class OB</th>
+                        <th class="px-6 py-4">Journey Type</th>
+                        <th class="px-6 py-4">Markup Type</th>
+                        <th class="px-6 py-4">Markup Amount</th>
+                        <th class="px-6 py-4">Status</th>
+                        <th class="px-6 py-4">Advance Days</th>
+                        <th class="px-6 py-4">Stops</th>
+                        <th class="px-6 py-4">Minimum Amount</th>
+                        <th class="px-6 py-4">Pax Count</th>
+                        <th class="px-6 py-4">Travel Date From</th>
+                        <th class="px-6 py-4">Travel Date To</th>
+                        <th class="px-6 py-4">Campaign ID</th>
+                        <th class="px-6 py-4">Updated By</th>
+
+                        <th class="px-6 py-4 text-right">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-slate-50">
+
+                    @if (Model.Rules != null && Model.Rules.Any())
+                    {
+                        foreach (var r in Model.Rules)
+                        {
+                            <tr class="hover:bg-slate-50/50">
+
+                                <td class="px-6 py-3 font-semibold text-slate-700">
+                                    @r.RuleName
+                                </td>
+
+                                <td class="px-6 py-3">
+                                    @(r.Origins?.Any() == true ? string.Join(", ", r.Origins) : "-")
+                                </td>
+
+                                <td class="px-6 py-3">
+                                    @(r.Destinations?.Any() == true ? string.Join(", ", r.Destinations) : "-")
+                                </td>
+
+                                <td class="px-6 py-3">
+                                    @(r.Airlines?.Any() == true ? string.Join(", ", r.Airlines) : "-")
+                                </td>
+
+                                <td class="px-6 py-3">
+                                    @(r.CabinClasses?.Any() == true ? string.Join(", ", r.CabinClasses) : "-")
+                                </td>
+
+                                <td class="px-6 py-3">@r.ClassOb</td>
+                                <td class="px-6 py-3">@r.JourneyType</td>
+
+                                <td class="px-6 py-3">
+                                    @(r.MarkType == "P" ? "Percentage" :
+                                        r.MarkType == "F" ? "Fixed" :
+                                        r.MarkType == "A" ? "Absolute" : "-")
+                                </td>
+
+                                <td class="px-6 py-3 font-bold text-slate-800">
+                                    @r.MarkUp
+                                </td>
+
+                                <td class="px-6 py-3">
+                                    <span class="px-2 py-1 rounded-full text-xs font-bold
+                                    @(r.Status ? "bg-green-100 text-green-700" : "bg-slate-100 text-slate-500")">
+                                        @(r.Status ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+
+                                <td class="px-6 py-3">@r.AdvanceDays</td>
+                                <td class="px-6 py-3">@r.Stops</td>
+
+                                <td class="px-6 py-3">
+                                    @(r.MinimumAmountRange.min != null
+                                        ? $"{r.MinimumAmountRange.min} - {r.MinimumAmountRange.max}"
+                                        : "-")
+                                </td>
+
+                                <td class="px-6 py-3">@r.PaxCount</td>
+
+                                <td class="px-6 py-3">
+                                    @r.TravelDateFrom?.ToString("dd-MMM-yyyy")
+                                </td>
+
+                                <td class="px-6 py-3">
+                                    @r.TravelDateTo?.ToString("dd-MMM-yyyy")
+                                </td>
+
+                                <td class="px-6 py-3">@r.CampId</td>
+                                <td class="px-6 py-3">@r.UpdatedBy</td>
+
+                                <td class="px-6 py-3 text-right">
+                                    <div class="flex justify-end gap-3">
+
+                                        <a asp-action="MarkupRulesView" asp-route-editId="@r.RuleId">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+
+                                       <a href="javascript:void(0);" onclick="confirmCopy(@r.RuleId)">
+    <i class="fas fa-copy"></i>
+</a>
+
+                                     <form asp-action="DeleteMarkupRule" asp-route-id="@r.RuleId" method="post"
+      onsubmit="return confirm('Delete this rule?');">
+    <button type="submit">
+        <i class="fas fa-trash-alt text-red-500"></i>
+    </button>
+</form>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="19" class="text-center py-10 text-slate-400">
+                                No rules found.
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+
+</div>
+
+<style>
+    .label { font-size:11px; font-weight:bold; color:#64748b; text-transform:uppercase; }
+    .input { width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:12px; font-size:13px; }
+    .btn-primary { background:#f97316; color:white; padding:10px 20px; border-radius:12px; font-weight:bold; }
+    .btn-dark { background:#0f172a; color:white; padding:10px 18px; border-radius:12px; font-size:13px; }
+</style>
+
+@if (TempData["Success"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '@TempData["Success"]',
+            confirmButtonColor: '#3085d6'
+        });
+    </script>
+}
+
+@if (TempData["Error"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '@TempData["Error"]',
+            confirmButtonColor: '#d33'
+        });
+    </script>
+}
+<script>
+   function limitDecimal(input) {
+
+    const markType = document.querySelector('[name="FormRule.MarkType"]').value;
+
+    // For Fixed and Absolute, allow any numeric value
+    if (markType !== "P") {
+        return;
+    }
+
+    // Percentage: max 2 digits before decimal
+    let value = input.value;
+
+    let match = value.match(/^([+-]?)(\d{0,2})(?:\.(\d*))?/);
+
+    if (match) {
+        let sign = match[1] || "";
+        let intPart = match[2] || "";
+        let decPart = match[3];
+
+        input.value = sign + intPart + (decPart !== undefined ? "." + decPart : "");
+    } else {
+        input.value = "";
+    }
+}
+    function confirmCopy(ruleId) {debugger
+    swal({
+        title: "Are you sure?",
+        text: "Do you want to copy this rule?",
+        icon: "warning",
+        buttons: ["No", "Yes"],
+        dangerMode: true,
+    })
+    .then((willCopy) => {
+        if (willCopy) {
+            // Call backend (redirect or AJAX)
+            window.location.href = '/Admin/MarkupRulesView?copyId=' + ruleId;
+        }
+    });
+}
+
+
+const campaignMap = {
+        "FareScrapper": "Rush_FS",
+        "Trabber": "Rush_Trabber",
+        "FareCompare": "Rush_FC",
+        "RushMyFlight Website": "Rush",
+        "Es.RushMyFlight": "Rush_ES"
+    };
+
+    function setCampaignId(company) {
+
+        const campaignId = campaignMap[company] || "";
+
+        const campaignDropdown =
+            document.getElementById("campaignDropdown");
+
+        campaignDropdown.value = campaignId;
+    }
+
+    // Edit page par existing Company ke according Campaign ID set kare
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const company =
+            document.getElementById("companyDropdown").value;
+
+        if (company) {
+            setCampaignId(company);
+        }
+    });
+</script>
+<script>
+    const campaignToCompanyMap = {
+        "Rush_FS": "FareScrapper",
+        "Rush_Trabber": "Trabber",
+        "Rush_FC": "FareCompare",
+        "Rush": "RushMyFlight Website",
+        "Rush_ES": "Es.RushMyFlight"
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const campaignDropdown = document.getElementById("campaignDropdown");
+        const companyDropdown = document.getElementById("companyDropdown");
+
+        if (!campaignDropdown || !companyDropdown) return;
+
+        const campaignId = campaignDropdown.value;
+
+        const company = campaignToCompanyMap[campaignId];
+
+        if (company) {
+            companyDropdown.value = company;
+        }
+    });
+</script>
+

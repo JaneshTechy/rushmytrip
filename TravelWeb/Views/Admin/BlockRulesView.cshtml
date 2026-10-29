@@ -1,0 +1,310 @@
+﻿@model TravelWeb.Models.BlockRulesPageVM
+@using Newtonsoft.Json
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    // Null checks for safety
+    var rulesCount = Model?.Rules?.Count() ?? 0;
+}
+
+<div class="space-y-10">
+    @* --- HEADER SECTION --- *@
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-black text-slate-800 uppercase tracking-tight">Block Routes/Airlines</h1>
+            <p class="text-sm text-slate-500">Manage flight blocking rules, airline restrictions, and schedule overrides.</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-bold text-slate-400">
+            @* SAFE COUNT *@
+            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full">Total Rules: @rulesCount</span>
+
+             <!-- ✅ SEARCH FORM ADD HERE -->
+    <form method="get" asp-action="BlockRulesView" class="flex items-center gap-2">
+
+        <input type="text" name="searchText"
+               placeholder="Search..."
+               value="@Context.Request.Query["searchText"]"
+               class="px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none" />
+
+        <button type="submit"
+                class="px-4 py-2 bg-orange-500 text-white text-xs font-bold rounded-lg hover:bg-orange-600">
+            Search
+        </button>
+
+    </form>
+
+        </div>
+    </div>
+
+    @* --- FORM SECTION --- *@
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="px-8 py-4 border-b border-slate-100 bg-slate-50/50 flex items-center gap-2">
+            @* SAFE NULL CHECK FOR FormRule *@
+            <div class="h-2 w-2 rounded-full @(Model?.FormRule?.RuleId == 0 ? "bg-orange-500" : "bg-green-500")"></div>
+            <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">
+                @if (Model?.FormRule?.RuleId > 0)
+                {
+                    <text>Edit Rule #@Model.FormRule.RuleId</text>
+                }
+                else
+                {
+                    <text>Create New Rule</text>
+                }
+            </h3>
+        </div>
+
+        <form asp-action="SaveBlockRule" method="post" enctype="multipart/form-data" class="p-8">
+            <input type="hidden" asp-for="FormRule.RuleId" />
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                @* Route Info *@
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Origin</label>
+                    <textarea asp-for="FormRule.Origin" placeholder="DEL, BOM, DXB"
+                              class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-orange-500/10 outline-none text-sm"></textarea>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Destination</label>
+                    <textarea asp-for="FormRule.Destination" placeholder="LHR, JFK, AUH"
+                              class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-orange-500/10 outline-none text-sm"></textarea>
+                </div>
+
+                @* Airline & Class *@
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Airline Codes</label>
+                    <input asp-for="FormRule.AirlineCodes" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm" placeholder="F9, B6, AA" />
+                </div>
+
+               @*  <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Cabin (OB/IB)</label>
+                    <div class="flex gap-2">
+                        <input asp-for="FormRule.CabinClassOb" placeholder="OB" class="w-1/2 px-4 py-3 rounded-xl border border-slate-200 text-sm" />
+                        <input asp-for="FormRule.CabinClassIb" placeholder="IB" class="w-1/2 px-4 py-3 rounded-xl border border-slate-200 text-sm" />
+                    </div>
+                </div> *@
+
+                @* Dates & Meta *@
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Date From</label>
+                    <input asp-for="FormRule.DateFrom" type="date" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Date To</label>
+                    <input asp-for="FormRule.DateTo" type="date" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm" />
+                </div>
+               @*  <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Company</label>
+                    <input asp-for="FormRule.Company" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm" />
+                </div> *@
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Status</label>
+                    <select asp-for="FormRule.Status" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm bg-white">
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1 text-orange-600">
+                        <i class="fas fa-globe-americas mr-1"></i> Select Site
+                    </label>
+                    <select asp-for="FormRule.Company" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 outline-none transition-all text-sm bg-white font-semibold">
+                        <option value="">-- Select Site --</option>
+                        <option value="Rushmyflight.com">Rushmyflight.com</option>
+                        <option value="Rushmyflight.mx">Rushmyflight.mx</option>
+                        <option value="Rushmyflight.in">Rushmyflight.in</option>
+                    </select>
+                </div>
+                @* --- Camp ID Dropdown (Naya Section) --- *@
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1 text-orange-600">
+                        <i class="fas fa-fingerprint mr-1"></i> Camp ID
+                    </label>
+                    <select asp-for="FormRule.CampId" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 outline-none transition-all text-sm bg-white font-semibold">
+                        <option value="">-- Select Camp ID --</option>
+                        <option value="Rush_FS">Rush_FS</option>
+                        <option value="Rush">Rush</option>
+                    </select>
+                </div>
+                @* --- Pax Text Field --- *@
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">
+                        <i class="fas fa-users mr-1"></i> Pax
+                    </label>
+                    <input asp-for="FormRule.Pax" type="text" placeholder="1, 2, 3..."
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-orange-500/10 outline-none text-sm" />
+                </div>
+            </div>
+
+            
+
+            <div class="mt-8 pt-8 border-t border-slate-100 flex justify-between items-center">
+
+                @* LEFT SIDE ACTIONS *@
+                <div class="flex items-center gap-3">
+
+                    @* STYLED FILE INPUT *@
+                    <label class="relative cursor-pointer">
+                        <input type="file" name="excelFile" class="hidden" />
+
+                        <div class="px-5 py-2.5 rounded-xl border border-slate-200 bg-white
+                        hover:border-orange-400 hover:bg-orange-50
+                        text-xs font-bold text-slate-600 transition-all shadow-sm">
+
+                            <i class="fas fa-upload mr-2 text-orange-500"></i>
+                            Upload Excel
+                        </div>
+                    </label>
+
+                    @* DOWNLOAD BUTTON *@
+                    <a asp-action="DownloadExcel"
+                       class="px-5 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600
+                  text-white text-xs font-bold shadow-md transition-all">
+
+                        <i class="fas fa-file-excel mr-2"></i>
+                        Download Excel
+                    </a>
+
+                </div>
+
+                @* RIGHT SIDE BUTTONS *@
+                <div class="flex gap-3">
+
+                    @if (Model?.FormRule?.RuleId > 0)
+                    {
+                        <a asp-action="BlockRulesView"
+                           class="px-6 py-3 rounded-xl border border-slate-200
+                      text-slate-500 font-bold text-sm hover:bg-slate-50 transition-all">
+                            Cancel
+                        </a>
+                    }
+
+                    <button type="submit"
+                            class="px-10 py-3 rounded-xl bg-orange-500 hover:bg-orange-600
+                       text-white font-bold text-sm shadow-lg transition-all">
+
+                        <i class="fas fa-save mr-2"></i>
+                        Save Rule
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+    </section>
+
+    @* --- TABLE SECTION --- *@
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100">
+                        <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase">Route</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase">Dates</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase">Camp ID</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase text-center">Status</th>
+                        <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase text-right">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-slate-50">
+                    @if (Model?.Rules != null && Model.Rules.Any())
+                    {
+                        @foreach (var r in Model.Rules)
+                        {
+                            <tr class="hover:bg-slate-50/50 group">
+
+                                @* ROUTE *@
+                                <td class="px-8 py-4 text-sm">
+                                    <span class="font-bold text-slate-800">
+                                        @r.Origin &rarr; @r.Destination
+                                    </span>
+                                    <p class="text-[10px] text-orange-500 font-bold uppercase">
+                                        @r.AirlineCodes
+                                    </p>
+                                </td>
+
+                                @* DATES *@
+                                <td class="px-6 py-4 text-xs">
+                                    <div class="text-slate-700">
+                                        <div><b>From:</b> @(r.DateFrom?.ToString("dd MMM yyyy") ?? "-")</div>
+                                        <div><b>To:</b> @(r.DateTo?.ToString("dd MMM yyyy") ?? "-")</div>
+                                    </div>
+                                </td>
+
+                                @* CAMP ID *@
+                                <td class="px-6 py-4 text-xs font-bold text-slate-600">
+                                    @(r.CampId ?? "-")
+                                </td>
+
+                                @* STATUS *@
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2 py-1 rounded-full text-[9px] font-black uppercase
+                                    @(r.Status == true
+                                        ? "bg-green-100 text-green-700"
+                                        : "bg-slate-100 text-slate-500")">
+                                        @(r.Status == true ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+
+                                @* ACTIONS *@
+                                <td class="px-8 py-4 text-right">
+                                    <div class="flex justify-end gap-2">
+                                        <a asp-action="BlockRulesView"
+                                           asp-route-editId="@r.RuleId"
+                                           class="text-slate-400 hover:text-orange-500">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+
+                                        <a asp-action="DeleteRule"
+                                           asp-route-id="@r.RuleId"
+                                           onclick="return confirm('Are you sure you want to delete this rule?');"
+                                           class="text-slate-400 hover:text-red-500">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="px-8 py-20 text-center text-slate-400 italic">
+                                <i class="fas fa-inbox text-4xl mb-3 block opacity-20"></i>
+                                No rules found.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>
+
+                    @if (TempData["Success"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '@TempData["Success"]',
+            confirmButtonColor: '#3085d6'
+        });
+    </script>
+}
+
+@if (TempData["Error"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '@TempData["Error"]',
+            confirmButtonColor: '#d33'
+        });
+    </script>
+}

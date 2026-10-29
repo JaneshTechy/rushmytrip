@@ -1,0 +1,22 @@
+[
+  {
+    "RuleId": 1077,
+    "Origin": "US",
+    "Destination": "US",
+    "CabinClassOb": "",
+    "CabinClassIb": "",
+    "TimeOb": "",
+    "TimeIb": "",
+    "AdvanceDays": 0,
+    "DateFrom": "2026-10-01T00:00:00",
+    "DateTo": "2026-10-30T00:00:00",
+    "BlockDates": "",
+    "Status": true,
+    "CreatedAt": "2026-02-15T00:00:00",
+    "Company": "RMF",
+    "CampId": "Rush_FS",
+    "UpdatedBy": "",
+    "UpdatedAt": null,
+    "AirlineCodes": ""
+  }
+]

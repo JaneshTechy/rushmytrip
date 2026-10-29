@@ -1,0 +1,8043 @@
+[
+  {
+    "RuleId": 48488,
+    "RuleName": "US TO MX Oct NON STOP RT DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48489,
+    "RuleName": "US TO CARRIBEIAN Oct RT B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48490,
+    "RuleName": "US TO MX Oct NON STOP RT AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48491,
+    "RuleName": "US TO US DEC WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48492,
+    "RuleName": "US TO US RT AA Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -45.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48493,
+    "RuleName": "US TO MX Oct NON STOP OW AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48494,
+    "RuleName": "US TO US RT B6 Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -45.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48495,
+    "RuleName": "US TO US OW AA AUG",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -41.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48496,
+    "RuleName": "US TO US OW F9 AUG",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -41.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48497,
+    "RuleName": "US TO South America DEC AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -10.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48498,
+    "RuleName": "US TO MX Oct NON STOP RT WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48499,
+    "RuleName": "US TO US DEC F9",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48500,
+    "RuleName": "US TO US DEC UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -22.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48501,
+    "RuleName": "US TO US OW UA Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -38.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48502,
+    "RuleName": "US TO MX Oct NON STOP RT F9",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48503,
+    "RuleName": "US TO MX Oct ONE STOP RT DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -22.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48504,
+    "RuleName": "US TO US DEC AS",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48505,
+    "RuleName": "JFKGEOAA",
+    "Origins": [
+      "JFK"
+    ],
+    "Destinations": [
+      "GEO"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -24.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -5
+  },
+  {
+    "RuleId": 48506,
+    "RuleName": "US TO MX AUG RT VB",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "VB",
+      "Y4"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -5.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48507,
+    "RuleName": "US TO US RT F9 Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -45.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48508,
+    "RuleName": "US TO ANY ECO",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -1.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48509,
+    "RuleName": "US TO CARRIBEIAN AUG ANY",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -6.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48510,
+    "RuleName": "US TO US RT UA Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -40.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48511,
+    "RuleName": "US TO US RT AA AUG 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -34.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48512,
+    "RuleName": "US TO South America DEC DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -10.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48513,
+    "RuleName": "US TO MX Oct NON STOP RT AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48514,
+    "RuleName": "US TO MX Oct NON STOP OW AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48515,
+    "RuleName": "US TO CARRIBEIAN DEC AV",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "AV"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": null,
+    "MarkType": "P",
+    "MarkUp": -1.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": null,
+    "ClassIb": null,
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": null,
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48516,
+    "RuleName": "US TO South America AUG OW CM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "CM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48517,
+    "RuleName": "US TO US RT AS Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -35.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48518,
+    "RuleName": "US TO US RT AS Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -45.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48519,
+    "RuleName": "US TO MX Oct NON STOP OW DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -30.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48520,
+    "RuleName": "US TO US RT DL AUG 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -35.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48521,
+    "RuleName": "US TO MX Oct NON STOP OW AS",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -30.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48522,
+    "RuleName": "US TO MX Oct NON STOP OW WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48523,
+    "RuleName": "US TO MX DEC B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48524,
+    "RuleName": "US TO US RT DL Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -41.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48525,
+    "RuleName": "US TO South America AUG OW B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48526,
+    "RuleName": "US TO MX Oct NON STOP OW F9",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -30.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48527,
+    "RuleName": "US TO MX Oct NON STOP RT AS",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48528,
+    "RuleName": "US TO MX Oct NON STOP OW B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -30.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48529,
+    "RuleName": "US TO CARRIBEIAN Oct OW AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -21.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48530,
+    "RuleName": "US TO CARRIBEIAN Oct RT AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48531,
+    "RuleName": "US TO CARRIBEIAN Oct OW B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -25.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48532,
+    "RuleName": "US TO South America DEC CM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "CM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -10.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48533,
+    "RuleName": "US TO MX Oct NON STOP RT B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -31.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48534,
+    "RuleName": "US TO MX Oct ONE STOP OW DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -15.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48535,
+    "RuleName": "US TO CARRIBEIAN Oct RT WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48536,
+    "RuleName": "US TO MX Oct ONE STOP OW UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48537,
+    "RuleName": "US TO MX Oct ONE STOP OW WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48538,
+    "RuleName": "US TO MX Oct NON STOP RT UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -30.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48539,
+    "RuleName": "US TO MX Oct ONE STOP RT AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -22.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48540,
+    "RuleName": "US TO South America AUG RT CM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "CM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48541,
+    "RuleName": "US TO US RT B6 Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -35.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48542,
+    "RuleName": "US TO MX Oct ONE STOP OW AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48543,
+    "RuleName": "US TO MX DEC WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48544,
+    "RuleName": "US TO MX Oct NON STOP OW UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -26.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48545,
+    "RuleName": "US TO MX Oct ONE STOP RT WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -22.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48546,
+    "RuleName": "US TO MX Oct ONE STOP RT AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -22.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48547,
+    "RuleName": "US TO MX Oct ONE STOP RT B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -22.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48548,
+    "RuleName": "US TO US OW WN Oct 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -34.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48549,
+    "RuleName": "US TO MX Oct ONE STOP RT AS",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -22.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48550,
+    "RuleName": "US TO US RT AS AUG 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -41.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48551,
+    "RuleName": "US TO MX Oct ONE STOP OW AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48552,
+    "RuleName": "US TO MX Oct ONE STOP OW B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48553,
+    "RuleName": "US TO CA RT",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "CA"
+    ],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -3.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48554,
+    "RuleName": "US TO MX Oct ONE STOP RT F9",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48555,
+    "RuleName": "US TO US RT AA Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -35.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48556,
+    "RuleName": "US TO MX Oct ONE STOP OW F9",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -20.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48557,
+    "RuleName": "US TO MX Oct ONE STOP RT UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -17.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48558,
+    "RuleName": "US TO US RT DL Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -45.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48559,
+    "RuleName": "JFKGEOB6",
+    "Origins": [
+      "JFK"
+    ],
+    "Destinations": [
+      "GEO"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -5
+  },
+  {
+    "RuleId": 48560,
+    "RuleName": "US TO South America AUG OW AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48561,
+    "RuleName": "US TO US OW UA Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48562,
+    "RuleName": "US TO ANY FIRST",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [],
+    "Airlines": [],
+    "CabinClasses": [
+      "F"
+    ],
+    "CabinClass": "F",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -1.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2027-09-30T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2027-09-30T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48563,
+    "RuleName": "US TO US OW B6 AUG",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -34.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48564,
+    "RuleName": "US TO US OW UA Oct 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -30.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48565,
+    "RuleName": "US TO South America DEC UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -5.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48566,
+    "RuleName": "US TO CARRIBEIAN Oct OW WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -25.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48567,
+    "RuleName": "US TO US RT B6 AUG 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -41.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48568,
+    "RuleName": "US TO South America AUG RT DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48569,
+    "RuleName": "US TO South America DEC B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -10.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48570,
+    "RuleName": "US TO US RT DL Oct 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -34.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48571,
+    "RuleName": "US TO South America AUG RT AV",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AV"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -16.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48572,
+    "RuleName": "US TO CARRIBEIAN Oct RT DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48573,
+    "RuleName": "US TO CARRIBEIAN Oct OW CM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "CM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -12.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48574,
+    "RuleName": "US TO CARRIBEIAN DEC WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -16.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48575,
+    "RuleName": "US TO CARRIBEIAN Oct RT CM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "CM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -15.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48576,
+    "RuleName": "US TO CARRIBEIAN DEC CM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "CM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -6.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48577,
+    "RuleName": "US TO MX DEC F9",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48578,
+    "RuleName": "US TO South America AUG OW AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48579,
+    "RuleName": "US TO CARRIBEIAN DEC B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -15.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48580,
+    "RuleName": "US TO CARRIBEIAN DEC AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48581,
+    "RuleName": "US TO South America AUG OW DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48582,
+    "RuleName": "US TO US DEC DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48583,
+    "RuleName": "US TO US RT F9 Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -35.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48584,
+    "RuleName": "US TO ANY ECO 2027",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "A",
+    "MarkUp": 10.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2027-01-01T00:00:00",
+    "TravelDateTo": "2027-09-30T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2027-09-30T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48586,
+    "RuleName": "US TO CARRIBEIAN Oct OW UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -12.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48587,
+    "RuleName": "US TO MX DEC VB",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "VB",
+      "Y4"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -2.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48588,
+    "RuleName": "US TO South America DEC ANY",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -1.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48589,
+    "RuleName": "US TO CA OW",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "CA"
+    ],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -1.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48590,
+    "RuleName": "US TO CARRIBEIAN DEC DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -16.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48591,
+    "RuleName": "US TO South America AUG RT B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -12.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48592,
+    "RuleName": "US TO US OW AS AUG",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -34.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48593,
+    "RuleName": "US TO ANY BUS",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [],
+    "Airlines": [],
+    "CabinClasses": [
+      "B"
+    ],
+    "CabinClass": "B",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -1.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2027-09-30T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2027-09-30T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48594,
+    "RuleName": "CA TO US",
+    "Origins": [
+      "CA"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "A",
+    "MarkUp": 10.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48595,
+    "RuleName": "US TO US OW WN Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -41.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48596,
+    "RuleName": "US TO MX DEC AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48597,
+    "RuleName": "US TO South America AUG OW UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -11.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48598,
+    "RuleName": "US TO South America DEC AV",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AV"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -5.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48599,
+    "RuleName": "US TO CARRIBEIAN Oct OW AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -25.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48600,
+    "RuleName": "US TO MX AUG OW VB",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "VB",
+      "Y4"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -2.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48601,
+    "RuleName": "US TO MX Oct ONE STOP OW AS",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48602,
+    "RuleName": "US TO MX DEC AS",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AS"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48603,
+    "RuleName": "US TO US RT WN Oct non stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -45.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 0,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -21
+  },
+  {
+    "RuleId": 48604,
+    "RuleName": "US TO South America DEC WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -10.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48605,
+    "RuleName": "US TO MX DEC UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48606,
+    "RuleName": "US TO US RT F9 AUG 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "F9"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -34.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48607,
+    "RuleName": "US TO CARRIBEIAN BW",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "BW"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -15.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-09-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48608,
+    "RuleName": "US TO MX DEC DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48609,
+    "RuleName": "US TO CARRIBEIAN DEC ANY",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -2.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48610,
+    "RuleName": "US TO CARRIBEIAN Oct OW DL",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "DL"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -25.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48611,
+    "RuleName": "US TO South America AUG ANY",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -5.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48612,
+    "RuleName": "US TO South America AUG RT AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48613,
+    "RuleName": "US TO South America AUG RT UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -15.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48614,
+    "RuleName": "US TO US RT UA Oct 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -33.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48615,
+    "RuleName": "US TO US DEC B6",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "B6"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48616,
+    "RuleName": "US TO CARRIBEIAN DEC AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48617,
+    "RuleName": "US TO South America AUG OW AV",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AV"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48618,
+    "RuleName": "US TO South America DEC AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -10.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48619,
+    "RuleName": "US TO CARRIBEIAN Oct OW AV",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "AV"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -12.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48620,
+    "RuleName": "US TO CARRIBEIAN DEC UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -1.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48621,
+    "RuleName": "US TO CARRIBEIAN Oct RT UA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "UA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -16.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48622,
+    "RuleName": "US TO US DEC AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -28.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48623,
+    "RuleName": "US TO MX DEC AM",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "MX"
+    ],
+    "Airlines": [
+      "AM"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "P",
+    "MarkUp": -18.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-11-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -10
+  },
+  {
+    "RuleId": 48624,
+    "RuleName": "US TO CARRIBEIAN Oct RT AA",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "AA"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -26.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -11
+  },
+  {
+    "RuleId": 48625,
+    "RuleName": "US TO South America AUG OW WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "O",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 140.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48626,
+    "RuleName": "US TO South America AUG RT WN",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -14.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48627,
+    "RuleName": "US TO US RT WN Oct 1 stop",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "WN"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -35.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": 1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": -12
+  },
+  {
+    "RuleId": 48628,
+    "RuleName": "US TO US LCC",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "US"
+    ],
+    "Airlines": [
+      "G4",
+      "SY",
+      "MX",
+      "9B"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "",
+    "MarkType": "A",
+    "MarkUp": 50.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-12-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-12-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  },
+  {
+    "RuleId": 48629,
+    "RuleName": "US TO CARRIBEIAN Oct RT AV",
+    "Origins": [
+      "US"
+    ],
+    "Destinations": [
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "NI",
+      "PA",
+      "AG",
+      "BS",
+      "BB",
+      "CU",
+      "DM",
+      "GD",
+      "JM",
+      "LC",
+      "VC",
+      "TT",
+      "AI",
+      "AW",
+      "BQ",
+      "CW",
+      "MS",
+      "PR",
+      "BL",
+      "MF",
+      "PM",
+      "TC",
+      "DO"
+    ],
+    "Airlines": [
+      "AV"
+    ],
+    "CabinClasses": [
+      "Y"
+    ],
+    "CabinClass": "Y",
+    "JourneyType": "R",
+    "MarkType": "P",
+    "MarkUp": -16.00,
+    "Status": true,
+    "MinDays": 0,
+    "MaxDays": 0,
+    "AdvanceDays": 0,
+    "MarkApplicable2": 0.00,
+    "RAirlines": [],
+    "PAirlines": [],
+    "Stops": -1,
+    "RestrictedClass": [],
+    "MinimumAmountRange": {
+      "Item1": 180.0,
+      "Item2": 10000.0
+    },
+    "PaxCount": 1,
+    "PaxType": "Any",
+    "TravelDateFrom": "2026-07-01T00:00:00",
+    "TravelDateTo": "2026-10-31T00:00:00",
+    "SaleDateFrom": "2026-04-01T00:00:00",
+    "SaleDateTo": "2026-10-31T00:00:00",
+    "BlockODateFrom": null,
+    "BlockODateTo": null,
+    "UpdatedBy": "",
+    "ClassOb": "",
+    "ClassIb": "",
+    "Company": "FareScrapper",
+    "CampId": "Rush_FS",
+    "ReplaceAirline": "",
+    "ParallelAirline": null,
+    "InboundTime": 0,
+    "OutboundTime": 0
+  }
+]

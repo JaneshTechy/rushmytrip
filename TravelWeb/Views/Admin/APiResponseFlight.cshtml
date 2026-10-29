@@ -1,0 +1,83 @@
+﻿@model List<FlightApiCacheVM>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div id="mainContent" class="space-y-6">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-black text-slate-800 uppercase tracking-tight">
+                Flight API Responses
+            </h1>
+            <p class="text-sm text-slate-500">
+                Live flight search responses from last 2 hours
+            </p>
+        </div>
+
+        <span class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-500 shadow-sm">
+            Total Records: @Model.Count
+        </span>
+    </div>
+
+    <!-- TABLE -->
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full min-w-[1000px]">
+                <thead>
+                    <tr class="bg-slate-50 border-b border-slate-100">
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase">Route</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase">Journey</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase">Travel Dates</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase text-center">Pax</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase">Search Time</th>
+                        <th class="px-6 py-5 text-xs font-black text-slate-400 uppercase text-right">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-slate-50">
+                    @foreach (var x in Model)
+                    {
+                        <tr class="hover:bg-slate-50/30 transition">
+                            <td class="px-6 py-4 font-bold text-slate-800">
+                                @x.Route
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase
+                                    @(x.JourneyType == "One Way"
+                                        ? "bg-orange-50 text-orange-600"
+                                        : "bg-green-50 text-green-600")">
+                                    @x.JourneyType
+                                </span>
+                            </td>
+
+                            <td class="px-6 py-4 text-sm font-semibold text-slate-600">
+                                @x.TravelDates
+                            </td>
+
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-xs font-bold">
+                                    @x.Pax
+                                </span>
+                            </td>
+
+                            <td class="px-6 py-4 text-sm text-slate-500">
+                                @x.SearchTime.ToString("dd MMM yyyy HH:mm")
+                            </td>
+
+                            <td class="px-6 py-4 text-right">
+                                <a href="@Url.Action("ViewFlightApiResponse","Admin",new { file = x.FileName })"
+                                   class="px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg
+                                          bg-slate-900 text-white hover:bg-black transition">
+                                    View JSON
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+

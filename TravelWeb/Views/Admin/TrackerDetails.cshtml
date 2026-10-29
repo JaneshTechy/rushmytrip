@@ -1,0 +1,245 @@
+﻿@model TrackerPageVM
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Tracker Details";
+}
+
+<div id="mainContent" class="space-y-6">
+
+    <!-- Website Card -->
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5 flex items-center justify-between">
+        <div class="font-bold text-slate-700 uppercase tracking-wide">
+            Website
+        </div>
+        <select onchange="changeWebsite(this.value)"
+                class="px-4 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 focus:ring-2 focus:ring-green-500">
+            <option value="rushmyflight.com">rushmyflight.com</option>
+            <option value="rushmyflight.mx">rushmyflight.mx</option>
+            <option value="rushmyflight.in">rushmyflight.in</option>
+        </select>
+    </div>
+
+    <!-- Filter Panel -->
+<form method="get" asp-action="TrackerDetails" id="filterForm"
+      class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5 grid grid-cols-2 md:grid-cols-6 gap-3 items-end">
+
+    <input type="hidden" name="filter" value="@Model.CurrentFilter" />
+    <input type="hidden" name="pageNumber" value="1" />
+
+    <div>
+        <label class="text-xs font-bold text-slate-400 uppercase">From Date</label>
+        <input type="date" name="fromDate"
+               value="@(Model.FromDate?.ToString("yyyy-MM-dd"))"
+               class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm" />
+    </div>
+
+    <div>
+        <label class="text-xs font-bold text-slate-400 uppercase">To Date</label>
+        <input type="date" name="toDate"
+               value="@(Model.ToDate?.ToString("yyyy-MM-dd"))"
+               class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm" />
+    </div>
+
+    <div>
+        <label class="text-xs font-bold text-slate-400 uppercase">Root Source</label>
+        <select name="rootSourceFilter"
+                class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+            <option value="">All</option>
+            <option value="FC" selected="@(Model.RootSourceFilter == "FC")">FC</option>
+            <option value="Trabber" selected="@(Model.RootSourceFilter == "Trabber")">Trabber</option>
+            <option value="FS" selected="@(Model.RootSourceFilter == "FS")">FS</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="text-xs font-bold text-slate-400 uppercase">From Location</label>
+        <input type="text" name="fromLocationFilter" value="@Model.FromLocationFilter"
+               placeholder="e.g. DEL"
+               class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm" autocomplete="off"/>
+    </div>
+
+    <div>
+        <label class="text-xs font-bold text-slate-400 uppercase">To Location</label>
+        <input type="text" name="toLocationFilter" value="@Model.ToLocationFilter"
+               placeholder="e.g. BOM"
+               class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm" autocomplete="off"/>
+    </div>
+
+    <div>
+        <label class="text-xs font-bold text-slate-400 uppercase">Trip Type</label>
+        <select name="tripTypeFilter"
+                class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+            <option value="">All</option>
+            <option value="ROUND" selected="@(Model.TripTypeFilter == "ROUND")">Round Trip</option>
+            <option value="ONEWAY" selected="@(Model.TripTypeFilter == "ONEWAY")">One Way</option>
+        </select>
+    </div>
+
+    <div class="col-span-2 md:col-span-6 flex justify-end gap-2">
+        <a asp-action="TrackerDetails" asp-route-filter="@Model.CurrentFilter"
+           class="px-4 py-2 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-600">
+            Reset
+        </a>
+
+         <button type="submit"
+            formaction="@Url.Action("ExportTrackerDetails")"
+            class="px-5 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-md">
+        📊 Export Excel
+    </button>
+
+        <button type="submit"
+                class="px-5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-md">
+            Apply Filter
+        </button>
+    </div>
+</form>
+
+    <!-- Header -->
+    <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-black text-slate-800 uppercase">Users Tracking List</h1>
+
+        <div class="flex items-center gap-2">
+
+            <!-- View All Searches -->
+            <a asp-action="TrackerDetails"
+               asp-route-filter="U"
+               class="px-4 py-2 rounded-xl text-xs font-bold shadow-md
+       @(Model.CurrentFilter == "U"
+           ? "bg-indigo-600 text-white"
+           : "bg-white border border-slate-200 text-slate-600")">
+                View All Searches
+            </a>
+
+            <!-- View All Clicks -->
+            <a asp-action="TrackerDetails"
+               asp-route-filter="C"
+               class="px-4 py-2 rounded-xl text-xs font-bold shadow-md
+       @(Model.CurrentFilter == "C"
+           ? "bg-green-600 text-white"
+           : "bg-white border border-slate-200 text-slate-600")">
+                View All Clicks
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Table -->
+    <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[1400px]">
+                <thead>
+                    <tr class="bg-slate-50 border-b text-xs font-black text-slate-400 uppercase">
+                        <th class="px-4 py-4">IP</th>
+                        <th class="px-4 py-4">Root</th>
+                        <th class="px-4 py-4">From</th>
+                        <th class="px-4 py-4">To</th>
+                        <th class="px-4 py-4">Airline</th>
+                        <th class="px-4 py-4">Sub-Class</th>
+                        <th class="px-4 py-4">Depart</th>
+                        <th class="px-4 py-4">Return</th>
+                        <th class="px-4 py-4">Trip</th>
+                        <th class="px-4 py-4">ADT</th>
+                        <th class="px-4 py-4">CHD</th>
+                        <th class="px-4 py-4">INF</th>
+                        <th class="px-4 py-4">Created</th>
+                        <th class="px-4 py-4">Fare</th>
+                        <th class="px-4 py-4">Markup</th>
+                        <th class="px-4 py-4">After Markup</th>
+                        <th class="px-4 py-4">Rule</th>
+                        <th class="px-4 py-4 text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                    @foreach (var t in Model.Trackers)
+                    {
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="px-4 py-3 text-sm font-bold text-slate-700">@t.IPAddress</td>
+                            <td class="px-4 py-3">@t.RootSource</td>
+                            <td class="px-4 py-3 font-semibold">@t.From</td>
+                            <td class="px-4 py-3 font-semibold">@t.To</td>
+                            <td class="px-4 py-3">@t.Airline</td>
+                            <td class="px-4 py-3">@t.SubClass</td>
+                            <td class="px-4 py-3">@t.Depart?.ToString("dd MMM")</td>
+                            <td class="px-4 py-3">@t.Return?.ToString("dd MMM")</td>
+                            <td class="px-4 py-3">@t.TripType</td>
+                            <td class="px-4 py-3 text-center">@t.ADT</td>
+                            <td class="px-4 py-3 text-center">@t.CHD</td>
+                            <td class="px-4 py-3 text-center">@t.INF</td>
+                            <td class="px-4 py-3 text-xs">@t.CreatedDate?.ToString("yyyy-MM-dd HH:mm")</td>
+                            <td class="px-4 py-3">$@t.TotalFare</td>
+                            <td class="px-4 py-3">$@t.Markup</td>
+                            <td class="px-4 py-3 font-bold text-green-600">$@t.TotalAfterMarkup</td>
+                            <td class="px-4 py-3 text-xs">@t.Rule</td>
+                            <td class="px-4 py-3 text-center">
+                                <a asp-action="TrackerView"
+                                   asp-route-id="@t.Id"
+                                   class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white hover:bg-black transition shadow-md">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    @{
+        int totalPages = (int)Math.Ceiling((double)Model.TotalRecords / Model.PageSize);
+        int currentPage = Model.PageNumber;
+
+        int startPage = Math.Max(1, currentPage - 1);
+        int endPage = Math.Min(totalPages, startPage + 2);
+
+        if (endPage - startPage < 2)
+        {
+            startPage = Math.Max(1, endPage - 2);
+        }
+    }
+
+    <div class="flex items-center justify-center gap-2 py-6">
+
+        <!-- Prev Button -->
+        @if (currentPage > 1)
+        {
+            <button onclick="loadPage(@(currentPage - 1))"
+                    class="px-4 h-10 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold">
+                Prev
+            </button>
+        }
+
+        <!-- Page Numbers (Sirf 2-3) -->
+        @for (int i = startPage; i <= endPage; i++)
+        {
+            <button onclick="loadPage(@i)"
+                    class="h-10 w-10 flex items-center justify-center rounded-xl font-bold text-sm transition-all
+                @(i == currentPage
+                    ? "bg-green-600 text-white shadow-lg"
+                    : "bg-white border border-slate-200 text-slate-500 hover:bg-slate-50")">
+                @i
+            </button>
+        }
+
+        <!-- Next Button -->
+        @if (currentPage < totalPages)
+        {
+            <button onclick="loadPage(@(currentPage + 1))"
+                    class="px-4 h-10 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold">
+                Next
+            </button>
+        }
+
+    </div>
+</div>
+
+<script>
+    function loadPage(page) {
+        const params = new URLSearchParams(window.location.search);
+        params.set('pageNumber', page);
+        window.location.href = '/Admin/TrackerDetails?' + params.toString();
+    }
+    function changeWebsite(site) {
+        const params = new URLSearchParams(window.location.search);
+        params.set('website', site);
+        window.location.href = '/Admin/TrackerDetails?' + params.toString();
+    }
+</script>

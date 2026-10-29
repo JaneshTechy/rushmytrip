@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="space-y-8 animate-fade-in">
+    <div class="relative overflow-hidden bg-slate-900 rounded-[2rem] p-8 md:p-12 shadow-2xl">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-green-500/10 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div class="space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-widest">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                    </span>
+                    System Online
+                </div>
+                <h1 class="text-4xl md:text-5xl font-black text-white leading-tight">
+                    Welcome Back, <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+                        @User.Identity.Name!
+                    </span>
+                </h1>
+                <p class="text-slate-400 max-w-md font-medium">
+                    The RushMyFlight terminal is ready. You have new bookings waiting for assignment and system updates to review.
+                </p>
+                <div class="flex items-center gap-4 pt-2">
+                    <a asp-action="BookingDeatils" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl transition-all shadow-lg shadow-orange-500/25 flex items-center gap-2">
+                        <i class="fas fa-plane-departure"></i>
+                        View Bookings
+                    </a>
+                    @* <button class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition-all border border-slate-700">
+                        Quick Report
+                    </button> *@
+                </div>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 text-center min-w-[200px]">
+                <p class="text-orange-500 font-black text-xs uppercase tracking-widest mb-1">Current Session</p>
+                <div class="text-3xl font-black text-white mb-1" id="digitalClock">00:00:00</div>
+                <p class="text-slate-400 text-sm font-bold">@DateTime.Now.ToString("dd MMM yyyy")</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a asp-action="CreateUser" asp-controller="Admin" class="group bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-orange-500/50 transition-all duration-300">
+            <div class="h-12 w-12 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i class="fas fa-users-cog text-xl"></i>
+            </div>
+            <h3 class="font-black text-slate-800 text-lg uppercase tracking-tight">Staff Management</h3>
+            <p class="text-slate-500 text-sm mt-1">Manage admin roles and access permissions.</p>
+        </a>
+
+        <a asp-action="AssignBookings" class="group bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-green-500/50 transition-all duration-300">
+            <div class="h-12 w-12 rounded-2xl bg-green-50 text-green-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i class="fas fa-tasks text-xl"></i>
+            </div>
+            <h3 class="font-black text-slate-800 text-lg uppercase tracking-tight">Assign Tasks</h3>
+            <p class="text-slate-500 text-sm mt-1">Dispatch new bookings to available agents.</p>
+        </a>
+
+        @* <a href="#" class="group bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-800/50 transition-all duration-300">
+            <div class="h-12 w-12 rounded-2xl bg-slate-50 text-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i class="fas fa-chart-line text-xl"></i>
+            </div>
+            <h3 class="font-black text-slate-800 text-lg uppercase tracking-tight">Analytics</h3>
+            <p class="text-slate-500 text-sm mt-1">Review revenue and flight sales performance.</p>
+        </a> *@
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('digitalClock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+}

@@ -1,0 +1,871 @@
+﻿
+@using TravelWeb.Utilities;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/@(Common.WebSitePath)cssbootstrap.min.css" />
+        <link rel="stylesheet" href="~/@(Common.WebSitePath)csssite.css" />*@
+
+    <title>Flight Ticket Deals and Airline Ticket, Book Flight Ticket - @(TravelWeb.Utilities.Common.WebSiteDomain)</title>
+    <meta name="description" content="Book Cheap Airline Tickets from @(TravelWeb.Utilities.Common.WebSiteDomain) and also get best offers and discounts on Cheap Flights Tickets for any destination">
+    <meta name="keywords" content="Cheap Flights, Cheap Flights Tickets, cheap flight booking, Cheap Airline Tickets, cheap air tickets, cheap international air tickets, very cheap air tickets, airline ticket booking, flight booking offers, international flights, international airlines, international flight tickets, international flight booking, find cheap flights, flight ticket booking,air canada london to toronto, cheap airline tickets to mexico, cheap flights to cancun, cheap flights to mexico city, flights to cancun from london, flights from mexico city to cancun,air canada flight booking, air india business class, airline contact number, american airlines reservations, business class flights, first class flights, flights from jfk, flights from new york to cancun, south america packages, united airlines booking ">
+
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/font-awesome.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/lineicons.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/weather-icons.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/bootstrap.css" />
+    @*<link rel="stylesheet" href="@(Common.WebSitePath)css/styles.css?v=1.00045023142512" />*@
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/styles.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/custom.css" />
+    <link rel="stylesheet" href="@(Common.WebSitePath)css/card.css" />
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.css" integrity="sha512-jwig9JMb/5BPdKZsQfUaybbQEQgtZheK7tRYJassOSmTuljmZZ1PN8U2eMFzvz0lBIyB3cZ9KSCcFH1uJNTc6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />*@
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css.map" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <!-- Owl Carousel Assets -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73456368-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-73456368-1');
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-226542344-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-226542344-1');
+    </script>
+
+    <script src="@(Common.WebSitePath)js/jquery-3.2.1.min.js"></script>
+    <script src="@(Common.WebSitePath)js/jquery-ui.min.js"></script>
+
+
+    <link href="@(Common.WebSitePath)css/jquery-ui.css" rel="stylesheet" />
+    @*<script src="@(Common.WebSitePath)scripts/myjs.js?v=1.0001"></script>*@
+    @*<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/121761/card.js"></script>*@
+    <script src="@(Common.WebSitePath)js/card.js"></script>
+    <script src="@(Common.WebSitePath)scripts/myjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+    <script src="@(Common.WebSitePath)js/moment.js"></script>
+    <script src="@(Common.WebSitePath)js/bootstrap.js"></script>
+    <script src="@(Common.WebSitePath)js/SmartBox.js"></script>
+
+    <link href="@(Common.WebSitePath)css/owl.carousel.css" rel="stylesheet">
+    <link href="@(Common.WebSitePath)css/owl.theme.css" rel="stylesheet">
+    <script src="@(Common.WebSitePath)js/owl.carousel.js"></script>
+
+    @*popup scripts*@
+
+
+    @*//popup scripts ends*@
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        SessionManage();
+    });
+        function SessionManage() {
+
+               $.ajax({
+             type: "get",
+
+            url: "@(TravelWeb.Utilities.Common.WebSitePath)Common/SetSession",
+
+            success: function (response) {
+                //alert(response)
+            }
+
+        });
+
+        }
+
+    </script>
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Montserrat' !important;
+        }
+    </style>
+    <style>
+        .reason_header {
+            color: white !important
+        }
+    </style>
+    @*<style>
+            header {
+                background: #000;
+                height: 54px;
+                width: 100%;
+                float: left;
+            }
+            .stage .left-side {
+                float: left;
+                max-height: 714px;
+                height: 100%;
+                background: url(https://cf.smartfares.com/sites/1/img/LeaveBehind/white-shade.png) left top no-repeat;
+                width: 642px;
+            }
+                .stage .left-side .callcenter-thumb {
+                    position: relative;
+                    background: url(https://cf.smartfares.com/sites/1/img/LeaveBehind/call-center.png) no-repeat;
+                    width: 322px;
+                    height: 351px;
+                    margin: 191px 0 30px 70px;
+                }
+                    .stage .left-side .callcenter-thumb .allday {
+                        display: block;
+                        content: '';
+                        background: url(https://cf.smartfares.com/sites/1/img/LeaveBehind/247-balloon.png) no-repeat;
+                        width: 384px;
+                        height: 176px;
+                        top: -133px;
+                        right: -216px;
+                        position: absolute;
+                    }
+                .stage .left-side .avail {
+                    background: rgba(255, 255, 255, 0.72);
+                    border-radius: 100px;
+                    color: #46a500;
+                    font-size: 36px;
+                    padding: 10px;
+                    width: 305px;
+                    text-align: center;
+                    margin-left: 70px;
+                }
+            .stage .right-side {
+                float: right;
+                width: calc(100% - 642px);
+                -webkit-box-ordinal-group: 0;
+                -ms-flex-order: -1;
+                order: -1;
+            }
+                .stage .right-side h1 {
+                    margin: 20px 0;
+                    font-size: 32px;
+                }
+                .stage .right-side ul {
+                    color: #fff;
+                    font-size: 28px;
+                    padding: 0;
+                }
+                .stage .right-side .call-section {
+                    width: 100%;
+                    float: left;
+                }
+                    .stage .right-side .call-section a.callNow:before {
+                        background: url(https://cf.smartfares.com/sites/1/img/LeaveBehind/call-icon.png) no-repeat;
+                        width: 118px;
+                        height: 118px;
+                        position: absolute;
+                        left: -41px;
+                        top: -10px;
+                        content: '';
+                        display: block;
+                    }
+                    .stage .right-side .call-section a.callNow {
+                        padding: 10px 70px;
+                        margin: 20px;
+                        font-size: 26px;
+                        margin-left: -100px;
+                    }
+
+                        .stage .right-side .call-section a.callNow strong {
+                            font-size: 30px;
+                        }
+                    .stage .right-side .call-section div.call-nums {
+                        margin-left: 0;
+                        margin-top: 25px;
+                    }
+                        .stage .right-side .call-section div.call-nums a {
+                            display: block;
+                            color: #fac637;
+                            font-size: 24px;
+                            text-decoration: none;
+                        }
+                .stage .right-side ul li:before {
+                    background: url(https://cf.smartfares.com/sites/1/img/LeaveBehind/check-list.png) no-repeat;
+                    width: 51px;
+                    height: 51px;
+                    content: '';
+                    display: inline-block;
+                    margin-right: 15px;
+                    float: left;
+                }
+                .stage .right-side .call-section a.callNow {
+                    background: #f65700;
+                    -webkit-filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
+                    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
+                    padding: 10px 80px;
+                    text-align: center;
+                    border-radius: 200px;
+                    color: #fff;
+                    font-size: 32px;
+                    text-decoration: none;
+                    float: left;
+                    margin-left: -80px;
+                    position: relative;
+                }
+        </style>*@
+    <style>
+        .call_cls_btn {
+            cursor: pointer !important;
+            right: 15px !important;
+            top: 15px !important;
+            position: absolute !important;
+            color: #fff !important;
+        }
+
+        .switch-field {
+            display: flex;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+            .switch-field input {
+                position: absolute !important;
+                clip: rect(0, 0, 0, 0);
+                height: 1px;
+                width: 1px;
+                border: 0;
+                overflow: hidden;
+            }
+
+            .switch-field label {
+                background-color: #f8f9fa;
+                color: rgba(0, 0, 0, 0.6);
+                font-size: 14px;
+                line-height: 1;
+                text-align: center;
+                padding: 8px 16px;
+                margin-right: -1px;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+                transition: all 0.1s ease-in-out;
+            }
+
+                .switch-field label:hover {
+                    cursor: pointer;
+                }
+
+            /*.switch-field input:checked + label {*/
+                /*background-color: #fba406;*/
+                /*box-shadow: none;
+            }*/
+
+            .switch-field label:first-of-type {
+                border-radius: 4px 0 0 4px;
+            }
+
+            .switch-field label:last-of-type {
+                border-radius: 0 4px 4px 0;
+            }
+        /*.navbar-collapse.collapse {
+            display: block !important;
+            height: 62px !important;
+            padding-bottom: 0;
+            overflow: visible !important;
+        }*/
+        .nav {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+            height: 62px !important;
+        }
+        /* Done by Aayushi*/
+       /* #link {
+            font-family: 'Montserrat', sans-serif !important;
+            color: #0b1f66 !important;
+        }*/
+
+    </style>
+    @*css for toggle button*@
+    <style>
+        @@media (max-width:750px) {
+            #navbar-main {
+                background: white;
+                height: 302px;
+            }
+        }
+    </style>
+    <nav class="navbar navbar-default navbar-inverse navbar-theme navbar-theme-abs navbar-theme-transparent navbar-theme-border" id="main-nav">
+        <div class="container-fluid" id="Header">
+            <div class="navbar-inner nav">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" data-target="#navbar-main" data-toggle="collapse" type="button" area-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="call-icon">
+                        <a href="tel:+1 844 759 0888">  <i class="lin lin-phone"></i></a>
+                    </div>
+                    <a class="navbar-brand" href="/" style="">
+                        <img src="img/Flights Hall (1).png" alt="Image Alternative text" title="Flights Hall" height="300" width="150" style="margin-bottom: 0px;max-height: 40px;margin-top: -10px;">
+                        @*<img src="img/Flights Hall.png" alt="Image Alternative text" title="Flights Hall" height="600" width="220" style="max-height: 82px; margin-top: -20px; ">*@
+                        @*<i class="fa fa-cube" aria-hidden="true"></i> Flights<span style="color: #fba406">Hall</span>*@
+                    </a>
+                </div>
+                @*Done By Aayushi*@
+                <div class="collapse navbar-collapse" id="navbar-main">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="@Url.Action("Index", "Home")"><strong id="link">Home</strong></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AboutUs", "Home")"><strong id="link">About Us</strong></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ContactUs", "Home")"><strong id="link">Contact Us</strong></a>
+                        </li>
+                        <li>
+                            <a style="text-decoration:none!important" href="tel:+18447590888"><strong id="link">Need Help <span style="padding-left: 10px;"><i class="fa fa-phone" aria-hidden="true"></i></span><span style="font-size:15px;padding-left:5px;">+1 844 759 0888</span></strong></a>
+                        </li>
+                        @*<li class="dropdown">
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="_desk-h">Currency</span>
+                                    <b>USD</b>
+                                </a>
+
+                            </li>*@
+                        @*<li class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="_desk-h">Language</span>
+                                <img class="navbar-flag" src="@(TravelWeb.Utilities.Common.WebSitePath)img/flags/USA.png" alt="Image Alternative text" title="Image Title" />
+                            </a>*@
+                        <!--<div class="dropdown-menu dropdown-menu-xxl">
+                        <h5 class="dropdown-meganav-select-list-title">Languages</h5>
+                        <div class="row" data-gutter="10">
+                            <div class="col-md-3">
+                                <ul class="dropdown-meganav-select-list-lang">
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul class="dropdown-meganav-select-list-lang">
+                                </ul>
+                            </div>
+                            <div class="col-md-3">-->
+                        @*<ul class="dropdown-meganav-select-list-lang"></ul>*@
+                        <!--</div>
+                            </div>
+                        </div>-->
+                        @*</li>*@
+                        @*<li class="navbar-nav-item-user">
+                                <span style="padding: 15px 0;display: inline-block;"><a id="link" style="text-decoration:none;font-weight:bolder" href="tel:+1 844 759 0888">need help?+1 844 759 0888</a></span>
+                            </li>*@
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        @*<li><a class="" href="@(Common.WebSitePath)offer/Economy-Class-Deals/2">Economy Class Deals</a></li>
+                            <li><a class="" href="@(Common.WebSitePath)offer/Business-Class-Deals/7">Business Class Deals</a></li>
+                            <li><a class="" href="@(Common.WebSitePath)offer/Last-Minute-Deals/4">Last Minute Deals</a></li>
+                            <li><a class="" href="@(Common.WebSitePath)airline">Airline Deals</a></li>*@
+                    </ul>
+
+                </div>
+                <div class="col-md-3">
+                    <ul class="dropdown-meganav-select-list-lang">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </nav>
+
+    @RenderBody()
+    <div id="dvfooter">
+        <div class="theme-footer" id="mainFooter" style="background:#00CCCC">
+            <div class="container _ph-mob-0">
+                <div class="row row-eq-height row-mob-full" data-gutter="60">
+                    <div class="col-md-5 for-mob1">
+                        <div class="theme-footer-section theme-footer-">
+
+                            <a class="theme-footer-brand _mb-mob-30" href="/" style="#fff;">
+                                <img src="img/Flights Hall (1).png" alt="Image Alternative text" title="Image Title" style="width:150px;" />
+                                @*<i class="fa fa-cube" aria-hidden="true"></i> FlightsHall*@
+                            </a>
+                            <div class="theme-footer-brand-text">
+
+                                <p style="color:white !important">
+                                    FlightsHall is the leading online travel search site that serve affrordable flight prices
+                                    people to around the world.We cover all popular
+                                    destinations and offer you a wide range of services including
+                                    domestic flights and international flight bookings
+                                </p>
+                                <p>
+                                    <div class="col-sm-8 text-center cards-footer" style="font-size:2em;text-shadow:1px 0px 1px">
+                                        <ul>
+                                            <li><a href="javascript:void(0)"><img src="@(Common.WebSitePath)img/payment.jpeg"></a></li>
+
+                                        </ul>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 ">
+                        <div class="row">
+                            <div class="col-md-4 for-mob">
+                                <div class="theme-footer-section theme-footer-">
+                                    <h5 class="theme-footer-section-title">FlightsHall.com</h5>
+                                    <ul class="theme-footer-section-list">
+                                        <li>
+                                            <a href="~/about-us">About FlightsHall</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="~/contact-us">Contact Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="~/contact-us">Customer Support</a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="~/privacy-policy">Privacy Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="~/terms-conditions">Terms of Use</a>
+                                        </li>
+                                        <li>
+                                            <a href="~/blog">Blogs</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 for-mob">
+                                <div class="theme-footer-section theme-footer-">
+                                    <h5 class="theme-footer-section-title">Explore</h5>
+                                    <ul class="theme-footer-section-list">
+                                        <li>
+                                            @*<a href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Business-Class/2">Business class Deals</a>*@
+                                            <a href="#">Business class Deals</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Economy-Class/2">Economy class Deals</a>*@
+                                            <a href="#">Economy class Deals</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Deals-Under-199/3">Deals under 199</a>*@
+                                            <a href="#">Deals under 199</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Last-Minute/4">Last minute deals</a>*@
+                                            <a href="#">Last minute deals</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="@(TravelWeb.Utilities.Common.WebSitePath)offer/Summer-Holidays-Flights/5">summer holidays flight deals</a>*@
+                                            <a href="#">summer holidays flight deals</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="@(TravelWeb.Utilities.Common.WebSitePath)airline">Airline deals</a>*@
+                                            <a href="#">Airline deals</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="@(TravelWeb.Utilities.Common.WebSitePath)offer/International-Flights/6">International flight Deals</a>*@
+                                            <a href="#">International flight Deals</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 for-mob">
+                                <div class="theme-footer-section theme-footer-">
+                                    <h5 class="theme-footer-section-title">Book</h5>
+                                    <ul class="theme-footer-section-list">
+                                        <li>
+                                            @*<a href="/offer/jfk">Flights to New york</a>*@
+                                            <a href="#">Flights to New york</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="/offer/den">Flights to Denver</a>*@
+                                            <a href="#">Flights to Denver</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="/offer/sfo">Flights to San francisco</a>*@
+                                            <a href="#">Flights to San francisco</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="/offer/las">Flights to Las vegas</a>*@
+                                            <a href="#">Flights to Las vegas</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="/offer/sea">Flights to Seattle</a>*@
+                                            <a href="#">Flights to Seattle</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="/offer/mco">Flight to Orlando</a>*@
+                                            <a href="#">Flight to Orlando</a>
+                                        </li>
+                                        <li>
+                                            @*<a href="/offer/hnl">Flights to Honolulu</a>*@
+                                            <a href="#">Flights to Honolulu</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-md-4">
+                            <div class="theme-footer-section theme-footer-section-subscribe bg-grad _mt-mob-30">
+                                <div class="theme-footer-section-subscribe-bg" style="background-image:url(@(TravelWeb.Utilities.Common.WebSitePath)img/footer/footer_subscribe_bg.png);"></div>
+                                <div class="theme-footer-section-subscribe-content">
+                                    <h5 class="theme-footer-section-title">Save up to 50% off your next trip</h5>
+                                    <p class="text-muted">Subscribe to unlock our secret deals</p>
+                                    <form>
+                                        <div class="form-group">
+                                            <input class="form-control theme-footer-subscribe-form-control" type="email" placeholder="Type your e-mail here" />
+                                        </div>
+                                        <button class="btn btn-primary-invert btn-shadow text-upcase theme-footer-subscribe-btn" type="submit">Get deals</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+        <div class="theme-copyright" style="background-color:#018997;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="theme-copyright-text" style="color:white !important;">
+                            Copyright @@2023 RushMyFlight All rights reserved
+
+                        </p>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="theme-copyright-social">
+                            <li>
+                                <a class="fa fa-facebook" href="#"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-google" href="#"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-twitter" href="#"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-youtube-play" href="#"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-instagram" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--<div class="modal fade in" tabindex="-1" role="dialog" style="display: block;">
+        <div>
+            <div>
+                <div>
+                    <a id="btnCloseTimeoutDialogue" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></a>
+                </div>
+                <div>
+                    <header>-->
+    <!-- <a href="#" class="logo"></a> -->
+    <!--<ul class="call">-->
+    <!-- <li><a href="tel:619-785-3836">619-785-3836</a></li> -->
+    <!--<li><a href="tel:+1-619-785-3836">+1-619-785-3836</a></li>
+        </ul>
+    </header>
+    <div class="stage">
+        <div class="left-side">
+            <div class="callcenter-thumb">
+                <div class="allday"></div>
+            </div>
+            <div class="avail">
+                Available Now
+            </div>
+        </div>
+        <div class="right-side">
+            <h1>BEST FARES RATES ARE OFTEN <strong>UNPUBLISHED</strong></h1>
+            <ul>
+                <li>Call waiting time: <span>Near zero</span> </li>
+                <li>Get a Quote:<span>UNDER 1 MINUTE</span></li>
+                <li><span>All Airline Providers</span></li>
+            </ul>
+            <div class="call-section">
+                <a href="tel:+1-619-785-3836" class="callNow">CALL NOW <strong>TOLL FREE</strong></a>
+                <div class="call-nums">-->
+    <!-- <a href="tel:619-785-3836">619-785-3836</a> -->
+    <!--<a href="tel:+1-619-785-3836">+1-619-785-3836</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            </div>
+    </div>-->
+    @*comented popup code*@
+    <div id="bkgOverlay" class="backgroundOverlay" style="display: none;"></div>
+
+    <div id="delayedPopup" class="delayedPopupWindow" style="display:none; visibility:visible">
+        <div class="popup_top">
+            <div class="popup_left">
+                <img src="/img/Flights Hall (1).png">
+            </div>
+            <div class="popup_middle">
+                <h2>Want help finding the best deal?</h2>
+                <p>Discover unpublished fares by calling our Toll Free Number.</p>
+            </div>
+            <div class="popup_right">
+                <a id="btnClose" title="Click here to close this deal box.">[X]</a>
+            </div>
+        </div>
+        <div class="popup_main_con container" style="color:white">
+            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5 no-padding pop_divcon">
+                <div class="popup_reason">
+                    <div class="reason_header">
+
+                        @*commented poopup code ends*@
+
+
+                        @*<h5>Top 3 Reasons</h5>*@
+                        <p>
+                            BEST FARES RATES ARE OFTEN
+                            UNPUBLISHED
+                        </p>
+                    </div>
+                    <div class="reason_content">
+                        <div><img src="/img/check-list.png" width="30" height="30"><p>Call waiting time: Near zero</p></div>
+                        <div><img src="/img/check-list.png" width="20" height="20"><p>Best quote in Market.</p></div>
+                        <div><img src="/img/check-list.png" width="20" height="20"><p>All Airline Providers</p></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-7 col-xs-7 pop_divconone ">
+                <p>Talk to one of our experienced Travel Agents to get the best airfares!</p>
+                <h3>You may save up to 70%*</h3>
+                <div class="callus_div">
+                    <div class="call_divc">
+                        <p>CALL(TOLL FREE)</p>
+                        <a href="tel:+1 844 759 0888">
+                            +1 844 759 0888
+                        </a>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="cllnow_popup">
+                        <a href="tel:+1-844-759-0888">
+                            <i class="fa fa-phone"></i>Call Now
+                        </a>
+                    </div>
+                    <p> Disclaimer - *The fares displayed on the website are up to 70 % cheaper as compared to the highest fare in the same cabin.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pop_divcon mob">
+            </div>
+        </div>
+    </div>
+    <style>
+        .support-bottom-strip {
+            position: fixed !important;
+            bottom: 0 !important;
+            z-index: 100 !important;
+            width: 100% !important;
+            transition: all .5s ease 0s;
+            box-shadow: 0 -2px 3px #333 !important
+        }
+
+            .support-bottom-strip a {
+                background: #fba406 !important;
+                /* background: #2c2c42 !important;*/
+                color: #fff !important;
+                padding: 10px 10px 5px !important;
+                text-align: center !important;
+                display: block !important;
+                height: 70px !important
+            }
+
+        @@media(max-width:365px) {
+            .support-bottom-strip a {
+                height: 50px !important
+            }
+        }
+
+        .support-bottom-strip a:hover {
+            background: #f3ce8a !important;
+            color: #333 !important
+        }
+
+        .support-bottom-strip a span {
+            width: 50px !important;
+            height: 50px !important;
+            float: left !important;
+            font-size: 30px !important;
+            text-align: center !important;
+            line-height: 50px !important;
+            /*      background: #0093d2 !important;*/
+            /*  background: #00b67a !important;*/
+            background: #018997;
+            color: #fff !important;
+            border-radius: 50% !important;
+            margin: 0 0 5px 15px !important
+        }
+
+        @@media(max-width:365px) {
+            .support-bottom-strip a span {
+                width: 35px;
+                height: 35px;
+                float: left;
+                font-size: 20px
+            }
+        }
+
+        .support-bottom-strip a .call-text {
+            font-size: 14px
+        }
+
+        @@media(max-width:365px) {
+            .support-bottom-strip a .call-text {
+                font-size: 11px
+            }
+        }
+
+        .support-bottom-strip a .tele {
+            font-size: 32px;
+            line-height: 1em;
+            font-weight: 700
+        }
+
+        @@media(max-width:365px) {
+            .support-bottom-strip a .tele {
+                font-size: 20px
+            }
+        }
+
+        /* Done ruby Aayushi*/
+        @@media(min-width:800px) {
+            .support-bottom-strip {
+                display: none !important;
+            }
+        }
+    </style>
+    <div class="support-bottom-strip visible-lg visible-sm visible-md visible-xs" id="Callbottom_popup" style="bottom: 0px; display:none !important">
+        @*<a href="javascript:void(0);" class="close_call_banner">X</a>*@
+        <div class="call_cls_btn">
+            <i class="fa fa-times fa-times-rectangle-o " id="close_call1"></i>
+        </div>
+        <a href="tel:+1 844 759 0888" id="toll-free-number_deal">
+            <span><i class="fa fa-phone " aria-hidden="true"></i> </span>
+            <div class="call-text">Call &amp; Get Unpublished Flight Deals!</div>
+            <div class="tele"><strong id="tfnNumberDeals">+1 844 759 0888</strong></div>
+        </a>
+    </div>
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+
+            $("#close_call").click(function () {
+
+            });
+            $("#close_call1").click(function () {
+                var div = document.getElementById('Callbottom_popup');
+                div.style.visibility = 'hidden';
+                var div1 = document.getElementById('phncall1');
+                div1.style.visibility = 'visible';
+            });
+
+
+
+        });
+    </script>
+
+    @*commented script of popup*@
+    <script>
+        $("#btnClose").click(function () {
+            $("#bkgOverlay").hide();
+            $("#delayedPopup").hide();
+            //var div = document.getElementById('#delayedPopup');
+            //div.style.visibility = 'hidden';
+            //var div1 = document.getElementById('phncall1');
+            //div1.style.visibility = 'visible';
+        });
+    </script>
+    @*<script>
+            $(document).ready(function () {
+                setTimeout(function () {
+                    $("#bkgOverlay").fadeIn();
+                    $("#delayedPopup").fadeIn();
+                }, 20000);
+            });
+        </script>*@
+
+    @*commented popup scripts ends here*@
+
+
+    <script type="text/javascript">
+        //var Tawk_API = Tawk_API || {};
+
+        //Tawk_API.customStyle = {
+        //    visibility: {
+        //        desktop: {
+        //            position: 'br',
+        //            xOffset: '60px',
+        //            yOffset: 20
+        //        },
+        //        mobile: {
+        //            position: 'bl',
+        //            xOffset: 10,
+        //             yOffset: 50
+        //        },
+        //        bubble: {
+        //            rotate: '0deg',
+        //            xOffset: -20,
+        //            yOffset: 0
+        //        }
+        //    }
+        //};
+    
+
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/619275fd6885f60a50bbe18e/1fki1pq6j';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#callLayerDesktop').modal('show');
+        })
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.js" integrity="sha512-lIdTIGaSjFWSxmWDSyKbLz1OJ3c1o4Vm6FXRguKH1HzOVCRSF8Ypg30+yga7j5TUMh4Sf5iFvC9/NQQr1KumQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

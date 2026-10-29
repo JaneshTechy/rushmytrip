@@ -1,0 +1,103 @@
+﻿@model TravelWeb.Models.GoogleAdsVM
+
+<h2>Google Ads Dashboard</h2>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Total Clicks</h5>
+            <h3>@Model.TotalClicks</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Total Impressions</h5>
+            <h3>@Model.TotalImpressions</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Total Cost</h5>
+            <h3>₹@Model.TotalCost.ToString("N2")</h3>
+        </div>
+    </div>
+</div>
+
+<h4>Campaign-wise Performance</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Campaign</th>
+            <th>Clicks</th>
+            <th>Impressions</th>
+            <th>CTR (%)</th>
+            <th>Avg CPC</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CampaignStats)
+        {
+            <tr>
+                <td>@item.Date</td>
+                <td>@item.CampaignName</td>
+                <td>@item.Clicks</td>
+                <td>@item.Impressions</td>
+                <td>@item.Ctr.ToString("N2")</td>
+                <td>₹@item.AverageCpc.ToString("N2")</td>
+                <td>₹@item.Cost.ToString("N2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Region-wise Traffic</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Campaign</th>
+            <th>Region</th>
+            <th>Clicks</th>
+            <th>Impressions</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RegionStats)
+        {
+            <tr>
+                <td>@item.CampaignName</td>
+                <td>@item.Region</td>
+                <td>@item.Clicks</td>
+                <td>@item.Impressions</td>
+                <td>₹@item.Cost.ToString("N2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Device-wise Breakdown</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Device</th>
+            <th>Clicks</th>
+            <th>Impressions</th>
+            <th>CTR (%)</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DeviceStats)
+        {
+            <tr>
+                <td>@item.Device</td>
+                <td>@item.Clicks</td>
+                <td>@item.Impressions</td>
+                <td>@item.Ctr.ToString("N2")</td>
+                <td>₹@item.Cost.ToString("N2")</td>
+            </tr>
+        }
+    </tbody>
+</table>

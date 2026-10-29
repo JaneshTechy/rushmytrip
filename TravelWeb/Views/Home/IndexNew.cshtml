@@ -1,0 +1,300 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutMainV1.cshtml";
+    ViewData["Title"] = "RushMyTrip | Amazing Flights, Unbelievable Price";
+}
+<!-- ================= HERO (heading, paragraph, form) ================= -->
+    <section id="top" class="relative isolate bg-ink-900 pb-10 pt-8 sm:pt-12 lg:pb-14">
+      <div class="absolute inset-0 -z-10 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=75" alt="" fetchpriority="high" onerror="this.remove()" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-ink-900/80 via-ink-900/60 to-ink-900/90"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(60%_50%_at_80%_0%,rgba(255,95,19,.35),transparent)]"></div>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="reveal text-xs font-bold uppercase tracking-[0.25em] text-brand-300 sm:text-sm">Amazing Flights, Unbelievable Price!</p>
+          <h1 class="reveal mt-4 text-4xl font-black leading-[1.08] tracking-tight text-white sm:text-6xl" data-delay="80">Hop On-Board and Travel the World</h1>
+          <p class="reveal mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg" data-delay="160">Cheap flight tickets, great deals and a real person to help you 24/7, in English, Spanish and Portuguese.</p>
+        </div>
+
+        <!-- SEARCH -->
+        <div id="search" class="mt-8 scroll-mt-24 lg:mt-10">
+         <form id="searchForm" novalidate data-cities-url="@Url.Content("~/XML/City.xml")" class="reveal rounded-[2rem] bg-white p-4 shadow-[0_40px_80px_-20px_rgba(0,0,0,.55)] sm:p-5" data-delay="120" aria-label="Flight search">
+            <div class="flex flex-wrap items-center gap-3 px-1 pb-4">
+              <div class="inline-flex rounded-full bg-slate-100 p-1 text-sm font-semibold" role="radiogroup" aria-label="Trip type">
+                <label class="cursor-pointer"><input type="radio" name="trip" value="round" checked class="peer sr-only"><span class="block rounded-full px-4 py-2 text-slate-600 transition peer-checked:bg-white peer-checked:text-brand-600 peer-checked:shadow peer-focus-visible:ring-2 peer-focus-visible:ring-brand-500">Round Trip</span></label>
+                <label class="cursor-pointer"><input type="radio" name="trip" value="oneway" class="peer sr-only"><span class="block rounded-full px-4 py-2 text-slate-600 transition peer-checked:bg-white peer-checked:text-brand-600 peer-checked:shadow peer-focus-visible:ring-2 peer-focus-visible:ring-brand-500">One Way</span></label>
+              </div>
+              <label class="relative inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-ink-900">
+                <span class="sr-only">Cabin</span>
+                <select id="cabin" name="cabin" class="bg-transparent pr-1 focus:outline-none"><option>Economy</option><option>Premium Economy</option><option>Business</option><option>First</option></select>
+              </label>
+            </div>
+
+            <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-[1.2fr_1.2fr_1fr_1fr_1.1fr_auto]">
+              <label class="relative block">
+  <span class="field-label">From City</span>
+  <span class="field-box"><i class="fa-solid fa-plane-departure text-brand-500"></i>
+    <input id="from" name="from" autocomplete="off" placeholder="City or airport code" class="field-input"></span>
+  <input type="hidden" id="fromCode" name="fromCode">
+  <button id="swapBtn" type="button" aria-label="Swap origin and destination" class="absolute -bottom-[22px] right-5 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-brand-600 shadow transition hover:bg-brand-500 hover:text-white md:bottom-auto md:right-[-22px] md:top-1/2 md:-translate-y-1/2 lg:right-[-24px]"><i class="fa-solid fa-right-left"></i></button>
+</label>
+              <label class="relative block">
+  <span class="field-label">To City</span>
+  <span class="field-box"><i class="fa-solid fa-plane-arrival text-brand-500"></i>
+    <input id="to" name="to" autocomplete="off" placeholder="City or airport code" class="field-input"></span>
+  <input type="hidden" id="toCode" name="toCode">
+</label>
+              <label class="block">
+                <span class="field-label">Departure</span>
+                <span class="field-box"><i class="fa-regular fa-calendar text-brand-500"></i>
+                  <input id="depart" name="depart" type="date" class="field-input"></span>
+              </label>
+              <label id="returnField" class="block transition">
+                <span class="field-label">Returning</span>
+                <span class="field-box"><i class="fa-regular fa-calendar-check text-brand-500"></i>
+                  <input id="return" name="return" type="date" class="field-input"></span>
+              </label>
+              <div class="relative">
+                <span class="field-label">Passengers</span>
+                <button id="paxBtn" type="button" aria-expanded="false" aria-controls="paxPanel" class="field-box w-full text-left">
+                  <i class="fa-regular fa-user text-brand-500"></i>
+                  <span id="paxLabel" class="flex-1 truncate text-sm font-semibold text-ink-900">1 Pax, Economy</span>
+                  <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                </button>
+                <div id="paxPanel" hidden class="absolute left-0 right-0 top-[calc(100%+8px)] z-30 min-w-[280px] rounded-2xl bg-white p-4 shadow-[0_30px_60px_-15px_rgba(10,15,28,.45)] ring-1 ring-slate-200 lg:left-auto lg:w-80">
+                  <div class="space-y-3" id="paxRows"></div>
+                  <button id="paxDone" type="button" class="mt-4 w-full rounded-xl bg-ink-900 py-2.5 text-sm font-bold text-white transition hover:bg-brand-500">Done</button>
+                </div>
+              </div>
+              <button type="submit" class="inline-flex items-center justify-center gap-2 self-end rounded-2xl bg-gradient-to-r from-brand-500 to-brand-600 px-8 py-4 text-base font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 md:col-span-2 lg:col-span-1"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            </div>
+
+            <p id="formError" role="alert" aria-live="assertive" class="mt-3 hidden rounded-xl bg-red-50 px-4 py-2.5 text-sm font-medium text-red-700"></p>
+            <datalist id="airports">
+  <option value="New York (NYC)" />
+  <option value="Los Angeles (LAX)" />
+  <option value="Chicago (ORD)" />
+  <option value="Miami (MIA)" />
+  <option value="Atlanta (ATL)" />
+  <option value="Philadelphia (PHL)" />
+  <option value="Honolulu (HNL)" />
+  <option value="Buenos Aires (EZE)" />
+  <option value="Guadalajara (GDL)" />
+  <option value="Lagos (LOS)" />
+  <option value="San Francisco (SFO)" />
+  <option value="Las Vegas (LAS)" />
+  <option value="Seattle (SEA)" />
+  <option value="Orlando (MCO)" />
+  <option value="Denver (DEN)" />
+  <option value="London (LHR)" />
+  <option value="Paris (CDG)" />
+  <option value="Mexico City (MEX)" />
+</datalist>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CERTIFIED & TRUSTED ================= -->
+    <section id="about" class="scroll-mt-20 py-10 lg:py-14">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal grid items-center gap-8 rounded-[2rem] bg-slate-50 p-6 ring-1 ring-slate-200 sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:p-10">
+          <div>
+            <p class="eyebrow"><i class="fa-solid fa-shield-halved mr-2"></i>Certified &amp; Trusted</p>
+            <h2 class="h2">Recognized by the World's Leading Travel Authorities</h2>
+            <p class="mt-3 text-slate-600">Every booking is backed by real accreditation from the industry's most respected organizations.</p>
+          </div>
+          <ul class="grid divide-y divide-slate-200 overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            <li class="flex flex-col items-center justify-between gap-4 p-5 text-center transition hover:bg-brand-50/60">
+              <img src="~/NewUI/assets/img/clia.png" alt="Cruise Lines International Association" loading="lazy" class="h-20 w-auto max-w-full object-contain">
+              <span class="text-xs font-bold text-ink-900">Cruise Lines International Association</span>
+            </li>
+            <li class="flex flex-col items-center justify-between gap-4 p-5 text-center transition hover:bg-brand-50/60">
+              <img src="~/NewUI/assets/img/iatan.png" alt="IATAN" loading="lazy" class="h-20 w-auto max-w-full object-contain">
+              <span class="text-xs font-bold text-ink-900">Accreditation: IATA</span>
+            </li>
+            <li class="flex flex-col items-center justify-between gap-4 p-5 text-center transition hover:bg-brand-50/60">
+              <img src="~/NewUI/assets/img/asta.png" alt="American Society of Travel Advisors" loading="lazy" class="h-20 w-auto max-w-full object-contain">
+              <span class="text-xs font-bold text-ink-900">American Society of Travel Advisors</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HAPPY CUSTOMERS ================= -->
+    <section class="bg-brand-50/60 py-10 lg:py-14">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="grid gap-5 lg:grid-cols-3">
+          <div class="reveal relative isolate overflow-hidden rounded-3xl bg-gradient-to-br from-ink-900 to-ink-700 p-7 text-white lg:row-span-1">
+            <div class="absolute -right-12 -top-12 -z-10 h-44 w-44 rounded-full bg-brand-500/30 blur-2xl"></div>
+            <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Our Happy Customers</h2>
+            <div class="mt-5 space-y-4 text-sm text-slate-300">
+              <p class="flex items-start gap-3"><i class="fa-solid fa-circle-check mt-0.5 text-brand-400"></i>Reviews, Certified for travel excellence</p>
+              <p class="flex items-start gap-3"><i class="fa-solid fa-circle-check mt-0.5 text-brand-400"></i>Thousands of Happy Travelers, endless unforgettable memories</p>
+            </div>
+            <div class="mt-6 flex flex-wrap items-center gap-4 border-t border-white/15 pt-5">
+              <img src="~/NewUI/assets/img/trustpilot.png" alt="Trustpilot, 5 stars" loading="lazy" class="h-12 w-auto rounded">
+              <img src="~/NewUI/assets/img/pci.png" alt="PCI Security Standards Council" loading="lazy" class="h-12 w-auto">
+            </div>
+          </div>
+
+          <blockquote class="reveal flex flex-col rounded-3xl bg-white p-7 shadow-card ring-1 ring-slate-200/70" data-delay="80">
+            <i class="fa-solid fa-quote-left text-3xl text-brand-300"></i>
+            <p class="mt-4 text-sm leading-relaxed text-slate-600">I had the pleasure of speaking with Leo during a stressful time while needing to change flights due to an emergency, and he assisted me with grace. His empathy and compassion helped make things seem easier for me. He took the time that was needed to ensure all things were done in a timely manner since this was a matter of urgency. Thank you Leo for doing an amazing job and getting us what was needed.</p>
+            <footer class="mt-auto flex items-center gap-3 pt-6">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-ink-900 text-sm font-bold text-white">NR</span>
+              <div><p class="text-sm font-bold text-ink-900">Norma Rodriguez</p><p class="text-xs text-slate-500">Mexico</p></div>
+              <span class="ml-auto text-xs text-amber-400" aria-label="5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="reveal flex flex-col rounded-3xl bg-white p-7 shadow-card ring-1 ring-slate-200/70" data-delay="160">
+            <i class="fa-solid fa-quote-left text-3xl text-brand-300"></i>
+            <p class="mt-4 text-sm leading-relaxed text-slate-600">Sr. Martin Sánchez me ayudó con gusto y atención para reservar asientos y realizar check in para volar por Avianca Airlines. Muy atento y claro dando la información correcta. Le agradezco su amable atención quedando muy satisfecha por su buen servicio. Bendiciones….</p>
+            <footer class="mt-auto flex items-center gap-3 pt-6">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">AB</span>
+              <div><p class="text-sm font-bold text-ink-900">Ada Berrios</p><p class="text-xs text-slate-500">US</p></div>
+              <span class="ml-auto text-xs text-amber-400" aria-label="5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+            </footer>
+          </blockquote>
+          <!-- Add more reviews by copying a <blockquote> card. Milena Pardo (Guatemala) was cut off in the design, so her text still needs to be added. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WHAT WE OFFER ================= -->
+    <section class="py-10 lg:py-14">
+      <div class="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
+        <div class="reveal lg:sticky lg:top-24 lg:self-start">
+          <p class="eyebrow">Why book with us</p>
+          <h2 class="h2">What We Offer</h2>
+          <a href="tel:+1-800-231-7119" class="mt-5 inline-flex items-center gap-2 font-bold text-brand-600 hover:underline"><i class="fa-solid fa-phone-volume"></i> +1-800-231-7119</a>
+        </div>
+        <ol class="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+          <li class="reveal flex gap-4 border-t-2 border-slate-200 pt-5 transition hover:border-brand-500">
+            <span class="text-3xl font-black leading-none text-brand-200">01</span>
+            <div><h3 class="flex items-center gap-2 text-lg font-bold text-ink-900"><i class="fa-solid fa-ticket text-brand-500"></i>Cheap Flight Tickets</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Book affordable flights at guaranteed low prices with exclusive travel deals.</p></div>
+          </li>
+          <li class="reveal flex gap-4 border-t-2 border-slate-200 pt-5 transition hover:border-brand-500" data-delay="80">
+            <span class="text-3xl font-black leading-none text-brand-200">02</span>
+            <div><h3 class="flex items-center gap-2 text-lg font-bold text-ink-900"><i class="fa-solid fa-tags text-brand-500"></i>Great Deals</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Get great flight deals with excellent customer support — you can call us anytime for help, even at the airport.</p></div>
+          </li>
+          <li class="reveal flex gap-4 border-t-2 border-slate-200 pt-5 transition hover:border-brand-500" data-delay="160">
+            <span class="text-3xl font-black leading-none text-brand-200">03</span>
+            <div><h3 class="flex items-center gap-2 text-lg font-bold text-ink-900"><i class="fa-solid fa-language text-brand-500"></i>Multilingual Support</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Get assistance in multiple languages for a smooth and convenient booking experience.</p></div>
+          </li>
+          <li class="reveal flex gap-4 border-t-2 border-slate-200 pt-5 transition hover:border-brand-500" data-delay="240">
+            <span class="text-3xl font-black leading-none text-brand-200">04</span>
+            <div><h3 class="flex items-center gap-2 text-lg font-bold text-ink-900"><i class="fa-solid fa-headset text-brand-500"></i>24 Hour Assistance</h3><p class="mt-2 text-sm leading-relaxed text-slate-600">Get 24/7 human support in English, Spanish, and Portuguese anytime you need assistance.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= BEST FLIGHT DEALS ================= -->
+    <section id="deals" class="scroll-mt-20 bg-white py-10 lg:py-14">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal"><p class="eyebrow">Limited-time Offer</p><h2 class="h2">Best Flight Deals</h2><p class="mt-3 text-slate-600">Limited-time Offer: Hurry before it's too late.</p></div>
+        <div class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="reveal group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-slate-200/70">
+            <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-400 to-brand-700">
+              <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=75" alt="New York skyline" loading="lazy" onerror="this.remove()" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-ink-900/70 to-transparent"></div>
+              <h3 class="absolute bottom-3 left-5 text-xl font-black uppercase tracking-wide text-white">New York</h3>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <p class="text-sm font-semibold text-ink-900">NYC - From Los Angeles, CA</p>
+              <div class="mt-auto flex items-center justify-between pt-5 text-xs text-slate-500"><span>*Fare refreshed hourly</span></div>
+              <button type="button" data-fill-from="Los Angeles (LAX)" data-fill-to="New York (NYC)" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">Check Now <i class="fa-solid fa-arrow-right text-xs"></i></button>
+            </div>
+          </article>
+          <article class="reveal group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-slate-200/70" data-delay="80">
+            <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-400 to-brand-700">
+              <img src="https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=800&q=75" alt="Los Angeles" loading="lazy" onerror="this.remove()" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-ink-900/70 to-transparent"></div>
+              <h3 class="absolute bottom-3 left-5 text-xl font-black uppercase tracking-wide text-white">Los Angeles</h3>
+              <span class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-700">Editor's Pick</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <p class="text-sm font-semibold text-ink-900">LAX - From New York, NY</p>
+              <div class="mt-auto pt-5 text-xs text-slate-500">Editor's Pick</div>
+              <button type="button" data-fill-from="New York (NYC)" data-fill-to="Los Angeles (LAX)" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">Check Now <i class="fa-solid fa-arrow-right text-xs"></i></button>
+            </div>
+          </article>
+
+          <article id="contact" class="reveal flex scroll-mt-24 flex-col items-center justify-center rounded-3xl bg-gradient-to-br from-brand-500 to-brand-700 p-6 text-center text-white shadow-glow" data-delay="160">
+            <span class="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 text-2xl backdrop-blur"><i class="fa-solid fa-headset"></i></span>
+            <h3 class="mt-4 text-lg font-extrabold">Need Assistance with your Bookings?</h3>
+            <p class="mt-2 text-sm text-brand-50">Our experienced travel agents will help with your flight deals and bookings.</p>
+            <p class="mt-4 text-sm font-semibold">Call Now to Book!</p>
+            <a href="tel:+1-855-510-4060" class="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 font-bold text-brand-700 transition hover:-translate-y-0.5 hover:shadow-lg"><i class="fa-solid fa-phone-volume"></i> +1-855-510-4060</a>
+          </article>
+
+          <article class="reveal group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-slate-200/70" data-delay="240">
+            <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-400 to-brand-700">
+              <img src="https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?auto=format&fit=crop&w=800&q=75" alt="Miami" loading="lazy" onerror="this.remove()" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-gradient-to-t from-ink-900/70 to-transparent"></div>
+              <h3 class="absolute bottom-3 left-5 text-xl font-black uppercase tracking-wide text-white">Miami</h3>
+              <span class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-700">Smart Value</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <p class="text-sm font-semibold text-ink-900">MIA - From Chicago, IL</p>
+              <div class="mt-auto pt-5 text-xs text-slate-500">Smart Value</div>
+              <button type="button" data-fill-from="Chicago (ORD)" data-fill-to="Miami (MIA)" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">Check Now <i class="fa-solid fa-arrow-right text-xs"></i></button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LAST MINUTE FLIGHTS ================= -->
+    <section class="relative isolate overflow-hidden bg-ink-900 py-10 lg:py-14">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_15%_0%,rgba(255,95,19,.28),transparent)]"></div>
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal flex items-end justify-between gap-6">
+          <div><p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-300">Spontaneous? Perfect.</p><h2 class="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">Last Minute Flights with 24/7 Human Support</h2></div>
+          <div class="hidden gap-3 sm:flex">
+            <button id="prevBtn" type="button" aria-label="Previous routes" class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-ink-900 transition hover:bg-brand-500 hover:text-white"><i class="fa-solid fa-arrow-left"></i></button>
+            <button id="nextBtn" type="button" aria-label="Next routes" class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-ink-900 transition hover:bg-brand-500 hover:text-white"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div id="track" class="mt-7 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" tabindex="0" aria-label="Last minute routes">
+          <article class="group w-[78%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white sm:w-[46%] lg:w-[31%] xl:w-[23.5%]">
+            <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-400 to-brand-700"><img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&fit=crop&w=800&q=75" alt="Buenos Aires" loading="lazy" onerror="this.remove()" class="h-full w-full object-cover transition duration-700 group-hover:scale-110"></div>
+            <div class="flex items-center justify-between gap-3 p-4"><p class="text-lg font-extrabold text-ink-900">NYC <i class="fa-solid fa-arrow-right mx-1 text-xs text-brand-500"></i> EZE</p><button type="button" data-fill-from="New York (NYC)" data-fill-to="Buenos Aires (EZE)" class="rounded-lg bg-ink-900 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-500">Check Now <i class="fa-solid fa-arrow-right"></i></button></div>
+          </article>
+          <article class="group w-[78%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white sm:w-[46%] lg:w-[31%] xl:w-[23.5%]">
+            <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-400 to-brand-700"><img src="https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=800&q=75" alt="Guadalajara" loading="lazy" onerror="this.remove()" class="h-full w-full object-cover transition duration-700 group-hover:scale-110"></div>
+            <div class="flex items-center justify-between gap-3 p-4"><p class="text-lg font-extrabold text-ink-900">ATL <i class="fa-solid fa-arrow-right mx-1 text-xs text-brand-500"></i> GDL</p><button type="button" data-fill-from="Atlanta (ATL)" data-fill-to="Guadalajara (GDL)" class="rounded-lg bg-ink-900 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-500">Check Now <i class="fa-solid fa-arrow-right"></i></button></div>
+          </article>
+          <article class="group w-[78%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white sm:w-[46%] lg:w-[31%] xl:w-[23.5%]">
+            <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-400 to-brand-700"><img src="https://images.unsplash.com/photo-1507876466758-bc54f384809c?auto=format&fit=crop&w=800&q=75" alt="Honolulu" loading="lazy" onerror="this.remove()" class="h-full w-full object-cover transition duration-700 group-hover:scale-110"></div>
+            <div class="flex items-center justify-between gap-3 p-4"><p class="text-lg font-extrabold text-ink-900">NYC <i class="fa-solid fa-arrow-right mx-1 text-xs text-brand-500"></i> HNL</p><button type="button" data-fill-from="New York (NYC)" data-fill-to="Honolulu (HNL)" class="rounded-lg bg-ink-900 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-500">Check Now <i class="fa-solid fa-arrow-right"></i></button></div>
+          </article>
+          <article class="group w-[78%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white sm:w-[46%] lg:w-[31%] xl:w-[23.5%]">
+            <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-400 to-brand-700"><img src="https://images.unsplash.com/photo-1618828665011-0abd973f7bb8?auto=format&fit=crop&w=800&q=75" alt="Lagos" loading="lazy" onerror="this.remove()" class="h-full w-full object-cover transition duration-700 group-hover:scale-110"></div>
+            <div class="flex items-center justify-between gap-3 p-4"><p class="text-lg font-extrabold text-ink-900">NYC <i class="fa-solid fa-arrow-right mx-1 text-xs text-brand-500"></i> LOS</p><button type="button" data-fill-from="New York (NYC)" data-fill-to="Lagos (LOS)" class="rounded-lg bg-ink-900 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-500">Check Now <i class="fa-solid fa-arrow-right"></i></button></div>
+          </article>
+          <article class="group w-[78%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white sm:w-[46%] lg:w-[31%] xl:w-[23.5%]">
+            <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-400 to-brand-700"><img src="https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?auto=format&fit=crop&w=800&q=75" alt="Miami" loading="lazy" onerror="this.remove()" class="h-full w-full object-cover transition duration-700 group-hover:scale-110"></div>
+            <div class="flex items-center justify-between gap-3 p-4"><p class="text-lg font-extrabold text-ink-900">PHL <i class="fa-solid fa-arrow-right mx-1 text-xs text-brand-500"></i> MIA</p><button type="button" data-fill-from="Philadelphia (PHL)" data-fill-to="Miami (MIA)" class="rounded-lg bg-ink-900 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-500">Check Now <i class="fa-solid fa-arrow-right"></i></button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SIMPLY THE BEST ================= -->
+    <section class="bg-slate-50 py-10 lg:py-12">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="reveal text-center"><h2 class="h2">RushMyTrip: Simply the Best!</h2><p class="mt-3 text-slate-600">We are your trusted travel partner.</p></div>
+        <div class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="reveal flex items-start gap-4 rounded-3xl bg-white p-6 ring-1 ring-slate-200"><span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-lg text-brand-600"><i class="fa-solid fa-tag"></i></span><div><h3 class="font-bold text-ink-900">Best Competitive Prices</h3><p class="mt-1 text-sm text-slate-600">Guaranteed amazing flight deals at the best competitive prices.</p></div></div>
+          <div class="reveal flex items-start gap-4 rounded-3xl bg-white p-6 ring-1 ring-slate-200" data-delay="80"><span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-lg text-brand-600"><i class="fa-solid fa-plane-circle-check"></i></span><div><h3 class="font-bold text-ink-900">Easy Booking Experience</h3><p class="mt-1 text-sm text-slate-600">Enjoy an easy and hassle-free flight booking experience.</p></div></div>
+          <div class="reveal flex items-start gap-4 rounded-3xl bg-white p-6 ring-1 ring-slate-200" data-delay="160"><span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-lg text-brand-600"><i class="fa-solid fa-headset"></i></span><div><h3 class="font-bold text-ink-900">Reliable Assistance</h3><p class="mt-1 text-sm text-slate-600">Get 24/7 customer support whenever and wherever.</p></div></div>
+          <div class="reveal flex items-start gap-4 rounded-3xl bg-white p-6 ring-1 ring-slate-200" data-delay="240"><span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-lg text-brand-600"><i class="fa-solid fa-earth-americas"></i></span><div><h3 class="font-bold text-ink-900">Countless Options</h3><p class="mt-1 text-sm text-slate-600">Discover countless destinations throughout the world.</p></div></div>
+        </div>
+      </div>
+    </section>

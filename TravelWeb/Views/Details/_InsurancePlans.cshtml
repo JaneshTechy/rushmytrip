@@ -1,0 +1,163 @@
+﻿@using TravelWeb.Models;
+@using TravelWeb.Utilities;
+
+@model List<QuoteResponse>
+@{
+    Layout = null;
+}
+
+    <div class="ti-card">
+
+        <div class="ti-header">
+            <span class="ti-header-icon"><i class="fa-solid fa-shield-heart"></i></span>
+            <div class="ti-header-text">
+                <h2>Travel Insurance</h2>
+                <p>Optional coverage for cancellations, delays &amp; medical emergencies</p>
+            </div>
+            <span class="ti-header-optional">Optional</span>
+        </div>
+
+        <form class="ti-grid">
+
+    @if (Model != null && Model.Any())
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {
+            var item = Model[i];
+ var detail = item.QuoteViewModelProductDetails?.FirstOrDefault();
+    var quote = detail?.QuoteResponseDetail;
+            <input type="radio"
+                   name="ti-plan"
+                   id="plan-@item.ProductId"
+                   class="plan-input"
+                   @(i == 1 ? "checked" : "") />
+
+            <label for="plan-@item.ProductId" class="plan-card">
+
+                @if (i == 0)
+                {
+                    <span class="plan-ribbon">Best Coverage</span>
+                }
+                else if (i == 1)
+                {
+                    <span class="plan-ribbon plan-ribbon-popular">Most Popular</span>
+                }
+
+                <span class="plan-selected-check">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+
+                <p class="plan-name">
+                    @item.ProductName
+                </p>
+
+                <p class="plan-price">
+                    $@String.Format("{0:0.00}", quote?.TotalPrice)
+                    <span>/ traveler</span>
+                </p>
+
+                <div class="plan-meta">
+
+                    <div class="plan-meta-row">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span class="plan-meta-label">
+                            Effective
+                        </span>
+
+                        <span class="plan-meta-value">
+                            @quote?.QuotedEffDate
+                        </span>
+                    </div>
+
+                    <div class="plan-meta-row">
+                        <i class="fa-regular fa-calendar-xmark"></i>
+                        <span class="plan-meta-label">
+                            Expiry
+                        </span>
+
+                        <span class="plan-meta-value">
+                            @quote?.QuotedTermDate
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="group-btn">
+
+                    <button class="btn-view-detail" id="btnViewAllInsurance">
+                        <i class="fa-regular fa-eye"></i> View Detail
+                    </button>
+                    
+                    <span class="plan-select-btn">
+
+                        <span class="btn-text-select">
+                            <i class="fa-regular fa-circle"></i>
+                            Select Plan
+                        </span>
+
+                        <span class="btn-text-selected">
+                            <i class="fa-solid fa-circle-check"></i>
+                            Selected
+                        </span>
+
+                    </span>
+                </div>
+
+                <!-- Hidden Values -->
+                <input type="hidden" class="quote-number" value="@quote?.QuoteNumber" />
+<input type="hidden" class="order-id" value="@detail?.OrderId" />
+<input type="hidden" class="buy-link" value="@quote?.BuyNowLink" />
+                <input type="hidden" class="product-id" value="@item.ProductId" />
+
+            </label>
+        }
+    }
+
+    <!-- Skip tile -->
+    <input type="radio" name="ti-plan" id="plan-none" class="plan-input">
+
+    <label for="plan-none" class="plan-card plan-card-skip">
+
+        <span class="plan-selected-check">
+            <i class="fa-solid fa-check"></i>
+        </span>
+
+        <span class="plan-skip-icon">
+            <i class="fa-regular fa-circle-xmark"></i>
+        </span>
+
+        <p class="plan-name">
+            Continue without insurance
+        </p>
+
+        <p class="plan-skip-copy">
+            I understand I won't be covered for trip cancellations,
+            delays, or medical emergencies.
+        </p>
+
+        <span class="plan-select-btn plan-select-btn-ghost">
+
+            <span class="btn-text-select">
+                <i class="fa-regular fa-circle"></i>
+                Select
+            </span>
+
+            <span class="btn-text-selected">
+                <i class="fa-solid fa-circle-check"></i>
+                Selected
+            </span>
+
+        </span>
+
+    </label>
+
+</form>
+
+        <!-- Footer note -->
+        <p class="ti-footnote">
+            <i class="fa-solid fa-circle-info"></i>
+            Prices shown are per traveler and include all applicable taxes. Coverage details and policy documents are provided after checkout.
+        </p>
+    </div>
+
+

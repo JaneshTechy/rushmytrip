@@ -1,0 +1,692 @@
+﻿@model TravelWeb.Models.PaymentViewModel
+@using Microsoft.Extensions.Options
+@inject IOptions<TravelWeb.Models.PaymentSettings> Opts
+
+@{
+
+    ViewData["Title"] = "Secure Payment";
+    var accounts = Opts.Value.Accounts;
+    var publicKeys = accounts.ToDictionary(
+        a => a.Key,
+        a => new { apiLoginId = a.Value.AcceptJsApiLoginId, clientKey = a.Value.AcceptJsClientKey,useSandbox = a.Value.UseSandbox
+ });
+
+ var requested = !string.IsNullOrWhiteSpace(Model.Account)
+    ? Model.Account
+    : Context.Request.Query["account"].ToString();
+    var currentKey = accounts.ContainsKey(requested ?? "") ? requested : Opts.Value.DefaultAccount;
+
+    var current = accounts[currentKey];
+    var acceptJsUrl = current.UseSandbox
+        ? "https://jstest.authorize.net/v1/Accept.js"
+        : "https://js.authorize.net/v1/Accept.js";
+}
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<style>
+    /* Wrapper to anchor the custom panel */
+    .input-with-datalist {
+        position: relative; /* anchors the popup */
+    }
+
+    /* The custom suggestion panel */
+    .datalist-panel {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        margin-top: 2px;
+        background: #fff;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+        overflow-y: auto;
+        /* Show only ~4 items; tune item height or this value as needed */
+        max-height: calc(4 * 40px);
+        display: none; /* toggled via JS */
+    }
+
+    /* Each visible option row */
+    .datalist-item {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+        line-height: 20px; /* ~40px total row area including padding */
+        cursor: pointer;
+        color: #111827;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+        /* Hover/active states */
+        .datalist-item:hover,
+        .datalist-item.active {
+            background: #f3f4f6;
+        }
+
+    /* Make the input visually connect with the popup when open */
+    .input-with-datalist.open input[list] {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+        /* Optional: align with your existing focus look */
+        .input-with-datalist.open input[list]:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.15rem rgba(13,110,253,0.25);
+        }
+
+    body {
+        background: #f3f5f9;
+        font-family: "Inter", sans-serif;
+    }
+
+    .payment-container {
+        max-width: 480px;
+        margin: 60px auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+        padding: 35px 40px;
+        transition: all 0.3s ease;
+    }
+
+        .payment-container:hover {
+            box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+        }
+
+    h2 {
+        font-weight: 700;
+        color: #1e293b;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .secure-badge {
+        text-align: center;
+        color: #198754;
+        font-weight: 500;
+        margin-bottom: 25px;
+        font-size: 1.3rem;
+    }
+
+        .secure-badge i {
+            color: #198754;
+            margin-right: 5px;
+        }
+
+    label {
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 4px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"] {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.15rem rgba(13,110,253,0.25);
+        outline: none;
+    }
+
+    ::placeholder {
+        color: #9ca3af;
+    }
+
+    #payBtn {
+        width: 100%;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        color: #fff;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1.05rem;
+        transition: all 0.3s ease;
+    }
+
+        #payBtn:hover {
+            background: linear-gradient(90deg, #0056b3, #00408a);
+        }
+
+    .divider {
+        border-bottom: 1px solid #e2e8f0;
+        margin: 22px 0;
+    }
+
+    .trust-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        margin-top: 20px;
+        opacity: 0.9;
+    }
+
+        .trust-icons img {
+            height: 32px;
+            filter: grayscale(10%);
+            transition: 0.3s ease;
+        }
+
+            .trust-icons img:hover {
+                filter: none;
+                transform: scale(1.1);
+            }
+
+    .footer-note {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-top: 20px;
+    }
+
+    .card-row-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .card-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    /* Card number formatting feel */
+    #cardNumber {
+        letter-spacing: 2px;
+        font-family: "Courier New", monospace;
+    }
+</style>
+
+<div class="payment-container">
+    <h2>Secure Payment</h2>
+    <div class="secure-badge">
+        <i class="bi bi-lock-fill"></i> 256-bit SSL Encrypted Payment
+    </div>
+
+    <form id="paymentForm" asp-action="Charge" method="post" novalidate>
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <label>Payment Account</label>
+<select asp-for="Account" id="Account" class="form-select mb-3"
+        data-url="@Url.Action("Index", "Payment")">
+    @foreach (var a in accounts)
+    {
+        <option value="@a.Key" selected="@(a.Key == currentKey)">
+            @(string.IsNullOrWhiteSpace(a.Value.DisplayName) ? a.Key : a.Value.DisplayName)
+        </option>
+    }
+</select>
+
+        <label>Invoice</label>
+        <input asp-for="invoice" placeholder="20251031-8472" autocomplete="off" />
+
+        <label>Amount</label>
+        <input asp-for="Amount" type="number" step="0.01" placeholder="Enter amount" autocomplete="off" />
+        <span asp-validation-for="Amount"></span>
+
+        <div class="divider"></div>
+
+        <label>Card Number</label>
+        @*         <input id="cardNumber" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="•••• •••• •••• ••••" />
+ *@
+        <input id="cardNumber" class="form-control" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="•••• •••• •••• ••••" />
+        <br />
+
+        <div class="card-row">
+            <div>
+                <label>Month</label>
+                <input id="expMonth" type="number" min="1" max="12" placeholder="MM" autocomplete="off" />
+            </div>
+            <div>
+                <label>Year</label>
+                <input id="expYear" type="number" min="2025" max="2100" placeholder="YYYY" autocomplete="off" />
+            </div>
+            <div>
+                <label>CVV</label>
+                @*                 <input id="cardCode" inputmode="numeric" maxlength="4" placeholder="123" />
+ *@           <input id="cardCode" class="form-control" inputmode="numeric" maxlength="4" placeholder="123" autocomplete="off" />
+
+
+            </div>
+        </div>
+        <label>Phone</label>
+        <input asp-for="Phone" inputmode="tel" autocomplete="off" placeholder="+91 98765 43210" />
+        <span asp-validation-for="Phone"></span>
+        <div class="divider"></div>
+        <div class="card-row-2">
+            <div>
+                <label>First Name</label>
+                <input asp-for="FirstName" placeholder="John" autocomplete="off" />
+            </div>
+
+            <div>
+                <label>Last Name</label>
+                <input asp-for="LastName" placeholder="Doe" autocomplete="off" />
+            </div>
+        </div>
+        <label>Email</label>
+        <input asp-for="Email" type="email" placeholder="john@example.com" autocomplete="off" />
+
+        <label>Address</label>
+        <input asp-for="Address" placeholder="123 Main St" />
+        <div class="card-row-2">
+            <div>
+                <label>Country</label>
+                <div class="input-with-datalist" id="CountryWrap">
+                    <input type="text" id="Country" name="Country" autocomplete="off" placeholder="USA" required />
+                    <div class="datalist-panel" id="CountryPanel"></div>
+                </div>
+                <datalist id="CountryList"></datalist>
+            </div>
+
+            <div>
+
+                <label>State</label>
+                <div class="input-with-datalist" id="StateWrap">
+                    <input type="text" id="State" name="State" autocomplete="off" placeholder="Illinois" required />
+                    <div class="datalist-panel" id="StatePanel"></div>
+                </div>
+                <datalist id="StateList"></datalist>
+            </div>
+        </div>
+        <!-- City -->
+        <div class="card-row-2">
+            <div>
+                <label>City</label>
+                <div class="input-with-datalist" id="CityWrap">
+                    <input type="text" id="City" name="City" autocomplete="off" placeholder="Chicago" required />
+                    <div class="datalist-panel" id="CityPanel"></div>
+                </div>
+                <datalist id="CityList"></datalist>
+            </div>
+
+            <div>
+                <label>Zip Code</label>
+                <input asp-for="ZipCode" autocomplete="off" placeholder="10001" />
+            </div>
+        </div>
+
+        <input type="hidden" asp-for="OpaqueDataDescriptor" />
+        <input type="hidden" asp-for="OpaqueDataValue" />
+        <br/>
+        <button id="payBtn" type="submit">
+            <i class="bi bi-shield-check"></i> Pay Securely
+        </button>
+
+        <div class="trust-icons">
+            <img src="~/img/payment-icons/Authorize.net.png" alt="Visa"" alt="Authorize.Net" />
+            <img src="~/img/payment-icons/visa-curved-64px.png" alt="Visa" />
+            <img src="~/img/payment-icons/mastercard-curved-64px.png" alt="MasterCard" />
+            <img src="~/img/payment-icons/paypal-straight-64px.png" alt="PayPal" />
+        </div>
+
+        <div class="footer-note">
+            © 2025 Your Company. All rights reserved.
+        </div>
+    </form>
+</div>
+<script>
+    function wireCustomDatalist(inputId, datalistId, panelId) {
+      const input = document.getElementById(inputId);
+      const datalist = document.getElementById(datalistId);
+      const panel = document.getElementById(panelId);
+      const wrap = panel.parentElement;
+
+      let activeIndex = -1;
+
+      function getAllOptions() {
+        return Array.from(datalist.options).map(o => o.value);
+      }
+
+      function render(list) {
+        panel.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        list.forEach((val, i) => {
+          const div = document.createElement('div');
+          div.className = 'datalist-item';
+          div.textContent = val;
+
+          if (i === activeIndex) div.classList.add('active');
+
+          div.addEventListener('mousedown', e => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            input._suppressUpdate = true;
+            input.value = val;
+            hide();
+
+            setTimeout(() => {
+              input.dispatchEvent(new Event('input', { bubbles: true }));
+              input._suppressUpdate = false;
+            }, 100);
+          });
+
+          frag.appendChild(div);
+        });
+        panel.appendChild(frag);
+      }
+
+      function show() {
+        wrap.classList.add('open');
+        panel.style.display = 'block';
+      }
+
+      function hide() {
+        wrap.classList.remove('open');
+        panel.style.display = 'none';
+        activeIndex = -1;
+      }
+
+      function update() {
+        const q = input.value.trim().toLowerCase();
+        const all = getAllOptions();
+        const filtered = q ? all.filter(v => v.toLowerCase().includes(q)) : all;
+        render(filtered);
+        if (filtered.length) show(); else hide();
+      }
+
+      input.addEventListener('focus', update);
+
+      input.addEventListener('input', () => {
+        if (input._suppressUpdate) return;
+        update();
+      });
+
+      input.addEventListener('keydown', e => {
+        const items = Array.from(panel.querySelectorAll('.datalist-item'));
+        if (!items.length) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          activeIndex = (activeIndex + 1) % items.length;
+          render(items.map(i => i.textContent));
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          activeIndex = (activeIndex - 1 + items.length) % items.length;
+          render(items.map(i => i.textContent));
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (activeIndex >= 0 && activeIndex < items.length) {
+            const val = items[activeIndex].textContent;
+            input._suppressUpdate = true;
+            input.value = val;
+            hide();
+            setTimeout(() => {
+              input.dispatchEvent(new Event('input', { bubbles: true }));
+              input._suppressUpdate = false;
+            }, 100);
+          } else {
+            hide();
+          }
+        } else if (e.key === 'Escape') {
+          hide();
+        }
+      });
+
+      document.addEventListener('mousedown', e => {
+        if (!wrap.contains(e.target)) hide();
+      });
+
+      const resizeObserver = new ResizeObserver(() => {
+        panel.style.minWidth = input.offsetWidth + 'px';
+      });
+      resizeObserver.observe(input);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      wireCustomDatalist('Country', 'CountryList', 'CountryPanel');
+      wireCustomDatalist('State', 'StateList', 'StatePanel');
+      wireCustomDatalist('City', 'CityList', 'CityPanel');
+    });
+</script>
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    @* for Production *@
+@*     <script src="https://js.authorize.net/v1/Accept.js" charset="utf-8" defer></script>
+ *@
+ <script src="@acceptJsUrl" charset="utf-8" defer></script>
+    <script>
+        // ----- Country, State & City handling -----
+        // const cities = @Html.Raw(ViewBag.CitiesJson ?? "[]");
+        const countries = @Html.Raw(ViewBag.CountriesJson ?? "[]");
+        const states = @Html.Raw(ViewBag.StatesJson ?? "[]");
+
+        // JSON reference:
+        // countries: [{ alpha_2, alpha_3, name, numeric, official_name }]
+        // states: [{ code, name, type }]
+        // cities: [{ CityName, StateName, CountryName }]
+
+        const countryInput = document.getElementById("Country");
+        const stateInput = document.getElementById("State");
+        // const cityInput = document.getElementById("City");
+
+        const countryList = document.getElementById("CountryList");
+        const stateList = document.getElementById("StateList");
+        // const cityList = document.getElementById("CityList");
+
+        // Populate Country List
+        function updateCountryList() {
+          const uniqueCountries = [...new Set(countries.map(c => c.name))].sort();
+          countryList.innerHTML = uniqueCountries.map(c => `<option value="${c}">`).join('');
+        }
+
+        // Populate State List based on selected Country
+        function updateStateList(country = null) {
+          let filtered = states;
+
+          if (country) {
+            const countryCode = countries.find(c => c.name === country)?.alpha_2;
+            if (countryCode) {
+              filtered = states.filter(s => s.code.startsWith(countryCode + "-"));
+            }
+          }
+
+          const uniqueStates = [...new Set(filtered.map(s => s.name))].sort();
+          stateList.innerHTML = uniqueStates.map(s => `<option value="${s}">`).join('');
+        }
+
+        // Populate City List based on selected State
+        // function updateCityList(state = null) {
+        //   let filtered = state ? cities.filter(c => c.StateName === state) : cities;
+        //   const uniqueCities = [...new Set(filtered.map(c => c.CityName))].sort();
+        //   cityList.innerHTML = uniqueCities.map(c => `<option value="${c}">`).join('');
+        // }
+
+        // === Event Listeners ===
+        countryInput.addEventListener("input", e => {
+          const country = e.target.value;
+          updateStateList(country);
+          stateInput.value = "";
+          // cityInput.value = "";
+          // cityList.innerHTML = "";
+        });
+
+        // stateInput.addEventListener("input", e => {
+        //   const state = e.target.value;
+        //   updateCityList(state);
+        //   cityInput.value = "";
+        // });
+
+        // cityInput.addEventListener("input", e => {
+        //   const cityName = e.target.value.toLowerCase();
+        //   const match = cities.find(c => c.CityName.toLowerCase() === cityName);
+        //   if (match) {
+        //     countryInput.value = match.CountryName;
+        //     stateInput.value = match.StateName;
+        //   }
+        // });
+
+        // Initialize all lists
+        updateCountryList();
+        updateStateList();
+        // updateCityList();
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const payBtn = document.getElementById('payBtn');
+            const requiredFields = [
+                'Amount', 'cardNumber', 'expMonth', 'expYear', 'cardCode',
+                'Phone', 'FirstName', 'LastName', 'Email', 'Address',
+                'Country', 'City', 'ZipCode'
+            ];
+
+            payBtn.disabled = true; // start disabled
+
+            function isFormFilled() {
+                for (let id of requiredFields) {
+                    const el = document.getElementById(id) || document.querySelector(`[name="${id}"]`);
+                    if (!el || !el.value.trim()) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function toggleButton() {
+                payBtn.disabled = !isFormFilled();
+            }
+
+            requiredFields.forEach(id => {
+                const el = document.getElementById(id) || document.querySelector(`[name="${id}"]`);
+                if (el) el.addEventListener('input', toggleButton);
+            });
+
+            toggleButton();
+        });
+    </script>
+
+
+   @*  <script>
+        // ----- Authorize.net Tokenization -----
+  
+        const ACCEPT_ACCOUNTS = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(publicKeys));
+
+        function luhn(card) {
+            let sum = 0, alt = false;
+            for (let i = card.length - 1; i >= 0; i--) {
+                let n = parseInt(card[i], 10);
+                if (alt) { n *= 2; if (n > 9) n -= 9; }
+                sum += n; alt = !alt;
+            }
+            return (sum % 10) === 0;
+        }
+
+        document.getElementById('paymentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const cardNumber = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+            const expMonth = document.getElementById('expMonth').value;
+            const expYear = document.getElementById('expYear').value;
+            const cardCode = document.getElementById('cardCode').value;
+
+            if (!/^\d{13,19}$/.test(cardNumber) || !luhn(cardNumber)) { alert('Invalid card number.'); return; }
+            const m = parseInt(expMonth, 10), y = parseInt(expYear, 10);
+            if (!(m >= 1 && m <= 12) || !(y >= 2025 && y <= 2100)) { alert('Invalid expiration date.'); return; }
+            if (!/^\d{3,4}$/.test(cardCode)) { alert('Invalid CVV.'); return; }
+            
+            const authData = { clientKey: ACCEPT_CLIENT_KEY, apiLoginID: ACCEPT_API_LOGIN_ID };
+            const cardData = { cardNumber, month: ("0" + m).slice(-2), year: y.toString(), cardCode };
+            Accept.dispatchData({ authData, cardData }, function (resp) {
+                if (resp.messages.resultCode === "Error") {
+                    const msg = (resp.messages.message || []).map(m => `${m.code}: ${m.text}`).join("; ");
+                    alert("Tokenization error: " + msg);
+                    return;
+                }
+                if (!resp.opaqueData || !resp.opaqueData.dataValue) {
+                    alert("Tokenization failed. Please try again.");
+                    return;
+                }
+
+                document.querySelector('input[name="OpaqueDataDescriptor"]').value = resp.opaqueData.dataDescriptor;
+                document.querySelector('input[name="OpaqueDataValue"]').value = resp.opaqueData.dataValue;
+
+                document.getElementById('cardNumber').value = '';
+                document.getElementById('cardCode').value = '';
+
+                e.target.submit();
+            });
+        });
+    </script> *@
+
+    <script>
+    // ----- Authorize.net Tokenization -----
+    const ACCEPT_ACCOUNTS = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(publicKeys));
+
+    function luhn(card) {
+        let sum = 0, alt = false;
+        for (let i = card.length - 1; i >= 0; i--) {
+            let n = parseInt(card[i], 10);
+            if (alt) { n *= 2; if (n > 9) n -= 9; }
+            sum += n; alt = !alt;
+        }
+        return (sum % 10) === 0;
+    }
+
+    document.getElementById('paymentForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const form = e.target;
+
+        const cardNumber = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+        const expMonth = document.getElementById('expMonth').value;
+        const expYear = document.getElementById('expYear').value;
+        const cardCode = document.getElementById('cardCode').value;
+
+        if (!/^\d{13,19}$/.test(cardNumber) || !luhn(cardNumber)) { alert('Invalid card number.'); return; }
+        const m = parseInt(expMonth, 10), y = parseInt(expYear, 10);
+        if (!(m >= 1 && m <= 12) || !(y >= 2025 && y <= 2100)) { alert('Invalid expiration date.'); return; }
+        if (!/^\d{3,4}$/.test(cardCode)) { alert('Invalid CVV.'); return; }
+
+        const acct = ACCEPT_ACCOUNTS[document.querySelector('[name="Account"]').value];
+        if (!acct) { alert('Please select a payment account.'); return; }
+
+        const authData = { clientKey: acct.clientKey, apiLoginID: acct.apiLoginId };
+        const cardData = { cardNumber, month: ("0" + m).slice(-2), year: y.toString(), cardCode };
+
+        Accept.dispatchData({ authData, cardData }, function (resp) {
+            if (resp.messages.resultCode === "Error") {
+                const msg = (resp.messages.message || []).map(m => `${m.code}: ${m.text}`).join("; ");
+                alert("Tokenization error: " + msg);
+                return;
+            }
+            if (!resp.opaqueData || !resp.opaqueData.dataValue) {
+                alert("Tokenization failed. Please try again.");
+                return;
+            }
+             
+            document.querySelector('input[name="OpaqueDataDescriptor"]').value = resp.opaqueData.dataDescriptor;
+            document.querySelector('input[name="OpaqueDataValue"]').value = resp.opaqueData.dataValue;
+
+            document.getElementById('cardNumber').value = '';
+            document.getElementById('cardCode').value = '';
+
+            form.submit();
+        });
+    });
+
+    document.getElementById('Account').addEventListener('change', function () {
+    location.href = this.dataset.url + '?account=' + encodeURIComponent(this.value);
+});
+</script>
+}

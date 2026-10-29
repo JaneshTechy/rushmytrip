@@ -1,0 +1,262 @@
+﻿@*Done by Aayushi*@
+<script>
+    $(document).ready(function () {
+            setTimeout(function () {
+                $("#bkgOverlay").fadeIn();
+                $("#delayedPopup").fadeIn();
+            }, 20000);
+});
+</script>
+
+<!--<div class="theme-hero-area theme-hero-area-half">
+    <div class="theme-hero-area-bg-wrap">-->
+        @*<div class="theme-hero-area-bg" style="background-image:url(@(TravelWeb.Utilities.Common.WebSitePath)img/policy-banner.jpg);"></div>*@
+        <!--<div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+    </div>
+    <div class="theme-hero-area-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 theme-page-header-abs">
+                    <div class="theme-page-header theme-page-header-lg">
+                        <h1 class="theme-page-header-title" id="link">Privacy Policy</h1>-->
+                        @*<p class="theme-page-header-subtitle">The Story of Our Company</p>*@
+                    <!--</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+@* <div class="theme-page-section theme-page-section-xl theme-page-section-gray">
+    <h1 class="theme-page-header-title" id="link" style="text-align:center;font-weight:500;margin-top:20px !important;font-size:30px !important">Privacy Policy</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="theme-about-us">
+                    <div class="theme-about-us-section-body" id="link">
+                        <h3> PRIVACY POLICY THAT DESCRIBES OUR SPECIFICATIONS</h3>
+                        <p>
+                            A privacy policy is the section that describes how you are secure with FlightsHalland its services. This privacy policy makes you aware of how FlightsHallhelps you in making reservations by using your personal details. This section also explains what information we collect and how we use it.
+                            Before proceeding, you might be interested to know how FlightsHallworks for you. Here is what you are going to enjoy:
+                        </p>
+                        <h3>YOUR DETAILS ARE SAFE</h3>
+                        <p>We make sure all the details you provide are safe with us, as customers’ satisfaction is our top priority.</p>
+                        <h3>YOU CAN MANAGE YOUR ACCOUNT</h3>
+                        <p>We give you all the rights to manage your account in a secure manner. You can make changes to your profile and use it according to your travel needs.</p>
+                        <h3>YOU GET 24 HOURS SUPPORT FROM EXPERTS</h3>
+                        <p>Our experts are available on call 24/7. You can contact them at any FlightsHallto get your issues resolved in a few minutes.</p>
+                        <h3>ZERO UNCERTAINTIES</h3>
+                        <p>We make sure no uncertainties can bother you. We describe each everything in this policy to make you feel secure with FlightsHall.</p>
+                        <h3>FlightsHallPRIVACY POLICY</h3>
+                        <p>The aim behind providing the privacy policy here is to make you aware of how we collect your data and why we use it. This policy also describes who can use your details. We also recommend you to read the policies carefully before you use the website. Stay updated about the information provided in this section, as we can make amendments to this policy without any prior notice.</p>
+                        <h3> WHAT DATA DO WE COLLECT?</h3>
+                        <p>Every person, who uses our website and its services, needs to provide accurate and relevant details required to make reservations. However, we collect the only information we need to make bookings you request for.</p>
+                        <h3>WHY AND HOW WE USE YOUR PERSONAL DATA</h3>
+                        <p>We always seek for your permission before using your data. We use this information only for the services you have requested for. We use your information only if it is required to comply with legal obligations and rights. PLEASE NOTE the information may also be used normally for the business purpose described in this policy.</p>
+                        <h3> HOW LONG DO WE STORE YOUR DETAILS</h3>
+                        <p>We store your details as long as we need them for reservations or legal purposes. Please note that we keep the information anonymized or delete it once the reservation is confirmed. We use your information for the purpose you provide it for. You have all the rights to ask us to remove your information from our database at any FlightsHall.</p>
+                        <h3>WHEN WE SHARE YOUR DATA WITH THIRD PARTY</h3>
+                        <p>We do not share your information without your permission whether it is for the service you have requested for or we want to use it for legal purposes. The suppliers whose services you use through our website can collect your data with their own policies. SomeFlightsHalls, your data will be collected by the third parties that advertise on our website. Apart from this, the companies that help us to fulfill your requests will collect and use your details.</p>
+                        <h3>HOW WE KEEP YOUR DETAILS SAFE</h3>
+                        <p>FlightsHallensures all your needs are met in a secure manner. That’s why we use the best possible and effective methods to keep your details safe, as keeping your details secure is our prime concern.</p>
+                        <h3>WHERE YOUR DETAILS WILL BE STORED</h3>
+                        <p>Your information will be stored in our database. We strive to provide better services depending on the location from where you are accessing our website. That’s why we store your details in our database in order to enhance our services according to your expectations.</p>
+                        <h3>DOES FlightsHallUSE COOKIES?</h3>
+                        <p>Yes, FlightsHalluses cookies and similar technologies to serve your purposes without any hurdle. We aim to deliver personalized and optimized services that meet your travel needs.</p>
+                        <h3>YOUR RIGHTS AND CHOICES</h3>
+                        <p>If you have an account with FlightsHall, you reserve rights to access, edit, delete and download your personal data that is associated with your profile at any FlightsHall. You can contact the experts at FlightsHallat any FlightsHalland get your queries resolved at any FlightsHall. You can contact us through our toll-free number and send an email at any FlightsHall.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+                        @model PageModel
+@{
+    var seo = ViewBag.Seo as SeoEntities;
+}
+@section Metatags {
+    <title>@Html.Raw(seo?.MetaTitle ?? "RushMyFlight")</title>
+    <meta name="description" content="@seo?.MetaDescription" />
+    <meta name="keywords" content="@seo?.MetaKeywords" />
+    <meta name="robots" content="@seo?.Robots" />
+}
+<!-- ✅ Load Tailwind only for this page -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography" defer></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+    tailwind.config = {
+        important: "#aboutus-page", // Tailwind applies only inside this div
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    primary: "#007BFF",
+                    "background-light": "#F8F9FA",
+                    "background-dark": "#1A202C",
+                    "text-light": "#212529",
+                    "text-dark": "#E2E8F0",
+                    "card-light": "#FFFFFF",
+                    "card-dark": "#2D3748",
+                },
+                fontFamily: {
+                    display: ["Roboto", "sans-serif"],
+                },
+                borderRadius: {
+                    DEFAULT: "0.5rem",
+                },
+            },
+        },
+    };
+</script>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#bkgOverlay").fadeIn();
+            $("#delayedPopup").fadeIn();
+        }, 20000);
+    });
+</script>
+
+<style>
+    .material-icons {
+        font-size: inherit;
+        vertical-align: middle;
+    }
+
+    body {
+        min-height: max(884px, 100dvh);
+    }
+
+    /* ✨ Optional subtle fade overlay effect for background */
+    #aboutus-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(3px);
+        z-index: 0;
+    }
+
+    #aboutus-page .shadow-all {
+        --tw-shadow: 0 0 25px 5px rgb(0 0 0 / 0.1);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    }
+
+    .prose-lg {
+        font-size: 1.3rem !important;
+        line-height: 1.7777778 !important;
+    }
+</style>
+
+@* <div class="max-w-5xl mx-auto py-10">
+
+    <h1 class="text-3xl font-black mb-6" style="justify-content:center!important;display:flex">
+        @Model.Title
+    </h1>
+
+    <div class="prose max-w-none text-left">
+        @Html.Raw(Model.Content)
+    </div>
+
+</div> *@
+
+<!-- ✅ All Tailwind styling scoped to this div -->
+<div id="aboutus-page">
+    <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark transition-colors duration-300 relative">
+        <!-- ✨ Background section with subtle faded airplane image -->
+        <div id="aboutus-bg"
+             class="relative min-h-screen bg-[url('your-background-image.jpg')] bg-cover bg-center bg-no-repeat flex items-center justify-center">
+            <main class="pt-24 pb-12 relative z-10 w-full">
+                <div class="w-full px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl font-bold text-primary mb-2"> @Model.Title</h1>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">
+                            RushMyFlight Pvt Ltd (“RushMyFlight.com”) values your privacy and takes extensive measures to protect the personal information you provide. By using our website, mobile app, or any services provided by us, you agree to the terms of this Privacy Policy. Please review it carefully.
+                        </p>
+                    </div>
+
+                    <!-- ✨ Card Section -->
+                    <div class="bg-card-light dark:bg-card-dark p-8 rounded-lg shadow-all space-y-8 backdrop-blur-sm bg-opacity-95">
+                        <div class="max-w-12xl mx-auto py-10">
+
+                            @* <h1 class="text-3xl font-black mb-6" style="justify-content:center!important;display:flex">
+                            @Model.Title
+                            </h1>
+                            *@
+                            <div class="prose max-w-none space-y-4 prose-lg">
+                                @Html.Raw(Model.Content)
+                            </div>
+
+                        </div>
+
+                        @* <div class="space-y-4">
+                        <h2 class="text-2xl font-bold text-text-light dark:text-text-dark">
+                        About Us
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Rush My Flight is one of the world's leading online travel
+                        companies and operates the website rushmyflight.com. We provide
+                        a variety of travel services and products to make both business
+                        and leisure travel more enjoyable. You’ll always have access to
+                        helpful planning and booking support with us, whether it’s
+                        before or after your trip.
+                        </p>
+                        </div>
+
+                        <div class="space-y-4">
+                        <h2 class="text-2xl font-bold text-text-light dark:text-text-dark">
+                        Trust Us, We’re Experts
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        We are a certified member of IATA (International Air Transport
+                        Association), one of the world’s biggest travel professional
+                        associations. IATA represents trusted and authentic travel
+                        agents worldwide, ensuring integrity and professionalism in the
+                        travel industry.
+                        </p>
+                        </div>
+
+                        <div class="space-y-4">
+                        <h2 class="text-2xl font-bold text-text-light dark:text-text-dark">
+                        Mission, Vision, and Values
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        We at Rush My Flight believe in providing our customers with the
+                        best and most comfortable flying experiences. Guided by our
+                        values and ethics, we’re committed to excellence and inspired to
+                        improve every day.
+                        </p>
+                        </div>
+
+                        <div class="space-y-4">
+                        <h2 class="text-2xl font-bold text-text-light dark:text-text-dark">
+                        No Cached Results
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        We display real-time flight availability — not cached or
+                        outdated results — so you can see accurate fares and complete
+                        your booking in minutes.
+                        </p>
+                        </div>
+
+                        <div class="space-y-4">
+                        <h2 class="text-2xl font-bold text-text-light dark:text-text-dark">
+                        Cutting Edge Technology
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        As a full-service travel agency, we use cutting-edge technology
+                        to offer affordable and transparent flight options. Our
+                        intuitive interface helps you make smart travel choices quickly
+                        and confidently.
+                        </p>
+                        </div> *@
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</div>

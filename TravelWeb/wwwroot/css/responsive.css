@@ -1,0 +1,502 @@
+/* Tablet - 1024px and below */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+    }
+    
+    .search-form {
+        flex-wrap: wrap;
+    }
+    
+    .form-group {
+        min-width: 150px;
+    }
+    
+    .swap_wrapper {
+        width: 100%;
+    }
+    
+    .calender_wrap {
+        width: 48%;
+    }
+}
+
+/* Tablet - 768px and below */
+@media (max-width: 768px) {
+    .nav {
+        position: relative;
+       
+        align-items: center;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        background: transparent;
+        color: #000;
+        font-size: 20px;
+        padding: 10px;
+        order: -1;
+        z-index: 1000;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 57px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 0;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        display: none;
+        z-index: 999;
+        border-radius: 0 0 10px 10px;
+        overflow: hidden;
+    }
+    
+    .nav-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    .nav-links .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+        font-size: 16px;
+    }
+    
+    .nav-links .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-links .nav-link:hover {
+        background: #f8f9fa;
+        padding-left: 25px;
+    }
+    
+    .nav-links .nav-link.active {
+        background: #007DFD;
+        color: white;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .nav-links::before {
+        display: none;
+    }
+    
+    .live-service {
+    margin-left: auto;
+    display: none;
+}
+  .header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 6px 0;
+}  
+    .search-form {
+        flex-direction: column;
+    }
+    
+    .swap_wrapper {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .swap-btn {
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+        top: 50%;
+    }
+    
+    .calender_wrap {
+        width: 100%;
+    }
+    
+    .form-group.adult {
+        width: 100%;
+    }
+    
+    .flight-card {
+        flex-direction: column;
+    }
+    
+    .flight_wrapper {
+        width: 100%;
+    }
+    
+    .booking-info {
+        width: 100%;
+        border-left: none;
+        border-top: 0.65px solid #E0E0E0;
+        padding: 20px;
+    }
+    
+    .flight-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .flighttime_wrapper {
+        width: 100%;
+    }
+    
+    .stop_wrapper {
+        width: 100%;
+    }
+    
+    .price-tabs {
+        flex-wrap: wrap;
+        background-color: transparent!important;
+    }
+    
+    .price-tabs .tab {
+        flex: 1 1 50%;
+        border-bottom: 0.65px solid #DBDEDF;
+    }
+    
+    .
+    
+    {
+        overflow-x: auto;
+        display: block;
+    }
+    
+    .airline-logos table {
+        min-width: 600px;
+    }
+    
+   .lowest-fares-section {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 14px;
+}
+    button.book_btn {
+    position: absolute;
+    right: 20px;
+    top: 11px;
+}
+    .profile_call {
+        justify-content: center;
+    }
+    
+    .view-details-btn {
+        position: static;
+        margin: 10px 20px;
+    }
+    
+    .flight_wrapper::after {
+        display: none;
+    }
+    .flight-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    justify-content: space-between;
+    width: 100%;
+    padding: 9px 10px;
+    border-bottom: 0.65px solid #E0E0E0;
+}
+}
+
+/* Mobile - 480px and below */
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .mobile-controls {
+        display: flex;
+        gap: 10px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    
+    .mobile-btn {
+        background: #242E45;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: 500;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .trip-options {
+        display: none;
+    }
+    
+    .search-form {
+        display: none;
+    }
+    
+    .content-wrapper {
+        padding: 10px;
+    }
+    
+    .search-section {
+        display: none;
+        padding: 20px 0;
+        position: relative;
+    }
+    
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 300px;
+        height: 100vh;
+        background: white;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        padding: 80px 15px 15px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+        display: none;
+    }
+    
+    .sidebar-overlay.active {
+        display: block;
+    }
+    
+    .sidebar-close {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: transparent;
+        color: #666;
+        font-size: 20px;
+        padding: 10px;
+        z-index: 1001;
+    }
+    
+    .time-dropdown {
+    position: absolute;
+    top: 59%;
+    left: 0;
+    width: calc(101.33% - 5px);
+    background: #0C1019;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 998;
+    overflow: hidden;
+    margin-top: 5px;
+}
+    
+    .time-dropdown.active {
+        display: block;
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    .dropdown-option {
+        padding: 12px 16px;
+        border-bottom: 1px solid #242E45;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .dropdown-option:last-child {
+        border-bottom: none;
+    }
+    
+    .dropdown-option:hover {
+        background: #242E45;
+        padding-left: 20px;
+    }
+    
+    .stops-dropdown {
+        position: absolute;
+        top: 81%;
+        left: calc(33.33% + 5px);
+        width: calc(33.33% - 5px);
+        background: #0C1019;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        display: none;
+        z-index: 998;
+        overflow: hidden;
+        margin-top: 5px;
+    }
+    
+    .stops-dropdown.active {
+        display: block;
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    .price-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    
+    .price-tabs .tab {
+        flex: 1;
+        min-width: 90px;
+        border-right: none;
+        border-bottom: none;
+        padding: 12px 8px;
+        background: transparent;
+    }
+    
+    .price-tabs .tab.active {
+        background: white;
+    }
+    
+    .price-tabs .tab-label {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+    
+    .price-tabs .tab-price {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    .price-tabs .tab:last-child {
+        border-right: none;
+    }
+    
+    .tab.active::before {
+        width: 90%;
+        height: 2.8px;
+        right: 0px;
+    }
+    
+    .select-btn {
+        padding: 12px 20px;
+        width: 100%;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    .booking-info {
+        padding: 16px 15px;
+        position: relative;
+    }
+    
+    .booking-info {
+        position: relative;
+    }
+    
+    .booking-info .view-details-btn {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        background: #F0F3F5;
+        color: #000000;
+        border: none;
+        padding: 8px 12px;
+        font-size: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 500;
+        border-radius: 5px;
+    }
+    
+    .booking-info .price {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+    
+    .booking-info .price span {
+        font-size: 14px;
+    }
+    
+    .price-detail {
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+    
+    .phone-info {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+   .img_wrapper {
+    gap: 10px;
+    width: 100%;
+}
+    
+    .profile_text {
+        margin-left: 0;
+        text-align: center;
+    }
+    
+    .profile_call {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+    
+   button.call_btn {
+    margin-left: 0;
+    background: #007DFD;
+    color: white;
+    width: 100%;
+    padding: 8px 0px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+}
+    
+    .call_btn::before {
+        content: "\f095";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: white;
+        margin-right: 8px;
+    }
+    
+    .call_btn img {
+        display: none;
+    }
+    
+    .book_btn i {
+        margin-left: 0;
+    }
+}

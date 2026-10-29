@@ -1,0 +1,269 @@
+@* Multicity legs — dynamic add/remove (min 1, max 4) *@
+<style>
+    #mcLegsPanel {
+        display: none;
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .mc-leg-block {
+        margin-bottom: 10px;
+        position: relative;
+        animation: mcLegIn 0.28s ease;
+    }
+
+    @@keyframes mcLegIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mc-leg-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 0 6px 4px;
+        gap: 8px;
+    }
+
+    .mc-leg-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #ED4214;
+        margin: 0;
+    }
+
+    .mc-leg-remove {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid #e0e0e0;
+        background: #fff;
+        color: #c0392b;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+        flex-shrink: 0;
+        padding: 0;
+        line-height: 1;
+    }
+
+    .mc-leg-remove:hover {
+        background: #c0392b;
+        border-color: #c0392b;
+        color: #fff;
+        transform: scale(1.06);
+    }
+
+    .mc-leg-remove:disabled,
+    .mc-leg-remove.is-hidden {
+        display: none;
+    }
+
+    .mc-leg-remove i {
+        font-size: 14px;
+    }
+
+    .mc-leg-grid {
+        display: grid;
+        grid-template-columns: 2.5fr 1.5fr;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .mc-date-box {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 14px 16px;
+        border: 1.5px solid #dcdcdc;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 100%;
+        cursor: pointer;
+        transition: border-color 0.2s;
+    }
+
+    .mc-date-box:focus-within {
+        border-color: #ED4214;
+    }
+
+    .mc-date-box .date-icon {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .mc-date-box .date-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .mc-date-box .return-label {
+        font-size: 13px;
+        color: #6b6b6b;
+        margin: 0 0 4px;
+        font-weight: 500;
+    }
+
+    .mc-date-box .return-add {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: #000;
+        padding: 0;
+        background: transparent;
+        font-family: inherit;
+    }
+
+    .mc-leg-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 4px 0 8px;
+        flex-wrap: wrap;
+    }
+
+    .mc-add-leg-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1.5px dashed #ED4214;
+        background: rgba(237, 66, 20, 0.06);
+        color: #ED4214;
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+        font-family: inherit;
+    }
+
+    .mc-add-leg-btn:hover {
+        background: rgba(237, 66, 20, 0.12);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(237, 66, 20, 0.15);
+    }
+
+    .mc-add-leg-btn:disabled,
+    .mc-add-leg-btn.is-hidden {
+        display: none;
+    }
+
+    .mc-add-leg-btn .mc-add-icon {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #ED4214;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+
+    .mc-leg-hint {
+        font-size: 12px;
+        color: #888;
+    }
+
+    .mc-actions-row {
+        display: none;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        align-items: center;
+        margin-top: 8px;
+    }
+
+    .mc-actions-row.is-visible {
+        display: grid;
+    }
+
+    #mc_search_btn.search-btn {
+        display: none;
+        white-space: nowrap;
+    }
+
+    .mc-leg-grid .from-to-wrapper {
+        min-width: 0;
+    }
+
+    @@media (max-width: 992px) {
+        .mc-leg-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .mc-actions-row.is-visible {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div id="mcLegsPanel" data-min-legs="1" data-max-legs="4" data-default-legs="2">
+    <div id="mcLegsContainer">
+        <!-- Legs injected by multicity-search.js (default 2) -->
+    </div>
+
+    <div class="mc-leg-controls">
+        <button type="button" id="mcAddLegBtn" class="mc-add-leg-btn" aria-label="Add flight leg">
+            <span class="mc-add-icon"><i class="fa fa-plus"></i></span>
+            <span>Add another flight</span>
+        </button>
+        <span class="mc-leg-hint" id="mcLegHint">2 of 4 flights</span>
+    </div>
+</div>
+
+<template id="mcLegTemplate">
+    <div class="mc-leg-block" data-leg="">
+        <div class="mc-leg-header">
+            <div class="mc-leg-title">Flight 1</div>
+            <button type="button" class="mc-leg-remove" title="Remove flight" aria-label="Remove flight">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+        <div class="mc-leg-grid">
+            <div class="from-to-wrapper">
+                <div class="city-box from-box">
+                    <div class="city-inner">
+                        <img src="img/v7_31.png" class="city-icon" alt="icon">
+                        <div class="city-text">
+                            <div class="city-sub">
+                                <span class="city-label" data-i18n="search.fromCity">From City</span>
+                            </div>
+                            <input class="inputvalue city-input mc-airport mc-from" type="text" onClick="this.select()" placeholder="Country, city or airport" data-i18n-placeholder="search.cityPlaceholder" autocomplete="off" style="font-size:16px;">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="swap-center-btn mc-swap-btn" aria-label="Swap cities">⇄</button>
+
+                <div class="city-box to-box">
+                    <div class="city-inner">
+                        <img src="img/v7_32.png" class="city-icon" alt="icon">
+                        <div class="city-text">
+                            <div class="city-sub">
+                                <span class="city-label" data-i18n="search.toCity">To City</span>
+                            </div>
+                            <input class="inputvalue city-input mc-airport mc-to" type="text" onClick="this.select()" placeholder="Country, city or airport" data-i18n-placeholder="search.cityPlaceholder" autocomplete="off" style="font-size:16px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mc-date-box notranslate">
+                <img src="img/flexibleticket.png" class="date-icon" alt="cal">
+                <div class="date-info">
+                    <label class="return-label" data-i18n="search.departure">Departure</label>
+                    <input class="return-add mc-date notranslate" type="text" placeholder="Add Date" data-i18n-placeholder="search.addDate" autocomplete="off">
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

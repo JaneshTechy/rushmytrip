@@ -1,0 +1,109 @@
+﻿@model TravelWeb.Models.MetaResponseDto.MetaFlightSearchResponse
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="space-y-6">
+
+    <!-- ========== UPLOAD SECTION ========== -->
+    <form method="post" enctype="multipart/form-data"
+          asp-action="UploadMetaJson"
+          class="bg-white rounded-2xl border p-6">
+        <h2 class="font-black text-slate-800 uppercase mb-3">
+            Upload Meta API Response (JSON)
+        </h2>
+
+        <input type="file" name="file"
+               accept=".json"
+               class="block w-full border rounded-lg p-2" />
+
+        <button class="mt-4 px-6 py-2 bg-slate-900 text-white rounded-lg font-bold">
+            Upload & View
+        </button>
+    </form>
+
+    @if (Model != null)
+    {
+        <!-- ========== FILTER SECTION ========== -->
+        <form method="get" class="bg-white rounded-2xl border p-6">
+            <input type="hidden" name="fileName" value="@ViewBag.FileName" />
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+                <!-- Airline -->
+                <select name="airline" class="border rounded-lg p-2">
+                    <option value="">All Airlines</option>
+                    @foreach (var a in ViewBag.Airlines)
+                    {
+                        <option value="@a" selected="@(a == ViewBag.SelectedAirline)">
+                            @a
+                        </option>
+                    }
+                </select>
+
+                <!-- Stops -->
+                <select name="stops" class="border rounded-lg p-2">
+                    <option value="">All Stops</option>
+                    <option value="0" selected="@(ViewBag.SelectedStops == 0)">Non-Stop</option>
+                    <option value="1" selected="@(ViewBag.SelectedStops == 1)">1 Stop</option>
+                </select>
+
+                <!-- Cabin -->
+                <select name="cabin" class="border rounded-lg p-2">
+                    <option value="">All Cabin</option>
+                    <option value="EC" selected="@(ViewBag.SelectedCabin=="EC")">Economy</option>
+                    <option value="BC" selected="@(ViewBag.SelectedCabin=="BC")">Business</option>
+                    <option value="FC" selected="@(ViewBag.SelectedCabin=="FC")">First</option>
+                </select>
+
+                <button class="bg-green-600 text-white rounded-lg font-bold">
+                    Apply
+                </button>
+            </div>
+        </form>
+
+        <!-- ========== RESULT TABLE ========== -->
+        <section class="bg-white rounded-3xl border overflow-hidden">
+            <table class="w-full min-w-[1300px]">
+                <thead class="bg-slate-50">
+                    <tr>
+                        <th>Airline</th>
+                        <th>Route</th>
+                        <th>Stops</th>
+                        <th>Duration</th>
+                        <th>Price</th>
+                        <th>Segments</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var f in Model.Airlines)
+                    {
+                        var segs = f.Segments
+                        .SelectMany(x => x.OSeg)
+                        .SelectMany(x => x.ISeg)
+                        .ToList();
+
+                        <tr class="border-t">
+                            <td>@string.Join(", ", segs.Select(x => x.AirlineNm).Distinct())</td>
+                            <td>@segs.First().DApt → @segs.Last().AApt</td>
+                            <td>@f.Stop</td>
+                            <td>@f.TotalDuration min</td>
+                            <td class="font-bold text-green-600">$@f.TotalAmt</td>
+                            <td class="text-xs">
+                                @foreach (var s in segs)
+                                {
+                                    <div>
+                                        @s.DApt → @s.AApt
+                                        (@s.DTime - @s.ATime)
+                                        <b>@s.MA@s.FN</b>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    }
+</div>

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<TravelWeb.Admin.Models.FareMarkUp>
+@using TravelWeb.Admin.Models
+@{
+    Layout = null;
+    ViewBag.StaticURL = TravelWeb.Utilities.Common.WebSitePath;
+    int SNo = 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Manage </h3>
+            </div>
+            @if (ViewBag.msg == "1" || ViewBag.msg == "1")
+            {
+                <p style="color:green;">Add record successfully.</p>
+            }
+            @if (ViewBag.msg == "2" || ViewBag.msg == "2")
+            {
+                <p style="color:forestgreen;">xls import successfully.</p>
+            }
+            @if (ViewBag.msg == "3" || ViewBag.msg == "3")
+            {
+                <p style="color:red;">Error Ouccur. Please after some type.</p>
+            }
+            <div class="title_right">
+                <div class="col-md-12 text-right">
+                    <input type="button" class="btn btn-success" value="Import Markup" onclick="window.location = '/markup/ImportFareMarkup/';" />&nbsp;&nbsp;
+                    <input type="button" class="btn btn-success" value="Export" onclick="exportData();" />
+
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>SNo.</th>
+                                    <th>Origin</th>
+                                    <th>Destination</th>
+                                    <th>Airlines</th>
+                                    <th>Class</th>
+                                    <th>Markup Type</th>
+                                    <th>Markup</th>
+                                    <th>StartDate</th>
+                                    <th>EndDate</th>
+                                    <th>PaxType</th>
+                                    @*<th>Status</th>
+                                        <th>Action</th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (FareMarkUp item in Model)
+                                {
+                                    <tr>
+                                        <td>@(++SNo)</td>
+                                        <td>@item.Origin</td>
+                                        <td>@item.Destination</td>
+                                        <td>@item.Airlines</td>
+                                        <td>@item.Class</td>
+                                        <td>@item.MarkUpType</td>
+                                        <td>@item.MarkUp</td>
+                                        <td>@item.StartDate</td>
+                                        <td>@item.EndDate</td>
+                                        <td>@item.PaxType</td>
+                                        @*<td>
+                                                <input type="checkbox" @((item.Status.ToLower() == "true") ? "checked" : "") data-id="@(item.Id)" id="chk_@item.Id" name="chk_@item.Id"  />
+                                                &nbsp;&nbsp;@(((item.Status.ToLower() == "true") ? "Active" : "InActive"))
+                                            </td>*@
+                                        @*<td>
+                                                <a href="/markup/edit?id=@(item.Id)" class="btn btn-default btn-success">Edit</a>
+                                            </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="10">@Html.Raw(ViewBag.Paging)</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+
+        <link href="@(ViewBag.StaticURL + "Content/vendors/jqueryui/jquery-ui.min.css")" rel="stylesheet" />
+
+        <script type="text/javascript">
+
+    $(document).ready(function () {
+        $('input[type="checkbox"]').click(function () {
+            if($(this).is(":checked")) {
+                alert("Checkbox is checked." + $(this).data("id"));
+                $.ajax({
+                    url: '/Status/?Id=' + $(this).data("id"),
+                    cache: false,
+                    method: 'POST',
+                    data:{'ID':$(this).data("id")},
+                    success: function (data) { },
+                    error: function () { }
+                });
+            }
+            else if ($(this).is(":not(:checked)")) {
+                alert("Checkbox is unchecked.");
+            }
+        });
+    });
+
+    //Export data into excel sheet
+    function exportData() {
+        var url = "@(ViewBag.StaticURL)markup/exportdata";
+        window.location = url;
+    }
+        </script>
+    }
+</body>
+</html>

@@ -1,0 +1,281 @@
+@model TravelWeb.Models.Hotel.HotelDetailViewModel
+@using System.Globalization
+@using System.Linq
+@{
+    Layout = "_LayoutMain";
+    ViewData["Title"] = ViewData["Title"] ?? "Hotel Details";
+    var hotel = Model?.Detail?.Hotel;
+    var currency = string.IsNullOrWhiteSpace(hotel?.Currency) ? "$" : hotel.Currency.ToUpperInvariant() switch
+    {
+        "INR" => "₹",
+        "EUR" => "€",
+        "GBP" => "£",
+        "USD" => "$",
+        _ => hotel?.Currency ?? "$"
+    };
+    var fallback = "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80";
+    var gallery = new List<string>();
+    if (hotel?.Images != null)
+    {
+        foreach (var img in hotel.Images)
+        {
+            if (!string.IsNullOrWhiteSpace(img?.Url) && !gallery.Contains(img.Url, StringComparer.OrdinalIgnoreCase))
+                gallery.Add(img.Url);
+        }
+    }
+    if (!string.IsNullOrWhiteSpace(hotel?.HotelPicture) && !gallery.Contains(hotel.HotelPicture, StringComparer.OrdinalIgnoreCase))
+        gallery.Insert(0, hotel.HotelPicture);
+    if (gallery.Count == 0)
+        gallery.Add(fallback);
+
+    var backUrl = Url.Action("Listing", "Hotels", new { searchId = Model?.SearchId });
+}
+
+@section Styles {
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        .hotel-detail-page { font-family: Inter, system-ui, sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; color: #1a1d21; }
+        .hotel-detail-back { display: inline-flex; align-items: center; gap: 8px; color: #e2591a; font-weight: 600; text-decoration: none; margin-bottom: 16px; }
+        .hotel-detail-title { font-size: 2rem; font-weight: 800; margin: 20px 0 8px; }
+        .hotel-detail-meta { color: #646a72; font-size: 0.95rem; margin-bottom: 20px; }
+        .hotel-detail-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        @@media (min-width: 900px) { .hotel-detail-grid { grid-template-columns: 1.4fr 0.8fr; } }
+        .hotel-detail-card { border: 1px solid #f0f0f0; border-radius: 16px; padding: 20px; background: #fff; }
+        .hotel-detail-price { font-size: 1.75rem; font-weight: 800; color: #e2591a; }
+        .hotel-detail-amenities { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .hotel-detail-amenities span { background: #fff4ec; color: #c14613; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 600; }
+        .hotel-detail-error { border: 1px dashed #f0f0f0; border-radius: 16px; padding: 32px; text-align: center; }
+
+        /* Gallery slider + thumbs */
+        .hd-gallery { margin-bottom: 8px; }
+        .hd-main-wrap {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #eceef2;
+        }
+        @@media (max-width: 640px) { .hd-main-wrap { height: 240px; } }
+        .hd-main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity .2s ease;
+        }
+        .hd-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: none;
+            background: rgba(255,255,255,.92);
+            color: #1a1d21;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0,0,0,.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        .hd-nav:hover { background: #fff; color: #e2591a; }
+        .hd-nav.prev { left: 12px; }
+        .hd-nav.next { right: 12px; }
+        .hd-counter {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            background: rgba(0,0,0,.55);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+            z-index: 2;
+        }
+        .hd-thumbs {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: thin;
+        }
+        .hd-thumb {
+            flex: 0 0 88px;
+            width: 88px;
+            height: 64px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            padding: 0;
+            cursor: pointer;
+            background: #eee;
+            opacity: .75;
+            transition: border-color .15s ease, opacity .15s ease;
+        }
+        .hd-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hd-thumb:hover { opacity: 1; }
+        .hd-thumb.active {
+            border-color: #e2591a;
+            opacity: 1;
+            box-shadow: 0 0 0 1px #e2591a;
+        }
+        .hd-thumbs::-webkit-scrollbar { height: 6px; }
+        .hd-thumbs::-webkit-scrollbar-thumb { background: #c5c9d0; border-radius: 999px; }
+    </style>
+}
+
+<div class="hotel-detail-page">
+    <a class="hotel-detail-back" href="@(backUrl ?? "/")">&larr; Back to listing</a>
+
+    @if (!string.IsNullOrWhiteSpace(Model?.Error) && hotel == null)
+    {
+        <div class="hotel-detail-error">
+            <p style="font-weight:700;font-size:1.2rem;">Unable to load hotel details</p>
+            <p style="color:#646a72;">@Model.Error</p>
+            <p style="margin-top:16px;"><a class="hotel-detail-back" href="@(backUrl ?? "/")">Return to hotel list</a></p>
+        </div>
+    }
+    else if (hotel != null)
+    {
+        <div class="hd-gallery" id="hd-gallery" data-count="@gallery.Count">
+            <div class="hd-main-wrap">
+                <img id="hd-main-img"
+                     class="hd-main-img"
+                     src="@gallery[0]"
+                     alt="@hotel.HotelName"
+                     onerror="this.onerror=null;this.src='@fallback';" />
+                @if (gallery.Count > 1)
+                {
+                    <button type="button" class="hd-nav prev" id="hd-prev" aria-label="Previous image">&#8249;</button>
+                    <button type="button" class="hd-nav next" id="hd-next" aria-label="Next image">&#8250;</button>
+                    <span class="hd-counter"><span id="hd-index">1</span> / @gallery.Count</span>
+                }
+            </div>
+            @if (gallery.Count > 1)
+            {
+                <div class="hd-thumbs" id="hd-thumbs" role="listbox" aria-label="Hotel photo thumbnails">
+                    @for (var i = 0; i < gallery.Count; i++)
+                    {
+                        <button type="button"
+                                class="hd-thumb @(i == 0 ? "active" : "")"
+                                data-index="@i"
+                                aria-label="Show photo @(i + 1)">
+                            <img src="@gallery[i]" alt="Thumbnail @(i + 1)" loading="lazy"
+                                 onerror="this.onerror=null;this.src='@fallback';" />
+                        </button>
+                    }
+                </div>
+            }
+        </div>
+
+        <h1 class="hotel-detail-title">@hotel.HotelName</h1>
+        <p class="hotel-detail-meta">
+            @(string.IsNullOrWhiteSpace(hotel.HotelAddress) ? Model.Destination : hotel.HotelAddress)
+            @if (hotel.GuestRating.HasValue && hotel.GuestRating > 0)
+            {
+                <span> · @hotel.GuestRating.Value.ToString("0.0", CultureInfo.InvariantCulture) guest rating</span>
+            }
+            @if (!string.IsNullOrWhiteSpace(hotel.ReviewCountLabel))
+            {
+                <span> · @hotel.ReviewCountLabel reviews</span>
+            }
+            @if (!string.IsNullOrWhiteSpace(hotel.Category))
+            {
+                <span> · @hotel.Category</span>
+            }
+        </p>
+
+        <div class="hotel-detail-grid">
+            <div class="hotel-detail-card">
+                <h2 style="font-weight:800;margin-bottom:10px;">About</h2>
+                <p style="color:#3c4045;line-height:1.6;">@(string.IsNullOrWhiteSpace(hotel.About) ? "Details loaded from MetaService and saved with this search." : hotel.About)</p>
+                @if (hotel.Amenities != null && hotel.Amenities.Count > 0)
+                {
+                    <div class="hotel-detail-amenities">
+                        @foreach (var a in hotel.Amenities.Where(x => !string.IsNullOrWhiteSpace(x) && x.Length < 40).Take(12))
+                        {
+                            <span>@a</span>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="hotel-detail-card">
+                <p style="color:#646a72;font-size:12px;margin-bottom:4px;">from</p>
+                <p class="hotel-detail-price">@currency@hotel.NightlyPrice.ToString("0", CultureInfo.InvariantCulture)</p>
+                <p style="color:#646a72;font-size:13px;">per night · total @currency@hotel.TotalPrice.ToString("0", CultureInfo.InvariantCulture)</p>
+                @if (hotel.Nights > 0)
+                {
+                    <p style="color:#646a72;font-size:13px;margin-top:8px;">@hotel.Nights night(s)</p>
+                }
+                @if (Model.CheckIn > DateTime.MinValue && Model.CheckOut > DateTime.MinValue)
+                {
+                    <p style="color:#646a72;font-size:13px;margin-top:8px;">
+                        @Model.CheckIn.ToString("MMM d", CultureInfo.InvariantCulture) – @Model.CheckOut.ToString("MMM d", CultureInfo.InvariantCulture)
+                        · @Model.Adults Adult(s)
+                    </p>
+                }
+                @if (!string.IsNullOrWhiteSpace(hotel.Deal))
+                {
+                    <p style="margin-top:12px;font-weight:700;color:#0a8a3f;">@hotel.Deal</p>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            var images = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(gallery));
+            if (!images || !images.length) return;
+
+            var idx = 0;
+            var main = document.getElementById("hd-main-img");
+            var indexEl = document.getElementById("hd-index");
+            var thumbs = Array.prototype.slice.call(document.querySelectorAll(".hd-thumb"));
+            var fallback = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(fallback));
+
+            function show(i) {
+                if (!main) return;
+                idx = (i + images.length) % images.length;
+                main.style.opacity = "0.4";
+                setTimeout(function () {
+                    main.src = images[idx];
+                    main.style.opacity = "1";
+                }, 120);
+                if (indexEl) indexEl.textContent = String(idx + 1);
+                thumbs.forEach(function (t, n) {
+                    t.classList.toggle("active", n === idx);
+                });
+                var active = thumbs[idx];
+                if (active && active.scrollIntoView) {
+                    active.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                }
+            }
+
+            var prev = document.getElementById("hd-prev");
+            var next = document.getElementById("hd-next");
+            if (prev) prev.addEventListener("click", function () { show(idx - 1); });
+            if (next) next.addEventListener("click", function () { show(idx + 1); });
+            thumbs.forEach(function (t) {
+                t.addEventListener("click", function () {
+                    var n = parseInt(t.getAttribute("data-index"), 10);
+                    if (!isNaN(n)) show(n);
+                });
+            });
+
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "ArrowLeft") show(idx - 1);
+                if (e.key === "ArrowRight") show(idx + 1);
+            });
+        })();
+    </script>
+}

@@ -1,0 +1,30 @@
+﻿@model System.Data.DataTable;
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        @foreach (System.Data.DataRow drv in Model.Rows)
+        {
+            string[] DepDatex = drv["DepartDate"].ToString().Split(' ')[0].Split('/');
+            string DepDate = DepDatex[2] + "/" + DepDatex[0] + "/" + DepDatex[1];
+
+            string[] RetDatex = drv["ReturnDate"].ToString().Split(' ')[0].Split('/');
+            string Retate = RetDatex[2] + "/" + RetDatex[0] + "/" + RetDatex[1];
+
+            <a href='@(TravelWeb.Utilities.Common.WebSitePath)result?qs=HOME|Home|@drv["DCode"].ToString()|@drv["GCode"].ToString()|@Convert.ToDateTime(DepDate).ToString("yyyy-MM-dd")|@Convert.ToDateTime(Retate).ToString("yyyy-MM-dd")|1|0|0|2|4|false'>
+                <div class="filghtRoutesList">
+                    <div class="filghtRoutesTop">
+                        <strong>@(TravelWeb.Utilities.Common.GetAirport(drv["DCode"].ToString()).CityName)</strong>
+                        <p class="startDate">@Convert.ToDateTime(DepDate).ToString("MMM,dd,yyyy")</p>
+                        <p class="endDate">@Convert.ToDateTime(Retate).ToString("MMM,dd,yyyy")</p>
+                        <strong>@(TravelWeb.Utilities.Common.GetAirport(drv["GCode"].ToString()).CityName)</strong>
+                    </div>
+                    <div class="filghtRoutesPrice">
+                        <p>Starting From</p>
+                        <p class="filghtRoutesPriceTotal"><span>$</span>@drv["TotalFare"]</p>
+                    </div>
+                </div>
+            </a>
+        }
+
+
+    </div>
+</div>
